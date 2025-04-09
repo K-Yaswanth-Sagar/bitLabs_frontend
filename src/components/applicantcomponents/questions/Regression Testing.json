@@ -1,0 +1,369 @@
+{
+    "testName": "Regression Testing MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Regression Testing"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the primary goal of regression testing?",
+        "options": [
+          "To ensure that new code changes have not adversely affected the existing functionalities.",
+          "To verify the performance of the application.",
+          "To test the usability of the application.",
+          "To validate the new features added to the application."
+        ],
+        "answer": "To ensure that new code changes have not adversely affected the existing functionalities.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which type of regression testing focuses on testing only the modified areas of the application?",
+        "options": [
+          "Selective Regression Testing",
+          "Full Regression Testing",
+          "Partial Regression Testing",
+          "Smoke Testing"
+        ],
+        "answer": "Selective Regression Testing",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "When is regression testing typically performed during the software development lifecycle?",
+        "options": [
+          "After each code change or bug fix.",
+          "Only after the completion of the entire development process.",
+          "During the initial testing phase only.",
+          "Only before the final release of the product."
+        ],
+        "answer": "After each code change or bug fix.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "What is the main challenge associated with regression testing?",
+        "options": [
+          "Ensuring that all test cases are executed within a limited timeframe.",
+          "Identifying new features to be tested.",
+          "Designing new test cases.",
+          "Creating detailed test documentation."
+        ],
+        "answer": "Ensuring that all test cases are executed within a limited timeframe.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What role does automation play in regression testing?",
+        "options": [
+          "Automation helps in executing repetitive regression tests quickly and accurately.",
+          "Automation is used to design new test cases.",
+          "Automation helps in performing exploratory testing.",
+          "Automation replaces the need for manual testing entirely."
+        ],
+        "answer": "Automation helps in executing repetitive regression tests quickly and accurately.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "Which approach is most effective for maintaining regression test suites over time?",
+        "options": [
+          "Regularly updating and optimizing the test suite.",
+          "Relying on test cases without modification.",
+          "Creating new test cases for every release.",
+          "Ignoring test results from previous cycles."
+        ],
+        "answer": "Regularly updating and optimizing the test suite.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "What is 'Test Impact Analysis' in the context of regression testing?",
+        "options": [
+          "Determining which parts of the codebase are affected by recent changes to prioritize test execution.",
+          "Analyzing the performance impact of tests on the application.",
+          "Assessing the impact of test automation on development speed.",
+          "Evaluating the impact of test failures on the project timeline."
+        ],
+        "answer": "Determining which parts of the codebase are affected by recent changes to prioritize test execution.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of 'Smoke Testing' in relation to regression testing?",
+        "options": [
+          "To ensure that the basic functionalities of the application are working before detailed regression tests are run.",
+          "To test the application’s performance under load.",
+          "To verify new features in isolation.",
+          "To perform detailed functional testing of the application."
+        ],
+        "answer": "To ensure that the basic functionalities of the application are working before detailed regression tests are run.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "How does 'Regression Test Optimization' benefit the testing process?",
+        "options": [
+          "By reducing the number of test cases that need to be executed while maintaining test coverage.",
+          "By increasing the number of test cases to ensure complete coverage.",
+          "By automating all test cases for faster execution.",
+          "By delaying the testing phase until the end of the development cycle."
+        ],
+        "answer": "By reducing the number of test cases that need to be executed while maintaining test coverage.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "What is the main objective of 'Full Regression Testing'?",
+        "options": [
+          "To test the entire application to ensure that all functionalities are working as expected after changes.",
+          "To test only the new features added in the recent release.",
+          "To perform a high-level overview of the application’s functionality.",
+          "To test the performance and scalability of the application."
+        ],
+        "answer": "To test the entire application to ensure that all functionalities are working as expected after changes.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "Which technique is used to minimize the risk of regression issues?",
+        "options": [
+          "Implementing automated regression tests and continuous integration.",
+          "Only performing manual regression tests.",
+          "Running regression tests after every few weeks.",
+          "Ignoring failed test cases in regression testing."
+        ],
+        "answer": "Implementing automated regression tests and continuous integration.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "What is 'Test Case Prioritization' in regression testing?",
+        "options": [
+          "The process of executing test cases based on their importance and likelihood of finding defects.",
+          "The method of creating new test cases for every release.",
+          "The practice of running all test cases in a predefined order.",
+          "The technique of rewriting test cases for better accuracy."
+        ],
+        "answer": "The process of executing test cases based on their importance and likelihood of finding defects.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "How can 'Test Automation Frameworks' support regression testing?",
+        "options": [
+          "By providing a structured environment for automating test cases and managing test execution.",
+          "By replacing the need for manual regression testing entirely.",
+          "By generating test data for each test case.",
+          "By offering detailed documentation for test cases."
+        ],
+        "answer": "By providing a structured environment for automating test cases and managing test execution.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is 'Regression Test Selection'?",
+        "options": [
+          "The process of selecting specific test cases to run based on recent changes to the application.",
+          "The technique of creating new test cases for each release.",
+          "The approach of running all test cases without selection.",
+          "The practice of excluding tests that have failed in the past."
+        ],
+        "answer": "The process of selecting specific test cases to run based on recent changes to the application.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is 'Test Data Management' in the context of regression testing?",
+        "options": [
+          "The process of creating, maintaining, and managing test data for executing test cases.",
+          "The technique of analyzing test results.",
+          "The approach of optimizing test case execution.",
+          "The practice of writing new test cases."
+        ],
+        "answer": "The process of creating, maintaining, and managing test data for executing test cases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "What is the role of 'Continuous Integration' in regression testing?",
+        "options": [
+          "To integrate code changes continuously and run automated regression tests to detect issues early.",
+          "To manually test the application at the end of each development cycle.",
+          "To generate detailed test reports for every regression test.",
+          "To document each code change made during the development process."
+        ],
+        "answer": "To integrate code changes continuously and run automated regression tests to detect issues early.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "How does 'Risk-Based Regression Testing' differ from other approaches?",
+        "options": [
+          "It prioritizes test cases based on the risk of failure and impact on the application.",
+          "It focuses on executing all available test cases regardless of their relevance.",
+          "It only runs tests that have failed in previous cycles.",
+          "It minimizes the number of test cases by focusing only on new features."
+        ],
+        "answer": "It prioritizes test cases based on the risk of failure and impact on the application.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is 'Regression Testing Metrics' used for?",
+        "options": [
+          "To measure the effectiveness and coverage of regression testing.",
+          "To identify new features to be tested.",
+          "To document test case execution steps.",
+          "To evaluate the performance of the test automation tools."
+        ],
+        "answer": "To measure the effectiveness and coverage of regression testing.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What does 'Test Coverage Analysis' involve in regression testing?",
+        "options": [
+          "Evaluating how much of the codebase is covered by the regression tests.",
+          "Analyzing the performance impact of regression tests.",
+          "Assessing the cost of running regression tests.",
+          "Determining the time required to execute all regression tests."
+        ],
+        "answer": "Evaluating how much of the codebase is covered by the regression tests.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "How can 'Test Environment Management' impact regression testing?",
+        "options": [
+          "By ensuring that the test environment mirrors the production environment to catch environment-specific issues.",
+          "By automating all aspects of the testing process.",
+          "By creating new test cases based on the test environment.",
+          "By reducing the number of test environments needed."
+        ],
+        "answer": "By ensuring that the test environment mirrors the production environment to catch environment-specific issues.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is 'Test Case Maintenance' in regression testing?",
+        "options": [
+          "Updating and refining test cases to ensure they remain relevant and effective over time.",
+          "Creating new test cases for each release.",
+          "Removing old test cases from the test suite.",
+          "Documenting the execution of test cases."
+        ],
+        "answer": "Updating and refining test cases to ensure they remain relevant and effective over time.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is 'Defect Leakage' in the context of regression testing?",
+        "options": [
+          "The occurrence of defects that were not detected during regression testing but are found in production.",
+          "The process of identifying and fixing defects during testing.",
+          "The practice of leaking sensitive data during testing.",
+          "The technique of integrating defects into the test cases."
+        ],
+        "answer": "The occurrence of defects that were not detected during regression testing but are found in production.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "Which tool or technique is commonly used to manage and execute automated regression tests?",
+        "options": [
+          "Test Automation Frameworks",
+          "Manual Testing Scripts",
+          "Performance Testing Tools",
+          "Bug Tracking Software"
+        ],
+        "answer": "Test Automation Frameworks",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What is 'Test Suite Management' in regression testing?",
+        "options": [
+          "The process of organizing and managing a collection of test cases to ensure efficient execution and maintenance.",
+          "The practice of creating new test cases for each release.",
+          "The technique of documenting test results.",
+          "The approach of running all test cases in a predefined order."
+        ],
+        "answer": "The process of organizing and managing a collection of test cases to ensure efficient execution and maintenance.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What does 'Test Result Analysis' involve in regression testing?",
+        "options": [
+          "Evaluating the results of regression tests to identify issues and improvements.",
+          "Creating new test cases based on test results.",
+          "Documenting the steps of each test case.",
+          "Assessing the cost of running regression tests."
+        ],
+        "answer": "Evaluating the results of regression tests to identify issues and improvements.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "What is 'Test Automation Strategy' in relation to regression testing?",
+        "options": [
+          "A plan for implementing automation in regression testing to improve efficiency and effectiveness.",
+          "A set of guidelines for manual testing.",
+          "A method for generating test data.",
+          "A technique for designing new test cases."
+        ],
+        "answer": "A plan for implementing automation in regression testing to improve efficiency and effectiveness.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "How does 'Version Control' impact regression testing?",
+        "options": [
+          "By managing changes to test scripts and ensuring that the correct versions are used during testing.",
+          "By documenting the results of each test case.",
+          "By creating new versions of test cases for each release.",
+          "By automating the execution of test cases."
+        ],
+        "answer": "By managing changes to test scripts and ensuring that the correct versions are used during testing.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What is 'Code Coverage' in regression testing?",
+        "options": [
+          "A measure of how much of the codebase is executed by the test cases.",
+          "A technique for testing the performance of the application.",
+          "A method for identifying new features in the application.",
+          "A way to document the execution of test cases."
+        ],
+        "answer": "A measure of how much of the codebase is executed by the test cases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is 'Regression Test Planning'?",
+        "options": [
+          "The process of creating a strategy and schedule for executing regression tests to ensure effective coverage and efficiency.",
+          "The technique of designing new test cases.",
+          "The approach of documenting each test case.",
+          "The method of evaluating test results."
+        ],
+        "answer": "The process of creating a strategy and schedule for executing regression tests to ensure effective coverage and efficiency.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is 'Test Execution Reporting' in regression testing?",
+        "options": [
+          "The process of documenting and communicating the results of regression test executions.",
+          "The technique of creating new test cases based on execution results.",
+          "The method of generating test data.",
+          "The practice of automating test execution."
+        ],
+        "answer": "The process of documenting and communicating the results of regression test executions.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

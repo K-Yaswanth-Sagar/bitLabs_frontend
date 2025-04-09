@@ -1,0 +1,42 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+ 
+.pagination button {
+    width: 48px;
+    height:43px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    color: black;
+    border-color:1px black;
+}
+ 
+.pagination button.active {
+    font-weight: 900;
+    border-color: #EA670C;
+    background: white;
+    color:#EA670C;
+}
+ 
+@media (min-width: 1000px) and (max-width: 1440px) {
+    .col-lg-9 {
+width: 100% !important;
+   }
+}
+
+@media (min-width: 1000px) and (max-width: 1440px) {
+    .col-lg-9 {
+width: 100% !important;
+   }
+
+
+}

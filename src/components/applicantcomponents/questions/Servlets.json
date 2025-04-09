@@ -1,0 +1,369 @@
+{
+    "testName": "Servlets MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Servlets"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the primary role of a servlet in Java?",
+        "options": [
+          "To handle HTTP requests and generate HTTP responses.",
+          "To manage database connections.",
+          "To create graphical user interfaces.",
+          "To handle file operations."
+        ],
+        "answer": "To handle HTTP requests and generate HTTP responses.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which method of the HttpServlet class is used to handle HTTP GET requests?",
+        "options": [
+          "doGet()",
+          "doPost()",
+          "doRequest()",
+          "service()"
+        ],
+        "answer": "doGet()",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is the lifecycle of a servlet?",
+        "options": [
+          "Loading, Initialization, Request Handling, Destruction",
+          "Loading, Execution, Termination",
+          "Instantiation, Initialization, Execution, Termination",
+          "Creation, Execution, Finalization"
+        ],
+        "answer": "Loading, Initialization, Request Handling, Destruction",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "How can you access the initialization parameters of a servlet?",
+        "options": [
+          "Using the getInitParameter() method of the ServletConfig object.",
+          "Using the getParameter() method of the HttpServletRequest object.",
+          "Using the ServletContext object.",
+          "Directly from the web.xml file."
+        ],
+        "answer": "Using the getInitParameter() method of the ServletConfig object.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What is the purpose of the ServletConfig interface?",
+        "options": [
+          "To provide servlet-specific configuration information.",
+          "To handle HTTP requests.",
+          "To manage session data.",
+          "To provide application-wide configuration information."
+        ],
+        "answer": "To provide servlet-specific configuration information.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "Which interface must a servlet implement?",
+        "options": [
+          "Servlet",
+          "HttpServlet",
+          "ServletConfig",
+          "ServletRequest"
+        ],
+        "answer": "Servlet",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "What method is used to forward a request to another resource in a servlet?",
+        "options": [
+          "getRequestDispatcher().forward()",
+          "sendRedirect()",
+          "requestForward()",
+          "responseForward()"
+        ],
+        "answer": "getRequestDispatcher().forward()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "How can you create a session in a servlet?",
+        "options": [
+          "Using HttpServletRequest.getSession()",
+          "Using HttpSession.create()",
+          "Using ServletContext.getSession()",
+          "Directly through HttpSession constructor"
+        ],
+        "answer": "Using HttpServletRequest.getSession()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the purpose of the web.xml file?",
+        "options": [
+          "To configure servlet parameters, mappings, and context parameters.",
+          "To define HTTP request handlers.",
+          "To manage session data.",
+          "To provide a graphical user interface."
+        ],
+        "answer": "To configure servlet parameters, mappings, and context parameters.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "How does a servlet handle multiple requests?",
+        "options": [
+          "By using threads to handle each request.",
+          "By queuing requests and processing them sequentially.",
+          "By creating a new instance for each request.",
+          "By using asynchronous processing."
+        ],
+        "answer": "By using threads to handle each request.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What does the `doPost()` method do in a servlet?",
+        "options": [
+          "Handles HTTP POST requests.",
+          "Handles HTTP GET requests.",
+          "Handles HTTP PUT requests.",
+          "Handles HTTP DELETE requests."
+        ],
+        "answer": "Handles HTTP POST requests.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "Which class is used as the base class for servlets that handle HTTP requests?",
+        "options": [
+          "HttpServlet",
+          "GenericServlet",
+          "Servlet",
+          "ServletRequest"
+        ],
+        "answer": "HttpServlet",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What is the purpose of the `ServletContext` interface?",
+        "options": [
+          "To provide a way to communicate with the servlet container and access application-wide parameters.",
+          "To handle HTTP requests.",
+          "To manage session data.",
+          "To configure servlet-specific parameters."
+        ],
+        "answer": "To provide a way to communicate with the servlet container and access application-wide parameters.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "How do you retrieve a servlet context parameter?",
+        "options": [
+          "Using ServletContext.getInitParameter()",
+          "Using HttpServletRequest.getParameter()",
+          "Using ServletConfig.getInitParameter()",
+          "Directly from the web.xml file."
+        ],
+        "answer": "Using ServletContext.getInitParameter()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What does the `init()` method do in a servlet?",
+        "options": [
+          "Initializes the servlet and is called once during servlet lifecycle.",
+          "Handles incoming requests.",
+          "Generates HTTP responses.",
+          "Destroys the servlet instance."
+        ],
+        "answer": "Initializes the servlet and is called once during servlet lifecycle.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "Which HTTP method is not supported by default in servlets?",
+        "options": [
+          "PATCH",
+          "PUT",
+          "POST",
+          "GET"
+        ],
+        "answer": "PATCH",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "How can you invalidate a session in a servlet?",
+        "options": [
+          "Using HttpSession.invalidate()",
+          "Using HttpSession.remove()",
+          "Using ServletContext.removeSession()",
+          "Directly from the web.xml file."
+        ],
+        "answer": "Using HttpSession.invalidate()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the difference between `doGet()` and `doPost()` methods in a servlet?",
+        "options": [
+          "`doGet()` is used for retrieving data, while `doPost()` is used for sending data to the server.",
+          "`doGet()` is used for updating data, while `doPost()` is used for deleting data.",
+          "There is no difference; both methods serve the same purpose.",
+          "`doGet()` handles asynchronous requests, while `doPost()` handles synchronous requests."
+        ],
+        "answer": "`doGet()` is used for retrieving data, while `doPost()` is used for sending data to the server.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is the function of `RequestDispatcher` in servlets?",
+        "options": [
+          "To forward a request to another resource or include content from another resource.",
+          "To handle HTTP request headers.",
+          "To manage servlet lifecycle events.",
+          "To access session attributes."
+        ],
+        "answer": "To forward a request to another resource or include content from another resource.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What method in `HttpServletRequest` is used to retrieve form data?",
+        "options": [
+          "getParameter()",
+          "getFormData()",
+          "getRequestData()",
+          "getBody()"
+        ],
+        "answer": "getParameter()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "How can a servlet communicate with a database?",
+        "options": [
+          "By using JDBC API to establish a connection and perform database operations.",
+          "By using Hibernate API.",
+          "By using JPA API.",
+          "By using JSP pages."
+        ],
+        "answer": "By using JDBC API to establish a connection and perform database operations.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is the `ServletRequest` interface used for?",
+        "options": [
+          "To provide data about the client request and request attributes.",
+          "To define servlet-specific configuration.",
+          "To manage session data.",
+          "To forward requests to other resources."
+        ],
+        "answer": "To provide data about the client request and request attributes.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What does the `destroy()` method do in a servlet?",
+        "options": [
+          "Cleans up resources before the servlet is destroyed.",
+          "Handles incoming requests.",
+          "Initializes the servlet.",
+          "Generates the HTTP response."
+        ],
+        "answer": "Cleans up resources before the servlet is destroyed.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What is the `HttpServletResponse` object used for?",
+        "options": [
+          "To send data from the servlet back to the client.",
+          "To handle incoming requests.",
+          "To manage session data.",
+          "To configure servlet initialization parameters."
+        ],
+        "answer": "To send data from the servlet back to the client.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "How do servlets handle concurrent requests?",
+        "options": [
+          "By using multiple threads to handle each request.",
+          "By processing requests sequentially.",
+          "By creating new instances for each request.",
+          "By using a single thread for all requests."
+        ],
+        "answer": "By using multiple threads to handle each request.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "What is the role of the `getServletContext()` method?",
+        "options": [
+          "To retrieve the servlet context for accessing application-wide resources.",
+          "To get the servlet configuration parameters.",
+          "To handle HTTP request data.",
+          "To manage session attributes."
+        ],
+        "answer": "To retrieve the servlet context for accessing application-wide resources.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "How can you ensure thread safety in servlets?",
+        "options": [
+          "By avoiding shared mutable state or using synchronization techniques.",
+          "By using single-threaded servlets.",
+          "By disabling multithreading.",
+          "By using a separate servlet for each thread."
+        ],
+        "answer": "By avoiding shared mutable state or using synchronization techniques.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What does the `HttpServletRequest.getRequestDispatcher()` method do?",
+        "options": [
+          "It returns a `RequestDispatcher` object that can forward requests to another resource or include content from another resource.",
+          "It retrieves request parameters.",
+          "It sets request attributes.",
+          "It handles HTTP response data."
+        ],
+        "answer": "It returns a `RequestDispatcher` object that can forward requests to another resource or include content from another resource.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "Which method of `HttpServletResponse` is used to set the content type of the response?",
+        "options": [
+          "setContentType()",
+          "setResponseType()",
+          "setType()",
+          "setContent()"
+        ],
+        "answer": "setContentType()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is the purpose of the `doPut()` method in a servlet?",
+        "options": [
+          "To handle HTTP PUT requests.",
+          "To handle HTTP POST requests.",
+          "To handle HTTP GET requests.",
+          "To handle HTTP DELETE requests."
+        ],
+        "answer": "To handle HTTP PUT requests.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

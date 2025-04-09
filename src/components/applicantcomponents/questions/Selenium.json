@@ -1,0 +1,339 @@
+{
+    "testName": "Selenium MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Selenium"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the default time that WebDriverWait applies when waiting for a condition to be met?",
+        "options": [
+          "5 seconds",
+          "10 seconds",
+          "30 seconds",
+          "0 seconds"
+        ],
+        "answer": "0 seconds"
+      },
+      {
+        "id": 2,
+        "question": "Which WebDriver method should be used to simulate pressing the 'Enter' key while focusing on a web element?",
+        "options": [
+          "element.sendKeys(Keys.ENTER)",
+          "element.submit()",
+          "element.click()",
+          "element.pressEnter()"
+        ],
+        "answer": "element.sendKeys(Keys.ENTER)"
+      },
+      {
+        "id": 3,
+        "question": "How does Selenium WebDriver interact with hidden elements?",
+        "options": [
+          "It can interact with hidden elements using JavaScriptExecutor.",
+          "It throws an ElementNotVisibleException.",
+          "It automatically makes the element visible before interaction.",
+          "It waits for the element to become visible."
+        ],
+        "answer": "It throws an ElementNotVisibleException."
+      },
+      {
+        "id": 4,
+        "question": "Which of the following best describes the PageFactory class in Selenium?",
+        "options": [
+          "It is used to initialize web elements defined in Page Object classes.",
+          "It is used to create WebDriver instances.",
+          "It provides methods to handle browser pop-ups.",
+          "It is used to manage browser sessions."
+        ],
+        "answer": "It is used to initialize web elements defined in Page Object classes."
+      },
+      {
+        "id": 5,
+        "question": "What happens if you try to locate an element using `findElement()` and the element is not found?",
+        "options": [
+          "It returns null.",
+          "It throws a NoSuchElementException.",
+          "It waits indefinitely until the element is found.",
+          "It retries for a predefined number of times."
+        ],
+        "answer": "It throws a NoSuchElementException."
+      },
+      {
+        "id": 6,
+        "question": "What is the purpose of the `@CacheLookup` annotation in the Page Object Model (POM) pattern?",
+        "options": [
+          "To improve performance by storing the element in cache.",
+          "To clear the cache after each test run.",
+          "To refresh the element in the DOM.",
+          "To create a backup of the element."
+        ],
+        "answer": "To improve performance by storing the element in cache."
+      },
+      {
+        "id": 7,
+        "question": "Which command is used to switch between multiple windows in Selenium WebDriver?",
+        "options": [
+          "driver.switchTo().window(windowHandle)",
+          "driver.switchTo().frame(windowHandle)",
+          "driver.manage().window().setWindow(windowHandle)",
+          "driver.switchTo().alert().accept()"
+        ],
+        "answer": "driver.switchTo().window(windowHandle)"
+      },
+      {
+        "id": 8,
+        "question": "How do you handle dynamic elements in Selenium where the ID is randomly generated?",
+        "options": [
+          "Use partial matching with Xpath or CSS selectors.",
+          "Use the ID directly.",
+          "Refresh the page until the element is located.",
+          "Use JavaScript to interact with the element."
+        ],
+        "answer": "Use partial matching with Xpath or CSS selectors."
+      },
+      {
+        "id": 9,
+        "question": "What is the effect of using `setScriptTimeout()` in Selenium WebDriver?",
+        "options": [
+          "It sets the maximum time for asynchronous scripts to run.",
+          "It sets the maximum time to find elements in the DOM.",
+          "It sets the maximum time to load the webpage.",
+          "It sets the maximum time for executing WebDriver commands."
+        ],
+        "answer": "It sets the maximum time for asynchronous scripts to run."
+      },
+      {
+        "id": 10,
+        "question": "Which Selenium command would you use to move to an element and perform a hover action?",
+        "options": [
+          "new Actions(driver).moveToElement(element).perform()",
+          "driver.findElement(By.hover())",
+          "element.hover()",
+          "driver.hover(element)"
+        ],
+        "answer": "new Actions(driver).moveToElement(element).perform()"
+      },
+      {
+        "id": 11,
+        "question": "In Selenium WebDriver, what does the method `driver.quit()` do?",
+        "options": [
+          "Closes all the browser windows and ends the WebDriver session.",
+          "Closes the current window.",
+          "Logs out of the current session.",
+          "Stops the WebDriver service."
+        ],
+        "answer": "Closes all the browser windows and ends the WebDriver session."
+      },
+      {
+        "id": 12,
+        "question": "Which of the following best describes how implicit waits work in Selenium WebDriver?",
+        "options": [
+          "It waits for a certain amount of time before throwing a NoSuchElementException.",
+          "It waits for a specific condition to be true before proceeding.",
+          "It waits until the element is clickable.",
+          "It waits until the element is visible."
+        ],
+        "answer": "It waits for a certain amount of time before throwing a NoSuchElementException."
+      },
+      {
+        "id": 13,
+        "question": "How can you run your Selenium tests in parallel using TestNG?",
+        "options": [
+          "By specifying parallel=\"methods\" or parallel=\"classes\" in the TestNG XML file.",
+          "By setting the WebDriver instance to run in parallel mode.",
+          "By using the @Parallel annotation in your test methods.",
+          "By creating multiple WebDriver instances in a single test."
+        ],
+        "answer": "By specifying parallel=\"methods\" or parallel=\"classes\" in the TestNG XML file."
+      },
+      {
+        "id": 14,
+        "question": "What is the purpose of using the `JavaScriptExecutor` in Selenium WebDriver?",
+        "options": [
+          "To execute JavaScript code within the context of the browser.",
+          "To manage browser sessions programmatically.",
+          "To interact with the WebDriver instance.",
+          "To execute asynchronous scripts in parallel."
+        ],
+        "answer": "To execute JavaScript code within the context of the browser."
+      },
+      {
+        "id": 15,
+        "question": "Which method is used to perform a double-click action on a web element in Selenium?",
+        "options": [
+          "new Actions(driver).doubleClick(element).perform()",
+          "element.click(2)",
+          "element.doubleClick()",
+          "driver.doubleClick(element)"
+        ],
+        "answer": "new Actions(driver).doubleClick(element).perform()"
+      },
+      {
+        "id": 16,
+        "question": "What will happen if an alert is present and you try to perform another action without handling the alert in Selenium WebDriver?",
+        "options": [
+          "It throws an UnhandledAlertException.",
+          "It dismisses the alert automatically.",
+          "It continues the test without any issues.",
+          "It closes the alert and proceeds."
+        ],
+        "answer": "It throws an UnhandledAlertException."
+      },
+      {
+        "id": 17,
+        "question": "How can you switch to an iframe in Selenium WebDriver?",
+        "options": [
+          "driver.switchTo().frame(frameElement)",
+          "driver.switchTo().window(iframeName)",
+          "driver.switchTo().alert().accept()",
+          "driver.switchTo().defaultContent()"
+        ],
+        "answer": "driver.switchTo().frame(frameElement)"
+      },
+      {
+        "id": 18,
+        "question": "Which method is used to scroll down to a specific element in Selenium WebDriver?",
+        "options": [
+          "((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+          "driver.scrollTo(element)",
+          "element.scrollTo()",
+          "driver.findElement(By.scrollTo(element))"
+        ],
+        "answer": "((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);"
+      },
+      {
+        "id": 19,
+        "question": "What is the purpose of the `Page Object Model (POM)` in Selenium?",
+        "options": [
+          "To create an object repository for web elements.",
+          "To manage browser sessions.",
+          "To create page layout designs.",
+          "To perform automated visual testing."
+        ],
+        "answer": "To create an object repository for web elements."
+      },
+      {
+        "id": 20,
+        "question": "In Selenium, what does the `ExpectedConditions.visibilityOfElementLocated()` method do?",
+        "options": [
+          "Waits until the element is visible in the DOM.",
+          "Waits until the element is clickable.",
+          "Waits until the element is present in the DOM.",
+          "Waits until the element is removed from the DOM."
+        ],
+        "answer": "Waits until the element is visible in the DOM."
+      },
+      {
+        "id": 21,
+        "question": "How can you upload a file using Selenium WebDriver?",
+        "options": [
+          "Using `sendKeys()` method to enter the file path into a file input element.",
+          "Using `uploadFile()` method provided by WebDriver.",
+          "By handling the operating system's file dialog.",
+          "By using JavaScriptExecutor to select the file."
+        ],
+        "answer": "Using `sendKeys()` method to enter the file path into a file input element."
+      },
+      {
+        "id": 22,
+        "question": "Which of the following best describes the `RemoteWebDriver` class?",
+        "options": [
+          "It is used to run tests on remote machines or in the cloud.",
+          "It is used to interact with mobile applications.",
+          "It is used to perform visual testing.",
+          "It is a replacement for the WebDriver class."
+        ],
+        "answer": "It is used to run tests on remote machines or in the cloud."
+      },
+      {
+        "id": 23,
+        "question": "Which of the following is true about using `implicitlyWait()` in Selenium WebDriver?",
+        "options": [
+          "It applies the specified wait time to all subsequent WebDriver commands.",
+          "It only waits for elements with a specific ID.",
+          "It waits indefinitely until the element is found.",
+          "It can only be used in conjunction with explicit waits."
+        ],
+        "answer": "It applies the specified wait time to all subsequent WebDriver commands."
+      },
+      {
+        "id": 24,
+        "question": "What is the purpose of the `getWindowHandles()` method in Selenium WebDriver?",
+        "options": [
+          "To retrieve all window handles for the current session.",
+          "To retrieve the title of all open windows.",
+          "To close all windows.",
+          "To switch to the last opened window."
+        ],
+        "answer": "To retrieve all window handles for the current session."
+      },
+      {
+        "id": 25,
+        "question": "In Selenium WebDriver, how do you clear the contents of a text input field?",
+        "options": [
+          "element.clear()",
+          "element.sendKeys(Keys.BACKSPACE)",
+          "element.clearText()",
+          "element.clearContents()"
+        ],
+        "answer": "element.clear()"
+      },
+      {
+        "id": 26,
+        "question": "Which of the following is a correct use of the `ExpectedConditions` class?",
+        "options": [
+          "WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id(\"submit\")));",
+          "ExpectedConditions.clickableElement(driver.findElement(By.id(\"submit\")))",
+          "ExpectedConditions.isClickable(driver.findElement(By.id(\"submit\")))",
+          "driver.waitUntil(ExpectedConditions.isClickable(\"submit\"));"
+        ],
+        "answer": "WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id(\"submit\")));"
+      },
+      {
+        "id": 27,
+        "question": "Which WebDriver method is used to open a URL in the browser?",
+        "options": [
+          "driver.get(url)",
+          "driver.navigate(url)",
+          "driver.open(url)",
+          "driver.visit(url)"
+        ],
+        "answer": "driver.get(url)"
+      },
+      {
+        "id": 28,
+        "question": "Which method in Selenium WebDriver is used to close the currently focused browser window?",
+        "options": [
+          "driver.close()",
+          "driver.quit()",
+          "driver.exit()",
+          "driver.terminate()"
+        ],
+        "answer": "driver.close()"
+      },
+      {
+        "id": 29,
+        "question": "How do you take a screenshot using Selenium WebDriver?",
+        "options": [
+          "((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)",
+          "driver.screenshot(OutputType.FILE)",
+          "element.screenshot()",
+          "((Screenshot) driver).takeScreenshot(OutputType.FILE)"
+        ],
+        "answer": "((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)"
+      },
+      {
+        "id": 30,
+        "question": "What is the best way to handle CAPTCHA in Selenium WebDriver tests?",
+        "options": [
+          "Use a third-party service to solve the CAPTCHA.",
+          "Use WebDriver to recognize and solve the CAPTCHA.",
+          "Manually intervene during test execution.",
+          "Bypass CAPTCHA using browser extensions."
+        ],
+        "answer": "Use a third-party service to solve the CAPTCHA."
+      }
+    ]
+  }
+  

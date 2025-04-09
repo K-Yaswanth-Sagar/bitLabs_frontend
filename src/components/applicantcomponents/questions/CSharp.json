@@ -1,0 +1,340 @@
+{
+    "testName": "C Sharp MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["C Sharp"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which of the following is true about the `volatile` keyword in C#?",
+        "options": [
+          "It ensures that the most up-to-date value is always read from memory.",
+          "It prevents a variable from being modified.",
+          "It ensures thread safety without locking.",
+          "It allows a variable to be modified by multiple threads simultaneously."
+        ],
+        "answer": "It ensures that the most up-to-date value is always read from memory."
+      },
+      {
+        "id": 2,
+        "question": "What is the purpose of the `yield` keyword in C#?",
+        "options": [
+          "To return a value from an iterator method and maintain state.",
+          "To break out of a loop early.",
+          "To initialize a property with default values.",
+          "To prevent a method from returning null."
+        ],
+        "answer": "To return a value from an iterator method and maintain state."
+      },
+      {
+        "id": 3,
+        "question": "Which of the following best describes the purpose of the `ILGenerator` class in C#?",
+        "options": [
+          "To emit Intermediate Language (IL) code for dynamic methods.",
+          "To generate random values for testing.",
+          "To parse C# source code into IL.",
+          "To compile IL code into a .NET assembly."
+        ],
+        "answer": "To emit Intermediate Language (IL) code for dynamic methods."
+      },
+      {
+        "id": 4,
+        "question": "What will happen if an `await` expression is used inside a `lock` statement?",
+        "options": [
+          "It will cause a compile-time error.",
+          "The lock will be released before the awaited task completes.",
+          "The `await` will block the thread until the task is completed.",
+          "The lock will remain held until the awaited task is completed."
+        ],
+        "answer": "It will cause a compile-time error."
+      },
+      {
+        "id": 5,
+        "question": "What is the significance of the `CallerMemberName` attribute in C#?",
+        "options": [
+          "It allows you to obtain the name of the method or property that called the method.",
+          "It returns the full stack trace of the calling method.",
+          "It forces a method to be inlined by the JIT compiler.",
+          "It specifies that the method must be called asynchronously."
+        ],
+        "answer": "It allows you to obtain the name of the method or property that called the method."
+      },
+      {
+        "id": 6,
+        "question": "Which of the following is true about the Span&lt;T&gt;It type in C#?",
+        "options": [
+            "&lt;span&gt;It represents a contiguous region of arbitrary memory.&lt;/span&gt;",
+            "&lt;span&gt;It is limited to only managing arrays of value types.&lt;/span&gt;",
+            "&lt;span&gt;It can be used to manage memory across the managed heap and unmanaged heap.&lt;/span&gt;",
+            "&lt;span&gt;It must always be allocated on the heap.&lt;/span&gt;"
+        ],
+        "answer": "&lt;span&gt;It represents a contiguous region of arbitrary memory.&lt;/span&gt;"
+    },
+    
+    {
+        "id": 7,
+        "question": "How does the Memory&lt;T&gt;It type differ from Span&lt;T&gt;It in C#?",
+        "options": [
+            "&lt;span&gt;Memory&lt;T&gt;It can be used with asynchronous methods, whereas Span&lt;T&gt;It cannot.&lt;/span&gt;",
+            "&lt;span&gt;Memory&lt;T&gt;It is immutable while Span&lt;T&gt;It is mutable.&lt;/span&gt;",
+            "&lt;span&gt;Memory&lt;T&gt;It only supports reference types, while Span&lt;T&gt;It supports value types.&lt;/span&gt;",
+            "&lt;span&gt;Memory&lt;T&gt;It is a value type while Span&lt;T&gt;It is a reference type.&lt;/span&gt;"
+        ],
+        "answer": "&lt;span&gt;Memory&lt;T;It can be used with asynchronous methods, whereas Span&lt;T&gt;It cannot.&lt;/span&gt;"
+    },
+      {
+        "id": 8,
+        "question": "What is the primary advantage of using `Unsafe` code in C#?",
+        "options": [
+          "To perform low-level memory manipulation and pointer arithmetic.",
+          "To enhance code readability and maintainability.",
+          "To automatically manage memory in the garbage-collected environment.",
+          "To enforce type safety and prevent runtime exceptions."
+        ],
+        "answer": "To perform low-level memory manipulation and pointer arithmetic."
+      },
+      {
+        "id": 9,
+        "question": "What is the purpose of the `GC.KeepAlive` method in C#?",
+        "options": [
+          "To prevent an object from being prematurely garbage-collected.",
+          "To force the garbage collector to collect all unreferenced objects.",
+          "To ensure that the garbage collector runs at a specific interval.",
+          "To increase the reference count of an object in the heap."
+        ],
+        "answer": "To prevent an object from being prematurely garbage-collected."
+      },
+      {
+        "id": 10,
+        "question": "Which of the following is correct about the `fixed` statement in C#?",
+        "options": [
+          "It pins a variable's memory location to prevent the garbage collector from moving it.",
+          "It ensures that a variable's value cannot be changed.",
+          "It locks a resource for exclusive access by one thread.",
+          "It provides a read-only reference to an object."
+        ],
+        "answer": "It pins a variable's memory location to prevent the garbage collector from moving it."
+      },
+      {
+        "id": 11,
+        "question": "How can you prevent a method from being overridden in C#?",
+        "options": [
+          "Mark the method as `sealed`.",
+          "Mark the method as `static`.",
+          "Mark the method as `readonly`.",
+          "Mark the method as `final`."
+        ],
+        "answer": "Mark the method as `sealed`."
+      },
+      {
+        "id": 12,
+        "question": "What does the `dynamic` keyword in C# enable you to do?",
+        "options": [
+          "Perform operations that are resolved at runtime rather than compile-time.",
+          "Perform operations that bypass type checking altogether.",
+          "Declare variables that change type at runtime.",
+          "Generate code that is compiled into IL at runtime."
+        ],
+        "answer": "Perform operations that are resolved at runtime rather than compile-time."
+      },
+      {
+        "id": 13,
+        "question": "In C#, what is the difference between `Task` and `ValueTask`?",
+        "options": [
+          "ValueTask is a value type and avoids heap allocations, unlike Task.",
+          "Task is used for synchronous operations, while ValueTask is for asynchronous operations.",
+          "Task cannot be awaited, but ValueTask can be.",
+          "ValueTask is used when you need to return multiple results, whereas Task returns a single result."
+        ],
+        "answer": "ValueTask is a value type and avoids heap allocations, unlike Task."
+      },
+      {
+        "id": 14,
+        "question": "Which of the following is a correct use of the `ref` keyword in C#?",
+        "options": [
+          "To pass a reference of a value type to a method, allowing the method to modify the original variable.",
+          "To pass a reference type by value, preventing modifications to the original object.",
+          "To create a reference to a method that can be passed to other methods.",
+          "To indicate that a method returns a reference to a local variable."
+        ],
+        "answer": "To pass a reference of a value type to a method, allowing the method to modify the original variable."
+      },
+      {
+        "id": 15,
+        "question": "What is the purpose of the `nameof` operator in C#?",
+        "options": [
+          "To get the name of a variable, type, or member as a string.",
+          "To define a new alias for an existing type.",
+          "To convert an object's name to its corresponding type.",
+          "To perform a null check on an object or variable."
+        ],
+        "answer": "To get the name of a variable, type, or member as a string."
+      },
+      {
+        "id": 16,
+        "question": "Which of the following is true about the `async` keyword in C#?",
+        "options": [
+          "It marks a method as asynchronous and allows the use of `await` within the method.",
+          "It automatically makes all I/O-bound operations in the method asynchronous.",
+          "It ensures that the method runs on a separate thread.",
+          "It forces a method to return a `Task` or `Task&lt;T&gt;It`."
+        ],
+        "answer": "It marks a method as asynchronous and allows the use of `await` within the method."
+      },
+      {
+        "id": 17,
+        "question": "In C#, what does the `??` operator do?",
+        "options": [
+          "It returns the left-hand operand if it is not null; otherwise, it returns the right-hand operand.",
+          "It checks if a value is null and throws an exception if it is.",
+          "It performs a null check and assigns a default value if null.",
+          "It converts a nullable type to its underlying value."
+        ],
+        "answer": "It returns the left-hand operand if it is not null; otherwise, it returns the right-hand operand."
+      },
+      {
+        "id": 18,
+        "question": "What is the purpose of the `lock` statement in C#?",
+        "options": [
+          "To ensure that only one thread can access a resource at a time.",
+          "To lock a file or network resource.",
+          "To prevent a variable from being modified.",
+          "To create a critical section that can only be accessed by one thread at a time."
+        ],
+        "answer": "To ensure that only one thread can access a resource at a time."
+      },
+      {
+        "id": 19,
+        "question": "How do you create a read-only auto-implemented property in C#?",
+        "options": [
+          "Use the `init` accessor instead of the `set` accessor.",
+          "Mark the property with the `readonly` keyword.",
+          "Use only the `get` accessor and omit the `set` accessor.",
+          "Use the `private set` accessor."
+        ],
+        "answer": "Use the `init` accessor instead of the `set` accessor."
+      },
+      {
+        "id": 20,
+        "question": "What is the purpose of the `?.` operator in C#?",
+        "options": [
+          "To perform a null conditional access on an object or variable.",
+          "To cast an object to a different type if it is not null.",
+          "To check if a value is not null and continue execution.",
+          "To perform an explicit type conversion."
+        ],
+        "answer": "To perform a null conditional access on an object or variable."
+      },
+      {
+        "id": 21,
+        "question": "Which of the following is a true statement about the `delegate` keyword in C#?",
+        "options": [
+          "A delegate is a type that represents references to methods with a specific parameter list and return type.",
+          "Delegates cannot be used for asynchronous method calls.",
+          "Delegates are automatically thread-safe.",
+          "Delegates can only point to static methods."
+        ],
+        "answer": "A delegate is a type that represents references to methods with a specific parameter list and return type."
+      },
+      {
+        "id": 22,
+        "question": "What is the significance of the `IAsyncDisposable` interface in C#?",
+        "options": [
+          "It provides a mechanism for releasing unmanaged resources asynchronously.",
+          "It marks a class for garbage collection.",
+          "It allows an object to be serialized asynchronously.",
+          "It forces an object to be disposed of in a separate thread."
+        ],
+        "answer": "It provides a mechanism for releasing unmanaged resources asynchronously."
+      },
+      {
+        "id": 23,
+        "question": "What is the primary purpose of the `in` keyword when used with method parameters in C#?",
+        "options": [
+          "To pass arguments by reference while ensuring they are not modified.",
+          "To pass arguments by reference and allow them to be modified.",
+          "To enforce that an argument is of a specific type.",
+          "To convert an argument to an interface before passing it to a method."
+        ],
+        "answer": "To pass arguments by reference while ensuring they are not modified."
+      },
+      {
+        "id": 24,
+        "question": "Which of the following correctly describes the `Conditional` attribute in C#?",
+        "options": [
+          "It indicates that a method call is included or omitted depending on the defined compilation symbol.",
+          "It allows a method to execute only if a specific condition is met at runtime.",
+          "It forces the compiler to optimize code execution paths.",
+          "It checks for null values and throws an exception if found."
+        ],
+        "answer": "It indicates that a method call is included or omitted depending on the defined compilation symbol."
+      },
+      {
+        "id": 25,
+        "question": "What is the role of the `Buffer.BlockCopy` method in C#?",
+        "options": [
+          "To efficiently copy data between arrays of primitive types.",
+          "To copy the contents of a stream into a byte array.",
+          "To perform a deep copy of objects in an array.",
+          "To convert an array of one type to an array of another type."
+        ],
+        "answer": "To efficiently copy data between arrays of primitive types."
+      },
+      {
+        "id": 26,
+        "question": "In C#, what does the term 'boxing' refer to?",
+        "options": [
+          "Converting a value type to an object type, storing the value on the heap.",
+          "Encapsulating a method in a delegate to be executed later.",
+          "Enclosing a block of code in a transaction scope.",
+          "Wrapping a reference type in a value type for performance reasons."
+        ],
+        "answer": "Converting a value type to an object type, storing the value on the heap."
+      },
+      {
+        "id": 27,
+        "question": "Which of the following best describes the purpose of the `Tuple` class in C#?",
+        "options": [
+          "To group multiple values of different types into a single object.",
+          "To define a lightweight data structure that is immutable.",
+          "To represent a collection of key-value pairs.",
+          "To create a list that is automatically sorted."
+        ],
+        "answer": "To group multiple values of different types into a single object."
+      },
+      {
+        "id": 28,
+        "question": "What is the main difference between `Array` and `ArraySegment` in C#?",
+        "options": [
+          "ArraySegment provides a view of a portion of an array without copying data.",
+          "ArraySegment allows for dynamic resizing, while Array does not.",
+          "ArraySegment supports multi-dimensional arrays, while Array does not.",
+          "ArraySegment performs faster iterations than Array."
+        ],
+        "answer": "ArraySegment provides a view of a portion of an array without copying data."
+      },
+      {
+        "id": 29,
+        "question": "In C#, what is the purpose of the `?.[]` operator?",
+        "options": [
+          "To perform a null conditional access on an array or indexable collection.",
+          "To create a pointer to an array element.",
+          "To perform safe array element access without bounds checking.",
+          "To perform array element access with overflow detection."
+        ],
+        "answer": "To perform a null conditional access on an array or indexable collection."
+      },
+      {
+        "id": 30,
+        "question": "What is the purpose of the `AttributeUsage` attribute in C#?",
+        "options": [
+          "To define how an attribute can be applied to code elements.",
+          "To specify the memory layout of a class or struct.",
+          "To enforce access modifiers on attributes.",
+          "To indicate that an attribute is obsolete."
+        ],
+        "answer": "To define how an attribute can be applied to code elements."
+      }
+    ]
+  }
+  

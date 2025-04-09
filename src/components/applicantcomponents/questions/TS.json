@@ -1,0 +1,369 @@
+{
+    "testName": "TypeScript MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["TypeScript"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is TypeScript?",
+        "options": [
+          "A superset of JavaScript with optional static typing.",
+          "A new version of JavaScript.",
+          "A framework for building user interfaces.",
+          "A library for managing state."
+        ],
+        "answer": "A superset of JavaScript with optional static typing.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "How do you declare a variable with a specific type in TypeScript?",
+        "options": [
+          "let variableName: type;",
+          "var variableName = type;",
+          "const variableName: type;",
+          "type variableName = value;"
+        ],
+        "answer": "let variableName: type;",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is the purpose of interfaces in TypeScript?",
+        "options": [
+          "To define the structure of objects and enforce type checking.",
+          "To create new classes.",
+          "To manage module imports.",
+          "To handle asynchronous operations."
+        ],
+        "answer": "To define the structure of objects and enforce type checking.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "Which of the following is a valid TypeScript type?",
+        "options": [
+          "string",
+          "number",
+          "boolean",
+          "All of the above"
+        ],
+        "answer": "All of the above",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "How do you define a function with a specific return type in TypeScript?",
+        "options": [
+          "function functionName(): type { }",
+          "function functionName(type) { }",
+          "function functionName(type): void { }",
+          "function functionName(type): type { }"
+        ],
+        "answer": "function functionName(): type { }",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the difference between `interface` and `type` in TypeScript?",
+        "options": [
+          "Interfaces are more flexible and can be extended, while types are more restrictive.",
+          "Types can be used to define objects, unions, and intersections, while interfaces are only for objects.",
+          "Interfaces support declaration merging, whereas types do not.",
+          "There is no difference; they are interchangeable."
+        ],
+        "answer": "Interfaces support declaration merging, whereas types do not.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How do you define an optional parameter in a TypeScript function?",
+        "options": [
+          "function functionName(param?: type) { }",
+          "function functionName(param: type?) { }",
+          "function functionName(param: type) { }",
+          "function functionName(param: type | undefined) { }"
+        ],
+        "answer": "function functionName(param?: type) { }",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What does the `readonly` modifier do in TypeScript?",
+        "options": [
+          "It makes properties of a class immutable.",
+          "It allows properties to be modified only within the class.",
+          "It prevents class properties from being overridden.",
+          "It ensures properties are read-only during runtime."
+        ],
+        "answer": "It makes properties of a class immutable.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "Which TypeScript feature allows you to create a new type by combining multiple types?",
+        "options": [
+          "Union types",
+          "Intersection types",
+          "Generics",
+          "Enums"
+        ],
+        "answer": "Intersection types",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "How do you specify a type for a function parameter that can accept multiple types?",
+        "options": [
+          "function functionName(param: type1 | type2) { }",
+          "function functionName(param: type1 & type2) { }",
+          "function functionName(param: type1, type2) { }",
+          "function functionName(param: (type1, type2)) { }"
+        ],
+        "answer": "function functionName(param: type1 | type2) { }",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is a TypeScript enum?",
+        "options": [
+          "A way to define a set of named constants.",
+          "A type of object.",
+          "A way to manage module imports.",
+          "A special type of function."
+        ],
+        "answer": "A way to define a set of named constants.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "How can you ensure that a class implements an interface in TypeScript?",
+        "options": [
+          "By using the `implements` keyword.",
+          "By using the `extends` keyword.",
+          "By using the `implements` method.",
+          "By using the `interface` keyword."
+        ],
+        "answer": "By using the `implements` keyword.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What does the `any` type represent in TypeScript?",
+        "options": [
+          "A type that can represent any value.",
+          "A type that enforces strict type checking.",
+          "A type used for custom objects.",
+          "A type that represents a function."
+        ],
+        "answer": "A type that can represent any value.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "How do you create a generic function in TypeScript?",
+        "options": [
+          "function functionName<T>(param: T): T { }",
+          "function functionName(param: <T> T): T { }",
+          "function functionName(param: T<T>): T { }",
+          "function functionName<T>(param: T): any { }"
+        ],
+        "answer": "function functionName<T>(param: T): T { }",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is the use of `typeof` operator in TypeScript?",
+        "options": [
+          "To get the type of a variable.",
+          "To check the type of a function.",
+          "To create a new type.",
+          "To perform type assertions."
+        ],
+        "answer": "To get the type of a variable.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "How do you create a tuple in TypeScript?",
+        "options": [
+          "let tupleName: [type1, type2] = [value1, value2];",
+          "let tupleName: type1[] = [value1, value2];",
+          "let tupleName: Array<type1, type2> = [value1, value2];",
+          "let tupleName: [type1 | type2] = [value1, value2];"
+        ],
+        "answer": "let tupleName: [type1, type2] = [value1, value2];",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What does the `strictNullChecks` option in `tsconfig.json` do?",
+        "options": [
+          "It ensures that `null` and `undefined` are treated as distinct types from other types.",
+          "It makes `null` and `undefined` values optional.",
+          "It prevents null values from being assigned to variables.",
+          "It allows `null` values in type annotations."
+        ],
+        "answer": "It ensures that `null` and `undefined` are treated as distinct types from other types.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "How do you define a type alias in TypeScript?",
+        "options": [
+          "type AliasName = type;",
+          "interface AliasName = type;",
+          "const AliasName: type = value;",
+          "var AliasName: type = value;"
+        ],
+        "answer": "type AliasName = type;",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is the purpose of the `keyof` operator in TypeScript?",
+        "options": [
+          "To get the keys of an object type.",
+          "To create a new key for an object.",
+          "To validate object keys.",
+          "To merge object types."
+        ],
+        "answer": "To get the keys of an object type.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "How do you handle async operations in TypeScript?",
+        "options": [
+          "By using async/await syntax.",
+          "By using promises only.",
+          "By using callback functions.",
+          "By using the `async` type."
+        ],
+        "answer": "By using async/await syntax.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is type assertion in TypeScript?",
+        "options": [
+          "A way to specify a type for a variable when the compiler cannot infer it.",
+          "A way to convert one type to another.",
+          "A method to create a new type.",
+          "A feature for type checking."
+        ],
+        "answer": "A way to specify a type for a variable when the compiler cannot infer it.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What does the `never` type represent in TypeScript?",
+        "options": [
+          "A type that represents values that never occur.",
+          "A type that represents a value that is always present.",
+          "A type that represents an empty array.",
+          "A type that represents a function that always returns a value."
+        ],
+        "answer": "A type that represents values that never occur.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "How do you use decorators in TypeScript?",
+        "options": [
+          "By prefixing a class or method with `@decoratorName`.",
+          "By adding decorators in the `tsconfig.json` file.",
+          "By using a special syntax in functions.",
+          "By importing decorators from libraries."
+        ],
+        "answer": "By prefixing a class or method with `@decoratorName`.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What is the use of the `Partial<T>` utility type in TypeScript?",
+        "options": [
+          "It makes all properties of type `T` optional.",
+          "It makes all properties of type `T` required.",
+          "It makes a property of type `T` readonly.",
+          "It creates a new type that excludes certain properties from type `T`."
+        ],
+        "answer": "It makes all properties of type `T` optional.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What is the `Union` type in TypeScript?",
+        "options": [
+          "A type that allows a variable to be one of several types.",
+          "A type that represents the intersection of multiple types.",
+          "A type that combines multiple types into one.",
+          "A type that is used for function overloads."
+        ],
+        "answer": "A type that allows a variable to be one of several types.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "How can you enforce an object to have specific properties using TypeScript?",
+        "options": [
+          "By defining an interface or type alias.",
+          "By using a class with public properties.",
+          "By using function arguments.",
+          "By using type assertions."
+        ],
+        "answer": "By defining an interface or type alias.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "How do you specify a default parameter value in TypeScript?",
+        "options": [
+          "function functionName(param: type = defaultValue) { }",
+          "function functionName(param: type) { if (param == null) param = defaultValue; }",
+          "function functionName(param = defaultValue: type) { }",
+          "function functionName(param: type | defaultValue) { }"
+        ],
+        "answer": "function functionName(param: type = defaultValue) { }",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of the `this` keyword in TypeScript?",
+        "options": [
+          "To refer to the current instance of the class.",
+          "To refer to a static method in a class.",
+          "To create a new instance of a class.",
+          "To access global variables."
+        ],
+        "answer": "To refer to the current instance of the class.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What does the `Extract<T, U>` utility type do in TypeScript?",
+        "options": [
+          "It extracts types from `T` that are assignable to `U`.",
+          "It combines types `T` and `U` into one.",
+          "It excludes types from `T` that are not in `U`.",
+          "It creates a new type by excluding certain properties from `T`."
+        ],
+        "answer": "It extracts types from `T` that are assignable to `U`.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "How do you define a class with private properties in TypeScript?",
+        "options": [
+          "By using the `private` keyword.",
+          "By using the `protected` keyword.",
+          "By using the `readonly` keyword.",
+          "By using the `static` keyword."
+        ],
+        "answer": "By using the `private` keyword.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

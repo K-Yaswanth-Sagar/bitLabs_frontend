@@ -1,0 +1,368 @@
+{
+  "testName": "Spring Framework MCQ Test",
+  "duration": "30 mins",
+  "numberOfQuestions": 30,
+  "topicsCovered": ["Spring Framework"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the purpose of Spring's `@Autowired` annotation?",
+      "options": [
+        "To automatically inject dependent beans into a class.",
+        "To configure a bean in the Spring container.",
+        "To define a class as a Spring component.",
+        "To handle HTTP requests."
+      ],
+      "answer": "To automatically inject dependent beans into a class.",
+      "difficulty": "moderate"
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is not a core module of the Spring Framework?",
+      "options": [
+        "Spring Core Container",
+        "Spring Data JPA",
+        "Spring AOP",
+        "Spring MVC"
+      ],
+      "answer": "Spring Data JPA",
+      "difficulty": "moderate"
+    },
+    {
+      "id": 3,
+      "question": "What does the `@Component` annotation do in Spring?",
+      "options": [
+        "Marks a class as a Spring-managed component.",
+        "Configures a data source.",
+        "Manages transaction boundaries.",
+        "Handles HTTP request mappings."
+      ],
+      "answer": "Marks a class as a Spring-managed component.",
+      "difficulty": "moderate"
+    },
+    {
+      "id": 4,
+      "question": "What is the function of the `@Transactional` annotation?",
+      "options": [
+        "To manage transactions and ensure data integrity.",
+        "To define a REST endpoint.",
+        "To handle security concerns.",
+        "To configure caching mechanisms."
+      ],
+      "answer": "To manage transactions and ensure data integrity.",
+      "difficulty": "moderate"
+    },
+    {
+      "id": 5,
+      "question": "Which XML tag is used to define a bean in Spring?",
+      "options": [
+        "<bean>",
+        "<component>",
+        "<service>",
+        "<repository>"
+      ],
+      "answer": "<bean>",
+      "difficulty": "moderate"
+    },
+    {
+      "id": 6,
+      "question": "What is the role of `@Bean` annotation in Spring?",
+      "options": [
+        "It defines a method that returns an instance of a bean to be managed by the Spring container.",
+        "It configures the application context.",
+        "It sets up a web application initializer.",
+        "It manages transaction boundaries."
+      ],
+      "answer": "It defines a method that returns an instance of a bean to be managed by the Spring container.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 7,
+      "question": "What does the `@Configuration` annotation signify in Spring?",
+      "options": [
+        "It indicates that the class contains bean definitions and configuration.",
+        "It defines a web controller.",
+        "It specifies a service layer.",
+        "It handles security settings."
+      ],
+      "answer": "It indicates that the class contains bean definitions and configuration.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 8,
+      "question": "How does Spring's dependency injection work?",
+      "options": [
+        "By injecting dependencies via constructors or setters at runtime.",
+        "By manually creating and injecting dependencies.",
+        "By using global variables.",
+        "By directly invoking methods in a service class."
+      ],
+      "answer": "By injecting dependencies via constructors or setters at runtime.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 9,
+      "question": "What is the difference between `@Service` and `@Repository` annotations?",
+      "options": [
+        "`@Service` is used for business logic, while `@Repository` is used for data access components.",
+        "`@Service` handles HTTP requests, while `@Repository` handles database operations.",
+        "`@Service` is for transactional methods, while `@Repository` is for non-transactional methods.",
+        "`@Service` and `@Repository` are interchangeable."
+      ],
+      "answer": "`@Service` is used for business logic, while `@Repository` is used for data access components.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 10,
+      "question": "What is Spring's `ApplicationContext` used for?",
+      "options": [
+        "It provides configuration and management of beans in a Spring application.",
+        "It handles HTTP request routing.",
+        "It manages security configurations.",
+        "It provides database connection pooling."
+      ],
+      "answer": "It provides configuration and management of beans in a Spring application.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 11,
+      "question": "What is the purpose of the `@Aspect` annotation in Spring?",
+      "options": [
+        "To define aspects for Aspect-Oriented Programming (AOP) that can be applied to beans.",
+        "To handle HTTP requests.",
+        "To configure a data source.",
+        "To manage transactions."
+      ],
+      "answer": "To define aspects for Aspect-Oriented Programming (AOP) that can be applied to beans.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 12,
+      "question": "How does Spring manage transaction boundaries?",
+      "options": [
+        "By using the `@Transactional` annotation to define transaction management behavior.",
+        "By manually committing and rolling back transactions.",
+        "By using JDBC transactions directly.",
+        "By relying on a global transaction manager."
+      ],
+      "answer": "By using the `@Transactional` annotation to define transaction management behavior.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 13,
+      "question": "What is the purpose of `Spring Boot`?",
+      "options": [
+        "To simplify the setup and development of Spring applications with embedded servers and auto-configuration.",
+        "To provide advanced transaction management.",
+        "To handle web request routing.",
+        "To enhance security features."
+      ],
+      "answer": "To simplify the setup and development of Spring applications with embedded servers and auto-configuration.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 14,
+      "question": "What is the role of `@EnableAutoConfiguration` in Spring Boot?",
+      "options": [
+        "To automatically configure Spring application based on the dependencies present.",
+        "To enable transaction management.",
+        "To configure security settings.",
+        "To set up a database connection."
+      ],
+      "answer": "To automatically configure Spring application based on the dependencies present.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "question": "What does the `@Controller` annotation do in Spring MVC?",
+      "options": [
+        "Marks a class as a web controller that handles HTTP requests.",
+        "Defines a service component.",
+        "Configures a data source.",
+        "Manages transaction boundaries."
+      ],
+      "answer": "Marks a class as a web controller that handles HTTP requests.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 16,
+      "question": "What is the purpose of Spring's `BeanFactory`?",
+      "options": [
+        "It provides the foundational interface for configuring and managing beans.",
+        "It handles HTTP request routing.",
+        "It provides security configurations.",
+        "It manages database connections."
+      ],
+      "answer": "It provides the foundational interface for configuring and managing beans.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 17,
+      "question": "What is `Spring Data JPA` used for?",
+      "options": [
+        "To simplify database access and operations using JPA.",
+        "To manage application security.",
+        "To handle HTTP requests.",
+        "To configure Spring Boot applications."
+      ],
+      "answer": "To simplify database access and operations using JPA.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 18,
+      "question": "How does Spring Boot handle external configuration?",
+      "options": [
+        "By using `application.properties` or `application.yml` files for configuration.",
+        "By relying on environment variables only.",
+        "By embedding configuration in Java code.",
+        "By using a global configuration server."
+      ],
+      "answer": "By using `application.properties` or `application.yml` files for configuration.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 19,
+      "question": "What is the use of `@RequestMapping` annotation?",
+      "options": [
+        "To map HTTP requests to handler methods.",
+        "To define a data source.",
+        "To configure security settings.",
+        "To manage bean lifecycle."
+      ],
+      "answer": "To map HTTP requests to handler methods.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "question": "How can you create a RESTful web service using Spring?",
+      "options": [
+        "By using `@RestController` and `@RequestMapping` annotations.",
+        "By configuring XML-based routing.",
+        "By using plain Java servlets.",
+        "By creating a JSP page."
+      ],
+      "answer": "By using `@RestController` and `@RequestMapping` annotations.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 21,
+      "question": "What is the role of `@RequestParam` in Spring MVC?",
+      "options": [
+        "To bind request parameters to method arguments.",
+        "To handle HTTP request headers.",
+        "To configure the view resolver.",
+        "To manage sessions."
+      ],
+      "answer": "To bind request parameters to method arguments.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 22,
+      "question": "What is the purpose of `@Qualifier` annotation?",
+      "options": [
+        "To specify which bean to inject when multiple candidates are available.",
+        "To define a bean's lifecycle.",
+        "To configure a data source.",
+        "To handle HTTP request mapping."
+      ],
+      "answer": "To specify which bean to inject when multiple candidates are available.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 23,
+      "question": "How do you define a custom bean in Spring Boot?",
+      "options": [
+        "By using the `@Bean` annotation in a `@Configuration` class.",
+        "By creating a `@Component` class.",
+        "By using XML configuration.",
+        "By defining it in `application.properties`."
+      ],
+      "answer": "By using the `@Bean` annotation in a `@Configuration` class.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 24,
+      "question": "What is the use of `@ComponentScan` annotation?",
+      "options": [
+        "To specify the packages to scan for Spring components.",
+        "To configure security settings.",
+        "To define a data source.",
+        "To handle HTTP request routing."
+      ],
+      "answer": "To specify the packages to scan for Spring components.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 25,
+      "question": "What does Spring's `@PostConstruct` annotation do?",
+      "options": [
+        "It marks a method to be executed after dependency injection is done.",
+        "It handles HTTP POST requests.",
+        "It defines a database schema.",
+        "It configures application startup."
+      ],
+      "answer": "It marks a method to be executed after dependency injection is done.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 26,
+      "question": "How does Spring Boot's `@SpringBootApplication` annotation work?",
+      "options": [
+        "It combines `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan` into one annotation.",
+        "It configures database connections.",
+        "It handles HTTP requests.",
+        "It manages bean lifecycle."
+      ],
+      "answer": "It combines `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan` into one annotation.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 27,
+      "question": "What is the purpose of `@AspectJ` in Spring?",
+      "options": [
+        "To provide support for Aspect-Oriented Programming (AOP).",
+        "To configure a data source.",
+        "To handle HTTP requests.",
+        "To manage transaction boundaries."
+      ],
+      "answer": "To provide support for Aspect-Oriented Programming (AOP).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 28,
+      "question": "How does Spring Boot support embedded servers?",
+      "options": [
+        "By providing embedded Tomcat, Jetty, or Undertow servers out of the box.",
+        "By requiring external server configuration.",
+        "By using only Tomcat server.",
+        "By relying on serverless architecture."
+      ],
+      "answer": "By providing embedded Tomcat, Jetty, or Undertow servers out of the box.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 29,
+      "question": "What is the function of `@RequestBody` annotation?",
+      "options": [
+        "To bind the HTTP request body to a method parameter.",
+        "To configure the view resolver.",
+        "To manage HTTP request headers.",
+        "To handle session attributes."
+      ],
+      "answer": "To bind the HTTP request body to a method parameter.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 30,
+      "question": "What does Spring's `@Valid` annotation do?",
+      "options": [
+        "It triggers validation of the annotated method parameter or field.",
+        "It configures HTTP request mappings.",
+        "It defines a database schema.",
+        "It handles security concerns."
+      ],
+      "answer": "It triggers validation of the annotated method parameter or field.",
+      "difficulty": "hard"
+    }
+  ]
+}

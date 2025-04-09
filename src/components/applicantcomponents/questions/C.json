@@ -1,0 +1,339 @@
+{
+    "testName": "C Programming MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["C Programming"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which of the following is a valid C identifier?",
+        "options": [
+          "1variable",
+          "_var_name",
+          "var-name",
+          "float"
+        ],
+        "answer": "_var_name"
+      },
+      {
+        "id": 2,
+        "question": "What is the output of the following C code?\n```c\nint x = 10, y = 5;\nint z = x + y * 2;\nprintf(\"%d\", z);\n```",
+        "options": [
+          "20",
+          "25",
+          "15",
+          "30"
+        ],
+        "answer": "20"
+      },
+      {
+        "id": 3,
+        "question": "Which of the following is used to create a pointer to an integer?",
+        "options": [
+          "int ptr = 10;",
+          "int *ptr;",
+          "int &ptr;",
+          "int ptr[10];"
+        ],
+        "answer": "int *ptr;"
+      },
+      {
+        "id": 4,
+        "question": "Which of the following operators has the highest precedence in C?",
+        "options": [
+          "*",
+          "+",
+          "()",
+          "&&"
+        ],
+        "answer": "()"
+      },
+      {
+        "id": 5,
+        "question": "Which of the following functions is used to dynamically allocate memory in C?",
+        "options": [
+          "malloc()",
+          "alloc()",
+          "realloc()",
+          "calloc()"
+        ],
+        "answer": "malloc()"
+      },
+      {
+        "id": 6,
+        "question": "What will be the output of the following code?\n```c\nint a = 5;\nif (a == 5)\n{\n    printf(\"Equal\");\n}\nelse\n{\n    printf(\"Not equal\");\n}\n```",
+        "options": [
+          "Equal",
+          "Not equal",
+          "Error",
+          "No output"
+        ],
+        "answer": "Equal"
+      },
+      {
+        "id": 7,
+        "question": "What is the output of the following code?\n```c\nint a = 10, b = 5, c = 15;\nint d = a > b ? (b > c ? b : c) : a;\nprintf(\"%d\", d);\n```",
+        "options": [
+          "10",
+          "5",
+          "15",
+          "0"
+        ],
+        "answer": "15"
+      },
+      {
+        "id": 8,
+        "question": "Which of the following is true for the 'sizeof' operator?",
+        "options": [
+          "It returns the number of bytes taken by a variable or data type",
+          "It returns the size of the pointer in bytes",
+          "It is used to allocate memory",
+          "It can be used to determine the length of an array"
+        ],
+        "answer": "It returns the number of bytes taken by a variable or data type"
+      },
+      {
+        "id": 9,
+        "question": "Which of the following correctly declares a structure in C?",
+        "options": [
+          "struct point { int x; int y; };",
+          "struct { int x; int y; } point;",
+          "int struct point { int x; int y; };",
+          "structure point { int x; int y; };"
+        ],
+        "answer": "struct point { int x; int y; };"
+      },
+      {
+        "id": 10,
+        "question": "How do you declare an array of 10 integers in C?",
+        "options": [
+          "int array[10];",
+          "int array(10);",
+          "int array = [10];",
+          "array int[10];"
+        ],
+        "answer": "int array[10];"
+      },
+      {
+        "id": 11,
+        "question": "What is the result of the following code?\n```c\nint arr[5] = {1, 2, 3, 4, 5};\nprintf(\"%d\", arr[2]);\n```",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "answer": "3"
+      },
+      {
+        "id": 12,
+        "question": "Which of the following statements is true about recursion in C?",
+        "options": [
+          "A recursive function can call itself indefinitely without any issue",
+          "A recursive function must have a base case to terminate",
+          "Recursion is always faster than iteration",
+          "C does not support recursion"
+        ],
+        "answer": "A recursive function must have a base case to terminate"
+      },
+      {
+        "id": 13,
+        "question": "What will be the output of the following code?\n```c\nchar str[] = \"Hello, World!\";\nprintf(\"%c\", *(str + 7));\n```",
+        "options": [
+          "H",
+          "W",
+          "o",
+          "d"
+        ],
+        "answer": "W"
+      },
+      {
+        "id": 14,
+        "question": "Which of the following is used to access the elements of a pointer array?",
+        "options": [
+          "pointer[index]",
+          "pointer -> index",
+          "pointer.index",
+          "pointer * index"
+        ],
+        "answer": "pointer[index]"
+      },
+      {
+        "id": 15,
+        "question": "Which of the following statements is true about C's preprocessor directives?",
+        "options": [
+          "#define is used to define macros",
+          "#include is used to include library files",
+          "#ifdef checks if a macro is defined",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "id": 16,
+        "question": "What is the output of the following code?\n```c\nint a = 5, b = 6;\nprintf(\"%d\", a+++b);\n```",
+        "options": [
+          "11",
+          "12",
+          "Error",
+          "Undefined"
+        ],
+        "answer": "Error"
+      },
+      {
+        "id": 17,
+        "question": "What will be the result of the following code?\n```c\nint a = 5, b = 6;\nint *p1 = &a;\nint *p2 = &b;\n*p1 = *p1 + *p2;\nprintf(\"%d\", *p1);\n```",
+        "options": [
+          "5",
+          "6",
+          "11",
+          "Undefined"
+        ],
+        "answer": "11"
+      },
+      {
+        "id": 18,
+        "question": "What is the output of the following code?\n```c\nint i = 0;\nwhile (i < 5)\n{\n  i++;\n}\nprintf(\"%d\", i);\n```",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "0"
+        ],
+        "answer": "5"
+      },
+      {
+        "id": 19,
+        "question": "Which of the following statements about pointers is correct?",
+        "options": [
+          "Pointers store the memory address of variables",
+          "Pointers cannot be used with arrays",
+          "Pointers do not support arithmetic operations",
+          "Pointers can be incremented by adding 1 to the pointer"
+        ],
+        "answer": "Pointers store the memory address of variables"
+      },
+      {
+        "id": 20,
+        "question": "What is the purpose of the 'break' statement in C?",
+        "options": [
+          "To exit a loop prematurely",
+          "To skip the current iteration",
+          "To terminate a program",
+          "To continue to the next iteration"
+        ],
+        "answer": "To exit a loop prematurely"
+      },
+      {
+        "id": 21,
+        "question": "What will be the output of the following C code?\n```c\nint a = 10;\nfor (int i = 0; i < 10; i++)\n{\n  a--;\n}\nprintf(\"%d\", a);\n```",
+        "options": [
+          "0",
+          "10",
+          "-10",
+          "Undefined"
+        ],
+        "answer": "0"
+      },
+      {
+        "id": 22,
+        "question": "Which of the following is correct about the 'void' keyword in C?",
+        "options": [
+          "It indicates a function that returns no value",
+          "It can be used to declare a pointer to a type-less entity",
+          "It can be used in a function to take no arguments",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "id": 23,
+        "question": "What is the output of the following code?\n```c\nchar str[] = \"Hello, World!\";\nprintf(\"%c\", *str);\n```",
+        "options": [
+          "H",
+          "W",
+          "o",
+          "!"
+        ],
+        "answer": "H"
+      },
+      {
+        "id": 24,
+        "question": "Which of the following is not a storage class in C?",
+        "options": [
+          "auto",
+          "extern",
+          "register",
+          "dynamic"
+        ],
+        "answer": "dynamic"
+      },
+      {
+        "id": 25,
+        "question": "Which of the following is true about an array in C?",
+        "options": [
+          "It is a collection of variables of different types",
+          "It is a collection of variables of the same type",
+          "It is a collection of functions",
+          "None of the above"
+        ],
+        "answer": "It is a collection of variables of the same type"
+      },
+      {
+        "id": 26,
+        "question": "What will be the output of the following code?\n```c\nint x = 10;\nint *ptr = &x;\n*ptr = 20;\nprintf(\"%d\", x);\n```",
+        "options": [
+          "10",
+          "20",
+          "30",
+          "Undefined"
+        ],
+        "answer": "20"
+      },
+      {
+        "id": 27,
+        "question": "What will be the result of the following code?\n```c\nint a[5] = {1, 2, 3, 4, 5};\nprintf(\"%d\", *(a + 3));\n```",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": "4"
+      },
+      {
+        "id": 28,
+        "question": "Which of the following statements is correct?",
+        "options": [
+          "sizeof(int) is always 2 bytes",
+          "sizeof(int) can vary depending on the system",
+          "sizeof(int) is always 4 bytes",
+          "sizeof(int) is always 1 byte"
+        ],
+        "answer": "sizeof(int) can vary depending on the system"
+      },
+      {
+        "id": 29,
+        "question": "What is the output of the following C code?\n```c\nint arr[3] = {1, 2, 3};\nprintf(\"%d\", arr[1] + arr[2]);\n```",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": "5"
+      },
+      {
+        "id": 30,
+        "question": "Which of the following correctly checks if a number is odd in C?",
+        "options": [
+          "if (num % 2 == 0)",
+          "if (num % 2 != 0)",
+          "if (num / 2 != 0)",
+          "if (num == 2)"
+        ],
+        "answer": "if (num % 2 != 0)"
+      }
+    ]
+  }
+  

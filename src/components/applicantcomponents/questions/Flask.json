@@ -1,0 +1,369 @@
+{
+    "testName": "Flask MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Flask"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is Flask primarily used for?",
+        "options": [
+          "Web development",
+          "Database management",
+          "Data analysis",
+          "Desktop application development"
+        ],
+        "answer": "Web development",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is the correct way to create a Flask application?",
+        "options": [
+          "app = Flask(__name__)",
+          "app = Flask.create()",
+          "Flask.app()",
+          "Flask(__name__).app()"
+        ],
+        "answer": "app = Flask(__name__)",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "How can you define a route in Flask?",
+        "options": [
+          "@app.route('/path')",
+          "app.route('/path')",
+          "route('/path')",
+          "@route('/path')"
+        ],
+        "answer": "@app.route('/path')",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "Which method in Flask is used to start the development server?",
+        "options": [
+          "app.run()",
+          "app.start()",
+          "app.serve()",
+          "app.begin()"
+        ],
+        "answer": "app.run()",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "How do you handle form data in Flask?",
+        "options": [
+          "Using request.form",
+          "Using request.data",
+          "Using request.body",
+          "Using request.json"
+        ],
+        "answer": "Using request.form",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the purpose of Flask’s `render_template` function?",
+        "options": [
+          "To render HTML templates and return them as responses.",
+          "To render static files from the server.",
+          "To parse and handle form data.",
+          "To generate URLs for routes."
+        ],
+        "answer": "To render HTML templates and return them as responses.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "What is the default port for Flask’s development server?",
+        "options": [
+          "5000",
+          "8080",
+          "80",
+          "443"
+        ],
+        "answer": "5000",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "How can you configure different environments (development, testing, production) in Flask?",
+        "options": [
+          "By setting the FLASK_ENV environment variable.",
+          "By using different configuration files for each environment.",
+          "By using Flask’s config dictionary.",
+          "By defining environment-specific classes."
+        ],
+        "answer": "By setting the FLASK_ENV environment variable.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "How do you define a blueprint in Flask?",
+        "options": [
+          "By creating an instance of the Blueprint class.",
+          "By creating a new route with @blueprint.route()",
+          "By using @app.blueprint()",
+          "By extending the Flask class."
+        ],
+        "answer": "By creating an instance of the Blueprint class.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "Which function is used to handle HTTP GET requests in Flask?",
+        "options": [
+          "@app.route() with methods=['GET']",
+          "@app.get()",
+          "@app.http()",
+          "app.handle_get()"
+        ],
+        "answer": "@app.route() with methods=['GET']",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is the purpose of Flask’s `url_for` function?",
+        "options": [
+          "To generate a URL for a given endpoint.",
+          "To redirect to another URL.",
+          "To parse the URL of the request.",
+          "To validate URLs in the application."
+        ],
+        "answer": "To generate a URL for a given endpoint.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "How can you manage database migrations in Flask?",
+        "options": [
+          "By using Flask-Migrate extension.",
+          "By using custom migration scripts.",
+          "By manually updating the database schema.",
+          "By defining migrations in the Flask configuration file."
+        ],
+        "answer": "By using Flask-Migrate extension.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "Which method is used to handle POST requests in Flask?",
+        "options": [
+          "@app.route() with methods=['POST']",
+          "@app.post()",
+          "@app.request()",
+          "app.handle_post()"
+        ],
+        "answer": "@app.route() with methods=['POST']",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is Flask’s `session` object used for?",
+        "options": [
+          "To store data across requests for a specific user session.",
+          "To manage connections to the database.",
+          "To handle form submissions.",
+          "To configure the application’s settings."
+        ],
+        "answer": "To store data across requests for a specific user session.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "How do you handle errors and exceptions in Flask?",
+        "options": [
+          "By using error handlers with @app.errorhandler()",
+          "By using try-except blocks in view functions.",
+          "By configuring logging handlers.",
+          "By defining error pages in the template."
+        ],
+        "answer": "By using error handlers with @app.errorhandler()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "How can you implement middleware in Flask?",
+        "options": [
+          "By using Flask’s before_request and after_request hooks.",
+          "By extending the Flask class.",
+          "By using Flask’s custom decorators.",
+          "By defining a separate middleware framework."
+        ],
+        "answer": "By using Flask’s before_request and after_request hooks.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What is the role of the `request` object in Flask?",
+        "options": [
+          "To handle incoming HTTP requests and extract data from them.",
+          "To manage the server’s response to client requests.",
+          "To manage cookies and sessions.",
+          "To define routing for different HTTP methods."
+        ],
+        "answer": "To handle incoming HTTP requests and extract data from them.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "How can you use Flask to serve static files?",
+        "options": [
+          "By placing static files in the static folder and accessing them with a URL path.",
+          "By defining static files in the configuration file.",
+          "By using Flask’s static_file() method.",
+          "By setting up a separate static file server."
+        ],
+        "answer": "By placing static files in the static folder and accessing them with a URL path.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is Flask’s `g` object used for?",
+        "options": [
+          "To store data that is global to a request.",
+          "To manage application-wide settings.",
+          "To handle database connections.",
+          "To manage session data."
+        ],
+        "answer": "To store data that is global to a request.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "How do you perform testing on Flask applications?",
+        "options": [
+          "By using Flask’s test client and the unittest framework.",
+          "By using third-party testing tools.",
+          "By manually inspecting application behavior.",
+          "By writing integration tests for all features."
+        ],
+        "answer": "By using Flask’s test client and the unittest framework.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is the use of the `Blueprint` class in Flask?",
+        "options": [
+          "To organize application routes and handlers into reusable components.",
+          "To define static files for the application.",
+          "To manage application-wide middleware.",
+          "To handle database migrations."
+        ],
+        "answer": "To organize application routes and handlers into reusable components.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is the purpose of the `@app.before_request` decorator in Flask?",
+        "options": [
+          "To execute a function before each request is processed.",
+          "To define a function that runs after a request is completed.",
+          "To register a route for handling HTTP requests.",
+          "To configure application settings."
+        ],
+        "answer": "To execute a function before each request is processed.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "How do you manage configurations for different environments in Flask?",
+        "options": [
+          "By using separate configuration files or classes and selecting them based on environment variables.",
+          "By defining configuration settings directly in the application code.",
+          "By using Flask’s built-in configuration system only.",
+          "By setting up different Flask instances for each environment."
+        ],
+        "answer": "By using separate configuration files or classes and selecting them based on environment variables.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What does Flask’s `send_file` function do?",
+        "options": [
+          "Sends a file from the server to the client as a response.",
+          "Sends data from a form submission to the server.",
+          "Sends an email with the file attached.",
+          "Sends a file to a different server."
+        ],
+        "answer": "Sends a file from the server to the client as a response.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What is Flask’s `abort` function used for?",
+        "options": [
+          "To raise an HTTP exception and terminate the request.",
+          "To abort a background process.",
+          "To cancel a scheduled task.",
+          "To stop the Flask server."
+        ],
+        "answer": "To raise an HTTP exception and terminate the request.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "How can you add custom error handling in Flask?",
+        "options": [
+          "By defining custom error handlers with the `@app.errorhandler` decorator.",
+          "By configuring error pages in the HTML templates.",
+          "By using a global exception handler.",
+          "By setting error codes in the configuration file."
+        ],
+        "answer": "By defining custom error handlers with the `@app.errorhandler` decorator.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is the role of the `current_app` object in Flask?",
+        "options": [
+          "To access the application context from within request handling functions.",
+          "To manage the current request context.",
+          "To handle session data.",
+          "To configure application-wide settings."
+        ],
+        "answer": "To access the application context from within request handling functions.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "How can you implement authentication in Flask?",
+        "options": [
+          "By using Flask-Login extension to manage user sessions and authentication.",
+          "By defining custom authentication functions.",
+          "By integrating with third-party authentication services.",
+          "By using Flask’s built-in authentication system."
+        ],
+        "answer": "By using Flask-Login extension to manage user sessions and authentication.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is Flask’s `jsonify` function used for?",
+        "options": [
+          "To convert Python dictionaries to JSON responses.",
+          "To parse JSON data from requests.",
+          "To format JSON data for logging.",
+          "To handle JSON schema validation."
+        ],
+        "answer": "To convert Python dictionaries to JSON responses.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "How can you handle file uploads in Flask?",
+        "options": [
+          "By using the `request.files` object to access uploaded files.",
+          "By defining a route for file uploads.",
+          "By configuring file upload settings in the application configuration.",
+          "By using a third-party file upload library."
+        ],
+        "answer": "By using the `request.files` object to access uploaded files.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

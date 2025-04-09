@@ -1,0 +1,369 @@
+{
+    "testName": "CSS MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["CSS"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which CSS property is used to change the font of an element?",
+        "options": [
+          "font-family",
+          "font-style",
+          "text-font",
+          "font-weight"
+        ],
+        "answer": "font-family",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "What does the `box-sizing` property do in CSS?",
+        "options": [
+          "Specifies how the width and height of an element are calculated.",
+          "Sets the size of the element's border.",
+          "Determines the spacing inside the element.",
+          "Specifies how the element should be rendered on different devices."
+        ],
+        "answer": "Specifies how the width and height of an element are calculated.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "Which CSS pseudo-class represents elements that are currently being interacted with by the user?",
+        "options": [
+          ":focus",
+          ":hover",
+          ":active",
+          ":visited"
+        ],
+        "answer": ":focus",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "How can you include external CSS files in an HTML document?",
+        "options": [ 
+          "&lt;link rel='stylesheet' href='styles.css'&gt;",
+          "&lt;style src='styles.css'&gt;&lt;/style&gt;",
+          "&lt;import src='styles.css'&gt;",
+          "&lt;css src='styles.css'&gt;&lt;/css&gt;"
+        ],
+        "answer": "&lt;link rel='stylesheet' href='styles.css'gt;",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What is the default value of the `position` property in CSS?",
+        "options": [
+          "static",
+          "relative",
+          "absolute",
+          "fixed"
+        ],
+        "answer": "static",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "Which property is used to create a CSS grid layout?",
+        "options": [
+          "display: grid",
+          "layout: grid",
+          "grid-layout: true",
+          "display: flex"
+        ],
+        "answer": "display: grid",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How do you center a block element horizontally within its parent using CSS?",
+        "options": [
+          "margin: auto",
+          "text-align: center",
+          "display: center",
+          "padding: center"
+        ],
+        "answer": "margin: auto",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of the `clip-path` property in CSS?",
+        "options": [
+          "To define a clipping region to display parts of an element.",
+          "To clip the text inside an element to a specified shape.",
+          "To add a clipping mask to an image element.",
+          "To control the overflow of content within an element."
+        ],
+        "answer": "To define a clipping region to display parts of an element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "How do you create a responsive design that adjusts based on the viewport width using CSS?",
+        "options": [
+          "Using media queries",
+          "Using viewport units",
+          "Using flexbox",
+          "Using grid layout"
+        ],
+        "answer": "Using media queries",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "What does the `z-index` property control in CSS?",
+        "options": [
+          "The stacking order of positioned elements",
+          "The text size of an element",
+          "The distance between an element and its parent",
+          "The alignment of inline elements"
+        ],
+        "answer": "The stacking order of positioned elements",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "Which CSS property is used to create space between the border and the content of an element?",
+        "options": [
+          "padding",
+          "margin",
+          "border-spacing",
+          "border-padding"
+        ],
+        "answer": "padding",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "How do you apply a CSS animation to an element?",
+        "options": [
+          "Using the `@keyframes` rule and the `animation` property",
+          "Using the `transition` property",
+          "Using the `animation` property alone",
+          "Using JavaScript to add animation classes"
+        ],
+        "answer": "Using the `@keyframes` rule and the `animation` property",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What does the `display: flex` property do in CSS?",
+        "options": [
+          "It enables a flex container and its items to be aligned and distributed efficiently.",
+          "It sets the display mode of an element to inline.",
+          "It creates a grid layout for child elements.",
+          "It positions an element relative to its normal position."
+        ],
+        "answer": "It enables a flex container and its items to be aligned and distributed efficiently.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is the effect of the `align-items: baseline` property in a flex container?",
+        "options": [
+          "It aligns flex items along their baseline.",
+          "It aligns flex items at the start of the cross-axis.",
+          "It stretches flex items to fill the container.",
+          "It aligns flex items along the center of the container."
+        ],
+        "answer": "It aligns flex items along their baseline.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What does the `grid-template-areas` property do in CSS Grid Layout?",
+        "options": [
+          "It defines named grid areas for layout.",
+          "It sets the size of rows and columns in the grid.",
+          "It positions items within a grid cell.",
+          "It specifies the alignment of items in the grid."
+        ],
+        "answer": "It defines named grid areas for layout.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "Which property is used to apply a background gradient in CSS?",
+        "options": [
+          "background-image",
+          "background-color",
+          "background-gradient",
+          "background-fill"
+        ],
+        "answer": "background-image",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "How do you make an element's border radius consistent across all corners?",
+        "options": [
+          "Using `border-radius` with a single value.",
+          "Using `border-radius` with four values.",
+          "Using `border-radius` with `inherit` value.",
+          "Using `border-radius` with percentage values."
+        ],
+        "answer": "Using `border-radius` with a single value.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the purpose of the `contain` property in CSS?",
+        "options": [
+          "To limit the scope of the browser's rendering and layout operations.",
+          "To contain floating elements within a block.",
+          "To control the overflow of content within an element.",
+          "To enforce layout containment rules for flex items."
+        ],
+        "answer": "To limit the scope of the browser's rendering and layout operations.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "How does the `flex: 1` shorthand property affect flex items?",
+        "options": [
+          "It allows the flex item to grow and shrink as needed to fill available space.",
+          "It sets the flex item to a fixed width of 1 unit.",
+          "It sets the flex item to a minimum width of 1 unit.",
+          "It applies a flex basis of 1 unit to the flex item."
+        ],
+        "answer": "It allows the flex item to grow and shrink as needed to fill available space.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What is the purpose of the `text-shadow` property in CSS?",
+        "options": [
+          "To apply a shadow effect to text elements.",
+          "To control the text color of an element.",
+          "To add a shadow effect to the element's background.",
+          "To position text relative to its containing block."
+        ],
+        "answer": "To apply a shadow effect to text elements.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What does the `grid-auto-flow` property do in CSS Grid Layout?",
+        "options": [
+          "It controls the placement of grid items within the grid.",
+          "It specifies the direction in which new grid items are placed.",
+          "It sets the size of rows and columns in the grid.",
+          "It determines the alignment of grid items along the grid's axis."
+        ],
+        "answer": "It specifies the direction in which new grid items are placed.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "Which property is used to create a multi-column layout in CSS?",
+        "options": [
+          "column-count",
+          "multi-column",
+          "columns",
+          "column-layout"
+        ],
+        "answer": "column-count",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is the role of the `transform` property in CSS?",
+        "options": [
+          "To apply 2D or 3D transformations to an element.",
+          "To control the position of an element within its container.",
+          "To animate the change of an element's properties.",
+          "To modify the color or background of an element."
+        ],
+        "answer": "To apply 2D or 3D transformations to an element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "How can you create a fixed header that stays at the top of the page while scrolling?",
+        "options": [
+          "Using `position: fixed` and `top: 0`.",
+          "Using `position: relative` and `top: 0`.",
+          "Using `position: sticky` and `top: 0`.",
+          "Using `position: absolute` and `top: 0`."
+        ],
+        "answer": "Using `position: fixed` and `top: 0`.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What does the `backdrop-filter` property do in CSS?",
+        "options": [
+          "Applies a graphical effect to the area behind an element.",
+          "Filters the background image of an element.",
+          "Adjusts the brightness and contrast of the backdrop.",
+          "Creates a blur effect on the element's background."
+        ],
+        "answer": "Applies a graphical effect to the area behind an element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "How do you create a CSS grid with an equal-width layout for columns?",
+        "options": [
+          "Using `grid-template-columns: repeat(auto-fit, minmax(0, 1fr))`.",
+          "Using `grid-template-columns: repeat(3, 1fr)`.",
+          "Using `grid-template-rows: repeat(auto-fit, minmax(0, 1fr))`.",
+          "Using `grid-auto-columns: 1fr`."
+        ],
+        "answer": "Using `grid-template-columns: repeat(3, 1fr)`.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is the difference between `inline` and `inline-block` display values?",
+        "options": [
+          "Inline-block allows setting width and height, while inline does not.",
+          "Inline-block elements cannot have margins, while inline elements can.",
+          "Inline elements respect top and bottom margins, while inline-block does not.",
+          "Inline elements can have block-level descendants, while inline-block elements cannot."
+        ],
+        "answer": "Inline-block allows setting width and height, while inline does not.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What does the `object-fit` property control in CSS?",
+        "options": [
+          "The fit of content within its container element.",
+          "The size of the element's border.",
+          "The layout of a flex container's children.",
+          "The alignment of text within an element."
+        ],
+        "answer": "The fit of content within its container element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "How do you apply CSS styles to a specific part of an element using the `::part` pseudo-element?",
+        "options": [
+          "By targeting a specific shadow DOM part of an element.",
+          "By applying styles to a specific pseudo-element of the element.",
+          "By setting styles for a particular class within the element.",
+          "By targeting a specific attribute of the element."
+        ],
+        "answer": "By targeting a specific shadow DOM part of an element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is the purpose of the `contain` property with the `layout` value in CSS?",
+        "options": [
+          "To contain the layout of an element, improving rendering performance.",
+          "To control the visibility of an element's layout.",
+          "To restrict the size of an element's layout.",
+          "To specify the layout direction of flex items."
+        ],
+        "answer": "To contain the layout of an element, improving rendering performance.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

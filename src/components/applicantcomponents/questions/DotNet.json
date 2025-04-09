@@ -1,0 +1,369 @@
+{
+    "testName": ".NET MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": [".NET"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is .NET Framework?",
+        "options": [
+          "A software development platform developed by Microsoft.",
+          "A new programming language.",
+          "An operating system for servers.",
+          "A cloud computing service."
+        ],
+        "answer": "A software development platform developed by Microsoft.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which language is not supported by .NET?",
+        "options": [
+          "C#",
+          "F#",
+          "VB.NET",
+          "Java"
+        ],
+        "answer": "Java",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is the purpose of the Common Language Runtime (CLR) in .NET?",
+        "options": [
+          "To provide memory management, exception handling, and security.",
+          "To manage database connections.",
+          "To compile .NET code into machine code.",
+          "To execute SQL queries."
+        ],
+        "answer": "To provide memory management, exception handling, and security.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "What is a .NET Assembly?",
+        "options": [
+          "A compiled code library used by .NET applications.",
+          "A type of .NET project template.",
+          "A runtime environment for .NET applications.",
+          "A database management tool."
+        ],
+        "answer": "A compiled code library used by .NET applications.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What is the purpose of the `using` statement in C#?",
+        "options": [
+          "To ensure that resources are properly disposed of.",
+          "To include namespaces in the code.",
+          "To handle exceptions.",
+          "To create new instances of objects."
+        ],
+        "answer": "To ensure that resources are properly disposed of.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the difference between `ref` and `out` parameters in C#?",
+        "options": [
+          "`ref` parameters require initialization before use, while `out` parameters do not.",
+          "`ref` parameters are used for method overloading, while `out` parameters are not.",
+          "`out` parameters allow modification of the argument, while `ref` parameters do not.",
+          "There is no difference between them."
+        ],
+        "answer": "`ref` parameters require initialization before use, while `out` parameters do not.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "Which .NET technology is used to develop web applications?",
+        "options": [
+          "ASP.NET",
+          "WPF",
+          "WinForms",
+          "Entity Framework"
+        ],
+        "answer": "ASP.NET",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is a `delegate` in C#?",
+        "options": [
+          "A type that represents references to methods with a particular parameter list and return type.",
+          "A class used to handle exceptions.",
+          "An interface for asynchronous programming.",
+          "A type of collection for managing key-value pairs."
+        ],
+        "answer": "A type that represents references to methods with a particular parameter list and return type.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the purpose of the `async` and `await` keywords in C#?",
+        "options": [
+          "To simplify asynchronous programming.",
+          "To create new threads.",
+          "To manage database connections.",
+          "To handle exceptions more effectively."
+        ],
+        "answer": "To simplify asynchronous programming.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "How does the Entity Framework simplify database interactions in .NET?",
+        "options": [
+          "By providing an ORM (Object-Relational Mapping) to interact with databases.",
+          "By managing SQL queries directly.",
+          "By creating and managing database schemas.",
+          "By executing raw SQL commands."
+        ],
+        "answer": "By providing an ORM (Object-Relational Mapping) to interact with databases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is a `nullable` type in C#?",
+        "options": [
+          "A value type that can represent a null value.",
+          "A type that is used for strings.",
+          "A reference type with default null values.",
+          "A type that cannot be initialized."
+        ],
+        "answer": "A value type that can represent a null value.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "What does the `GC` stand for in .NET?",
+        "options": [
+          "Garbage Collector",
+          "General Compiler",
+          "Global Context",
+          "Generic Class"
+        ],
+        "answer": "Garbage Collector",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What is the difference between `abstract` class and `interface` in C#?",
+        "options": [
+          "Abstract classes can have methods with implementations, interfaces cannot.",
+          "Interfaces can have fields, abstract classes cannot.",
+          "Abstract classes support multiple inheritance, interfaces do not.",
+          "Interfaces can contain private methods, abstract classes cannot."
+        ],
+        "answer": "Abstract classes can have methods with implementations, interfaces cannot.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "How does dependency injection work in .NET?",
+        "options": [
+          "By providing objects that a class depends on through constructors or properties.",
+          "By creating instances of classes manually.",
+          "By using reflection to inject dependencies.",
+          "By using static methods to manage dependencies."
+        ],
+        "answer": "By providing objects that a class depends on through constructors or properties.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is the primary function of the `IEnumerable` interface in .NET?",
+        "options": [
+          "To provide iteration over a collection.",
+          "To define methods for data persistence.",
+          "To handle threading operations.",
+          "To manage data input and output."
+        ],
+        "answer": "To provide iteration over a collection.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "What is the use of the `async` modifier in C#?",
+        "options": [
+          "To indicate that a method will perform asynchronous operations.",
+          "To create a new thread.",
+          "To handle synchronous operations.",
+          "To define static methods."
+        ],
+        "answer": "To indicate that a method will perform asynchronous operations.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What does the `Task` class represent in .NET?",
+        "options": [
+          "An asynchronous operation.",
+          "A synchronous method call.",
+          "A type of exception.",
+          "A unit of data storage."
+        ],
+        "answer": "An asynchronous operation.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the purpose of the `UnitOfWork` pattern in .NET?",
+        "options": [
+          "To manage transactions by grouping multiple operations into a single unit.",
+          "To handle asynchronous operations.",
+          "To manage object lifecycle.",
+          "To perform database migrations."
+        ],
+        "answer": "To manage transactions by grouping multiple operations into a single unit.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "How does `LINQ` simplify querying data in .NET?",
+        "options": [
+          "By providing a unified syntax to query different data sources.",
+          "By defining data schemas.",
+          "By managing database connections.",
+          "By executing raw SQL commands."
+        ],
+        "answer": "By providing a unified syntax to query different data sources.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What is the use of the `ConfigurationManager` class in .NET?",
+        "options": [
+          "To manage application configuration settings.",
+          "To handle HTTP requests.",
+          "To create user interfaces.",
+          "To manage database connections."
+        ],
+        "answer": "To manage application configuration settings.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is a `web.config` file used for in ASP.NET applications?",
+        "options": [
+          "To store configuration settings for web applications.",
+          "To manage database schema.",
+          "To handle application state.",
+          "To perform logging operations."
+        ],
+        "answer": "To store configuration settings for web applications.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is the role of `Middleware` in ASP.NET Core?",
+        "options": [
+          "To handle HTTP requests and responses in the pipeline.",
+          "To manage database connections.",
+          "To define user interfaces.",
+          "To compile code into machine language."
+        ],
+        "answer": "To handle HTTP requests and responses in the pipeline.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is the difference between `ValueType` and `ReferenceType` in .NET?",
+        "options": [
+          "ValueType holds data directly, while ReferenceType holds a reference to the data.",
+          "ReferenceType holds data directly, while ValueType holds a reference to the data.",
+          "ValueType supports inheritance, while ReferenceType does not.",
+          "ReferenceType is used for primitive types, while ValueType is used for classes."
+        ],
+        "answer": "ValueType holds data directly, while ReferenceType holds a reference to the data.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "How does `ASP.NET` manage session state?",
+        "options": [
+          "By using in-memory storage, SQL Server, or other providers.",
+          "By using global variables.",
+          "By using static methods.",
+          "By handling cookies directly."
+        ],
+        "answer": "By using in-memory storage, SQL Server, or other providers.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What does the `Entity Framework` use to map objects to database tables?",
+        "options": [
+          "Object-Relational Mapping (ORM).",
+          "SQL Mapping.",
+          "Data Adapters.",
+          "Database Providers."
+        ],
+        "answer": "Object-Relational Mapping (ORM).",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "What is a `Service Locator` pattern in .NET?",
+        "options": [
+          "A design pattern used to encapsulate the processes of locating and retrieving services.",
+          "A method for handling exceptions.",
+          "A way to manage static data.",
+          "A technique for code optimization."
+        ],
+        "answer": "A design pattern used to encapsulate the processes of locating and retrieving services.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is the purpose of the `HttpClient` class in .NET?",
+        "options": [
+          "To send HTTP requests and receive HTTP responses.",
+          "To manage database connections.",
+          "To handle user interface elements.",
+          "To perform file I/O operations."
+        ],
+        "answer": "To send HTTP requests and receive HTTP responses.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "How does `Dependency Injection` support testability in .NET?",
+        "options": [
+          "By allowing dependencies to be injected rather than hardcoded.",
+          "By managing thread synchronization.",
+          "By providing automatic data validation.",
+          "By handling low-level memory management."
+        ],
+        "answer": "By allowing dependencies to be injected rather than hardcoded.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is the role of `NuGet` in .NET development?",
+        "options": [
+          "To manage and distribute packages and libraries.",
+          "To compile .NET applications.",
+          "To provide database management tools.",
+          "To handle user authentication."
+        ],
+        "answer": "To manage and distribute packages and libraries.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What does the `Task Parallel Library (TPL)` provide in .NET?",
+        "options": [
+          "A set of APIs to simplify parallel and asynchronous programming.",
+          "A framework for developing web applications.",
+          "A tool for database schema management.",
+          "A library for handling XML data."
+        ],
+        "answer": "A set of APIs to simplify parallel and asynchronous programming.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

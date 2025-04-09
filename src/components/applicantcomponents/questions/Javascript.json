@@ -1,0 +1,339 @@
+{
+    "testName": "JavaScript MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["JavaScript"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What will be the output of the following code?\n```javascript\nconsole.log(typeof NaN);\n```",
+        "options": [
+          "\"number\"",
+          "\"NaN\"",
+          "\"undefined\"",
+          "\"object\""
+        ],
+        "answer": "\"number\""
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is the correct way to create a new object in JavaScript?",
+        "options": [
+          "var obj = {};",
+          "var obj = Object.create();",
+          "var obj = new Object();",
+          "Both var obj = {}; and var obj = new Object();"
+        ],
+        "answer": "Both var obj = {}; and var obj = new Object();"
+      },
+      {
+        "id": 3,
+        "question": "What will be the result of the following code?\n```javascript\nvar foo = function() {\n  console.log(\"foo\");\n};\n(function bar() {\n  foo();\n  console.log(\"bar\");\n})();\nfoo = function() {\n  console.log(\"new foo\");\n};\n```",
+        "options": [
+          "\"foo\" and \"bar\"",
+          "\"new foo\" and \"bar\"",
+          "Only \"bar\"",
+          "Error"
+        ],
+        "answer": "\"foo\" and \"bar\""
+      },
+      {
+        "id": 4,
+        "question": "Which of the following is a valid method to check if a variable is an array?",
+        "options": [
+          "Array.isArray(var)",
+          "typeof var === \"array\"",
+          "var instanceof Array",
+          "Both Array.isArray(var) and var instanceof Array"
+        ],
+        "answer": "Both Array.isArray(var) and var instanceof Array"
+      },
+      {
+        "id": 5,
+        "question": "What is the difference between '==' and '===' in JavaScript?",
+        "options": [
+          "'==' checks for value equality, '===' checks for both value and type equality",
+          "'==' checks for type equality, '===' checks for value equality",
+          "There is no difference between '==' and '==='",
+          "'==' is used for strings, '===' is used for numbers"
+        ],
+        "answer": "'==' checks for value equality, '===' checks for both value and type equality"
+      },
+      {
+        "id": 6,
+        "question": "What will be the output of the following code?\n```javascript\nconsole.log(1 + '1');\nconsole.log(1 - '1');\n```",
+        "options": [
+          "\"11\" and 0",
+          "2 and 0",
+          "11 and NaN",
+          "Error"
+        ],
+        "answer": "\"11\" and 0"
+      },
+      {
+        "id": 7,
+        "question": "Which of the following statements is true about JavaScript closures?",
+        "options": [
+          "A closure is a function having access to its own scope, the scope of the outer function, and the global scope.",
+          "A closure is a function that is only accessible within another function.",
+          "A closure is a function that cannot be executed until the outer function returns.",
+          "A closure is a function that can be executed immediately and never again."
+        ],
+        "answer": "A closure is a function having access to its own scope, the scope of the outer function, and the global scope."
+      },
+      {
+        "id": 8,
+        "question": "What will be the output of the following code?\n```javascript\nfor (var i = 0; i < 3; i++) {\n  setTimeout(function() { console.log(i); }, 1000);\n}\n```",
+        "options": [
+          "0, 1, 2",
+          "3, 3, 3",
+          "0, 0, 0",
+          "Undefined"
+        ],
+        "answer": "3, 3, 3"
+      },
+      {
+        "id": 9,
+        "question": "Which of the following is not a JavaScript data type?",
+        "options": [
+          "Undefined",
+          "Number",
+          "Boolean",
+          "Float"
+        ],
+        "answer": "Float"
+      },
+      {
+        "id": 10,
+        "question": "What is the purpose of the JavaScript 'this' keyword?",
+        "options": [
+          "It refers to the object it belongs to",
+          "It refers to the current function",
+          "It is used to declare variables globally",
+          "It refers to the function's arguments"
+        ],
+        "answer": "It refers to the object it belongs to"
+      },
+      {
+        "id": 11,
+        "question": "What is the output of the following code?\n```javascript\n(function() {\n  var a = b = 5;\n})();\n\nconsole.log(typeof a);\nconsole.log(typeof b);\n```",
+        "options": [
+          "undefined and number",
+          "number and number",
+          "undefined and undefined",
+          "number and undefined"
+        ],
+        "answer": "undefined and number"
+      },
+      {
+        "id": 12,
+        "question": "Which of the following is a valid way to create an array in JavaScript?",
+        "options": [
+          "var arr = [];",
+          "var arr = new Array();",
+          "var arr = Array();",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "id": 13,
+        "question": "What will be the output of the following code?\n```javascript\nvar x = 0;\nif (x) {\n  console.log(\"True\");\n} else {\n  console.log(\"False\");\n}\n```",
+        "options": [
+          "\"True\"",
+          "\"False\"",
+          "Error",
+          "Undefined"
+        ],
+        "answer": "\"False\""
+      },
+      {
+        "id": 14,
+        "question": "Which of the following is true about JavaScript's 'strict mode'?",
+        "options": [
+          "It enables strict parsing and error handling of JavaScript code",
+          "It disables the use of 'this' keyword",
+          "It is the default mode in JavaScript",
+          "It allows the use of undeclared variables"
+        ],
+        "answer": "It enables strict parsing and error handling of JavaScript code"
+      },
+      {
+        "id": 15,
+        "question": "What is the difference between 'null' and 'undefined' in JavaScript?",
+        "options": [
+          "'null' is an object that represents no value, 'undefined' is a variable that has been declared but not assigned a value",
+          "'null' is used for undefined variables, 'undefined' is used for empty objects",
+          "'null' and 'undefined' are the same in JavaScript",
+          "'null' represents no value, 'undefined' represents a non-existent object"
+        ],
+        "answer": "'null' is an object that represents no value, 'undefined' is a variable that has been declared but not assigned a value"
+      },
+      {
+        "id": 16,
+        "question": "What will be the output of the following code?\n```javascript\nvar foo = [1, 2, 3];\nfoo.length = 0;\nconsole.log(foo);\n```",
+        "options": [
+          "[]",
+          "[1, 2, 3]",
+          "[undefined, undefined, undefined]",
+          "Error"
+        ],
+        "answer": "[]"
+      },
+      {
+        "id": 17,
+        "question": "Which of the following statements is true about JavaScript objects?",
+        "options": [
+          "JavaScript objects are containers for named values called properties or methods",
+          "JavaScript objects are only used to store primitive data types",
+          "JavaScript objects cannot be modified after creation",
+          "JavaScript objects are instances of classes"
+        ],
+        "answer": "JavaScript objects are containers for named values called properties or methods"
+      },
+      {
+        "id": 18,
+        "question": "What will be the output of the following code?\n```javascript\nvar x = 1;\nvar y = x++;\nconsole.log(x, y);\n```",
+        "options": [
+          "1 1",
+          "2 1",
+          "1 2",
+          "2 2"
+        ],
+        "answer": "2 1"
+      },
+      {
+        "id": 19,
+        "question": "What is the purpose of the JavaScript 'bind()' method?",
+        "options": [
+          "To create a new function with a specific 'this' value",
+          "To bind a variable to a function",
+          "To join two arrays",
+          "To attach an event listener to an element"
+        ],
+        "answer": "To create a new function with a specific 'this' value"
+      },
+      {
+        "id": 20,
+        "question": "Which of the following is a way to define a function in JavaScript?",
+        "options": [
+          "function myFunc() {}",
+          "var myFunc = function() {};",
+          "const myFunc = () => {};",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "id": 21,
+        "question": "What will be the output of the following code?\n```javascript\nconsole.log([1, 2, 3] + [4, 5, 6]);\n```",
+        "options": [
+          "\"1,2,34,5,6\"",
+          "\"1,2,3,4,5,6\"",
+          "\"1,2,3 + 4,5,6\"",
+          "\"1,2,3\" + \"4,5,6\""
+        ],
+        "answer": "\"1,2,34,5,6\""
+      },
+      {
+        "id": 22,
+        "question": "Which of the following is true about JavaScript promises?",
+        "options": [
+          "A promise is an object representing the eventual completion or failure of an asynchronous operation",
+          "Promises are only used for synchronous operations",
+          "A promise is a callback function",
+          "Promises are a feature of JavaScript ES5"
+        ],
+        "answer": "A promise is an object representing the eventual completion or failure of an asynchronous operation"
+      },
+      {
+        "id": 23,
+        "question": "What will be the output of the following code?\n```javascript\nfunction test() {\n  console.log(a);\n  console.log(foo());\n  var a = 1;\n  function foo() {\n    return 2;\n  }\n}\ntest();\n```",
+        "options": [
+          "undefined, 2",
+          "1, 2",
+          "Error",
+          "2, 2"
+        ],
+        "answer": "undefined, 2"
+      },
+      {
+        "id": 24,
+        "question": "Which of the following is not a JavaScript loop structure?",
+        "options": [
+          "for",
+          "while",
+          "do-while",
+          "foreach"
+        ],
+        "answer": "foreach"
+      },
+      {
+        "id": 25,
+        "question": "What will be the output of the following code?\n```javascript\nfunction foo() {\n  return {\n    bar: \"Hello\"\n  };\n}\nconsole.log(foo().bar);\n```",
+        "options": [
+          "\"Hello\"",
+          "undefined",
+          "Error",
+          "null"
+        ],
+        "answer": "\"Hello\""
+      },
+      {
+        "id": 26,
+        "question": "What will be the output of the following code?\n```javascript\nconsole.log(\"2\" - 1);\nconsole.log(\"2\" + 1);\n```",
+        "options": [
+          "1 and \"21\"",
+          "1 and 3",
+          "\"21\" and 1",
+          "1 and 1"
+        ],
+        "answer": "1 and \"21\""
+      },
+      {
+        "id": 27,
+        "question": "Which of the following JavaScript methods is used to access the HTML element by its ID?",
+        "options": [
+          "getElementById()",
+          "getElementsByTagName()",
+          "getElementByClass()",
+          "querySelector()"
+        ],
+        "answer": "getElementById()"
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of the JavaScript 'map()' method?",
+        "options": [
+          "To create a new array populated with the results of calling a provided function on every element in the array",
+          "To iterate over an array and return the same array",
+          "To sort an array in ascending order",
+          "To filter out elements from an array based on a condition"
+        ],
+        "answer": "To create a new array populated with the results of calling a provided function on every element in the array"
+      },
+      {
+        "id": 29,
+        "question": "Which of the following is true about JavaScript arrow functions?",
+        "options": [
+          "Arrow functions do not have their own 'this' context",
+          "Arrow functions are hoisted like regular functions",
+          "Arrow functions are used only for asynchronous code",
+          "Arrow functions are defined using the function keyword"
+        ],
+        "answer": "Arrow functions do not have their own 'this' context"
+      },
+      {
+        "id": 30,
+        "question": "What is the output of the following code?\n```javascript\nvar a = [1, 2, 3];\na[10] = 99;\nconsole.log(a.length);\n```",
+        "options": [
+          "11",
+          "10",
+          "4",
+          "99"
+        ],
+        "answer": "11"
+      }
+    ]
+  }
+  

@@ -1,0 +1,338 @@
+{
+  "testName": "Spring Boot MCQ Test",
+  "duration": "30 mins",
+  "numberOfQuestions": 30,
+  "topicsCovered": ["Spring Boot"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the default embedded server used in Spring Boot applications?",
+      "options": [
+        "Tomcat",
+        "Jetty",
+        "Undertow",
+        "GlassFish"
+      ],
+      "answer": "Tomcat"
+    },
+    {
+      "id": 2,
+      "question": "Which annotation is used to mark a Spring Boot application class?",
+      "options": [
+        "@SpringBootApplication",
+        "@SpringApplication",
+        "@Configuration",
+        "@EnableAutoConfiguration"
+      ],
+      "answer": "@SpringBootApplication"
+    },
+    {
+      "id": 3,
+      "question": "How can you run a Spring Boot application?",
+      "options": [
+        "Using the main method",
+        "Using the Spring Boot CLI",
+        "Deploying the JAR/WAR file to an external server",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "id": 4,
+      "question": "What is the purpose of the `application.properties` or `application.yml` file in a Spring Boot application?",
+      "options": [
+        "To configure the application's environment settings",
+        "To define bean definitions",
+        "To store database queries",
+        "To create REST controllers"
+      ],
+      "answer": "To configure the application's environment settings"
+    },
+    {
+      "id": 5,
+      "question": "Which of the following is used to define profiles in a Spring Boot application?",
+      "options": [
+        "spring.profiles.active",
+        "spring.active.profiles",
+        "spring.profiles.default",
+        "spring.profiles.env"
+      ],
+      "answer": "spring.profiles.active"
+    },
+    {
+      "id": 6,
+      "question": "Which starter dependency is used to include Spring MVC in a Spring Boot project?",
+      "options": [
+        "spring-boot-starter-web",
+        "spring-boot-starter-data-jpa",
+        "spring-boot-starter-thymeleaf",
+        "spring-boot-starter-test"
+      ],
+      "answer": "spring-boot-starter-web"
+    },
+    {
+      "id": 7,
+      "question": "How does Spring Boot automatically configure your application based on the dependencies you have added?",
+      "options": [
+        "By using AutoConfiguration classes",
+        "By scanning the entire classpath",
+        "By manually configuring beans",
+        "By using XML configuration files"
+      ],
+      "answer": "By using AutoConfiguration classes"
+    },
+    {
+      "id": 8,
+      "question": "Which of the following annotations is used to enable JPA repositories in Spring Boot?",
+      "options": [
+        "@EnableJpaRepositories",
+        "@EnableRepositories",
+        "@EnableJpa",
+        "@EnableSpringRepositories"
+      ],
+      "answer": "@EnableJpaRepositories"
+    },
+    {
+      "id": 9,
+      "question": "What is the role of the `@ComponentScan` annotation in Spring Boot?",
+      "options": [
+        "To scan and register beans within the specified base packages",
+        "To enable transaction management",
+        "To start embedded servers",
+        "To configure the application context"
+      ],
+      "answer": "To scan and register beans within the specified base packages"
+    },
+    {
+      "id": 10,
+      "question": "Which annotation is used to indicate that a method parameter should be bound to a URI template variable?",
+      "options": [
+        "@PathVariable",
+        "@RequestParam",
+        "@RequestBody",
+        "@ModelAttribute"
+      ],
+      "answer": "@PathVariable"
+    },
+    {
+      "id": 11,
+      "question": "In Spring Boot, how do you configure a custom banner?",
+      "options": [
+        "By creating a `banner.txt` file",
+        "By setting the `spring.banner.location` property",
+        "By creating a `Banner` implementation",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "id": 12,
+      "question": "What does the `@RestController` annotation do in Spring Boot?",
+      "options": [
+        "Combines `@Controller` and `@ResponseBody`",
+        "Combines `@Controller` and `@RequestMapping`",
+        "Defines a RESTful service",
+        "Enables HTTP methods for a controller"
+      ],
+      "answer": "Combines `@Controller` and `@ResponseBody`"
+    },
+    {
+      "id": 13,
+      "question": "Which of the following is true about Spring Boot Actuator?",
+      "options": [
+        "It provides production-ready features such as monitoring and metrics",
+        "It is used to create RESTful web services",
+        "It is used for testing Spring Boot applications",
+        "It is used to configure the application's security"
+      ],
+      "answer": "It provides production-ready features such as monitoring and metrics"
+    },
+    {
+      "id": 14,
+      "question": "What is the purpose of the `@SpringBootTest` annotation?",
+      "options": [
+        "To bootstrap the entire application context for integration tests",
+        "To test individual Spring components",
+        "To disable auto-configuration in tests",
+        "To create a mock environment for unit testing"
+      ],
+      "answer": "To bootstrap the entire application context for integration tests"
+    },
+    {
+      "id": 15,
+      "question": "Which of the following dependencies is required to use Thymeleaf with Spring Boot?",
+      "options": [
+        "spring-boot-starter-thymeleaf",
+        "spring-boot-starter-web",
+        "spring-boot-starter-data-jpa",
+        "spring-boot-starter-freemarker"
+      ],
+      "answer": "spring-boot-starter-thymeleaf"
+    },
+    {
+      "id": 16,
+      "question": "Which annotation is used to map HTTP POST requests onto specific handler methods in Spring Boot?",
+      "options": [
+        "@PostMapping",
+        "@RequestMapping",
+        "@GetMapping",
+        "@PutMapping"
+      ],
+      "answer": "@PostMapping"
+    },
+    {
+      "id": 17,
+      "question": "What is the purpose of the `@Autowired` annotation in Spring Boot?",
+      "options": [
+        "To automatically wire a bean into another bean",
+        "To configure the application's environment",
+        "To define an HTTP endpoint",
+        "To enable Spring Boot auto-configuration"
+      ],
+      "answer": "To automatically wire a bean into another bean"
+    },
+    {
+      "id": 18,
+      "question": "Which of the following is used to configure externalized configuration in Spring Boot?",
+      "options": [
+        "application.properties or application.yml",
+        "beans.xml",
+        "application-context.xml",
+        "web.xml"
+      ],
+      "answer": "application.properties or application.yml"
+    },
+    {
+      "id": 19,
+      "question": "How do you exclude a specific auto-configuration class in a Spring Boot application?",
+      "options": [
+        "Using `@SpringBootApplication(exclude = {ClassName.class})`",
+        "Using `@DisableAutoConfiguration`",
+        "Using `@ExcludeAutoConfiguration`",
+        "By removing the dependency from `pom.xml`"
+      ],
+      "answer": "Using `@SpringBootApplication(exclude = {ClassName.class})`"
+    },
+    {
+      "id": 20,
+      "question": "Which of the following statements is true about Spring Boot DevTools?",
+      "options": [
+        "It provides features like automatic restart and live reload during development",
+        "It is used for production deployment",
+        "It is a security framework",
+        "It is used to manage database transactions"
+      ],
+      "answer": "It provides features like automatic restart and live reload during development"
+    },
+    {
+      "id": 21,
+      "question": "Which annotation can be used to create a global exception handler in a Spring Boot application?",
+      "options": [
+        "@ControllerAdvice",
+        "@ExceptionHandler",
+        "@RestController",
+        "@ErrorHandler"
+      ],
+      "answer": "@ControllerAdvice"
+    },
+    {
+      "id": 22,
+      "question": "What is the default logging framework used by Spring Boot?",
+      "options": [
+        "Logback",
+        "Log4j",
+        "SLF4J",
+        "Commons Logging"
+      ],
+      "answer": "Logback"
+    },
+    {
+      "id": 23,
+      "question": "Which annotation is used to cache the result of a method in Spring Boot?",
+      "options": [
+        "@Cacheable",
+        "@Cachable",
+        "@EnableCaching",
+        "@CacheResult"
+      ],
+      "answer": "@Cacheable"
+    },
+    {
+      "id": 24,
+      "question": "Which annotation in Spring Boot is used to define a scheduled task?",
+      "options": [
+        "@Scheduled",
+        "@EnableScheduling",
+        "@Task",
+        "@ScheduledTask"
+      ],
+      "answer": "@Scheduled"
+    },
+    {
+      "id": 25,
+      "question": "How can you secure a Spring Boot application?",
+      "options": [
+        "Using Spring Security",
+        "Using application.properties",
+        "Using Spring Cloud",
+        "Using Spring Data"
+      ],
+      "answer": "Using Spring Security"
+    },
+    {
+      "id": 26,
+      "question": "Which of the following is used to monitor the health of a Spring Boot application?",
+      "options": [
+        "Spring Boot Actuator",
+        "Spring Boot CLI",
+        "Spring Data JPA",
+        "Spring Cloud"
+      ],
+      "answer": "Spring Boot Actuator"
+    },
+    {
+      "id": 27,
+      "question": "Which annotation is used to map HTTP GET requests in Spring Boot?",
+      "options": [
+        "@GetMapping",
+        "@RequestMapping",
+        "@PostMapping",
+        "@PathVariable"
+      ],
+      "answer": "@GetMapping"
+    },
+    {
+      "id": 28,
+      "question": "How can you expose a Spring Boot application's configuration properties?",
+      "options": [
+        "Using the `@ConfigurationProperties` annotation",
+        "Using the `@Value` annotation",
+        "Using the `@PropertySource` annotation",
+        "Using the `@Autowired` annotation"
+      ],
+      "answer": "Using the `@ConfigurationProperties` annotation"
+    },
+    {
+      "id": 29,
+      "question": "What is the role of the `@Entity` annotation in Spring Boot?",
+      "options": [
+        "To mark a class as a JPA entity",
+        "To configure a REST controller",
+        "To mark a class as a Spring component",
+        "To create a Spring Boot application"
+      ],
+      "answer": "To mark a class as a JPA entity"
+    },
+    {
+      "id": 30,
+      "question": "Which annotation is used to specify the main configuration class in a Spring Boot application?",
+      "options": [
+        "@SpringBootApplication",
+        "@Configuration",
+        "@ComponentScan",
+        "@EnableAutoConfiguration"
+      ],
+      "answer": "@SpringBootApplication"
+    }
+  ]
+}

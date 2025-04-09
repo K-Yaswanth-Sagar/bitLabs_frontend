@@ -1,0 +1,369 @@
+{
+    "testName": "JSP MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["JSP"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What does JSP stand for?",
+        "options": [
+          "JavaServer Pages",
+          "JavaScript Pages",
+          "Java Server Programming",
+          "Java Standard Pages"
+        ],
+        "answer": "JavaServer Pages",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which directive in JSP is used to import a Java class?",
+        "options": [
+          "<%@ import %>",
+          "<%@ include %>",
+          "<%@ page %>",
+          "<%@ taglib %>"
+        ],
+        "answer": "<%@ import %>",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is the default file extension for JSP files?",
+        "options": [
+          ".jsp",
+          ".java",
+          ".html",
+          ".jspx"
+        ],
+        "answer": ".jsp",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "Which tag is used to include content from another file in JSP?",
+        "options": [
+          "<%@ include %>",
+          "<jsp:include />",
+          "<c:import />",
+          "<jsp:forward />"
+        ],
+        "answer": "<jsp:include />",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What does the `<%@ page %>` directive do in a JSP file?",
+        "options": [
+          "It defines page-dependent attributes like content type and error pages.",
+          "It includes other JSP files.",
+          "It imports Java classes.",
+          "It declares tag libraries."
+        ],
+        "answer": "It defines page-dependent attributes like content type and error pages.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the purpose of the `jsp:useBean` tag?",
+        "options": [
+          "To declare and instantiate a JavaBean.",
+          "To import a Java class.",
+          "To include other JSP files.",
+          "To handle HTTP requests."
+        ],
+        "answer": "To declare and instantiate a JavaBean.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How do you handle exceptions in JSP pages?",
+        "options": [
+          "By using the `<%@ page isErrorPage=\"true\" %> directive and `<error-page>` element in web.xml.",
+          "By using try-catch blocks.",
+          "By using the `jsp:exception` tag.",
+          "By setting error pages in the server configuration."
+        ],
+        "answer": "By using the `<%@ page isErrorPage=\"true\" %>` directive and `<error-page>` element in web.xml.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is the difference between `<jsp:include />` and `<%@ include %>`?",
+        "options": [
+          "`<jsp:include />` includes the content at runtime, while `<%@ include %>` includes it at compile time.",
+          "`<jsp:include />` is used for including Java classes, while `<%@ include %>` includes JSP files.",
+          "There is no difference; they are interchangeable.",
+          "`<jsp:include />` includes static files, while `<%@ include %>` includes dynamic content."
+        ],
+        "answer": "`<jsp:include />` includes the content at runtime, while `<%@ include %>` includes it at compile time.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the purpose of the `jsp:forward` tag?",
+        "options": [
+          "To forward a request to another resource.",
+          "To include content from another file.",
+          "To handle form data.",
+          "To manage session attributes."
+        ],
+        "answer": "To forward a request to another resource.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "How do you access JSP page parameters in a servlet?",
+        "options": [
+          "By using `HttpServletRequest.getParameter()` method.",
+          "By using `getAttribute()` method of `ServletContext`.",
+          "By using `getParameter()` method of `HttpSession`.",
+          "Directly from the request object."
+        ],
+        "answer": "By using `HttpServletRequest.getParameter()` method.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is an implicit object in JSP?",
+        "options": [
+          "An object automatically created and made available by the JSP engine.",
+          "An object defined by the user in a JSP page.",
+          "An object that needs explicit instantiation.",
+          "An object defined in the web.xml file."
+        ],
+        "answer": "An object automatically created and made available by the JSP engine.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "What does the `<jsp:useBean>` tag do in JSP?",
+        "options": [
+          "It declares a JavaBean, creates an instance if it doesn't exist, and provides access to the bean.",
+          "It imports Java classes.",
+          "It forwards requests to another resource.",
+          "It handles HTTP requests."
+        ],
+        "answer": "It declares a JavaBean, creates an instance if it doesn't exist, and provides access to the bean.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "Which of the following is not a valid scope for a JSP bean?",
+        "options": [
+          "request",
+          "session",
+          "application",
+          "global"
+        ],
+        "answer": "global",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is the role of the `jsp:root` element in JSP?",
+        "options": [
+          "It defines the root element for the JSP document in XML syntax.",
+          "It includes other JSP files.",
+          "It handles form data.",
+          "It provides a base for custom tags."
+        ],
+        "answer": "It defines the root element for the JSP document in XML syntax.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is the use of the `<jsp:include>` tag?",
+        "options": [
+          "To include content from another JSP or HTML file at request time.",
+          "To include a Java class.",
+          "To forward a request to another resource.",
+          "To handle session attributes."
+        ],
+        "answer": "To include content from another JSP or HTML file at request time.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "Which of the following JSP directives can be used to specify the content type of the response?",
+        "options": [
+          "<%@ page contentType=\"text/html;charset=UTF-8\" %>",
+          "<%@ include contentType=\"text/html\" %>",
+          "<%@ page import=\"text/html\" %>",
+          "<%@ page charset=\"UTF-8\" %>"
+        ],
+        "answer": "<%@ page contentType=\"text/html;charset=UTF-8\" %>",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "Which implicit object in JSP represents the servlet request?",
+        "options": [
+          "request",
+          "response",
+          "session",
+          "application"
+        ],
+        "answer": "request",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the function of `jsp:forward` tag in JSP?",
+        "options": [
+          "To forward a request to another resource.",
+          "To include content from another file.",
+          "To handle form submissions.",
+          "To set response headers."
+        ],
+        "answer": "To forward a request to another resource.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is the difference between `jsp:include` and `include` directive?",
+        "options": [
+          "`jsp:include` includes content at request time, while `include` directive includes it at compile time.",
+          "`jsp:include` includes static content, while `include` directive includes dynamic content.",
+          "Both are the same and can be used interchangeably.",
+          "`jsp:include` is for including Java classes, while `include` directive is for including JSP files."
+        ],
+        "answer": "`jsp:include` includes content at request time, while `include` directive includes it at compile time.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What does the `pageContext` implicit object provide?",
+        "options": [
+          "Access to various context information for a JSP page.",
+          "Access to the request parameters.",
+          "Access to the session attributes.",
+          "Access to the application-wide parameters."
+        ],
+        "answer": "Access to various context information for a JSP page.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "How do you define custom tags in JSP?",
+        "options": [
+          "By using the Tag Library Descriptor (TLD) file.",
+          "By using Java annotations.",
+          "By extending JSP pages.",
+          "By using JavaBeans."
+        ],
+        "answer": "By using the Tag Library Descriptor (TLD) file.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "Which JSP implicit object is used to manage session data?",
+        "options": [
+          "session",
+          "application",
+          "request",
+          "response"
+        ],
+        "answer": "session",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "How can you include a JSP file into another JSP file?",
+        "options": [
+          "By using `<jsp:include page=\"file.jsp\" />`.",
+          "By using `<%@ include file=\"file.jsp\" %>`.",
+          "By using `<jsp:forward page=\"file.jsp\" />`.",
+          "By using `include \"file.jsp\"`."
+        ],
+        "answer": "By using `<jsp:include page=\"file.jsp\" />`.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What is the purpose of the `jsp:include` action?",
+        "options": [
+          "To include content from another file at request time.",
+          "To include a Java class.",
+          "To forward a request to another resource.",
+          "To include static content at compile time."
+        ],
+        "answer": "To include content from another file at request time.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "How does JSP handle error pages?",
+        "options": [
+          "By using the `<error-page>` element in web.xml to define error pages.",
+          "By using `try-catch` blocks in JSP.",
+          "By using the `jsp:error` tag.",
+          "By configuring error pages in the server settings."
+        ],
+        "answer": "By using the `<error-page>` element in web.xml to define error pages.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "Which JSP tag is used to include static HTML content?",
+        "options": [
+          "<%@ include %>",
+          "<jsp:include />",
+          "<c:import />",
+          "<jsp:forward />"
+        ],
+        "answer": "<%@ include %>",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is the `jsp:taglib` directive used for?",
+        "options": [
+          "To declare a tag library for custom tags.",
+          "To import a Java class.",
+          "To include other JSP files.",
+          "To handle form submissions."
+        ],
+        "answer": "To declare a tag library for custom tags.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of `jsp:root` in an XML-based JSP file?",
+        "options": [
+          "To define the root element for an XML-based JSP page.",
+          "To declare JavaBeans.",
+          "To include other JSP files.",
+          "To handle exceptions."
+        ],
+        "answer": "To define the root element for an XML-based JSP page.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What does the `pageEncoding` attribute in the `<%@ page %>` directive specify?",
+        "options": [
+          "The character encoding used for the JSP page.",
+          "The type of content sent to the client.",
+          "The language used in the JSP page.",
+          "The path to the included files."
+        ],
+        "answer": "The character encoding used for the JSP page.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "How does JSP manage session data?",
+        "options": [
+          "By using the implicit `session` object.",
+          "By using the `session` tag.",
+          "By defining session attributes in web.xml.",
+          "By using the `session` directive."
+        ],
+        "answer": "By using the implicit `session` object.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

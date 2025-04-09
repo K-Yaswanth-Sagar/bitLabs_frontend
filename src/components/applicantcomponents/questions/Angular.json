@@ -1,0 +1,369 @@
+{
+    "testName": "Angular MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Angular"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the purpose of Angular's `ngOnInit` lifecycle hook?",
+        "options": [
+          "To initialize the component after Angular first displays the data-bound properties.",
+          "To initialize data when the component is created.",
+          "To handle HTTP requests.",
+          "To manage component destruction."
+        ],
+        "answer": "To initialize the component after Angular first displays the data-bound properties.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which Angular decorator is used to define a component?",
+        "options": [
+          "@NgModule",
+          "@Component",
+          "@Directive",
+          "@Injectable"
+        ],
+        "answer": "@Component",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is Angular's `HttpClientModule` used for?",
+        "options": [
+          "To make HTTP requests.",
+          "To handle routing.",
+          "To create forms.",
+          "To manage component lifecycle."
+        ],
+        "answer": "To make HTTP requests.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "What is the use of Angular's `ngFor` directive?",
+        "options": [
+          "To loop over a collection and render elements for each item.",
+          "To conditionally display elements.",
+          "To bind data to input fields.",
+          "To handle user events."
+        ],
+        "answer": "To loop over a collection and render elements for each item.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What is the purpose of Angular's `@Injectable` decorator?",
+        "options": [
+          "To define a service that can be injected into other components or services.",
+          "To declare a component.",
+          "To create a module.",
+          "To bind data to a view."
+        ],
+        "answer": "To define a service that can be injected into other components or services.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is Angular's change detection mechanism?",
+        "options": [
+          "The process by which Angular checks for changes in component state and updates the view.",
+          "A method to optimize the performance of Angular applications.",
+          "A way to manage user events.",
+          "A tool to debug Angular applications."
+        ],
+        "answer": "The process by which Angular checks for changes in component state and updates the view.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How does Angular handle dependency injection?",
+        "options": [
+          "By providing dependencies through constructor injection.",
+          "By using a global service registry.",
+          "By injecting services directly into the component's template.",
+          "By using static methods in services."
+        ],
+        "answer": "By providing dependencies through constructor injection.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of Angular's `ngRx` library?",
+        "options": [
+          "To manage state in Angular applications using the Redux pattern.",
+          "To handle form validation.",
+          "To perform HTTP operations.",
+          "To handle routing in Angular applications."
+        ],
+        "answer": "To manage state in Angular applications using the Redux pattern.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the role of the `@NgModule` decorator in Angular?",
+        "options": [
+          "To define a module and configure the injector and compiler.",
+          "To declare a component.",
+          "To provide routing information.",
+          "To manage HTTP requests."
+        ],
+        "answer": "To define a module and configure the injector and compiler.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "What does the `async` pipe do in Angular?",
+        "options": [
+          "Automatically subscribes to an Observable or Promise and returns the latest value.",
+          "Allows for asynchronous operations within templates.",
+          "Manages the asynchronous lifecycle of components.",
+          "Handles HTTP requests asynchronously."
+        ],
+        "answer": "Automatically subscribes to an Observable or Promise and returns the latest value.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "How can you optimize Angular application performance?",
+        "options": [
+          "By using Ahead-of-Time (AOT) compilation and lazy loading.",
+          "By increasing the number of components.",
+          "By disabling change detection.",
+          "By reducing the size of TypeScript files."
+        ],
+        "answer": "By using Ahead-of-Time (AOT) compilation and lazy loading.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "What is the difference between `@Component` and `@Directive` in Angular?",
+        "options": [
+          "Components have templates, while directives do not.",
+          "Directives have templates, while components do not.",
+          "Components can only be used within modules, while directives can be used globally.",
+          "Directives have a view, while components only define behavior."
+        ],
+        "answer": "Components have templates, while directives do not.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What is Angular's `ChangeDetectorRef` used for?",
+        "options": [
+          "To manually control change detection in Angular.",
+          "To handle HTTP requests.",
+          "To create reactive forms.",
+          "To define Angular modules."
+        ],
+        "answer": "To manually control change detection in Angular.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What does the `RouterModule` do in Angular?",
+        "options": [
+          "It provides routing capabilities to navigate between views.",
+          "It handles HTTP requests.",
+          "It manages the application state.",
+          "It provides form validation features."
+        ],
+        "answer": "It provides routing capabilities to navigate between views.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is Angular's `HttpInterceptor` used for?",
+        "options": [
+          "To intercept and modify HTTP requests and responses.",
+          "To handle form validation.",
+          "To manage the application state.",
+          "To provide routing functionality."
+        ],
+        "answer": "To intercept and modify HTTP requests and responses.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "What is the use of Angular's `ngZone`?",
+        "options": [
+          "To run change detection outside of Angular's zone to improve performance.",
+          "To manage routing in Angular applications.",
+          "To handle HTTP operations.",
+          "To provide form validation features."
+        ],
+        "answer": "To run change detection outside of Angular's zone to improve performance.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "How can you create a custom Angular directive?",
+        "options": [
+          "By using the `@Directive` decorator and defining the directive's behavior.",
+          "By extending the `Component` class.",
+          "By modifying the existing directives.",
+          "By creating a service and using it in components."
+        ],
+        "answer": "By using the `@Directive` decorator and defining the directive's behavior.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What does Angular's `@Input` decorator do?",
+        "options": [
+          "It allows a parent component to pass data to a child component.",
+          "It provides data binding to the view.",
+          "It handles component events.",
+          "It manages component lifecycle hooks."
+        ],
+        "answer": "It allows a parent component to pass data to a child component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is Angular's `@Output` decorator used for?",
+        "options": [
+          "To emit events from a child component to a parent component.",
+          "To handle HTTP requests.",
+          "To bind data between components.",
+          "To manage component styles."
+        ],
+        "answer": "To emit events from a child component to a parent component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What is the purpose of Angular's `ReactiveFormsModule`?",
+        "options": [
+          "To create and manage reactive forms with form control objects.",
+          "To handle routing in Angular applications.",
+          "To manage component state.",
+          "To provide HTTP services."
+        ],
+        "answer": "To create and manage reactive forms with form control objects.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "How can you enable Angular's Ahead-of-Time (AOT) compilation?",
+        "options": [
+          "By running the `ng build --prod` command.",
+          "By configuring the AOT settings in `angular.json`.",
+          "By using the `ng serve` command.",
+          "By setting `enableAOT` flag in `tsconfig.json`."
+        ],
+        "answer": "By running the `ng build --prod` command.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is the `ngModel` directive used for in Angular?",
+        "options": [
+          "To bind form input fields to model properties.",
+          "To handle routing between views.",
+          "To create custom directives.",
+          "To manage component styles."
+        ],
+        "answer": "To bind form input fields to model properties.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is the role of the `@NgModule` decorator's `providers` array?",
+        "options": [
+          "To register services and providers with the Angular injector.",
+          "To declare components and directives.",
+          "To define routing configurations.",
+          "To specify module dependencies."
+        ],
+        "answer": "To register services and providers with the Angular injector.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "How can you perform lazy loading in Angular?",
+        "options": [
+          "By using the `loadChildren` property in route configurations.",
+          "By configuring routes in `app.module.ts`.",
+          "By defining modules in `angular.json`.",
+          "By importing modules in `main.ts`."
+        ],
+        "answer": "By using the `loadChildren` property in route configurations.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What is the purpose of Angular's `ng-template`?",
+        "options": [
+          "To define a block of HTML that can be reused in the template.",
+          "To create custom components.",
+          "To handle form validations.",
+          "To manage component styles."
+        ],
+        "answer": "To define a block of HTML that can be reused in the template.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "What does Angular's `ngIf` directive do?",
+        "options": [
+          "Conditionally includes or excludes an element from the DOM.",
+          "Loops through a collection and displays elements.",
+          "Manages component lifecycle.",
+          "Handles user input events."
+        ],
+        "answer": "Conditionally includes or excludes an element from the DOM.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "How can you optimize Angular's change detection performance?",
+        "options": [
+          "By using `ChangeDetectionStrategy.OnPush` and detaching the change detector.",
+          "By increasing the number of components.",
+          "By disabling the router.",
+          "By using more services."
+        ],
+        "answer": "By using `ChangeDetectionStrategy.OnPush` and detaching the change detector.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What does Angular's `@HostListener` decorator do?",
+        "options": [
+          "It allows you to listen to events on the host element of the directive or component.",
+          "It manages routing events.",
+          "It handles HTTP responses.",
+          "It binds data to the view."
+        ],
+        "answer": "It allows you to listen to events on the host element of the directive or component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "How does Angular's `HttpClient` handle requests and responses?",
+        "options": [
+          "By using observables to handle asynchronous operations.",
+          "By using promises to manage responses.",
+          "By directly modifying DOM elements.",
+          "By synchronously managing HTTP requests."
+        ],
+        "answer": "By using observables to handle asynchronous operations.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is the difference between `@NgModule` and `@Component` decorators?",
+        "options": [
+          "`@NgModule` defines a module, while `@Component` defines a component with its own view and logic.",
+          "`@NgModule` creates a service, while `@Component` creates a directive.",
+          "`@NgModule` manages routing, while `@Component` handles HTTP requests.",
+          "`@NgModule` and `@Component` are interchangeable."
+        ],
+        "answer": "`@NgModule` defines a module, while `@Component` defines a component with its own view and logic.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

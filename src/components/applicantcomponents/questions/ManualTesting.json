@@ -1,0 +1,369 @@
+{
+    "testName": "Manual Testing MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Manual Testing"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the primary goal of manual testing?",
+        "options": [
+          "To ensure that software behaves as expected without using automated tools.",
+          "To write code for the software.",
+          "To configure the test environment.",
+          "To document software requirements."
+        ],
+        "answer": "To ensure that software behaves as expected without using automated tools.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is a commonly used manual testing technique?",
+        "options": [
+          "Exploratory Testing",
+          "Unit Testing",
+          "Integration Testing",
+          "Performance Testing"
+        ],
+        "answer": "Exploratory Testing",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What does a test case typically include?",
+        "options": [
+          "Test Case ID, Test Description, Expected Result, and Actual Result",
+          "Test Plan, Test Strategy, and Test Execution Results",
+          "Bug Report, Test Log, and Test Summary Report",
+          "Test Design, Test Execution, and Test Closure"
+        ],
+        "answer": "Test Case ID, Test Description, Expected Result, and Actual Result",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "Which type of testing is performed to ensure the software meets business requirements?",
+        "options": [
+          "User Acceptance Testing",
+          "Integration Testing",
+          "System Testing",
+          "Regression Testing"
+        ],
+        "answer": "User Acceptance Testing",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "What is a 'bug' in software testing?",
+        "options": [
+          "A defect or error in the software that causes incorrect behavior.",
+          "A feature of the software that is working as expected.",
+          "A test case that has been successfully executed.",
+          "An enhancement to the software."
+        ],
+        "answer": "A defect or error in the software that causes incorrect behavior.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the difference between 'alpha testing' and 'beta testing'?",
+        "options": [
+          "Alpha testing is performed by the internal team, while beta testing is done by end users.",
+          "Alpha testing is done at the end of the software development cycle, while beta testing is done earlier.",
+          "Alpha testing is done in a production environment, while beta testing is done in a development environment.",
+          "There is no difference; both terms refer to the same type of testing."
+        ],
+        "answer": "Alpha testing is performed by the internal team, while beta testing is done by end users.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "What is 'boundary value analysis' in manual testing?",
+        "options": [
+          "A technique that tests the behavior of the software at the boundary of input values.",
+          "A method of analyzing the software architecture.",
+          "A strategy for performing stress testing.",
+          "A process for analyzing business requirements."
+        ],
+        "answer": "A technique that tests the behavior of the software at the boundary of input values.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is 'equivalence partitioning' in manual testing?",
+        "options": [
+          "A technique where input values are divided into equivalent classes to reduce the number of test cases.",
+          "A method for partitioning the software into modules.",
+          "A strategy for dividing the testing team into groups.",
+          "A process for analyzing different types of user requirements."
+        ],
+        "answer": "A technique where input values are divided into equivalent classes to reduce the number of test cases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is a 'test script'?",
+        "options": [
+          "A set of instructions for executing test cases, including expected results.",
+          "A code written to automate tests.",
+          "A document outlining the test strategy.",
+          "A summary of test results."
+        ],
+        "answer": "A set of instructions for executing test cases, including expected results.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "What is 'regression testing'?",
+        "options": [
+          "Testing to ensure that new changes do not adversely affect the existing functionality.",
+          "Testing to check the system's performance under load.",
+          "Testing to validate individual units of code.",
+          "Testing to verify that the software meets business requirements."
+        ],
+        "answer": "Testing to ensure that new changes do not adversely affect the existing functionality.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is 'smoke testing'?",
+        "options": [
+          "A preliminary test to check the basic functionality of the application.",
+          "A test to evaluate the software's performance under high load.",
+          "A comprehensive test to validate all functionalities.",
+          "A test to check the software's compatibility with different environments."
+        ],
+        "answer": "A preliminary test to check the basic functionality of the application.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "What does 'test coverage' refer to in manual testing?",
+        "options": [
+          "The extent to which the software requirements are tested by the test cases.",
+          "The number of test cases executed.",
+          "The performance metrics of the test environment.",
+          "The number of defects found during testing."
+        ],
+        "answer": "The extent to which the software requirements are tested by the test cases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What is 'ad-hoc testing'?",
+        "options": [
+          "Informal testing without formal test cases or documentation.",
+          "Testing conducted with a predefined set of test cases.",
+          "A type of performance testing.",
+          "Testing done by a separate QA team."
+        ],
+        "answer": "Informal testing without formal test cases or documentation.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is 'exploratory testing'?",
+        "options": [
+          "Testing without predefined test cases, where testers explore the application and learn about it while testing.",
+          "Testing conducted with a strict set of predefined test cases.",
+          "Testing focused on system performance.",
+          "Testing performed to validate business requirements."
+        ],
+        "answer": "Testing without predefined test cases, where testers explore the application and learn about it while testing.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is the purpose of 'test data'?",
+        "options": [
+          "To provide input values for test cases and validate the software's functionality.",
+          "To configure the test environment.",
+          "To document the software requirements.",
+          "To manage the testing schedule."
+        ],
+        "answer": "To provide input values for test cases and validate the software's functionality.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "What is the 'bug life cycle'?",
+        "options": [
+          "The process that a defect goes through from detection to resolution.",
+          "The sequence of events during a test execution.",
+          "The series of stages in software development.",
+          "The process of generating test reports."
+        ],
+        "answer": "The process that a defect goes through from detection to resolution.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What is 'retesting'?",
+        "options": [
+          "Testing the same defect after it has been fixed to ensure it has been resolved.",
+          "Testing new features in the application.",
+          "Performing tests on different versions of the software.",
+          "Testing the application's performance under load."
+        ],
+        "answer": "Testing the same defect after it has been fixed to ensure it has been resolved.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the difference between 'severity' and 'priority' in defect management?",
+        "options": [
+          "Severity refers to the impact of the defect on the system, while priority refers to the urgency of fixing it.",
+          "Severity and priority are the same concepts.",
+          "Severity is determined by the developer, while priority is determined by the tester.",
+          "Priority refers to the impact of the defect on the system, while severity refers to the urgency of fixing it."
+        ],
+        "answer": "Severity refers to the impact of the defect on the system, while priority refers to the urgency of fixing it.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is 'test closure'?",
+        "options": [
+          "The final phase of testing where the test results are reviewed and the test activities are completed.",
+          "The initiation phase of testing.",
+          "The process of designing test cases.",
+          "The phase where bugs are fixed and re-tested."
+        ],
+        "answer": "The final phase of testing where the test results are reviewed and the test activities are completed.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What is 'traceability matrix'?",
+        "options": [
+          "A document that maps and traces user requirements with test cases.",
+          "A report that summarizes the testing results.",
+          "A diagram that illustrates the software architecture.",
+          "A plan outlining the test strategy."
+        ],
+        "answer": "A document that maps and traces user requirements with test cases.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is 'negative testing'?",
+        "options": [
+          "Testing the application with invalid or unexpected inputs to ensure it handles errors gracefully.",
+          "Testing the application with valid inputs to ensure it works correctly.",
+          "Testing the performance of the application under load.",
+          "Testing the application's compliance with business requirements."
+        ],
+        "answer": "Testing the application with invalid or unexpected inputs to ensure it handles errors gracefully.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What is 'positive testing'?",
+        "options": [
+          "Testing the application with valid inputs to ensure it behaves as expected.",
+          "Testing the application's security features.",
+          "Testing the application's performance.",
+          "Testing the application's usability."
+        ],
+        "answer": "Testing the application with valid inputs to ensure it behaves as expected.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is 'user story testing'?",
+        "options": [
+          "Testing based on user stories to ensure that the software meets user requirements.",
+          "Testing the application's performance.",
+          "Testing the application's security features.",
+          "Testing the application's compliance with regulatory standards."
+        ],
+        "answer": "Testing based on user stories to ensure that the software meets user requirements.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "What is 'test strategy'?",
+        "options": [
+          "A high-level document that outlines the approach and objectives of testing.",
+          "A detailed plan for executing individual test cases.",
+          "A report on the results of the testing activities.",
+          "A process for managing the test environment."
+        ],
+        "answer": "A high-level document that outlines the approach and objectives of testing.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What is 'test execution'?",
+        "options": [
+          "The process of running the test cases and comparing the actual results with the expected results.",
+          "The process of designing test cases.",
+          "The process of reporting defects.",
+          "The process of reviewing test documentation."
+        ],
+        "answer": "The process of running the test cases and comparing the actual results with the expected results.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "What is 'functional testing'?",
+        "options": [
+          "Testing the software against the functional requirements and specifications.",
+          "Testing the software's performance and load handling.",
+          "Testing the software's usability and user experience.",
+          "Testing the software's compatibility with different environments."
+        ],
+        "answer": "Testing the software against the functional requirements and specifications.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is 'usability testing'?",
+        "options": [
+          "Testing to ensure the software is user-friendly and meets the end user's needs.",
+          "Testing the software's performance under load.",
+          "Testing the software's compliance with regulatory standards.",
+          "Testing the software's integration with other systems."
+        ],
+        "answer": "Testing to ensure the software is user-friendly and meets the end user's needs.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What is 'security testing'?",
+        "options": [
+          "Testing to identify vulnerabilities and ensure the software is protected against attacks.",
+          "Testing the software's performance and stability.",
+          "Testing the software's functionality and features.",
+          "Testing the software's compatibility with various devices."
+        ],
+        "answer": "Testing to identify vulnerabilities and ensure the software is protected against attacks.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is 'performance testing'?",
+        "options": [
+          "Testing to evaluate how the software performs under various conditions and loads.",
+          "Testing the software's functional requirements.",
+          "Testing the software's usability and user experience.",
+          "Testing the software's compliance with security standards."
+        ],
+        "answer": "Testing to evaluate how the software performs under various conditions and loads.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is 'compatibility testing'?",
+        "options": [
+          "Testing the software to ensure it works correctly on different devices, browsers, and operating systems.",
+          "Testing the software's performance under load.",
+          "Testing the software's functionality against the requirements.",
+          "Testing the software's integration with other systems."
+        ],
+        "answer": "Testing the software to ensure it works correctly on different devices, browsers, and operating systems.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

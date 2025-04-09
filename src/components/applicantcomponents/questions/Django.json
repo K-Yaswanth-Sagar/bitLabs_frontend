@@ -1,0 +1,339 @@
+{
+    "testName": "Django Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Django"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which of the following is the correct way to define a model in Django?",
+        "options": [
+          "class MyModel(models.Model): pass",
+          "class MyModel(Model): pass",
+          "def MyModel(Model): pass",
+          "def MyModel(models.Model): pass"
+        ],
+        "answer": "class MyModel(models.Model): pass"
+      },
+      {
+        "id": 2,
+        "question": "What does the `Meta` class do in a Django model?",
+        "options": [
+          "It defines the database table name.",
+          "It defines the fields in the model.",
+          "It adds metadata to the model.",
+          "It connects the model to a view."
+        ],
+        "answer": "It adds metadata to the model."
+      },
+      {
+        "id": 3,
+        "question": "Which of the following commands is used to create migrations in Django?",
+        "options": [
+          "python manage.py migrate",
+          "python manage.py makemigrations",
+          "python manage.py createsuperuser",
+          "python manage.py runserver"
+        ],
+        "answer": "python manage.py makemigrations"
+      },
+      {
+        "id": 4,
+        "question": "What is the purpose of the `@login_required` decorator in Django?",
+        "options": [
+          "It allows only authenticated users to access a view.",
+          "It allows only staff users to access a view.",
+          "It redirects to a custom URL after login.",
+          "It makes a view accessible to anonymous users."
+        ],
+        "answer": "It allows only authenticated users to access a view."
+      },
+      {
+        "id": 5,
+        "question": "Which of the following is true about Django's ORM?",
+        "options": [
+          "It allows direct SQL queries only.",
+          "It requires manually creating SQL queries.",
+          "It automatically generates SQL queries based on models.",
+          "It does not support relationships between models."
+        ],
+        "answer": "It automatically generates SQL queries based on models."
+      },
+      {
+        "id": 6,
+        "question": "What is the correct way to include a URL pattern in Django?",
+        "options": [
+          "path('home/', views.home, name='home')",
+          "url('home/', views.home, name='home')",
+          "include('home/', views.home, name='home')",
+          "link('home/', views.home, name='home')"
+        ],
+        "answer": "path('home/', views.home, name='home')"
+      },
+      {
+        "id": 7,
+        "question": "Which of the following settings is required to configure static files in Django?",
+        "options": [
+          "MEDIA_URL",
+          "TEMPLATE_DIRS",
+          "STATIC_URL",
+          "DEBUG"
+        ],
+        "answer": "STATIC_URL"
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of the `select_related()` method in Django?",
+        "options": [
+          "To create a new model relationship.",
+          "To improve the performance of queries involving foreign keys.",
+          "To select specific fields from a model.",
+          "To filter results based on a condition."
+        ],
+        "answer": "To improve the performance of queries involving foreign keys."
+      },
+      {
+        "id": 9,
+        "question": "Which of the following is not a valid Django model field?",
+        "options": [
+          "models.CharField",
+          "models.TextField",
+          "models.BooleanField",
+          "models.DateFieldTime"
+        ],
+        "answer": "models.DateFieldTime"
+      },
+      {
+        "id": 10,
+        "question": "How does Django handle database transactions?",
+        "options": [
+          "Django does not support transactions.",
+          "Django manages transactions automatically with autocommit.",
+          "Transactions must be manually managed by the developer.",
+          "Transactions are handled using SQL queries."
+        ],
+        "answer": "Django manages transactions automatically with autocommit."
+      },
+      {
+        "id": 11,
+        "question": "What does the `render()` function do in a Django view?",
+        "options": [
+          "It sends an HTTP response to the client.",
+          "It connects a model to a view.",
+          "It renders an HTML template with a context.",
+          "It generates a new database migration."
+        ],
+        "answer": "It renders an HTML template with a context."
+      },
+      {
+        "id": 12,
+        "question": "Which of the following middleware is responsible for handling sessions in Django?",
+        "options": [
+          "SessionMiddleware",
+          "AuthenticationMiddleware",
+          "CsrfViewMiddleware",
+          "CommonMiddleware"
+        ],
+        "answer": "SessionMiddleware"
+      },
+      {
+        "id": 13,
+        "question": "What is the purpose of the `get_context_data()` method in a Django class-based view?",
+        "options": [
+          "To retrieve data from the database.",
+          "To add extra context to the template.",
+          "To validate form data.",
+          "To render the template with default context."
+        ],
+        "answer": "To add extra context to the template."
+      },
+      {
+        "id": 14,
+        "question": "What is the correct way to define a many-to-many relationship in Django?",
+        "options": [
+          "models.ManyToManyField('RelatedModel')",
+          "models.ForeignKey('RelatedModel')",
+          "models.OneToOneField('RelatedModel')",
+          "models.RelationshipField('RelatedModel')"
+        ],
+        "answer": "models.ManyToManyField('RelatedModel')"
+      },
+      {
+        "id": 15,
+        "question": "Which of the following is true about Django's `reverse()` function?",
+        "options": [
+          "It reverses the order of a queryset.",
+          "It generates a URL from a view name.",
+          "It reverses the order of characters in a string.",
+          "It is used to reverse migrations."
+        ],
+        "answer": "It generates a URL from a view name."
+      },
+      {
+        "id": 16,
+        "question": "What is the difference between `select_related()` and `prefetch_related()` in Django?",
+        "options": [
+          "`select_related()` uses SQL joins, while `prefetch_related()` performs separate queries.",
+          "`select_related()` is faster than `prefetch_related()`.",
+          "`prefetch_related()` is used for single models, while `select_related()` is used for multiple models.",
+          "There is no difference; they are interchangeable."
+        ],
+        "answer": "`select_related()` uses SQL joins, while `prefetch_related()` performs separate queries."
+      },
+      {
+        "id": 17,
+        "question": "Which of the following methods is used to add a custom validation in Django forms?",
+        "options": [
+          "clean_field_name",
+          "validate_field_name",
+          "check_field_name",
+          "test_field_name"
+        ],
+        "answer": "clean_field_name"
+      },
+      {
+        "id": 18,
+        "question": "What will be the result of the following code?\n\nclass MyModel(models.Model):\n    name = models.CharField(max_length=100)\n\n    def __str__(self):\n        return self.name\n\nWhat will `str(MyModel(name='Django'))` return?",
+        "options": [
+          "MyModel object",
+          "Django",
+          "name",
+          "Error"
+        ],
+        "answer": "Django"
+      },
+      {
+        "id": 19,
+        "question": "Which of the following commands is used to start a new Django project?",
+        "options": [
+          "django-admin startproject projectname",
+          "django-admin startapp projectname",
+          "python manage.py startproject projectname",
+          "python manage.py startapp projectname"
+        ],
+        "answer": "django-admin startproject projectname"
+      },
+      {
+        "id": 20,
+        "question": "What does the `blank=True` argument do when used in a Django model field?",
+        "options": [
+          "Allows the field to be left blank in forms.",
+          "Makes the field required in forms.",
+          "Sets a default value for the field.",
+          "Removes the field from the admin panel."
+        ],
+        "answer": "Allows the field to be left blank in forms."
+      },
+      {
+        "id": 21,
+        "question": "Which of the following settings is required to connect Django to a database?",
+        "options": [
+          "DATABASES",
+          "INSTALLED_APPS",
+          "MIDDLEWARE",
+          "TEMPLATES"
+        ],
+        "answer": "DATABASES"
+      },
+      {
+        "id": 22,
+        "question": "What is the purpose of the `slug` field in Django?",
+        "options": [
+          "To create URL-friendly representations of objects.",
+          "To define the primary key of a model.",
+          "To store file paths.",
+          "To create relationships between models."
+        ],
+        "answer": "To create URL-friendly representations of objects."
+      },
+      {
+        "id": 23,
+        "question": "Which of the following methods is used to filter queryset results in Django?",
+        "options": [
+          "filter()",
+          "get()",
+          "exclude()",
+          "all()"
+        ],
+        "answer": "filter()"
+      },
+      {
+        "id": 24,
+        "question": "How can you customize the behavior of the Django admin interface?",
+        "options": [
+          "By defining an `Admin` class in `admin.py`.",
+          "By modifying `settings.py` directly.",
+          "By creating a custom template for the admin interface.",
+          "By overriding the `urls.py` file."
+        ],
+        "answer": "By defining an `Admin` class in `admin.py`."
+      },
+      {
+        "id": 25,
+        "question": "What does the `@csrf_exempt` decorator do in Django?",
+        "options": [
+          "It disables CSRF protection for a specific view.",
+          "It enables CSRF protection for a specific view.",
+          "It checks for CSRF tokens in requests.",
+          "It is used to validate form data."
+        ],
+        "answer": "It disables CSRF protection for a specific view."
+      },
+      {
+        "id": 26,
+        "question": "Which of the following is not a built-in Django template filter?",
+        "options": [
+          "add",
+          "join",
+          "upper",
+          "substring"
+        ],
+        "answer": "substring"
+      },
+      {
+        "id": 27,
+        "question": "How do you define a custom management command in Django?",
+        "options": [
+          "By creating a file in the `management/commands/` directory of an app.",
+          "By adding a method in `views.py`.",
+          "By modifying `settings.py`.",
+          "By creating a new model."
+        ],
+        "answer": "By creating a file in the `management/commands/` directory of an app."
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of Django's `signals` framework?",
+        "options": [
+          "To allow decoupled applications to get notified when certain events occur.",
+          "To define database migrations.",
+          "To handle user authentication.",
+          "To create new database connections."
+        ],
+        "answer": "To allow decoupled applications to get notified when certain events occur."
+      },
+      {
+        "id": 29,
+        "question": "Which of the following commands is used to create a superuser in Django?",
+        "options": [
+          "python manage.py createsuperuser",
+          "python manage.py startsuperuser",
+          "django-admin createsuperuser",
+          "django-admin startsuperuser"
+        ],
+        "answer": "python manage.py createsuperuser"
+      },
+      {
+        "id": 30,
+        "question": "What is the purpose of the `HttpResponseRedirect` class in Django?",
+        "options": [
+          "To redirect to a different URL.",
+          "To render an HTML template.",
+          "To send a JSON response.",
+          "To handle form submissions."
+        ],
+        "answer": "To redirect to a different URL."
+      }
+    ]
+  }
+  

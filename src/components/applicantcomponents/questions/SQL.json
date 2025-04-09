@@ -1,0 +1,339 @@
+{
+    "testName": "SQL MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["SQL"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which SQL clause is used to remove duplicate rows from the result set?",
+        "options": [
+          "DELETE",
+          "DISTINCT",
+          "UNIQUE",
+          "REMOVE"
+        ],
+        "answer": "DISTINCT"
+      },
+      {
+        "id": 2,
+        "question": "What will be the result of the following SQL query?\n```SELECT COUNT(*) FROM employees WHERE salary > 50000;```",
+        "options": [
+          "The number of employees with a salary greater than 50,000",
+          "The total salary of all employees with a salary greater than 50,000",
+          "The number of employees including those with a salary less than 50,000",
+          "An error due to missing GROUP BY clause"
+        ],
+        "answer": "The number of employees with a salary greater than 50,000"
+      },
+      {
+        "id": 3,
+        "question": "Which SQL statement is used to extract a subset of records from a table based on specific criteria?",
+        "options": [
+          "SELECT ... WHERE",
+          "SELECT ... HAVING",
+          "SELECT ... GROUP BY",
+          "SELECT ... ORDER BY"
+        ],
+        "answer": "SELECT ... WHERE"
+      },
+      {
+        "id": 4,
+        "question": "What is the purpose of the HAVING clause in SQL?",
+        "options": [
+          "To filter rows before aggregation",
+          "To filter groups after aggregation",
+          "To filter rows based on conditions before the SELECT statement",
+          "To filter columns in a SELECT statement"
+        ],
+        "answer": "To filter groups after aggregation"
+      },
+      {
+        "id": 5,
+        "question": "Which of the following SQL joins returns all records from the left table and matched records from the right table?",
+        "options": [
+          "INNER JOIN",
+          "LEFT JOIN",
+          "RIGHT JOIN",
+          "FULL OUTER JOIN"
+        ],
+        "answer": "LEFT JOIN"
+      },
+      {
+        "id": 6,
+        "question": "What is the result of the following SQL query?\n```SELECT department, COUNT(*) FROM employees GROUP BY department HAVING COUNT(*) > 5;```",
+        "options": [
+          "All departments with more than 5 employees",
+          "All employees in departments with more than 5 employees",
+          "All departments regardless of employee count",
+          "An error due to missing WHERE clause"
+        ],
+        "answer": "All departments with more than 5 employees"
+      },
+      {
+        "id": 7,
+        "question": "What will the following SQL query return?\n```SELECT * FROM orders WHERE order_date BETWEEN '2024-01-01' AND '2024-12-31';```",
+        "options": [
+          "All orders placed in the year 2024",
+          "All orders placed on January 1, 2024",
+          "All orders placed after December 31, 2024",
+          "All orders placed before January 1, 2024"
+        ],
+        "answer": "All orders placed in the year 2024"
+      },
+      {
+        "id": 8,
+        "question": "Which SQL function is used to combine two or more strings?",
+        "options": [
+          "CONCAT",
+          "COMBINE",
+          "MERGE",
+          "JOIN"
+        ],
+        "answer": "CONCAT"
+      },
+      {
+        "id": 9,
+        "question": "Which of the following SQL keywords is used to retrieve unique values?",
+        "options": [
+          "SELECT DISTINCT",
+          "SELECT UNIQUE",
+          "SELECT DISTINCT ON",
+          "SELECT DIFFERENT"
+        ],
+        "answer": "SELECT DISTINCT"
+      },
+      {
+        "id": 10,
+        "question": "In SQL, what is the purpose of the GROUP BY clause?",
+        "options": [
+          "To aggregate data by groups of rows",
+          "To filter rows by specific conditions",
+          "To combine results of multiple queries",
+          "To sort the results of a query"
+        ],
+        "answer": "To aggregate data by groups of rows"
+      },
+      {
+        "id": 11,
+        "question": "Which of the following SQL queries will return the highest salary from the employees table?",
+        "options": [
+          "SELECT MAX(salary) FROM employees;",
+          "SELECT TOP salary FROM employees;",
+          "SELECT HIGHEST(salary) FROM employees;",
+          "SELECT * FROM employees ORDER BY salary DESC LIMIT 1;"
+        ],
+        "answer": "SELECT MAX(salary) FROM employees;"
+      },
+      {
+        "id": 12,
+        "question": "What does the SQL IN operator do?",
+        "options": [
+          "Filters rows based on a list of values",
+          "Combines two or more SQL statements",
+          "Creates a subquery in the main query",
+          "Performs a join operation"
+        ],
+        "answer": "Filters rows based on a list of values"
+      },
+      {
+        "id": 13,
+        "question": "Which SQL statement is used to remove a table from a database?",
+        "options": [
+          "DROP TABLE",
+          "DELETE TABLE",
+          "TRUNCATE TABLE",
+          "REMOVE TABLE"
+        ],
+        "answer": "DROP TABLE"
+      },
+      {
+        "id": 14,
+        "question": "Which SQL command is used to add a new column to an existing table?",
+        "options": [
+          "ALTER TABLE ... ADD COLUMN",
+          "MODIFY TABLE ... ADD COLUMN",
+          "UPDATE TABLE ... ADD COLUMN",
+          "INSERT INTO TABLE ... ADD COLUMN"
+        ],
+        "answer": "ALTER TABLE ... ADD COLUMN"
+      },
+      {
+        "id": 15,
+        "question": "Which of the following SQL functions can be used to calculate the number of rows in a table?",
+        "options": [
+          "COUNT()",
+          "SUM()",
+          "ROWCOUNT()",
+          "LENGTH()"
+        ],
+        "answer": "COUNT()"
+      },
+      {
+        "id": 16,
+        "question": "Which of the following is a correct SQL statement to create a new index?",
+        "options": [
+          "CREATE INDEX idx_name ON table_name(column_name);",
+          "CREATE idx_name INDEX ON table_name(column_name);",
+          "INDEX CREATE idx_name ON table_name(column_name);",
+          "ADD INDEX idx_name TO table_name(column_name);"
+        ],
+        "answer": "CREATE INDEX idx_name ON table_name(column_name);"
+      },
+      {
+        "id": 17,
+        "question": "What is the result of the following SQL query?\n```SELECT COUNT(*), department FROM employees GROUP BY department HAVING COUNT(*) > 10;```",
+        "options": [
+          "It returns the count of employees for departments with more than 10 employees.",
+          "It returns the total number of employees in all departments.",
+          "It returns all departments regardless of the number of employees.",
+          "It throws an error because COUNT(*) cannot be used with HAVING."
+        ],
+        "answer": "It returns the count of employees for departments with more than 10 employees."
+      },
+      {
+        "id": 18,
+        "question": "Which of the following SQL statements is used to insert data into a table?",
+        "options": [
+          "INSERT INTO",
+          "ADD ROW",
+          "UPDATE",
+          "APPEND"
+        ],
+        "answer": "INSERT INTO"
+      },
+      {
+        "id": 19,
+        "question": "What is the purpose of the SQL RANK() function?",
+        "options": [
+          "To assign a unique rank to each row within a partition of a result set",
+          "To calculate the cumulative sum of a column",
+          "To order rows by a specified column",
+          "To calculate the number of rows in a result set"
+        ],
+        "answer": "To assign a unique rank to each row within a partition of a result set"
+      },
+      {
+        "id": 20,
+        "question": "What does the SQL COALESCE() function do?",
+        "options": [
+          "Returns the first non-null value in a list",
+          "Concatenates two strings",
+          "Calculates the sum of values",
+          "Returns the length of a string"
+        ],
+        "answer": "Returns the first non-null value in a list"
+      },
+      {
+        "id": 21,
+        "question": "Which of the following SQL clauses is used to specify the number of rows to return?",
+        "options": [
+          "LIMIT",
+          "ROWCOUNT",
+          "FETCH",
+          "TOP"
+        ],
+        "answer": "LIMIT"
+      },
+      {
+        "id": 22,
+        "question": "Which SQL function is used to calculate the average value of a numeric column?",
+        "options": [
+          "AVG()",
+          "SUM()",
+          "MEDIAN()",
+          "COUNT()"
+        ],
+        "answer": "AVG()"
+      },
+      {
+        "id": 23,
+        "question": "Which SQL clause is used to filter the results of a query based on a condition?",
+        "options": [
+          "WHERE",
+          "GROUP BY",
+          "ORDER BY",
+          "HAVING"
+        ],
+        "answer": "WHERE"
+      },
+      {
+        "id": 24,
+        "question": "Which SQL join returns only the matching rows from both tables?",
+        "options": [
+          "INNER JOIN",
+          "LEFT JOIN",
+          "RIGHT JOIN",
+          "FULL OUTER JOIN"
+        ],
+        "answer": "INNER JOIN"
+      },
+      {
+        "id": 25,
+        "question": "What is the purpose of the SQL UNION operator?",
+        "options": [
+          "To combine the result sets of two or more SELECT queries",
+          "To join two tables based on a common column",
+          "To filter rows based on a condition",
+          "To update rows in a table"
+        ],
+        "answer": "To combine the result sets of two or more SELECT queries"
+      },
+      {
+        "id": 26,
+        "question": "What will the following SQL query return?\n```SELECT department, SUM(salary) FROM employees GROUP BY department ORDER BY SUM(salary) DESC;```",
+        "options": [
+          "The total salary for each department, ordered by the highest total salary first",
+          "All employees ordered by salary",
+          "The department with the highest salary",
+          "An error due to the SUM function"
+        ],
+        "answer": "The total salary for each department, ordered by the highest total salary first"
+      },
+      {
+        "id": 27,
+        "question": "Which of the following SQL commands is used to remove all rows from a table without deleting the table itself?",
+        "options": [
+          "TRUNCATE TABLE",
+          "DELETE TABLE",
+          "DROP TABLE",
+          "REMOVE TABLE"
+        ],
+        "answer": "TRUNCATE TABLE"
+      },
+      {
+        "id": 28,
+        "question": "What is the difference between the SQL COUNT(*) and COUNT(column_name) functions?",
+        "options": [
+          "COUNT(*) counts all rows, while COUNT(column_name) counts non-null values in the specified column",
+          "COUNT(*) counts all rows, while COUNT(column_name) counts all values in the specified column",
+          "There is no difference between COUNT(*) and COUNT(column_name)",
+          "COUNT(*) is faster than COUNT(column_name)"
+        ],
+        "answer": "COUNT(*) counts all rows, while COUNT(column_name) counts non-null values in the specified column"
+      },
+      {
+        "id": 29,
+        "question": "Which SQL statement is used to change the data type of a column in an existing table?",
+        "options": [
+          "ALTER TABLE ... MODIFY COLUMN",
+          "UPDATE TABLE ... MODIFY COLUMN",
+          "ALTER COLUMN ... MODIFY TABLE",
+          "CHANGE TABLE ... MODIFY COLUMN"
+        ],
+        "answer": "ALTER TABLE ... MODIFY COLUMN"
+      },
+      {
+        "id": 30,
+        "question": "Which SQL function is used to return the number of characters in a string?",
+        "options": [
+          "LENGTH()",
+          "CHAR_COUNT()",
+          "SIZE()",
+          "STRLEN()"
+        ],
+        "answer": "LENGTH()"
+      }
+    ]
+  }
+  

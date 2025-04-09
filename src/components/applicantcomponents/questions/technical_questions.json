@@ -1,0 +1,188 @@
+{
+  "testName": "Technical Test",
+  "duration": "30 mins",
+  "numberOfQuestions": 30,
+  "topicsCovered": ["Programming Skills"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Given the following Python code snippet, what will be the output? \n```\narr = [1, 2, 3, 4, 5]\nresult = 0\nfor i in range(len(arr)):\n    result += arr[i]\nprint(result)\n```",
+      "options": ["10", "11", "12", "15"],
+      "answer": "15"
+    },
+    {
+      "id": 2,
+      "question": "Complete the following pseudo-code to calculate the factorial of a number. \n```function factorial(n)\n    if n == 0 then\n        return 1\n    else\n        return n * factorial(\n```",
+      "options": ["n - 1)", "n + 1)", "n / 2)", "n * 2)"],
+      "answer": "n - 1)"
+    },
+    {
+      "id": 3,
+      "question": "Given the following code snippet in a generic language, what will be the output? \n```\nfunction findMax(arr) {\n    max = arr[0]\n    for i = 1 to length(arr) - 1 do\n        if arr[i] > max then\n            max = arr[i]\n    return max\n}\narr = [3, 7, 2, 8, 5]\nprint(findMax(arr))\n```",
+      "options": ["2", "5", "7", "8"],
+      "answer": "8"
+    },
+    {
+      "id": 4,
+      "question": "Fill in the missing line in the following Python code snippet to reverse a string. \n```\ndef reverse_string(s):\n    return s[\n\nstring = 'hello'\nprint(reverse_string(string))\n```",
+      "options": ["::-1]", "[:]", "[::-1]", "[::2]"],
+      "answer": "[::-1]"
+    },
+    {
+      "id": 5,
+      "question": "What will be the output of the following code snippet? \n```\narr = [1, 2, 3]\nresult = 1\nfor num in arr:\n    result *= num\nprint(result)\n```",
+      "options": ["6", "7", "10", "12"],
+      "answer": "6"
+    },
+    {
+      "id": 6,
+      "question": "Complete the pseudo-code to find the first non-repeating character in a string. \n```\nfunction firstNonRepeatingCharacter(s)\n    count = empty dictionary\n    for char in s do\n        if char not in count then\n            count[char] = 1\n        else\n            count[char] += 1\n    for char in s do\n        if count[char] == \n```",
+      "options": ["1", "0", "2", "3"],
+      "answer": "1"
+    },
+    {
+      "id": 7,
+      "question": "What will be the output of the following code snippet? \n```\nfunction sumArray(arr) {\n    sum = 0\n    for i = 0 to length(arr) - 1 do\n        sum += arr[i]\n    return sum\n}\narr = [5, 10, 15]\nprint(sumArray(arr))\n```",
+      "options": ["15", "20", "25", "30"],
+      "answer": "30"
+    },
+    {
+      "id": 8,
+      "question": "Complete the following Python function to check if a string is a palindrome. \n```\ndef is_palindrome(s):\n    return s == \n\nprint(is_palindrome('racecar'))\n```",
+      "options": ["s[::-1]", "s[1:]", "s[:len(s)//2]", "s[::1]"],
+      "answer": "s[::-1]"
+    },
+    {
+      "id": 9,
+      "question": "Given the following code snippet, what will be the output? \n```\nfunction fibonacci(n)\n    if n <= 1 then\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\nprint(fibonacci(5))\n```",
+      "options": ["5", "8", "13", "21"],
+      "answer": "5"
+    },
+    {
+      "id": 10,
+      "question": "Complete the following pseudo-code to find the maximum product of two elements in an array. \n```\nfunction maxProduct(arr)\n    max1 = -infinity\n    max2 = -infinity\n    for i = 0 to length(arr) - 1 do\n        if arr[i] > max1 then\n            max2 = max1\n            max1 = arr[i]\n        else if arr[i] > max2 then\n            max2 = arr[i]\n    return \n```",
+      "options": ["max1 * max2", "max1 + max2", "max1 - max2", "max1 / max2"],
+      "answer": "max1 * max2"
+    },
+    {
+      "id": 11,
+      "question": "What is the output of the following code snippet? \n```\narr = [1, 2, 3, 4, 5]\nfor i in range(1, len(arr)):\n    print(arr[i - 1] + arr[i])\n```",
+      "options": ["3 5 7 9", "1 3 5 7", "2 4 6 8", "2 4 7 8"],
+      "answer": "3 5 7 9"
+    },
+    {
+      "id": 12,
+      "question": "Complete the following Python function to count the number of occurrences of each character in a string. \n```\ndef count_characters(s):\n    count = {}\n    for char in s:\n        if char in count:\n            count[char] += 1\n        else:\n            count[char] = \n    return count\n\nprint(count_characters('banana'))\n```",
+      "options": ["1", "0", "2", "3"],
+      "answer": "1"
+    },
+    {
+      "id": 13,
+      "question": "What will be the output of the following code snippet? \n```\narr = [10, 20, 30, 40]\nresult = 0\nfor i in arr:\n    result += i * 2\nprint(result)\n```",
+      "options": ["100", "200", "140", "160"],
+      "answer": "200"
+    },
+    {
+      "id": 14,
+      "question": "Fill in the missing line in the following Python code snippet to sort an array in descending order. \n```\narr = [5, 2, 9, 1, 5, 6]\narr.\nprint(arr)\n```",
+      "options": ["sort(reverse=True)", "sort(reverse=False)", "reverse()", "sort()"],
+      "answer": "sort(reverse=True)"
+    },
+    {
+      "id": 15,
+      "question": "What will be the output of the following pseudo-code? \n```\nfunction mergeSort(arr)\n    if length(arr) <= 1 then\n        return arr\n    mid = length(arr) / 2\n    left = mergeSort(arr[0:mid])\n    right = mergeSort(arr[mid:])\n    return merge(left, right)\n\narr = [3, 1, 4, 1, 5, 9]\nprint(mergeSort(arr))\n```",
+      "options": ["[1, 1, 3, 4, 5, 9]", "[9, 5, 4, 3, 1, 1]", "[1, 3, 4, 5, 9, 1]", "[3, 1, 4, 5, 9, 1]"],
+      "answer": "[1, 1, 3, 4, 5, 9]"
+    },
+    {
+      "id": 16,
+      "question": "Complete the following pseudo-code to find the intersection of two arrays. \n```\nfunction intersection(arr1, arr2)\n    result = []\n    for element in arr1 do\n        if element in arr2 then\n            result.append(element)\n    return \n```",
+      "options": ["result", "arr1", "arr2", "None of the above"],
+      "answer": "result"
+    },
+    {
+      "id": 17,
+      "question": "What is the output of the following code snippet? \n```\narr = [1, 2, 3, 4, 5]\nresult = []\nfor i in arr:\n    result.append(i ** 2)\nprint(result)\n```",
+      "options": ["[1, 4, 9, 16, 25]", "[1, 8, 27, 64, 125]", "[1, 2, 3, 4, 5]", "[2, 4, 6, 8, 10]"],
+      "answer": "[1, 4, 9, 16, 25]"
+    },
+    {
+      "id": 18,
+      "question": "Complete the following Python function to remove duplicates from a list. \n```\ndef remove_duplicates(lst):\n    return list(\n\nprint(remove_duplicates([1, 2, 2, 3, 4, 4]))\n```",
+      "options": ["set(lst)", "lst.set()", "list(set(lst))", "unique(lst)"],
+      "answer": "list(set(lst))"
+    },
+    {
+      "id": 19,
+      "question": "What will be the output of the following code snippet? \n```\narr = [1, 3, 5, 7]\nresult = 1\nfor num in arr:\n    result *= num\nprint(result)\n```",
+      "options": ["105", "140", "15", "16"],
+      "answer": "105"
+    },
+    {
+      "id": 20,
+      "question": "Complete the following pseudo-code to check if a number is prime. \n```\nfunction isPrime(n)\n    if n <= 1 then\n        return false\n    for i = 2 to sqrt(n) do\n        if n % i == 0 then\n            return false\n    return \n```",
+      "options": ["true", "false", "n", "1"],
+      "answer": "true"
+    },
+    {
+      "id": 21,
+      "question": "What will be the output of the following code snippet? \n```\narr = [4, 5, 6]\nresult = 0\nfor i in range(len(arr)):\n    result += arr[i] ** 2\nprint(result)\n```",
+      "options": ["77", "56", "52", "47"],
+      "answer": "77"
+    },
+    {
+      "id": 22,
+      "question": "Complete the following Python code snippet to find the largest element in a list. \n```\narr = [10, 20, 30, 40]\nmax_element = arr[0]\nfor i in arr:\n    if i > max_element:\n        max_element = \nprint(max_element)\n```",
+      "options": ["i", "arr[i]", "max_element", "arr[0]"],
+      "answer": "i"
+    },
+    {
+      "id": 23,
+      "question": "What is the output of the following code snippet? \n```\narr = [3, 3, 2, 1]\nresult = 1\nfor num in arr:\n    result *= num\nprint(result)\n```",
+      "options": ["12", "18", "9", "6"],
+      "answer": "18"
+    },
+    {
+      "id": 24,
+      "question": "Complete the following pseudo-code to merge two sorted arrays. \n```\nfunction mergeSortedArrays(arr1, arr2)\n    result = []\n    i = 0\n    j = 0\n    while i < length(arr1) and j < length(arr2) do\n        if arr1[i] < arr2[j] then\n            result.append(arr1[i])\n            i += 1\n        else\n            result.append(arr2[j])\n            j += 1\n    while i < length(arr1) do\n        result.append(arr1[i])\n        i += 1\n    while j < length(arr2) do\n        result.append(arr2[j])\n        j += 1\n    return \n```",
+      "options": ["result", "arr1", "arr2", "sorted(result)"],
+      "answer": "result"
+    },
+    {
+      "id": 25,
+      "question": "What will be the output of the following code snippet? \n```\narr = [1, 2, 3, 4]\nresult = 0\nfor i in range(len(arr) - 1):\n    result += arr[i] * arr[i + 1]\nprint(result)\n```",
+      "options": ["20", "22", "18", "16"],
+      "answer": "20"
+    },
+    {
+      "id": 26,
+      "question": "Complete the following Python code snippet to find the common elements between two lists. \n```\nlist1 = [1, 2, 3, 4]\nlist2 = [3, 4, 5, 6]\ncommon_elements = []\nfor elem in list1:\n    if elem in list2:\n        common_elements.append(\nprint(common_elements)\n```",
+      "options": ["elem", "list2[elem]", "list1[elem]", "list2"],
+      "answer": "elem"
+    },
+    {
+      "id": 27,
+      "question": "What is the output of the following pseudo-code? \n```\nfunction countEvenNumbers(arr)\n    count = 0\n    for num in arr do\n        if num % 2 == 0 then\n            count += 1\n    return count\n\narr = [2, 5, 8, 10, 13]\nprint(countEvenNumbers(arr))\n```",
+      "options": ["2", "3", "4", "5"],
+      "answer": "3"
+    },
+    {
+      "id": 28,
+      "question": "Complete the following pseudo-code to find the average of a list of numbers. \n```\nfunction average(arr)\n    sum = 0\n    for num in arr do\n        sum += num\n    return sum / \n```",
+      "options": ["length(arr)", "len(arr)", "size(arr)", "count(arr)"],
+      "answer": "length(arr)"
+    },
+    {
+      "id": 29,
+      "question": "What will be the output of the following Python code snippet? \n```\ndef sum_recursive(n):\n    if n == 0:\n        return 0\n    return n + sum_recursive(n - 1)\n\nprint(sum_recursive(5))\n```",
+      "options": ["10", "15", "20", "25"],
+      "answer": "15"
+    },
+    {
+      "id": 30,
+      "question": "Complete the following pseudo-code to find the most frequent element in an array. \n```\nfunction mostFrequent(arr)\n    count = empty dictionary\n    for element in arr do\n        if element in count then\n            count[element] += 1\n        else\n            count[element] = 1\n    most_freq = None\n    max_count = 0\n    for key, value in count do\n        if value > max_count then\n            most_freq = key\n            max_count = value\n    return \n```",
+      "options": ["most_freq", "max_count", "key", "value"],
+      "answer": "most_freq"
+    }
+  ]
+}

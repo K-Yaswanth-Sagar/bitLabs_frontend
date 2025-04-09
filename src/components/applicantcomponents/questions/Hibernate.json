@@ -1,0 +1,339 @@
+{
+    "testName": "Hibernate MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Hibernate"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which strategy does Hibernate use by default for fetching collections?",
+        "options": [
+          "Eager fetching",
+          "Lazy fetching",
+          "Subselect fetching",
+          "Join fetching"
+        ],
+        "answer": "Lazy fetching"
+      },
+      {
+        "id": 2,
+        "question": "How does Hibernate handle optimistic locking by default?",
+        "options": [
+          "Using a `version` or `timestamp` column in the entity.",
+          "By locking the table during transactions.",
+          "Using a separate lock table.",
+          "Through a database trigger."
+        ],
+        "answer": "Using a `version` or `timestamp` column in the entity."
+      },
+      {
+        "id": 3,
+        "question": "What is the consequence of using `@OneToMany(mappedBy = 'parent')` in Hibernate?",
+        "options": [
+          "Hibernate will create a foreign key in the child table.",
+          "It establishes a bidirectional relationship where the child side is the owner.",
+          "It results in a table join using the child table’s foreign key.",
+          "The parent entity manages the relationship without additional database constraints."
+        ],
+        "answer": "It establishes a bidirectional relationship where the child side is the owner."
+      },
+      {
+        "id": 4,
+        "question": "What happens when you annotate an entity with `@Cacheable(false)`?",
+        "options": [
+          "The entity is stored in the second-level cache but not the query cache.",
+          "The entity is stored only in the query cache.",
+          "The entity is excluded from both first-level and second-level caching.",
+          "The entity is cached in the first-level cache only."
+        ],
+        "answer": "The entity is excluded from both first-level and second-level caching."
+      },
+      {
+        "id": 5,
+        "question": "Which annotation would you use to map a composite primary key class in Hibernate?",
+        "options": [
+          "`@CompositeKey`",
+          "`@EmbeddedId`",
+          "`@IdClass`",
+          "`@PrimaryKeyJoinColumn`"
+        ],
+        "answer": "`@IdClass`"
+      },
+      {
+        "id": 6,
+        "question": "How can you implement batch processing in Hibernate to improve performance?",
+        "options": [
+          "By using `@BatchSize` annotation.",
+          "By configuring `hibernate.batch_size` in `hibernate.cfg.xml`.",
+          "By disabling second-level cache.",
+          "By using `ScrollableResults` with batch updates."
+        ],
+        "answer": "By configuring `hibernate.batch_size` in `hibernate.cfg.xml`."
+      },
+      {
+        "id": 7,
+        "question": "What is the role of the `Interceptor` interface in Hibernate?",
+        "options": [
+          "To define custom lifecycle callbacks for entities.",
+          "To handle automatic schema generation.",
+          "To intercept SQL queries before execution.",
+          "To perform auditing or logging before and after entity operations."
+        ],
+        "answer": "To perform auditing or logging before and after entity operations."
+      },
+      {
+        "id": 8,
+        "question": "When using Hibernate with a relational database, what does the term 'N+1 select problem' refer to?",
+        "options": [
+          "A performance issue where N+1 queries are executed for fetching a collection.",
+          "A concurrency issue when multiple threads access the same entity.",
+          "A caching issue where N+1 objects are stored in the cache.",
+          "An indexing problem with complex queries."
+        ],
+        "answer": "A performance issue where N+1 queries are executed for fetching a collection."
+      },
+      {
+        "id": 9,
+        "question": "Which of the following is true about the Hibernate `@SecondaryTable` annotation?",
+        "options": [
+          "It maps an entity to multiple tables.",
+          "It maps a composite key to multiple tables.",
+          "It allows lazy loading of secondary tables.",
+          "It is used for subclass entity mapping."
+        ],
+        "answer": "It maps an entity to multiple tables."
+      },
+      {
+        "id": 10,
+        "question": "In a Hibernate `@ManyToMany` relationship, how is the join table typically defined?",
+        "options": [
+          "With the `@JoinColumn` annotation on the owning side.",
+          "With the `@JoinTable` annotation on the owning side.",
+          "With the `@JoinColumns` annotation on the inverse side.",
+          "By default, without the need for an annotation."
+        ],
+        "answer": "With the `@JoinTable` annotation on the owning side."
+      },
+      {
+        "id": 11,
+        "question": "What does the `@DynamicInsert` annotation do in Hibernate?",
+        "options": [
+          "It generates SQL statements at runtime for insert operations.",
+          "It inserts only the non-null properties of an entity.",
+          "It enables batch insertion of records.",
+          "It maps an entity to a dynamic SQL insert procedure."
+        ],
+        "answer": "It inserts only the non-null properties of an entity."
+      },
+      {
+        "id": 12,
+        "question": "Which of the following best describes the `SessionFactory` in Hibernate?",
+        "options": [
+          "A heavyweight object that is responsible for managing database connections.",
+          "A lightweight object used to create database sessions.",
+          "An object used to manage the first-level cache.",
+          "A thread-safe object that provides instances of `Session`."
+        ],
+        "answer": "A thread-safe object that provides instances of `Session`."
+      },
+      {
+        "id": 13,
+        "question": "In Hibernate, what is the purpose of `@NaturalId`?",
+        "options": [
+          "To mark a natural key as unique in the database.",
+          "To define a composite key using multiple fields.",
+          "To map an auto-generated primary key.",
+          "To define a secondary key for an entity."
+        ],
+        "answer": "To mark a natural key as unique in the database."
+      },
+      {
+        "id": 14,
+        "question": "How can you handle a bi-directional `@OneToOne` association in Hibernate?",
+        "options": [
+          "By using the `mappedBy` attribute in one of the entities.",
+          "By defining a foreign key in both tables.",
+          "By using the `@JoinTable` annotation.",
+          "By ensuring both entities are always persisted together."
+        ],
+        "answer": "By using the `mappedBy` attribute in one of the entities."
+      },
+      {
+        "id": 15,
+        "question": "Which Hibernate feature allows you to avoid `SQL Injection` vulnerabilities?",
+        "options": [
+          "Using named queries with positional parameters.",
+          "Using native SQL queries directly.",
+          "By disabling SQL query logging.",
+          "Using `Criteria` API with parameterized queries."
+        ],
+        "answer": "Using `Criteria` API with parameterized queries."
+      },
+      {
+        "id": 16,
+        "question": "What is the default fetching strategy for `@ManyToOne` associations in Hibernate?",
+        "options": [
+          "Eager fetching",
+          "Lazy fetching",
+          "Batch fetching",
+          "Subselect fetching"
+        ],
+        "answer": "Eager fetching"
+      },
+      {
+        "id": 17,
+        "question": "How does Hibernate handle database connection pooling by default?",
+        "options": [
+          "It uses the C3P0 connection pooling library.",
+          "It relies on the application server's connection pool.",
+          "It uses an internal basic connection pool.",
+          "It does not support connection pooling by default."
+        ],
+        "answer": "It uses an internal basic connection pool."
+      },
+      {
+        "id": 18,
+        "question": "What does the `@Polymorphism` annotation specify in Hibernate?",
+        "options": [
+          "It determines how inheritance is mapped in the database.",
+          "It indicates whether a class supports polymorphic queries.",
+          "It defines multiple inheritance strategies.",
+          "It maps polymorphic associations between entities."
+        ],
+        "answer": "It indicates whether a class supports polymorphic queries."
+      },
+      {
+        "id": 19,
+        "question": "In Hibernate, what is the primary purpose of the `Criteria` API?",
+        "options": [
+          "To create type-safe, object-oriented queries.",
+          "To execute native SQL queries.",
+          "To handle database schema generation.",
+          "To define custom entity mappings."
+        ],
+        "answer": "To create type-safe, object-oriented queries."
+      },
+      {
+        "id": 20,
+        "question": "Which of the following best describes the `@Formula` annotation in Hibernate?",
+        "options": [
+          "It defines a derived property in an entity that is calculated at runtime.",
+          "It maps a column to a formula in the database.",
+          "It creates a dynamic SQL function.",
+          "It is used to optimize queries with complex calculations."
+        ],
+        "answer": "It defines a derived property in an entity that is calculated at runtime."
+      },
+      {
+        "id": 21,
+        "question": "What is the effect of setting the `hibernate.hbm2ddl.auto` property to `update`?",
+        "options": [
+          "It updates the schema of the database to match the entity mappings.",
+          "It drops and recreates the database schema on each startup.",
+          "It validates the schema against the entity mappings.",
+          "It logs the SQL statements without executing them."
+        ],
+        "answer": "It updates the schema of the database to match the entity mappings."
+      },
+      {
+        "id": 22,
+        "question": "What is the purpose of the `@DiscriminatorValue` annotation in a Hibernate entity?",
+        "options": [
+          "To specify the value stored in the discriminator column for a particular entity type.",
+          "To define a secondary key used in a joined table inheritance strategy.",
+          "To enable polymorphic associations between entities.",
+          "To provide an alternative name for an entity type."
+        ],
+        "answer": "To specify the value stored in the discriminator column for a particular entity type."
+      },
+      {
+        "id": 23,
+        "question": "What is the significance of the `@Fetch(FetchMode.SUBSELECT)` annotation?",
+        "options": [
+          "It groups multiple queries into a single subselect query.",
+          "It forces Hibernate to use a subselect query for eager fetching.",
+          "It optimizes fetching of collections in many-to-many relationships.",
+          "It caches subselect queries in the second-level cache."
+        ],
+        "answer": "It forces Hibernate to use a subselect query for eager fetching."
+      },
+      {
+        "id": 24,
+        "question": "What does the `@Immutable` annotation do in Hibernate?",
+        "options": [
+          "It marks an entity as read-only, meaning it cannot be updated after being persisted.",
+          "It prevents deletion of the entity from the database.",
+          "It allows Hibernate to cache the entity indefinitely.",
+          "It enforces column-level constraints on the entity."
+        ],
+        "answer": "It marks an entity as read-only, meaning it cannot be updated after being persisted."
+      },
+      {
+        "id": 25,
+        "question": "What is the purpose of the `@Cascade` annotation in Hibernate?",
+        "options": [
+          "To define cascading operations on associated entities.",
+          "To perform batch operations on related entities.",
+          "To control caching behavior of related entities.",
+          "To override the default fetching strategy."
+        ],
+        "answer": "To define cascading operations on associated entities."
+      },
+      {
+        "id": 26,
+        "question": "Which of the following best describes the `@LazyCollection` annotation?",
+        "options": [
+          "It controls the lazy loading behavior of collections.",
+          "It marks a collection as lazy-loaded at the database level.",
+          "It defines a collection to be loaded in batches.",
+          "It is used to map a collection to a subquery."
+        ],
+        "answer": "It controls the lazy loading behavior of collections."
+      },
+      {
+        "id": 27,
+        "question": "What is the purpose of the `@GeneratedValue(strategy = GenerationType.IDENTITY)` annotation?",
+        "options": [
+          "To specify that the database should automatically generate the primary key.",
+          "To define a composite key generation strategy.",
+          "To indicate that the primary key value should be inherited from the parent entity.",
+          "To specify that the key should be generated by a custom generator."
+        ],
+        "answer": "To specify that the database should automatically generate the primary key."
+      },
+      {
+        "id": 28,
+        "question": "Which Hibernate caching mechanism allows sharing the cached entity data across sessions?",
+        "options": [
+          "First-level cache",
+          "Second-level cache",
+          "Query cache",
+          "Entity cache"
+        ],
+        "answer": "Second-level cache"
+      },
+      {
+        "id": 29,
+        "question": "In Hibernate, what does the `@Proxy` annotation control?",
+        "options": [
+          "It defines whether lazy loading should use proxy objects.",
+          "It specifies the use of dynamic proxies for collections.",
+          "It controls the caching behavior of entities.",
+          "It maps an entity to a proxy table."
+        ],
+        "answer": "It defines whether lazy loading should use proxy objects."
+      },
+      {
+        "id": 30,
+        "question": "What is the effect of setting the `@DynamicUpdate` annotation on an entity?",
+        "options": [
+          "It ensures that only the modified fields are included in the SQL `UPDATE` statement.",
+          "It dynamically updates the entity schema at runtime.",
+          "It enables batch update operations on the entity.",
+          "It allows Hibernate to bypass the transaction context during updates."
+        ],
+        "answer": "It ensures that only the modified fields are included in the SQL `UPDATE` statement."
+      }
+    ]
+  }
+  

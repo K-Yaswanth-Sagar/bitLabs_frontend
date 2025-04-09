@@ -1,0 +1,369 @@
+{
+    "testName": "Vue.js MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["Vue.js"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the purpose of the `v-bind` directive in Vue.js?",
+        "options": [
+          "To bind an attribute to an expression.",
+          "To create a two-way data binding.",
+          "To render a list of items.",
+          "To handle user input events."
+        ],
+        "answer": "To bind an attribute to an expression.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "What is a Vue instance used for?",
+        "options": [
+          "To create a new Vue application and manage its data and behavior.",
+          "To define components in Vue.",
+          "To perform server-side rendering.",
+          "To handle routing in Vue applications."
+        ],
+        "answer": "To create a new Vue application and manage its data and behavior.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "Which lifecycle hook is called after the Vue instance has been mounted to the DOM?",
+        "options": [
+          "mounted",
+          "created",
+          "updated",
+          "destroyed"
+        ],
+        "answer": "mounted",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "What is the role of the `v-for` directive in Vue.js?",
+        "options": [
+          "To render a list of items based on an array.",
+          "To bind an event handler to an element.",
+          "To conditionally render elements.",
+          "To update the DOM when the data changes."
+        ],
+        "answer": "To render a list of items based on an array.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "How do you define a component in Vue.js?",
+        "options": [
+          "By using the `Vue.component` method or the `components` option in a Vue instance.",
+          "By creating a new Vue instance with the `new Vue()` constructor.",
+          "By defining a class that extends `Vue`.",
+          "By using a directive within the Vue instance."
+        ],
+        "answer": "By using the `Vue.component` method or the `components` option in a Vue instance.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is Vuex used for in a Vue.js application?",
+        "options": [
+          "For state management across components.",
+          "For routing and navigation.",
+          "For component styling.",
+          "For server-side rendering."
+        ],
+        "answer": "For state management across components.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How do you perform dynamic component rendering in Vue.js?",
+        "options": [
+          "By using the `component` directive with a variable component name.",
+          "By using the `v-for` directive to loop through components.",
+          "By manually creating component instances in the Vue instance.",
+          "By using `v-bind` to bind the component's name."
+        ],
+        "answer": "By using the `component` directive with a variable component name.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of the `v-model` directive in Vue.js?",
+        "options": [
+          "To create two-way data binding between form elements and data.",
+          "To conditionally render elements based on a boolean expression.",
+          "To bind a class or style to an element.",
+          "To handle user events such as clicks."
+        ],
+        "answer": "To create two-way data binding between form elements and data.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the `created` lifecycle hook used for in Vue.js?",
+        "options": [
+          "To perform actions immediately after the Vue instance is created, before the DOM is rendered.",
+          "To handle component updates.",
+          "To clean up resources before the Vue instance is destroyed.",
+          "To render components conditionally."
+        ],
+        "answer": "To perform actions immediately after the Vue instance is created, before the DOM is rendered.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "How do you pass data to a child component in Vue.js?",
+        "options": [
+          "By using props.",
+          "By defining a `data` option in the child component.",
+          "By emitting events from the parent.",
+          "By accessing the Vuex store directly."
+        ],
+        "answer": "By using props.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "What is `v-slot` used for in Vue.js?",
+        "options": [
+          "To provide a slot for dynamic content in a component.",
+          "To bind an attribute to an expression.",
+          "To conditionally render elements based on an expression.",
+          "To handle events from child components."
+        ],
+        "answer": "To provide a slot for dynamic content in a component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "How do you access the properties of a Vue component instance from within the template?",
+        "options": [
+          "By using `this` keyword.",
+          "By using `this.$props`.",
+          "By using the `data` object.",
+          "By directly accessing the `props` object."
+        ],
+        "answer": "By using `this` keyword.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What does the `v-bind:class` directive do in Vue.js?",
+        "options": [
+          "Dynamically binds one or more classes to an element based on an expression.",
+          "Binds a CSS style to an element.",
+          "Conditionally renders an element based on a class.",
+          "Sets static classes on an element."
+        ],
+        "answer": "Dynamically binds one or more classes to an element based on an expression.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What is the purpose of `Vue Router`?",
+        "options": [
+          "To manage routing and navigation in a Vue.js application.",
+          "To handle state management.",
+          "To perform server-side rendering.",
+          "To manage component lifecycle."
+        ],
+        "answer": "To manage routing and navigation in a Vue.js application.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "What is `Vue CLI`?",
+        "options": [
+          "A command-line interface for scaffolding and managing Vue.js projects.",
+          "A tool for compiling Vue.js code.",
+          "A library for Vue.js components.",
+          "A server-side rendering framework for Vue.js."
+        ],
+        "answer": "A command-line interface for scaffolding and managing Vue.js projects.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "How do you handle asynchronous operations in Vue.js?",
+        "options": [
+          "By using promises or async/await syntax in methods.",
+          "By using synchronous methods in the Vue instance.",
+          "By emitting events to handle asynchronous tasks.",
+          "By using the `setTimeout` function."
+        ],
+        "answer": "By using promises or async/await syntax in methods.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What is a `computed` property in Vue.js?",
+        "options": [
+          "A property that is cached and recalculated only when its dependencies change.",
+          "A property that is dynamically generated on each render.",
+          "A property that can only be used in components.",
+          "A property that holds static values."
+        ],
+        "answer": "A property that is cached and recalculated only when its dependencies change.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "What is the purpose of `mixins` in Vue.js?",
+        "options": [
+          "To reuse code across multiple components.",
+          "To define component styles.",
+          "To handle component lifecycle events.",
+          "To manage routing and navigation."
+        ],
+        "answer": "To reuse code across multiple components.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "How do you register global components in Vue.js?",
+        "options": [
+          "By using the `Vue.component` method.",
+          "By importing them in the `data` option of the Vue instance.",
+          "By defining them in the `methods` option.",
+          "By using the `components` option within each component."
+        ],
+        "answer": "By using the `Vue.component` method.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What does the `v-on` directive do?",
+        "options": [
+          "Binds event listeners to elements.",
+          "Binds data to elements.",
+          "Conditionally renders elements.",
+          "Loops through arrays to render lists."
+        ],
+        "answer": "Binds event listeners to elements.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "What is the purpose of `Vue's reactivity system`?",
+        "options": [
+          "To automatically update the DOM when the data changes.",
+          "To handle routing and navigation.",
+          "To manage component lifecycle events.",
+          "To handle asynchronous operations."
+        ],
+        "answer": "To automatically update the DOM when the data changes.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "How do you create a mixin in Vue.js?",
+        "options": [
+          "By defining an object with methods, data, and lifecycle hooks.",
+          "By using a Vue component's `components` option.",
+          "By creating a new Vue instance.",
+          "By importing a module with Vue methods."
+        ],
+        "answer": "By defining an object with methods, data, and lifecycle hooks.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is the purpose of `asyncData` in Nuxt.js?",
+        "options": [
+          "To fetch data asynchronously before rendering a page component.",
+          "To handle client-side navigation.",
+          "To manage global state.",
+          "To define routes for server-side rendering."
+        ],
+        "answer": "To fetch data asynchronously before rendering a page component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "How can you create custom directives in Vue.js?",
+        "options": [
+          "By using the `Vue.directive` method.",
+          "By defining directives in the `data` option.",
+          "By using the `v-bind` directive.",
+          "By creating a new Vue component."
+        ],
+        "answer": "By using the `Vue.directive` method.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What is the difference between `v-show` and `v-if`?",
+        "options": [
+          "`v-show` toggles visibility with CSS, while `v-if` conditionally renders elements.",
+          "`v-show` conditionally renders elements, while `v-if` toggles visibility with CSS.",
+          "Both directives perform the same function.",
+          "`v-show` is used for binding attributes, while `v-if` is used for handling events."
+        ],
+        "answer": "`v-show` toggles visibility with CSS, while `v-if` conditionally renders elements.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "How do you use Vue.js with TypeScript?",
+        "options": [
+          "By installing the `vue-class-component` package and using class-style components.",
+          "By using JavaScript syntax in Vue components.",
+          "By installing the `vue-tsx-support` package.",
+          "By using TypeScript in the Vue CLI configuration only."
+        ],
+        "answer": "By installing the `vue-class-component` package and using class-style components.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What is the purpose of `provide` and `inject` in Vue.js?",
+        "options": [
+          "To pass data from a parent component to a deeply nested child component.",
+          "To handle event handling between components.",
+          "To manage global state in Vuex.",
+          "To perform asynchronous operations."
+        ],
+        "answer": "To pass data from a parent component to a deeply nested child component.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "How do you handle errors in Vue.js components?",
+        "options": [
+          "By using `errorCaptured` and `errorHandler` lifecycle hooks.",
+          "By using try-catch blocks in methods.",
+          "By using the `v-if` directive to check for errors.",
+          "By using the `console.error` method."
+        ],
+        "answer": "By using `errorCaptured` and `errorHandler` lifecycle hooks.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is `v-bind:style` used for in Vue.js?",
+        "options": [
+          "To dynamically bind inline styles to an element.",
+          "To conditionally apply classes to an element.",
+          "To set static styles on an element.",
+          "To bind a style class to an element."
+        ],
+        "answer": "To dynamically bind inline styles to an element.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "What is the difference between `v-bind` and `v-model`?",
+        "options": [
+          "`v-bind` binds attributes and props to an expression, while `v-model` creates two-way data binding for form elements.",
+          "`v-bind` creates two-way data binding, while `v-model` binds attributes and props.",
+          "Both `v-bind` and `v-model` serve the same purpose.",
+          "`v-bind` is used for event handling, while `v-model` is used for data binding."
+        ],
+        "answer": "`v-bind` binds attributes and props to an expression, while `v-model` creates two-way data binding for form elements.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

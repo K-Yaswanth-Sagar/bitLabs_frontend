@@ -1,0 +1,322 @@
+.verified-badges-container1 {
+  /* padding: 15px; */
+  /* background-color: #f4f8fb; */
+}
+
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subtitle1 {
+  color: #000;
+font-family: "Plus Jakarta Sans";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 26px; 
+}
+
+.description1 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.progress-bar1 {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+
+}
+
+.step1 {
+  text-align: center;
+}
+
+.step1 .circle1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #fff;
+  line-height: 30px;
+  margin-bottom: 8px;
+  margin-left: 40px;
+}
+
+.step1.active1 .circle1 {
+  background-color: #22c55e; 
+}
+
+.test-card1 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  height: auto;
+}
+
+.test-info {
+  flex: 1; 
+}
+
+.test-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.test-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.test-action1 {
+  margin-right: 20px;
+  justify-content: flex-start;
+  margin-top: 20px; 
+  
+}
+
+.take-test-button1 {
+  background-color: #f46f16;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  
+}
+
+.take-test-button1:hover {
+  background-color: #d65c10;
+}
+
+.test-image1 {
+  margin-left: 20px; 
+}
+
+.test-image1 img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Skill Badge style starts here*/
+
+.skill-badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Adjust the gap between cards */
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
+.skillBadgeHeading{
+ 
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.skill-badge-card {
+  background: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  text-align: center;
+  width: 180px;
+  height: 220px;
+  margin-bottom: 10px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 750px) {
+  .skill-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px; /* Even smaller gap for narrow screens */
+    justify-content: flex-start; /* Align items to the left */
+    padding-left: 22px; /* Add padding for space on the left */
+  }
+  .skillBadgeHeading{
+    padding-left: 45px;
+  }
+  /* Align the last card in the last row to the left when odd */
+  .skill-badge-container .skill-badge-card:nth-last-child(odd) {
+    margin-left: 0; 
+   
+  }
+
+}
+
+@media (max-width: 380px) {
+  .skill-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px; /* Even smaller gap for narrow screens */
+    justify-content: flex-start; /* Align items to the left */
+    padding-left: 22px; /* Add padding for space on the left */
+  }
+
+  .col-lg-10.col-md-12 {
+    padding: 0px; /* Remove padding on very small screens */
+  }
+
+  .skillBadgeHeading {
+    padding-left: 25px;
+  }
+
+  .skill-badge-card {
+    background: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    text-align: center;
+    width: 170px;
+    height: 220px;
+    margin-bottom: 12px;
+  }
+
+  /* Align the last card in the last row to the left when odd */
+  .skill-badge-container .skill-badge-card:nth-last-child(odd) {
+    margin-left: 0; 
+   
+  }
+}
+
+
+  
+  
+
+.badge {
+  background: #FFFFFF;
+  color: #000000;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600px;
+  
+}
+
+.status {
+  font-size: 14px;
+  color: #555;
+}
+
+.skill-required-card h5 {
+  margin: 0;
+}
+
+
+
+/* Top section: Status */
+.status {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.status-passed {
+  background-color: #E4FFE4; /* Green for passed */
+  color: #0A8D08;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 4px 6px;
+  
+}
+
+.status-failed {
+  background-color: #FEE9E9; /* Red for failed */
+  color:red;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 4px 6px;
+  
+}
+
+.status-empty {
+  visibility: hidden; /* Makes the element invisible but retains its space */
+height: 25px; /* Keeps the space */
+background-color: transparent;
+}
+
+/* Second section: Badge */
+.badge {
+  text-align: center;
+  
+  
+}
+
+.skill-image {
+  width: 60px;
+  height: 90px;
+}
+
+.skill-name {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+/* Third section: Test actions */
+.test {
+text-align: left;
+margin-top: 20px;
+
+}
+
+.test-action {
+padding: 20px;
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 16px;
+cursor: pointer; 
+border: none;
+text-align: left;
+border-bottom-left-radius: 8px; /* Bottom left radius */
+border-bottom-right-radius: 8px; /* Bottom right radius */
+height: 53px;
+}
+
+.test-action.take {
+background-color: #374A70; /* Take test background */
+color: white;
+}
+
+.test-action.retake {
+background-color: #BEC0C1; /* Retake test background */
+color: black;
+}
+
+.test-action.verified {
+background-color: #0A8D08; /* Verified background */
+color: white;
+align-items: center;
+}
+
+.tick-mark {
+align-items: center;
+color: white;
+margin-left: 30px;
+}
+
+.external-link-symbol {
+
+font-size: 14px;
+}
+
+
+
+/* skill badge style ends here*/

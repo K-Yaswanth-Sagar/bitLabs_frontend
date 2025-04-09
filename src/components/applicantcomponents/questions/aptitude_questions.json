@@ -1,0 +1,204 @@
+{
+  "testName": "General Aptitude Test",
+  "duration": "1 hr",
+  "numberOfQuestions": 30,
+  "topicsCovered": ["Arithmetic", "Reasoning", "Comprehension"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Nayak is staying at a hotel that charges $10 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Nayak's total charge, in dollars, for staying x nights?",
+      "options": ["1ASCIIMATH=(10+0.08x)+5", "ASCIIMATH=1.08(10x)+5", "ASCIIMATH=1.08(10x+5)", "ASCIIMATH=1.08(10+5)x"],
+      "answer": "ASCIIMATH=1.08(10x)+5"
+    },
+    {
+      "id": 2,
+      "question": "Mary is 8 years older than John. In 4 years, John will be half Mary's age. How old is John now?",
+      "options": ["4 years", "12 years", "14 years", "16 years"],
+      "answer": "4 years"
+    },
+    {
+      "id": 3,
+      "question": "A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?",
+      "options": ["120 Metres", "180 Metres", "324 Metres", "150 Metres"],
+      "answer": "150 Metres"
+    },
+    {
+      "id": 4,
+      "question": "The sum of the ages of John and Jane is 40 years. John is twice as old as Jane. How old are John and Jane?",
+      "options": ["John: 20 years, Jane: 20 years", "John: 30 years, Jane: 10 years", "John: 26 years, Jane: 13 years", "John: 18 years, Jane: 22 years"],
+      "answer": "John: 26 years, Jane: 13 years"
+    },
+    {
+      "id": 5,
+      "question": "A gym charges a membership fee of $30 per month plus an additional tax of 5% on the membership fee. The gym also charges a onetime registration fee of $20, which is not taxed. Which of the following represents the total charge, in dollars, for a person who stays for y months?",
+      "options": ["ASCIIMATH=30y + 0.05(30) + 20", "ASCIIMATH=1.05(30y) + 20", "ASCIIMATH=30(1+0.05y) + 20", "ASCIIMATH=1.05(30 + 20)y"],
+      "answer": "ASCIIMATH=1.05(30y) + 20"
+    },
+    {
+      "id": 6,
+      "question": "The tariffs for crossing a part of highway are $8.50 for a bike and $10 for a car. During a two-hour period, a total of 187 bikes and cars crossed the bridge, and the total collected in tariffs was $1,338. Solving which of the following systems of equations yields the number of bikes, x, and the number of cars, y, that crossed the bridge during the two hours?",
+      "options": ["ASCIIMATH=x + y = 187 and 18.5x + 10y = 1338/2", "ASCIIMATH=x + y = 187 and 8.5x + 10y = 1338/2", "ASCIIMATH=x + y = 187 and 8.5x +10y = 1338", "ASCIIMATH=x + y = 187 and 8.5x + 10y = 1338 * 2"],
+      "answer": "ASCIIMATH=x + y = 187 and 8.5x +10y = 1338"
+    },
+
+    {
+      "id": 7,
+      "question": "The price of 4 mangoes, 6 coconuts and 8 apples is Rs. 30. The price of 3 mangoes, 2 coconuts and 1 apple is Rs. 10. What will be price of 4 oranges, 4 bananas and 4 apples ?",
+      "options": ["10", "15", "20", "25"],
+      "answer": "20"
+    },
+    
+    {
+      "id": 8,
+      "question": "A pair of shirts that regularly costs forty dollars is on sale for 30% off. As part of a promotion, each customer will also receive an additional discount on the marked sale price at the cash register. If the final price of the shirts was $ 22.40, what additional discount was applied to the marked sale price ?",
+      "options": ["12", "20", "49", "25"],
+      "answer": "20"
+    },
+    {
+      "id": 9,
+      "question": "Today Raju opened a new corn flakes box. He ate a bowl of the corn flakes, which was 18% of the entire box. Approximately how many more bowls of corn flakes can Raju expect to get from this box if he continues to eat the same amount of corn flakes in each bowl?",
+      "options": ["11.5 bowls", "8 bowls", "12.5 bowls", "4.56 bowls"],
+      "answer": "4.56 bowls"
+    }
+    ,
+    {
+      "id": 10,
+      "question": "If  W-W-W = 40,  X - X - X = 20, Y - Y - Y = 15 and Z - Z - Z = 25 then find the value of  W + X + Y + Z = ?",
+      "options": ["50", "-20", "-60", "-100"],
+      "answer": "50"
+    }
+    ,
+    {
+      "id": 11,
+      "question": "Three Indians, 4 Chinese and 6 Americans can complete a work in 7 days. A Chinese does double the work an Indian does and a American does half the work an Indian does. How many Chinese alone can complete this work in 7 days  ?",
+      "options": ["6", "9", "5", "7"],
+      "answer": "7"
+    }
+    ,
+    {
+      "id": 12,
+      "question": "A salesman sold an object at a loss of 8% but when he increased the selling price by Rs.65 he gained 2% on the cost price. If he sells the same article at Rs. 900, what is the profit percentage?",
+      "options": ["15%", "16.66%", "18.54%", "38%"],
+      "answer": "18.54%"
+    }
+    ,
+    {
+      "id": 13,
+      "question": "An investment grew by 12% in the first year and then decreased by 9% in the second year. If the initial investment was $1,000, what is the value of the investment at the end of the second year?",
+      "options": ["$1,019.20", "$1,118.00", "$1,589.87", "$1,119.23"],
+      "answer": "$1,019.20"
+    }
+    ,
+    {
+      "id": 14,
+      "question": "A company's stock price increased by 8% in the first quarter and decreased by 5% in the second quarter. If the stock was initially worth $150 per share, what is the new price per share at the end of the second quarter?",
+      "options": ["$142.50", "$143.75", "$153.90", " $146.25"],
+      "answer": "$153.90"
+    }
+   ,
+    {
+      "id": 15,
+      "question": "A can complete a task in 9 days, and B can complete the same task in 6 days. They work together for 3 days and then A leaves. How many more days will it take for B to complete the task?",
+      "options": ["2 days  ", "3 days  ", "4 days  ", " 5 days  "],
+      "answer": "4 days  "
+    }
+   ,
+    {
+      "id": 16,
+      "question": "If the longest distance between any to vertex of a cube is 12 cm. Then what will be it's volume?",
+      "options": ["192 * sqrt(3)", "64 * sqrt(3)", "20 * sqrt(3)", "62 * sqrt(3)"],
+      "answer": "64 * sqrt(3)"
+    }
+    ,
+    {
+      "id": 17,
+      "question": " retailer marked up a product by 40% and then offered a 25% discount. Calculate the actual profit percentage.",
+      "options": ["ASCIIMATH=x + y = 5%", "ASCIIMATH=x + y = 7%", "ASCIIMATH=x + y = 9%", "ASCIIMATH=x + y = 3%"],
+      "answer": "ASCIIMATH=x + y = 5%"
+    },
+    {
+      "id": 18,
+      "question": "A trader bought four identical items for $100 each. He sold two of them at a profit of 15% each and the other two at a loss of 10% each. Find the overall profit or loss percentage.",
+      "options": ["2.5%", "5.2%", "4.6%", "3.1%"],
+      "answer": "2.5%"
+    },
+    {
+      "id": 19,
+      "question": "An instrument store gives a 20% discount to all students off the original cost of an instrument. During a back to school sale an additional 25% is taken off the discounted price. Julie, a student at the local high school, purchases a flute for $400. How much did it originally cost?",
+      "options": ["666.67", "333.34", "400", "450"],
+      "answer": "666.67"
+    },
+    {
+      "id": 20,
+      "question": "What should come in place of question mark (?) in the following number series? 462       506        ?         600          650          702 ",
+      "options": ["566", "550", "552", "548"],
+      "answer": "552"
+    }
+    ,
+    {
+      "id": 21,
+      "question": "How many 2-digit numbers can be formed using the digits 2, 3, 4, and 5 without repetition? ",
+      "options": ["6", "8", "12", "16"],
+      "answer": "12"
+    },
+    {
+      "id": 22,
+      "question": "A solution contains 20% vinegar. How many liters of water must be added to 3 liters of this solution to make it a 5% vinegar solution?",
+      "options": ["9", "3", "5", "4"],
+      "answer": "9"
+    },
+    {
+      "id": 23,
+      "question": "A mixture of lemonade and water contains 15% lemonade. If there are 6 liters of the mixture, how many liters of lemonade are there?",
+      "options": ["0.9", "1.5", "0.5", "2.0"],
+      "answer": "0.9"
+    },
+    {
+      "id": 24,
+      "question": "Ram sell his goods 25% cheaper than Shyam and 25% dearer than Bram. How much % is Bram's good cheaper than Shyam?",
+      "options": ["6.25", "5.78", "8.91", "4.25"],
+      "answer": "6.25"
+    },
+    {
+      "id": 25,
+      "question": "A bag contains 4 red and 3 black balls. A second bag contains 2 red and 4 black balls. One bag is selected at random. From the selected bag, one ball is drawn. Find the probability that the ball drawn is red.",
+      "options": ["23/42", "19/42", "7/32", "16/39"],
+      "answer": "19/42"
+    }
+    ,
+    {
+      "id": 26,
+      "question": "A pump can fill a tank with water in 2 hours. Because of a leak, it took 2 1/3 hours to fill the tank. The leak can drain all the water of the tank in:",
+      "options": ["7 hours", "8 hours", "12 hours", "14 hours"],
+      "answer": "14 hours"
+    }
+    ,
+    {
+      "id": 27,
+      "question": "In a group of persons travelling in a bus, 6 persons can speak Tamil, 15 can speak Hindi and 6 can speak Gujarati. In that group, none can speak any other language. If 2 persons in the group can speak two languages and one person can speak all the three languages, then how many persons are there in the group?",
+      "options": ["21", "22", "25", "24"],
+      "answer": "25"
+    }
+    ,
+    {
+      "id": 28,
+      "question": "Guess the next number  56, 72, 90, 110, .........",
+      "options": ["122", "132", "120", "130"],
+      "answer": "132"
+    }
+    ,
+    {
+      "id": 29,
+      "question": "There is a clock which shows false timing i.e it shows 20 minutes less for each 1 hour. If the clock shows 12 noon now how many minutes will be lost when it shows 2 pm ?",
+      "options": ["36 minutes", "48 minutes", "35 minutes", "40 minutes"],
+      "answer": "40 minutes"
+    }
+    ,
+    {
+      "id": 30,
+      "question": "How many times are the hands of a clock at right angle in a week?",
+      "options": ["352", "336", "264", "220"],
+      "answer": "336"
+    }
+  ]
+}

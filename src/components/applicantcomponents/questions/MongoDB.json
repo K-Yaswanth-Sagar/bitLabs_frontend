@@ -1,0 +1,369 @@
+{
+    "testName": "MongoDB MCQ Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["MongoDB"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the primary data structure used by MongoDB?",
+        "options": [
+          "Document",
+          "Table",
+          "Row",
+          "Object"
+        ],
+        "answer": "Document",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 2,
+        "question": "Which command is used to create a new collection in MongoDB?",
+        "options": [
+          "db.createCollection()",
+          "db.newCollection()",
+          "db.create()",
+          "db.collection()"
+        ],
+        "answer": "db.createCollection()",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 3,
+        "question": "What is the purpose of the MongoDB query operator $gt?",
+        "options": [
+          "To find documents where a field is greater than a specified value.",
+          "To find documents where a field is less than a specified value.",
+          "To find documents where a field is equal to a specified value.",
+          "To find documents where a field is not equal to a specified value."
+        ],
+        "answer": "To find documents where a field is greater than a specified value.",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 4,
+        "question": "Which method is used to update documents in a MongoDB collection?",
+        "options": [
+          "db.collection.update()",
+          "db.collection.modify()",
+          "db.collection.edit()",
+          "db.collection.change()"
+        ],
+        "answer": "db.collection.update()",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 5,
+        "question": "How can you retrieve the first document from a MongoDB collection?",
+        "options": [
+          "db.collection.findOne()",
+          "db.collection.first()",
+          "db.collection.find().limit(1)",
+          "db.collection.head()"
+        ],
+        "answer": "db.collection.findOne()",
+        "difficulty": "moderate"
+      },
+      {
+        "id": 6,
+        "question": "What is the default behavior of MongoDB’s find() method if no query condition is provided?",
+        "options": [
+          "It returns all documents in the collection.",
+          "It returns the first document in the collection.",
+          "It returns an empty result set.",
+          "It returns a list of collection names."
+        ],
+        "answer": "It returns all documents in the collection.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 7,
+        "question": "How does MongoDB handle data consistency in a replica set?",
+        "options": [
+          "Data consistency is maintained through automatic replication and synchronization across replica set members.",
+          "Consistency is ensured by manual synchronization of data.",
+          "Data consistency is not a concern in MongoDB’s replica set.",
+          "Consistency is maintained through client-side locking mechanisms."
+        ],
+        "answer": "Data consistency is maintained through automatic replication and synchronization across replica set members.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 8,
+        "question": "Which MongoDB command is used to remove a single document from a collection?",
+        "options": [
+          "db.collection.deleteOne()",
+          "db.collection.removeOne()",
+          "db.collection.drop()",
+          "db.collection.delete()"
+        ],
+        "answer": "db.collection.deleteOne()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 9,
+        "question": "What is the purpose of the $aggregate pipeline stage in MongoDB?",
+        "options": [
+          "To perform data aggregation operations such as grouping, sorting, and filtering.",
+          "To create new indexes on the collection.",
+          "To update multiple documents at once.",
+          "To delete documents based on specific criteria."
+        ],
+        "answer": "To perform data aggregation operations such as grouping, sorting, and filtering.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 10,
+        "question": "What does the MongoDB operator $lookup do?",
+        "options": [
+          "Performs a left outer join to another collection.",
+          "Looks up documents by their unique identifier.",
+          "Fetches documents from the specified collection.",
+          "Finds the most recent document in a collection."
+        ],
+        "answer": "Performs a left outer join to another collection.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 11,
+        "question": "Which MongoDB command is used to index a field in a collection for faster queries?",
+        "options": [
+          "db.collection.createIndex()",
+          "db.collection.addIndex()",
+          "db.collection.index()",
+          "db.collection.makeIndex()"
+        ],
+        "answer": "db.collection.createIndex()",
+        "difficulty": "hard"
+      },
+      {
+        "id": 12,
+        "question": "How does MongoDB ensure that a write operation is acknowledged by the primary member of the replica set?",
+        "options": [
+          "By using the write concern option to specify the level of acknowledgment required.",
+          "By using a manual acknowledgment process by the user.",
+          "By default, MongoDB always waits for acknowledgment from all replica set members.",
+          "By using a time-based acknowledgment mechanism."
+        ],
+        "answer": "By using the write concern option to specify the level of acknowledgment required.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 13,
+        "question": "What is the purpose of the $unwind stage in a MongoDB aggregation pipeline?",
+        "options": [
+          "To deconstruct an array field into separate documents.",
+          "To merge multiple documents into a single document.",
+          "To filter documents based on array values.",
+          "To sort documents by array length."
+        ],
+        "answer": "To deconstruct an array field into separate documents.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 14,
+        "question": "What does the MongoDB operator $match do?",
+        "options": [
+          "Filters documents based on specified criteria.",
+          "Sorts documents in ascending or descending order.",
+          "Groups documents based on specific fields.",
+          "Joins documents from different collections."
+        ],
+        "answer": "Filters documents based on specified criteria.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 15,
+        "question": "How does MongoDB handle schema validation?",
+        "options": [
+          "Through schema validation rules defined using JSON schema or validation rules.",
+          "By enforcing a fixed schema for all collections.",
+          "Schema validation is not supported in MongoDB.",
+          "By automatically inferring schema based on data inserted."
+        ],
+        "answer": "Through schema validation rules defined using JSON schema or validation rules.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 16,
+        "question": "What is the use of the $project stage in MongoDB’s aggregation pipeline?",
+        "options": [
+          "To include or exclude fields from documents.",
+          "To group documents based on specific fields.",
+          "To sort documents by a particular field.",
+          "To join documents from multiple collections."
+        ],
+        "answer": "To include or exclude fields from documents.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 17,
+        "question": "What is the purpose of the MongoDB $text index?",
+        "options": [
+          "To enable text search within string content.",
+          "To index numeric fields for faster queries.",
+          "To enforce unique constraints on document fields.",
+          "To create a geospatial index for location-based queries."
+        ],
+        "answer": "To enable text search within string content.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 18,
+        "question": "How can you ensure high availability of a MongoDB deployment?",
+        "options": [
+          "By configuring a replica set with multiple members.",
+          "By using a single primary server without replicas.",
+          "By deploying MongoDB on a single server with frequent backups.",
+          "By distributing the load across multiple shards."
+        ],
+        "answer": "By configuring a replica set with multiple members.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 19,
+        "question": "What is the function of the MongoDB $replaceRoot stage in the aggregation pipeline?",
+        "options": [
+          "To replace the root document with a specified document.",
+          "To add new fields to the root document.",
+          "To rename fields within the root document.",
+          "To merge the root document with another document."
+        ],
+        "answer": "To replace the root document with a specified document.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 20,
+        "question": "What does the $addFields stage do in MongoDB’s aggregation framework?",
+        "options": [
+          "Adds new fields to documents or modifies existing fields.",
+          "Filters documents based on field values.",
+          "Groups documents by specified fields.",
+          "Sorts documents in ascending or descending order."
+        ],
+        "answer": "Adds new fields to documents or modifies existing fields.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 21,
+        "question": "How can you handle large datasets efficiently in MongoDB?",
+        "options": [
+          "By using sharding to distribute data across multiple servers.",
+          "By storing all data on a single server.",
+          "By frequently backing up data to external storage.",
+          "By using a large number of indexes."
+        ],
+        "answer": "By using sharding to distribute data across multiple servers.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 22,
+        "question": "What does the MongoDB $geoNear stage do in an aggregation pipeline?",
+        "options": [
+          "Finds documents based on proximity to a specified location.",
+          "Sorts documents by geographic coordinates.",
+          "Groups documents by geographic region.",
+          "Filters documents based on distance criteria."
+        ],
+        "answer": "Finds documents based on proximity to a specified location.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 23,
+        "question": "What is the purpose of MongoDB’s GridFS?",
+        "options": [
+          "To store and retrieve large files, such as images and videos.",
+          "To manage and optimize database indices.",
+          "To perform complex text searches within collections.",
+          "To distribute data across multiple servers."
+        ],
+        "answer": "To store and retrieve large files, such as images and videos.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 24,
+        "question": "Which method can be used to ensure that a document is not duplicated in MongoDB?",
+        "options": [
+          "Using unique indexes on specific fields.",
+          "Implementing a custom duplicate-checking mechanism in the application code.",
+          "Manually checking for duplicates before insertion.",
+          "Using the $addToSet operator during insertion."
+        ],
+        "answer": "Using unique indexes on specific fields.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 25,
+        "question": "What does the $merge stage in MongoDB’s aggregation pipeline do?",
+        "options": [
+          "Writes the results of an aggregation pipeline to a collection.",
+          "Merges multiple documents into a single document.",
+          "Combines data from different collections.",
+          "Filters and sorts the documents in the aggregation result."
+        ],
+        "answer": "Writes the results of an aggregation pipeline to a collection.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 26,
+        "question": "How does MongoDB handle transactions across multiple documents?",
+        "options": [
+          "By using multi-document transactions to ensure atomicity and consistency.",
+          "By automatically committing changes to all documents individually.",
+          "By applying changes only to a single document at a time.",
+          "By using a background process to synchronize document changes."
+        ],
+        "answer": "By using multi-document transactions to ensure atomicity and consistency.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 27,
+        "question": "What does the $expr operator do in MongoDB queries?",
+        "options": [
+          "Allows the use of aggregation expressions within query conditions.",
+          "Filters documents based on regular expressions.",
+          "Performs a logical comparison of field values.",
+          "Executes a script to determine query results."
+        ],
+        "answer": "Allows the use of aggregation expressions within query conditions.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of the $count stage in MongoDB’s aggregation pipeline?",
+        "options": [
+          "Counts the number of documents in the pipeline.",
+          "Counts the number of fields in each document.",
+          "Counts the number of unique values in a field.",
+          "Counts the occurrences of a specific value in a document."
+        ],
+        "answer": "Counts the number of documents in the pipeline.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 29,
+        "question": "What is the use of the $bucket stage in MongoDB’s aggregation framework?",
+        "options": [
+          "Groups documents into buckets based on specified ranges.",
+          "Filters documents based on specified criteria.",
+          "Sorts documents into different collections.",
+          "Joins documents from multiple collections."
+        ],
+        "answer": "Groups documents into buckets based on specified ranges.",
+        "difficulty": "hard"
+      },
+      {
+        "id": 30,
+        "question": "How does MongoDB handle schema-less data?",
+        "options": [
+          "By allowing documents in a collection to have different structures.",
+          "By enforcing a fixed schema for all documents in a collection.",
+          "By automatically inferring schema from data.",
+          "By using a schema definition for each document."
+        ],
+        "answer": "By allowing documents in a collection to have different structures.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

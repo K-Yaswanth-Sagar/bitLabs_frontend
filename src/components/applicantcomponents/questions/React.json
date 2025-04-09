@@ -1,0 +1,342 @@
+{
+    "testName": "React_JS_MCQ_Test",
+    "duration": "30 mins",
+    "numberOfQuestions": 30,
+    "topicsCovered": ["React JS","React JS Components",
+    "React JS State Management",
+    "React JS Hooks"],
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which of the following is true about React's state management?",
+        "options": [
+          "State is mutable and should be modified directly",
+          "State is immutable and should be updated using setState()",
+          "State can be directly modified inside render method",
+          "State can be modified directly outside any React component"
+        ],
+        "answer": "State is immutable and should be updated using setState()"
+      },
+      {
+        "id": 2,
+        "question": "What is the purpose of keys in React?",
+        "options": [
+          "To uniquely identify elements in the DOM",
+          "To set default values in state",
+          "To trigger re-render of components",
+          "To bind event handlers"
+        ],
+        "answer": "To uniquely identify elements in the DOM"
+      },
+      {
+        "id": 3,
+        "question": "How does React handle form submission?",
+        "options": [
+          "Forms are submitted directly to the server",
+          "Forms are submitted using XMLHttpRequest",
+          "Forms are submitted using the onSubmit event handler",
+          "Forms are automatically validated and submitted"
+        ],
+        "answer": "Forms are submitted using the onSubmit event handler"
+      },
+      {
+        "id": 4,
+        "question": "Which of the following methods is used to avoid unnecessary re-rendering of components?",
+        "options": [
+          "shouldComponentUpdate()",
+          "componentWillMount()",
+          "componentDidMount()",
+          "render()"
+        ],
+        "answer": "shouldComponentUpdate()"
+      },
+      {
+        "id": 5,
+        "question": "What is the significance of 'refs' in React?",
+        "options": [
+          "To access the DOM elements directly",
+          "To bind event listeners",
+          "To define prop types",
+          "To manage state"
+        ],
+        "answer": "To access the DOM elements directly"
+      },
+      {
+        "id": 6,
+        "question": "How can you optimize the performance of a React application?",
+        "options": [
+          "By avoiding key attributes on list items",
+          "By using inline functions in render methods",
+          "By using memoization techniques like React.memo()",
+          "By preventing the use of componentDidUpdate()"
+        ],
+        "answer": "By using memoization techniques like React.memo()"
+      },
+      {
+        "id": 7,
+        "question": "What is the correct way to pass data from a parent component to a child component?",
+        "options": [
+          "Using state",
+          "Using props",
+          "Using refs",
+          "Using context"
+        ],
+        "answer": "Using props"
+      },
+      {
+        "id": 8,
+        "question": "What does the useEffect hook do?",
+        "options": [
+          "It manages state within a functional component",
+          "It performs side effects in function components",
+          "It replaces the componentWillUnmount lifecycle method",
+          "It is used to fetch data from an API"
+        ],
+        "answer": "It performs side effects in function components"
+      },
+      {
+        "id": 9,
+        "question": "What will be the output of the following code?",
+        "code": "const [count, setCount] = useState(0);\nsetCount(count + 1);\nsetCount(count + 1);",
+        "options": [
+          "The count will be updated to 2",
+          "The count will be updated to 1",
+          "The count will remain 0",
+          "The count will throw an error"
+        ],
+        "answer": "The count will be updated to 1"
+      },
+      {
+        "id": 10,
+        "question": "In React, which hook is used for managing state in functional components?",
+        "options": [
+          "useEffect",
+          "useReducer",
+          "useContext",
+          "useState"
+        ],
+        "answer": "useState"
+      },
+      {
+        "id": 11,
+        "question": "What is the purpose of the 'useReducer' hook?",
+        "options": [
+          "To replace the useState hook",
+          "To handle complex state logic",
+          "To update the DOM directly",
+          "To fetch data from APIs"
+        ],
+        "answer": "To handle complex state logic"
+      },
+      {
+        "id": 12,
+        "question": "Which of the following is not a feature of React?",
+        "options": [
+          "Virtual DOM",
+          "One-way data binding",
+          "Component-based architecture",
+          "Two-way data binding"
+        ],
+        "answer": "Two-way data binding"
+      },
+      {
+        "id": 13,
+        "question": "What does React.Fragment do?",
+        "options": [
+          "It allows multiple elements to be returned from a component without adding extra nodes to the DOM",
+          "It creates a new context for child components",
+          "It forces a re-render of child components",
+          "It allows state to be passed to child components"
+        ],
+        "answer": "It allows multiple elements to be returned from a component without adding extra nodes to the DOM"
+      },
+      {
+        "id": 14,
+        "question": "How does React handle updates to the virtual DOM?",
+        "options": [
+          "By directly comparing the old and new DOM",
+          "By using a diffing algorithm",
+          "By reloading the entire DOM",
+          "By clearing the entire DOM and rendering again"
+        ],
+        "answer": "By using a diffing algorithm"
+      },
+      {
+        "id": 15,
+        "question": "What is a higher-order component (HOC) in React?",
+        "options": [
+          "A function that takes a component and returns a new component",
+          "A component that renders other components based on a condition",
+          "A component that manages state and passes it to other components",
+          "A function that returns JSX"
+        ],
+        "answer": "A function that takes a component and returns a new component"
+      },
+      {
+        "id": 16,
+        "question": "Why should you avoid using indexes as keys in lists in React?",
+        "options": [
+          "It can cause unexpected bugs during reordering of list items",
+          "It leads to better performance",
+          "It ensures uniqueness of keys",
+          "It is recommended for use only in small lists"
+        ],
+        "answer": "It can cause unexpected bugs during reordering of list items"
+      },
+      {
+        "id": 17,
+        "question": "Which lifecycle method is invoked immediately after a component is updated in React?",
+        "options": [
+          "componentWillReceiveProps",
+          "componentDidUpdate",
+          "componentWillUpdate",
+          "shouldComponentUpdate"
+        ],
+        "answer": "componentDidUpdate"
+      },
+      {
+        "id": 18,
+        "question": "How do you conditionally apply a class to an element in React?",
+        "options": [
+          "Using the if-else statement inside JSX",
+          "Using the ternary operator inside the className attribute",
+          "By directly modifying the DOM",
+          "By using jQuery selectors"
+        ],
+        "answer": "Using the ternary operator inside the className attribute"
+      },
+      {
+        "id": 19,
+        "question": "What is the purpose of the Context API in React?",
+        "options": [
+          "To manage global state across the entire application",
+          "To handle API requests",
+          "To render components conditionally",
+          "To avoid prop drilling"
+        ],
+        "answer": "To avoid prop drilling"
+      },
+      {
+        "id": 20,
+        "question": "What does the 'children' prop represent in a React component?",
+        "options": [
+          "A special prop that allows passing nested elements to components",
+          "A reference to the parent component",
+          "An array of all sibling components",
+          "A placeholder for dynamically generated components"
+        ],
+        "answer": "A special prop that allows passing nested elements to components"
+      },
+      {
+        "id": 21,
+        "question": "What happens if you call setState() inside componentWillMount()?",
+        "options": [
+          "The component will re-render twice",
+          "The component will render once with the initial state",
+          "The component will render without the state update",
+          "It will cause an infinite loop"
+        ],
+        "answer": "The component will render once with the initial state"
+      },
+      {
+        "id": 22,
+        "question": "How do you handle asynchronous operations in React?",
+        "options": [
+          "Using Promises or async/await in lifecycle methods or hooks",
+          "By placing asynchronous code directly in the render method",
+          "By using synchronous functions only",
+          "By handling it outside of React"
+        ],
+        "answer": "Using Promises or async/await in lifecycle methods or hooks"
+      },
+      {
+        "id": 23,
+        "question": "What is the purpose of PropTypes in React?",
+        "options": [
+          "To validate props passed to a component",
+          "To manage component state",
+          "To handle events in React",
+          "To style components"
+        ],
+        "answer": "To validate props passed to a component"
+      },
+      {
+        "id": 24,
+        "question": "Which hook would you use to mimic the behavior of componentDidMount?",
+        "options": [
+          "useState",
+          "useEffect",
+          "useMemo",
+          "useCallback"
+        ],
+        "answer": "useEffect"
+      },
+      {
+        "id": 25,
+        "question": "How can you prevent a component from re-rendering in React?",
+        "options": [
+          "By using PureComponent or React.memo",
+          "By avoiding the use of state",
+          "By using setState() inside componentWillUpdate",
+          "By using a return statement in render()"
+        ],
+        "answer": "By using PureComponent or React.memo"
+      },
+      {
+        "id": 26,
+        "question": "What is the difference between state and props in React?",
+        "options": [
+          "State is managed within the component, while props are passed to the component",
+          "Props are managed within the component, while state is passed to the component",
+          "Both state and props are managed within the component",
+          "State and props are both used for styling"
+        ],
+        "answer": "State is managed within the component, while props are passed to the component"
+      },
+      {
+        "id": 27,
+        "question": "Which of the following is an anti-pattern in React?",
+        "options": [
+          "Using setState() in componentDidMount()",
+          "Using inline functions in render method",
+          "Using keys as a string in lists",
+          "Using stateful components"
+        ],
+        "answer": "Using inline functions in render method"
+      },
+      {
+        "id": 28,
+        "question": "How does React handle error boundaries?",
+        "options": [
+          "By using the componentDidCatch() lifecycle method",
+          "By using a try-catch block in render method",
+          "By automatically recovering from errors",
+          "By logging errors to the console"
+        ],
+        "answer": "By using the componentDidCatch() lifecycle method"
+      },
+      {
+        "id": 29,
+        "question": "What is JSX in React?",
+        "options": [
+          "A syntax extension that looks similar to HTML and is used to describe UI elements in React",
+          "A special JavaScript function",
+          "A new programming language",
+          "A library similar to React"
+        ],
+        "answer": "A syntax extension that looks similar to HTML and is used to describe UI elements in React"
+      },
+      {
+        "id": 30,
+        "question": "What will happen if you try to use 'this' keyword inside a functional component in React?",
+        "options": [
+          "It will refer to the component instance",
+          "It will refer to the global object or be undefined",
+          "It will throw an error",
+          "It will refer to the parent component"
+        ],
+        "answer": "It will refer to the global object or be undefined"
+      }
+    ]
+  }
+  
