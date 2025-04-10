@@ -1,0 +1,56 @@
+.dailyTest_content{
+    width: 840px;
+    margin: auto;
+    margin-top: 112px;
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 40px 50px;
+    background-color: white;
+}
+
+
+.choices ul{
+    width: 50%;
+    margin-top: 2%;
+}
+
+
+.choices ul li{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    border: 1px solid #686868;
+    border-radius: 8px;
+    padding: 4%;
+    cursor: pointer;
+}
+
+
+.next{
+    display: flex;
+    justify-content: end;
+}
+
+
+.next button{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 35px;
+    background: #fd7e14;
+    font-size: 19px;
+    font-weight: 700;
+    border-radius: 8px;
+    font-family: "Plus Jakarta Sans"
+}
+
+.correct{
+    background: #fd7e14;
+}
+
+.wrong{
+    background: #686868;
+}
