@@ -1,8 +1,4 @@
-.dailyTest_content{
-    width: 840px;
-    margin: auto;
-    margin-top: 112px;
-    margin-left: 25%;
+.questions{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -11,12 +7,10 @@
     background-color: white;
 }
 
-
 .choices ul{
     width: 50%;
     margin-top: 2%;
 }
-
 
 .choices ul li{
     display: flex;
@@ -28,20 +22,20 @@
     cursor: pointer;
 }
 
-
-.next{
+.questions .next{
     display: flex;
     justify-content: end;
 }
 
-
-.next button{
+.questions .next button, .result button {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 20%;
-    height: 35px;
+    height: 45px;
     background: #fd7e14;
-    font-size: 19px;
+    color: white;
+    font-size: 15px;
     font-weight: 700;
     border-radius: 8px;
     font-family: "Plus Jakarta Sans"
@@ -49,8 +43,46 @@
 
 .correct{
     background: #fd7e14;
+    font-weight: bold;
+    color: white;
 }
 
 .wrong{
-    background: #686868;
+    background: #8a8989;
+    font-weight: bold;
 }
+
+.dailyTest_content .warning{
+    position: fixed;
+    bottom: 8%;
+    right: 10px;
+    background-color: #fd7e14;
+    padding: 2px 30px 2px 12px;
+    border-radius: 3px;
+    color: black;
+    font-weight: 400;
+    font-size: 13px;
+    animation: 0.5s ease-in-out 2.5s forwards;
+}
+
+.result {
+    text-align: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 20px;
+  }
+  
+  .result h2 {
+    font-size: 28px;
+    color: #2c3e50;
+  }
+  
+  .result p {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+  
+
+  

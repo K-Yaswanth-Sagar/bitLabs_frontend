@@ -1,0 +1,1002 @@
+[
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which of these is a wrapper class?",
+        "options": [
+            "int",
+            "String",
+            "Integer",
+            "char"
+        ],
+        "answer": "Integer"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which method is the entry point of a Java program?",
+        "options": [
+            "start()",
+            "main()",
+            "run()",
+            "init()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "Which of these is not a Java keyword?",
+        "options": [
+            "static",
+            "Boolean",
+            "void",
+            "private"
+        ],
+        "answer": "Boolean"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "What is the size of an int variable in Java?",
+        "options": [
+            "16 bit",
+            "32 bit",
+            "64 bit",
+            "Depends on system"
+        ],
+        "answer": "32 bit"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "Which operator is used for object comparison?",
+        "options": [
+            "==",
+            "!=",
+            "equals()",
+            "compareTo()"
+        ],
+        "answer": "equals()"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "Which class is the superclass of all classes in Java?",
+        "options": [
+            "Object",
+            "Class",
+            "System",
+            "Main"
+        ],
+        "answer": "Object"
+    },
+    {
+        "question": "Which package contains the Scanner class?",
+        "options": [
+            "java.util",
+            "java.io",
+            "java.lang",
+            "java.net"
+        ],
+        "answer": "java.util"
+    },
+    {
+        "question": "Which access modifier makes a member visible to all classes?",
+        "options": [
+            "private",
+            "protected",
+            "public",
+            "default"
+        ],
+        "answer": "public"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    },
+    {
+        "question": "Which of these is used to handle exceptions?",
+        "options": [
+            "try-catch",
+            "include",
+            "if-else",
+            "switch"
+        ],
+        "answer": "try-catch"
+    },
+    {
+        "question": "What is the default value of a boolean variable?",
+        "options": [
+            "true",
+            "false",
+            "0",
+            "null"
+        ],
+        "answer": "false"
+    }
+]

@@ -1,79 +1,140 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./ApplicantDailyTest.css";
+import javaQuestions from "../../questions.json";
 
 function ApplicantDailyTest() {
 
-    const questions = [
-        "What is the purpose of the main method in Java?",
-        "Which of the following is not a Java keyword?",
-        "What is the size of an int in Java",
-        " How do you create an object of a class in Java?",
-        " Which of the following is used to take input from the user?"
-    ];
-
-    const options = [
-        ["To declare a class", "To define a class", "To execute a program", "To create an object"],
-        ["abstract", "Boolean", "case", "catch"],
-        ["4 bytes", "2 bytes", "8 bytes", "16 bytes"],
-        ["obj = new Object()", "Object = new Object()", "Object obj", "Object obj = new Object()"],
-        ["Scanner scanner = new Scanner(System.in)", "String name = input.nextLine()", "String name = input.next()", "System.out.println(name)"]
-    ];
-
-    const answers = [3, 2, 1, 4, 1];
-
-
-    const [count, setCount] = useState(() => 1);
+    const [count, setCount] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
+    const [score, setScore] = useState(0);
+    const [warning, setWarning] = useState("");
+    const [showResult, setShowResult] = useState(false);
 
+    function getTodayDateString() {
+        
+        return new Date().toISOString().split("T")[0]; 
+    }
+
+
+    function getRandomQuestions(questions, questionCount = 5) {
+        const today = getTodayDateString();
+        const savedData = JSON.parse(localStorage.getItem("dailyTestData"));
+    
+        if (savedData && savedData.date === today) {
+            return savedData.questions;
+        }
+    
+        const shuffled = [...questions].sort(() => 0.5 - Math.random());
+        const newQuestions = shuffled.slice(0, questionCount);
+    
+        localStorage.setItem("dailyTestData", JSON.stringify({
+            date: today,
+            questions: newQuestions
+        }));
+    
+        return newQuestions;
+    }
+
+    const [randomQuestions, setRandomQuestions] = useState(() => getRandomQuestions(javaQuestions, 5));
+    const optionRefs = useRef([]);
+
+    
 
     function incrementCount() {
-        if (count < questions.length){
+        if (selectedOption === null) {
+            setWarning("Please select an option");
+
+            setTimeout(() => {
+                setWarning("");
+            }, 3000);
+            return;
+        }
+
+        if (count < randomQuestions.length - 1) {
+            optionRefs.current.forEach(ref => {
+                if (ref) {
+                    ref.classList.remove("correct");
+                    ref.classList.remove("wrong");
+                }
+            });
+
             setCount(nextCount => nextCount + 1);
             setSelectedOption(null);
+            setWarning("");
+            optionRefs.current = [];
+        }
+        else {
+            setShowResult(true);
         }
     }
 
 
-    const checkAns = (e, ans) => {
-        if (selectedOption !== null) return; 
+    const checkAns = (e, selectedIndex) => {
+        if (selectedOption !== null) return;
 
-    setSelectedOption(ans); 
-        if (ans === answers[count - 1]) {
+        setSelectedOption(selectedIndex);
+        const correctAnswer = randomQuestions[count].answer;
+        const selectedAnswer = randomQuestions[count].options[selectedIndex];
+
+        if (selectedAnswer === correctAnswer){
             e.target.classList.add("correct");
+            setScore(prevScore => prevScore + 1);
         }
         else {
             e.target.classList.add("wrong");
+            const correctIndex = randomQuestions[count].options.findIndex(
+                (option) => option === correctAnswer
+            );
+            optionRefs.current[correctIndex]?.classList.add("correct");
         }
 
     }
 
     return (
-
-        <div className="dailyTest_content">
-            <div className="questions">
-                <h4>Question {count}</h4>
-                <h3>{questions[count - 1]}</h3>
-
-                <div className="choices">
-                    <ul>
-                        {options[count - 1].map((option, index) => (
-                            <li key={index} onClick={(e) => checkAns(e, index + 1)}>
-                                {option}
-                            </li>
-                        ))}
-                    </ul>
-
+        <div className="dashboard__content">
+            <div className="row mr-0 ml-10">
+                <div className="col-lg-12 col-md-12">
+                    <section className="page-title-dashboard">
+                        <div className="themes-container">
+                            <div className="title-dashboard">
+                                <div className="title-dash flex2">Daily Test</div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
-            </div>
-            <div className="next">
-                <button onClick={incrementCount}>Next</button>
-            </div>
+                {!showResult ? (
+                    <div className="questions">
+                        <h4>Question {count+1}</h4>
+                        <h3>{randomQuestions[count].question}</h3>
 
+                        <div className="choices">
+                            <ul>
+                            {randomQuestions[count].options.map((option, index) => (
+                                    <li  ref={(el) => (optionRefs.current[index] = el)} key={index} onClick={(e) => checkAns(e, index)}>
+                                        {option}
+                                    </li>
+                                ))}
+                            </ul>
+
+                        </div>
+                        <div className="next">
+                            <button onClick={incrementCount}>Next</button>
+                        </div>
+                        {warning && <p className="snackbar error">{warning}</p>}
+
+                    </div>
+                ) : (
+                    <div className="result">
+                        <h2>Test Completed!</h2>
+                        <p>Your Score: <strong>{score}</strong> out of {5}</p>
+                        <button onClick={() => window.location.reload()}>Retake Test</button>
+                    </div>
+                )}
+            </div>
         </div>
 
     )
 }
-
 
 export default ApplicantDailyTest;
