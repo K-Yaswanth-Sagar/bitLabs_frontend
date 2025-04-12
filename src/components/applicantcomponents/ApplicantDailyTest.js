@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ApplicantDailyTest.css";
-import javaQuestions from "../../questions.json";
 
 function ApplicantDailyTest() {
 
@@ -10,32 +9,39 @@ function ApplicantDailyTest() {
     const [warning, setWarning] = useState("");
     const [showResult, setShowResult] = useState(false);
 
-    function getTodayDateString() {
-        
-        return new Date().toISOString().split("T")[0]; 
-    }
 
 
-    function getRandomQuestions(questions, questionCount = 5) {
-        const today = getTodayDateString();
-        const savedData = JSON.parse(localStorage.getItem("dailyTestData"));
+    useEffect(() => {
+        async function fetchQuestions() {
+            const today = new Date().toISOString().split("T")[0];
+            const savedData = JSON.parse(localStorage.getItem("dailyTestData"));
     
-        if (savedData && savedData.date === today) {
-            return savedData.questions;
+            if (savedData && savedData.date === today) {
+                setRandomQuestions(savedData.questions);
+                return;
+            }
+    
+            try {
+                const res = await fetch("http://localhost:8080/DailyTest/dailyQuestion");
+                
+                const data = await res.json();
+    
+                setRandomQuestions(data);
+    
+                localStorage.setItem("dailyTestData", JSON.stringify({
+                    date: today,
+                    questions: data
+                }));
+            } catch (error) {
+                console.error("Failed to fetch questions:", error);
+            }
         }
     
-        const shuffled = [...questions].sort(() => 0.5 - Math.random());
-        const newQuestions = shuffled.slice(0, questionCount);
+        fetchQuestions();
+    }, []);
     
-        localStorage.setItem("dailyTestData", JSON.stringify({
-            date: today,
-            questions: newQuestions
-        }));
-    
-        return newQuestions;
-    }
 
-    const [randomQuestions, setRandomQuestions] = useState(() => getRandomQuestions(javaQuestions, 5));
+    const [randomQuestions, setRandomQuestions] = useState([]);
     const optionRefs = useRef([]);
 
     
@@ -102,11 +108,11 @@ function ApplicantDailyTest() {
                         </div>
                     </section>
                 </div>
-
-                {!showResult ? (
+                {randomQuestions.length > 0 ? (
+                !showResult ? (
                     <div className="questions">
                         <h4>Question {count+1}</h4>
-                        <h3>{randomQuestions[count].question}</h3>
+                        <h3>{randomQuestions[count]?.question}</h3>
 
                         <div className="choices">
                             <ul>
@@ -130,7 +136,11 @@ function ApplicantDailyTest() {
                         <p>Your Score: <strong>{score}</strong> out of {5}</p>
                         <button onClick={() => window.location.reload()}>Retake Test</button>
                     </div>
-                )}
+                
+                )
+        ) : (
+            <p>Loading questions...</p>
+        )}
             </div>
         </div>
 
