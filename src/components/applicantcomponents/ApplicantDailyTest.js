@@ -15,19 +15,29 @@ function ApplicantDailyTest() {
         async function fetchQuestions() {
             const today = new Date().toISOString().split("T")[0];
             const savedData = JSON.parse(localStorage.getItem("dailyTestData"));
-    
+
             if (savedData && savedData.date === today) {
                 setRandomQuestions(savedData.questions);
                 return;
             }
-    
+
             try {
-                const res = await fetch("http://localhost:8080/DailyTest/dailyQuestion");
-                
+                const jwtToken = localStorage.getItem("jwtToken");
+                const res = await fetch("http://localhost:8080/DailyTest/dailyQuestion", {
+                    headers: {
+                        Authorization: `Bearer ${jwtToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+
                 const data = await res.json();
-    
+
                 setRandomQuestions(data);
-    
+
                 localStorage.setItem("dailyTestData", JSON.stringify({
                     date: today,
                     questions: data
@@ -36,15 +46,16 @@ function ApplicantDailyTest() {
                 console.error("Failed to fetch questions:", error);
             }
         }
-    
+
         fetchQuestions();
     }, []);
-    
+
+
 
     const [randomQuestions, setRandomQuestions] = useState([]);
     const optionRefs = useRef([]);
 
-    
+
 
     function incrementCount() {
         if (selectedOption === null) {
@@ -82,7 +93,7 @@ function ApplicantDailyTest() {
         const correctAnswer = randomQuestions[count].answer;
         const selectedAnswer = randomQuestions[count].options[selectedIndex];
 
-        if (selectedAnswer === correctAnswer){
+        if (selectedAnswer === correctAnswer) {
             e.target.classList.add("correct");
             setScore(prevScore => prevScore + 1);
         }
@@ -107,40 +118,41 @@ function ApplicantDailyTest() {
                             </div>
                         </div>
                     </section>
+
+                    {randomQuestions.length > 0 ? (
+                        !showResult ? (
+                            <div className="questions">
+                                <h4>Question {count + 1}</h4>
+                                <h3>{randomQuestions[count]?.question}</h3>
+
+                                <div className="choices">
+                                    <ul>
+                                        {randomQuestions[count].options.map((option, index) => (
+                                            <li ref={(el) => (optionRefs.current[index] = el)} key={index} onClick={(e) => checkAns(e, index)}>
+                                                {option}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                </div>
+                                <div className="next">
+                                    <button onClick={incrementCount}>Next</button>
+                                </div>
+                                {warning && <p className="snackbar error">{warning}</p>}
+
+                            </div>
+                        ) : (
+                            <div className="result">
+                                <h2>Test Completed!</h2>
+                                <p>Your Score: <strong>{score}</strong> out of {5}</p>
+                                <button onClick={() => window.location.reload()}>Retake Test</button>
+                            </div>
+
+                        )
+                    ) : (
+                        <p>Loading questions...</p>
+                    )}
                 </div>
-                {randomQuestions.length > 0 ? (
-                !showResult ? (
-                    <div className="questions">
-                        <h4>Question {count+1}</h4>
-                        <h3>{randomQuestions[count]?.question}</h3>
-
-                        <div className="choices">
-                            <ul>
-                            {randomQuestions[count].options.map((option, index) => (
-                                    <li  ref={(el) => (optionRefs.current[index] = el)} key={index} onClick={(e) => checkAns(e, index)}>
-                                        {option}
-                                    </li>
-                                ))}
-                            </ul>
-
-                        </div>
-                        <div className="next">
-                            <button onClick={incrementCount}>Next</button>
-                        </div>
-                        {warning && <p className="snackbar error">{warning}</p>}
-
-                    </div>
-                ) : (
-                    <div className="result">
-                        <h2>Test Completed!</h2>
-                        <p>Your Score: <strong>{score}</strong> out of {5}</p>
-                        <button onClick={() => window.location.reload()}>Retake Test</button>
-                    </div>
-                
-                )
-        ) : (
-            <p>Loading questions...</p>
-        )}
             </div>
         </div>
 
