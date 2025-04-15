@@ -289,6 +289,8 @@ const VerifiedBadges = () => {
     };
 
     fetchSkillBadges();
+    console.log(skillBadges);
+    
   }, [userId]);
   
   useEffect(() => {
