@@ -20,9 +20,11 @@ function ApplicantDailyTest() {
     const [skillBadges, setSkillBadges] = useState({ skillsRequired: [] });
     const [randomQuestions, setRandomQuestions] = useState([]);
     const [testResults, setTestResults] = useState([]);
+    const [chartShow, setChartShow] = useState([]);
     const [selectedResult, setSelectedResult] = useState(null);
     const [testDates, setTestDates] = useState([]);
     const optionRefs = useRef([]);
+    const [testAttempted, setTestAttempted] = useState(false);
 
     // Style objects
     const linkStyle = {
@@ -37,6 +39,11 @@ function ApplicantDailyTest() {
         fontWeight: '600',
     };
 
+    useEffect(() => {
+        const attemptedToday = testResults.some(result => result.testDate === today);
+        setTestAttempted(attemptedToday);
+    }, [testResults]);
+
     // Fetch all test summaries
     useEffect(() => {
         const fetchTestSummaries = async () => {
@@ -46,10 +53,12 @@ function ApplicantDailyTest() {
                     headers: { Authorization: `Bearer ${jwtToken}` }
                 });
                 console.log("Test summaries:", res.data);
+                const sortedResults = [...res.data].sort((a, b) => new Date(a.testDate) - new Date(b.testDate));
+                setChartShow(sortedResults);
                 setTestResults(res.data);
                 const dates = res.data.map(result => result.testDate);
                 if (!dates.includes(today)) dates.push(today);
-                setTestDates(dates.sort().reverse()); 
+                setTestDates(dates.sort().reverse());
             } catch (err) {
                 console.error("Error fetching test summaries:", err);
             }
@@ -61,7 +70,7 @@ function ApplicantDailyTest() {
     // Chart series for score trend
     const chartSeries = [{
         name: "Test Score",
-        data: testResults.map(result => ({ x: result.testDate, y: result.score }))
+        data: chartShow.map(result => ({ x: result.testDate, y: result.score }))
     }];
 
     // Fetch skill badges
@@ -83,11 +92,6 @@ function ApplicantDailyTest() {
     // Fetch today's questions or use cache
     useEffect(() => {
         const fetchTodayQuestions = async () => {
-            const saved = JSON.parse(localStorage.getItem("dailyTestData"));
-            if (saved && saved.date === today) {
-                setRandomQuestions(saved.questions);
-                return;
-            }
 
             try {
                 const jwtToken = localStorage.getItem("jwtToken");
@@ -102,7 +106,7 @@ function ApplicantDailyTest() {
                 });
                 const data = await res.json();
                 setRandomQuestions(data);
-                localStorage.setItem("dailyTestData", JSON.stringify({ date: today, questions: data }));
+               console.log("Today's questions:", data);
             } catch (err) {
                 console.error("Failed to fetch today’s questions:", err);
             }
@@ -121,9 +125,23 @@ function ApplicantDailyTest() {
                 headers: { Authorization: `Bearer ${jwtToken}` }
             });
             console.log(date);
-            console.log("Test details for date:", date, ":", res.data);
-            setRandomQuestions(res.data.testResult);
-            setSelectedResult({ date, score: res.data.score });
+            console.log("Raw response data:", res.data)
+
+            // Optional: inspect structure in detail
+            if (Array.isArray(res.data)) {
+                res.data.forEach((q, idx) => {
+                    console.log(`Question ${idx + 1}:`);
+                    console.log("  Question:", q.question);
+                    console.log("  Options:", q.options);
+                    console.log("  CorrectAnswer:", q.correctAnswer);
+                    console.log("  SelectedAnswer:", q.selectedAnswer);
+                });
+            } else {
+                console.warn("Unexpected testResult structure:", res.data);
+            }
+            setRandomQuestions(res.data);
+            const testScoreObj = testResults.find(result => result.testDate === date);
+            setSelectedResult({ date, score: testScoreObj?.score ?? 0 });
             setShowResult(true);
         } catch (err) {
             console.error("Failed to fetch test details:", err);
@@ -133,22 +151,29 @@ function ApplicantDailyTest() {
     // Handle answering
     const checkAns = (e, selectedIndex) => {
         if (selectedOption !== null) return;
-
+    
         setSelectedOption(selectedIndex);
-        const current = randomQuestions[count];
-        const correctAnswer = current.answer;
-        const selectedAnswer = current.options[selectedIndex];
+    
+        const updatedQuestions = [...randomQuestions];
+        const selected = updatedQuestions[count];
+        console.log(selected);
+        const selectedAnswer = selected.options[selectedIndex];
+        console.log(selected.answer);
 
-        if (selectedAnswer === correctAnswer) {
-            e.target.classList.add("correct");
+        updatedQuestions[count] = {
+            ...selected,
+            selectedAnswer: selectedAnswer,
+        };
+    
+        setRandomQuestions(updatedQuestions);
+    
+        if (selectedAnswer === selected.answer) {
+            
             setScore(prev => prev + 1);
-        } else {
-            e.target.classList.add("wrong");
-            const correctIndex = current.options.findIndex(opt => opt === correctAnswer);
-            optionRefs.current[correctIndex]?.classList.add("correct");
+            
         }
     };
-
+    
     // Handle next question
     const incrementCount = () => {
         if (selectedOption === null) {
@@ -163,8 +188,59 @@ function ApplicantDailyTest() {
             setSelectedOption(null);
         } else {
             setShowResult(true);
+            submitResult();
         }
     };
+
+    const submitResult = async () => {
+        try {
+            const payload = {
+                applicantId: 1,
+                testDate: today,
+                score: score,
+                testResult: randomQuestions.map(q => ({
+                    questionNumber: q.questionNumber,
+                    question: q.question,
+                    options: q.options,
+                    correctAnswer: q.answer,
+                    selectedAnswer: q.selectedAnswer || "",
+                })),
+            };
+            const jwtToken = localStorage.getItem("jwtToken");
+            const response = await axios.post(
+                "http://localhost:8080/dailyTest/result/submit",
+                payload,
+                {
+                    headers: {
+                        Authorization: `Bearer ${jwtToken}`
+                    }
+                }
+            );
+
+            console.log("Result submitted:", response.data);
+            console.log("Updated test results:", payload);
+            
+            alert("Test submitted successfully!");
+
+            const newResult = {
+                testDate: today,
+                score: score
+            };
+
+            setTestResults(prev => [...prev, newResult]);
+            setChartShow(prev => [...prev, newResult].sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
+
+            setTestAttempted(true);
+
+            // Update testDates if not already present
+            setTestDates(prev => prev.includes(today) ? prev : [...prev, today]);
+
+        } catch (error) {
+            console.error("Error submitting result:", error);
+            alert("There was an error submitting your test.");
+        }
+    };
+
 
     // Reset test view
     const resetTest = () => {
@@ -216,15 +292,17 @@ function ApplicantDailyTest() {
                                         style={spanStyle}
                                         onClick={() => {
                                             setSelectedDate(date);
-                                            if (date === today) {
+                                            if (date === today && testAttempted) {
                                                 setTestStarted(true);
+                                                fetchTestDetailsByDate(today);
+
                                             } else {
                                                 fetchTestDetailsByDate(date);
                                                 setTestStarted(true);
                                             }
                                         }}
                                     >
-                                        {date === today ? "Start Test" : "View Results"}
+                                        {date === today && !testAttempted ? "Start Test" : "View Results"}
                                     </span>
                                 </Link>
                             </div>
@@ -233,58 +311,111 @@ function ApplicantDailyTest() {
                         randomQuestions.length > 0 ? (
                             showResult ? (
                                 <div className="viewResult">
-                                    {selectedDate !== today ? (
-                                        <>
-                                            <h2>Test Results on {selectedDate}</h2>
-                                            <ul>
-                                                {randomQuestions.map((q, idx) => (
-                                                    <li key={idx}>
-                                                        <h4>{`Q${idx + 1}: ${q.question}`}</h4>
-                                                        {q.options.map((option, optIdx) => (
-                                                            <label key={optIdx} style={{
-                                                                display: 'block',
-                                                                margin: '10px 0',
-                                                                fontWeight: option === q.answer ? 'bold' : 'normal',
-                                                                color: option === q.answer ? '#f97316' : 'black'
-                                                            }}>
-                                                                <input type="radio" disabled checked={option === q.answer} />
-                                                                {option}
-                                                            </label>
-                                                        ))}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                            <button>Your Score: {selectedResult?.score}</button>
-                                            <button onClick={resetTest}>Back to Tests</button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <h2>Test Completed!</h2>
-                                            <p>Your Score: <strong>{score}</strong> / {randomQuestions.length}</p>
-                                            <button onClick={resetTest}>Back to Tests</button>
-                                        </>
-                                    )}
+                                    {randomQuestions.some(q => q.selectedAnswer) ? (
+    <>
+        <h2>Test Results on {selectedDate}</h2>
+        <ul>
+            {randomQuestions.map((q, idx) => (
+                <li key={idx}>
+                    <h4>{`Q${idx + 1}: ${q.question}`}</h4>
+                    {q.options.map((option, optIdx) => {
+                        const isCorrect = option === q.correctAnswer;
+                        const isSelected = option === q.selectedAnswer;
+
+                        let backgroundColor = 'white';
+                        let color = 'black';
+
+                        if (isCorrect && isSelected) {
+                            backgroundColor = '#f97316';
+                            color = 'white';
+                        } else if (isCorrect) {
+                            backgroundColor = '#f97316';
+                            color = 'white';
+                        } else if (isSelected) {
+                            backgroundColor = '#e5e7eb';
+                            color = 'black';
+                        }
+
+                        return (
+                            <label
+                                key={optIdx}
+                                style={{
+                                    display: 'block',
+                                    margin: '10px 0',
+                                    padding: '10px',
+                                    borderRadius: '8px',
+                                    backgroundColor,
+                                    color,
+                                    fontWeight: isCorrect ? 'bold' : 'normal',
+                                }}
+                            >
+                                <input
+                                    type="radio"
+                                    disabled
+                                    checked={isSelected}
+                                    style={{ marginRight: '10px' }}
+                                />
+                                {option}
+                            </label>
+                        );
+                    })}
+                </li>
+            ))}
+        </ul>
+        <button>Your Score: {selectedResult?.score}</button>
+        <button onClick={resetTest}>Back to Tests</button>
+    </>
+) : (
+    <>
+        <h2>Test Completed!</h2>
+        <p>Your Score: <strong>{score}</strong> / {randomQuestions.length}</p>
+        <button onClick={resetTest}>Back to Tests</button>
+    </>
+)}
+
                                 </div>
                             ) : (
                                 <div className="questions">
                                     <h4>Question {count + 1}</h4>
                                     <h3>{randomQuestions[count]?.question}</h3>
-                                    <ul className="choices">
-                                        {randomQuestions[count].options.map((option, index) => (
-                                            <li
+
+                                    <form className="choices" style={{ marginTop: '20px' }}>
+                                        {randomQuestions[count]?.options.map((option, index) => (
+                                            <label
                                                 key={index}
-                                                ref={el => optionRefs.current[index] = el}
-                                                onClick={(e) => checkAns(e, index)}
+                                                style={{
+                                                    display: 'block',
+                                                    marginBottom: '12px',
+                                                    padding: '10px 15px',
+                                                    cursor: 'pointer',
+                                                    transition: '0.2s ease-in-out',
+                                                }}
+                                                
                                             >
+                                               
+
+                                                <input
+                                                    type="radio"
+                                                    name={`question-${count}`}
+                                                    value={option}
+                                                    onChange={(e) => checkAns(e, index)}
+                                                    checked={selectedOption === index}
+                                                    style={{ marginRight: '10px' }}
+                                                    
+                                                />
+                                    
                                                 {option}
-                                            </li>
+                                            </label>
                                         ))}
-                                    </ul>
+                                    </form>
+
                                     {warning && <p className="warning">{warning}</p>}
+
                                     <div className="next">
                                         <button onClick={incrementCount}>Next</button>
                                     </div>
                                 </div>
+
                             )
                         ) : (
                             <p>Loading questions...</p>
