@@ -110,6 +110,11 @@
     color: red;
 }
 
+.custom-radio::after, .custom-radio::before {
+    display: none !important;
+    content: none !important;
+  }
+  
 
 
 .dailytestResult{

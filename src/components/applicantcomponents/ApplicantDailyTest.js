@@ -25,6 +25,8 @@ function ApplicantDailyTest() {
     const [testDates, setTestDates] = useState([]);
     const optionRefs = useRef([]);
     const [testAttempted, setTestAttempted] = useState(false);
+    const [loadingTestDetails, setLoadingTestDetails] = useState(false);
+
 
     // Style objects
     const linkStyle = {
@@ -52,20 +54,46 @@ function ApplicantDailyTest() {
                 const res = await axios.get("http://localhost:8080/dailyTest/result/summary/1", {
                     headers: { Authorization: `Bearer ${jwtToken}` }
                 });
+    
                 console.log("Test summaries:", res.data);
                 const sortedResults = [...res.data].sort((a, b) => new Date(a.testDate) - new Date(b.testDate));
+                
                 setChartShow(sortedResults);
                 setTestResults(res.data);
+    
+                // Store in localStorage
+                localStorage.setItem("testSummaries", JSON.stringify(res.data));
+    
+                // Manage test dates
                 const dates = res.data.map(result => result.testDate);
                 if (!dates.includes(today)) dates.push(today);
                 setTestDates(dates.sort().reverse());
+    
             } catch (err) {
                 console.error("Error fetching test summaries:", err);
             }
         };
-
-        fetchTestSummaries();
+    
+        // Check if we already have it in localStorage
+        const cachedSummaries = localStorage.getItem("testSummaries");
+        if (cachedSummaries) {
+            const parsedData = JSON.parse(cachedSummaries);
+            const sortedResults = [...parsedData].sort((a, b) => new Date(a.testDate) - new Date(b.testDate));
+            
+            setChartShow(sortedResults);
+            setTestResults(parsedData);
+    
+            const dates = parsedData.map(result => result.testDate);
+            if (!dates.includes(today)) dates.push(today);
+            setTestDates(dates.sort().reverse());
+        } else {
+            fetchTestSummaries();
+        }
     }, []);
+    
+
+
+    
 
     // Chart series for score trend
     const chartSeries = [{
@@ -92,10 +120,10 @@ function ApplicantDailyTest() {
     // Fetch today's questions or use cache
     useEffect(() => {
         const fetchTodayQuestions = async () => {
-
             try {
                 const jwtToken = localStorage.getItem("jwtToken");
                 const skills = skillBadges.skillsRequired.map(skill => skill.skillName);
+    
                 const res = await fetch("http://localhost:8080/DailyTest/getSkillBasedQuestions", {
                     method: "POST",
                     headers: {
@@ -104,19 +132,33 @@ function ApplicantDailyTest() {
                     },
                     body: JSON.stringify(skills),
                 });
+    
                 const data = await res.json();
+                
+
                 setRandomQuestions(data);
-               console.log("Today's questions:", data);
+                console.log("Fetched from API:", data);
+    
+                // Save to localStorage
+                localStorage.setItem(`dailyQuestions-${today}`, JSON.stringify(data));
             } catch (err) {
                 console.error("Failed to fetch today’s questions:", err);
             }
         };
-
+    
         if (selectedDate === today && skillBadges.skillsRequired.length > 0) {
-            fetchTodayQuestions();
+            // Check localStorage first
+            const cached = localStorage.getItem(`dailyQuestions-${today}`);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                setRandomQuestions(parsed);
+                console.log("Loaded from localStorage:", parsed);
+            } else {
+                fetchTodayQuestions();
+            }
         }
     }, [selectedDate, skillBadges.skillsRequired]);
-
+    
     // Fetch past test details
     const fetchTestDetailsByDate = async (date) => {
         try {
@@ -150,7 +192,7 @@ function ApplicantDailyTest() {
 
     // Handle answering
     const checkAns = (e, selectedIndex) => {
-        if (selectedOption !== null) return;
+        if (selectedOption !== null && selectedOption === selectedIndex) return;
     
         setSelectedOption(selectedIndex);
     
@@ -158,7 +200,7 @@ function ApplicantDailyTest() {
         const selected = updatedQuestions[count];
         console.log(selected);
         const selectedAnswer = selected.options[selectedIndex];
-        console.log(selected.answer);
+        console.log(selected.correctAnswer);
 
         updatedQuestions[count] = {
             ...selected,
@@ -167,7 +209,7 @@ function ApplicantDailyTest() {
     
         setRandomQuestions(updatedQuestions);
     
-        if (selectedAnswer === selected.answer) {
+        if (selectedAnswer === selected.correctAnswer) {
             
             setScore(prev => prev + 1);
             
@@ -199,10 +241,9 @@ function ApplicantDailyTest() {
                 testDate: today,
                 score: score,
                 testResult: randomQuestions.map(q => ({
-                    questionNumber: q.questionNumber,
                     question: q.question,
                     options: q.options,
-                    correctAnswer: q.answer,
+                    correctAnswer: q.correctAnswer,
                     selectedAnswer: q.selectedAnswer || "",
                 })),
             };
@@ -216,20 +257,19 @@ function ApplicantDailyTest() {
                     }
                 }
             );
-
-            console.log("Result submitted:", response.data);
-            console.log("Updated test results:", payload);
             
-            alert("Test submitted successfully!");
+           
 
             const newResult = {
                 testDate: today,
                 score: score
             };
 
-            setTestResults(prev => [...prev, newResult]);
-            setChartShow(prev => [...prev, newResult].sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
-
+            const updatedResults = [...testResults, newResult];
+            setTestResults(updatedResults);
+            setChartShow(updatedResults.sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
+            localStorage.setItem("testSummaries", JSON.stringify(updatedResults)); 
+            
             setTestAttempted(true);
 
             // Update testDates if not already present
@@ -292,13 +332,12 @@ function ApplicantDailyTest() {
                                         style={spanStyle}
                                         onClick={() => {
                                             setSelectedDate(date);
+                                            setLoadingTestDetails(true);
+                                            setTestStarted(true);
                                             if (date === today && testAttempted) {
-                                                setTestStarted(true);
-                                                fetchTestDetailsByDate(today);
-
+                                                fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
                                             } else {
-                                                fetchTestDetailsByDate(date);
-                                                setTestStarted(true);
+                                                fetchTestDetailsByDate(date).finally(() => setLoadingTestDetails(false));
                                             }
                                         }}
                                     >
@@ -308,10 +347,10 @@ function ApplicantDailyTest() {
                             </div>
                         ))
                     ) : (
-                        randomQuestions.length > 0 ? (
+                        !loadingTestDetails && randomQuestions.length > 0 ? (
                             showResult ? (
                                 <div className="viewResult">
-                                    {randomQuestions.some(q => q.selectedAnswer) ? (
+                                    
     <>
         <h2>Test Results on {selectedDate}</h2>
         <ul>
@@ -339,6 +378,7 @@ function ApplicantDailyTest() {
                         return (
                             <label
                                 key={optIdx}
+                                className="optionRadio"
                                 style={{
                                     display: 'block',
                                     margin: '10px 0',
@@ -350,10 +390,12 @@ function ApplicantDailyTest() {
                                 }}
                             >
                                 <input
-                                    type="radio"
-                                    disabled
-                                    checked={isSelected}
-                                    style={{ marginRight: '10px' }}
+                                     type="radio"
+                                     name={`question-${count}`}
+                                     value={option}
+                                     onChange={(e) => checkAns(e, optIdx)}
+                                     checked={selectedOption === optIdx}
+                                     style={{ marginRight: '10px' }}
                                 />
                                 {option}
                             </label>
@@ -362,16 +404,10 @@ function ApplicantDailyTest() {
                 </li>
             ))}
         </ul>
-        <button>Your Score: {selectedResult?.score}</button>
+        <button>Your Score: {selectedDate === today && !selectedResult ? score : selectedResult?.score}</button>
         <button onClick={resetTest}>Back to Tests</button>
     </>
-) : (
-    <>
-        <h2>Test Completed!</h2>
-        <p>Your Score: <strong>{score}</strong> / {randomQuestions.length}</p>
-        <button onClick={resetTest}>Back to Tests</button>
-    </>
-)}
+
 
                                 </div>
                             ) : (
@@ -390,11 +426,10 @@ function ApplicantDailyTest() {
                                                     cursor: 'pointer',
                                                     transition: '0.2s ease-in-out',
                                                 }}
-                                                
                                             >
                                                
-
                                                 <input
+                                                className="custom-radio"
                                                     type="radio"
                                                     name={`question-${count}`}
                                                     value={option}
@@ -418,7 +453,7 @@ function ApplicantDailyTest() {
 
                             )
                         ) : (
-                            <p>Loading questions...</p>
+                            <p>Loading...</p>
                         )
                     )}
                 </div>
