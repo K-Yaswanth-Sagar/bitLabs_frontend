@@ -5,6 +5,7 @@ import { apiUrl } from '../../services/ApplicantAPIService';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
+import Taketest from '../../images/user/avatar/Taketest.png';
 
 function ApplicantDailyTest() {
     const { user } = useUserContext();
@@ -26,11 +27,32 @@ function ApplicantDailyTest() {
     const optionRefs = useRef([]);
     const [testAttempted, setTestAttempted] = useState(false);
     const [loadingTestDetails, setLoadingTestDetails] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [showIcon, setShowIcon] = useState(false);
+
+
+    const [isWideScreen, setIsWideScreen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsWideScreen(window.innerWidth > 780);
+        };
+
+        // Initialize the state on component mount
+        handleResize();
+
+        // Add event listener for resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup the event listener on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
 
     // Style objects
     const linkStyle = {
-        backgroundColor: '#F97316',
+        backgroundColor: isHovered ? '#ea670c' : '#F97316',
         display: 'inline-block',
     };
 
@@ -54,35 +76,35 @@ function ApplicantDailyTest() {
                 const res = await axios.get("http://localhost:8080/dailyTest/result/summary/1", {
                     headers: { Authorization: `Bearer ${jwtToken}` }
                 });
-    
+
                 console.log("Test summaries:", res.data);
                 const sortedResults = [...res.data].sort((a, b) => new Date(a.testDate) - new Date(b.testDate));
-                
+
                 setChartShow(sortedResults);
                 setTestResults(res.data);
-    
+
                 // Store in localStorage
                 localStorage.setItem("testSummaries", JSON.stringify(res.data));
-    
+
                 // Manage test dates
                 const dates = res.data.map(result => result.testDate);
                 if (!dates.includes(today)) dates.push(today);
                 setTestDates(dates.sort().reverse());
-    
+
             } catch (err) {
                 console.error("Error fetching test summaries:", err);
             }
         };
-    
+
         // Check if we already have it in localStorage
         const cachedSummaries = localStorage.getItem("testSummaries");
         if (cachedSummaries) {
             const parsedData = JSON.parse(cachedSummaries);
             const sortedResults = [...parsedData].sort((a, b) => new Date(a.testDate) - new Date(b.testDate));
-            
+
             setChartShow(sortedResults);
             setTestResults(parsedData);
-    
+
             const dates = parsedData.map(result => result.testDate);
             if (!dates.includes(today)) dates.push(today);
             setTestDates(dates.sort().reverse());
@@ -90,10 +112,10 @@ function ApplicantDailyTest() {
             fetchTestSummaries();
         }
     }, []);
-    
 
 
-    
+
+
 
     // Chart series for score trend
     const chartSeries = [{
@@ -123,7 +145,7 @@ function ApplicantDailyTest() {
             try {
                 const jwtToken = localStorage.getItem("jwtToken");
                 const skills = skillBadges.skillsRequired.map(skill => skill.skillName);
-    
+
                 const res = await fetch("http://localhost:8080/DailyTest/getSkillBasedQuestions", {
                     method: "POST",
                     headers: {
@@ -132,20 +154,20 @@ function ApplicantDailyTest() {
                     },
                     body: JSON.stringify(skills),
                 });
-    
+
                 const data = await res.json();
-                
+
 
                 setRandomQuestions(data);
                 console.log("Fetched from API:", data);
-    
+
                 // Save to localStorage
                 localStorage.setItem(`dailyQuestions-${today}`, JSON.stringify(data));
             } catch (err) {
                 console.error("Failed to fetch today’s questions:", err);
             }
         };
-    
+
         if (selectedDate === today && skillBadges.skillsRequired.length > 0) {
             // Check localStorage first
             const cached = localStorage.getItem(`dailyQuestions-${today}`);
@@ -158,7 +180,7 @@ function ApplicantDailyTest() {
             }
         }
     }, [selectedDate, skillBadges.skillsRequired]);
-    
+
     // Fetch past test details
     const fetchTestDetailsByDate = async (date) => {
         try {
@@ -193,9 +215,9 @@ function ApplicantDailyTest() {
     // Handle answering
     const checkAns = (e, selectedIndex) => {
         if (selectedOption !== null && selectedOption === selectedIndex) return;
-    
+
         setSelectedOption(selectedIndex);
-    
+
         const updatedQuestions = [...randomQuestions];
         const selected = updatedQuestions[count];
         console.log(selected);
@@ -206,16 +228,16 @@ function ApplicantDailyTest() {
             ...selected,
             selectedAnswer: selectedAnswer,
         };
-    
+
         setRandomQuestions(updatedQuestions);
-    
+
         if (selectedAnswer === selected.correctAnswer) {
-            
+
             setScore(prev => prev + 1);
-            
+
         }
     };
-    
+
     // Handle next question
     const incrementCount = () => {
         if (selectedOption === null) {
@@ -257,8 +279,8 @@ function ApplicantDailyTest() {
                     }
                 }
             );
-            
-           
+
+
 
             const newResult = {
                 testDate: today,
@@ -268,8 +290,8 @@ function ApplicantDailyTest() {
             const updatedResults = [...testResults, newResult];
             setTestResults(updatedResults);
             setChartShow(updatedResults.sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
-            localStorage.setItem("testSummaries", JSON.stringify(updatedResults)); 
-            
+            localStorage.setItem("testSummaries", JSON.stringify(updatedResults));
+
             setTestAttempted(true);
 
             // Update testDates if not already present
@@ -293,171 +315,192 @@ function ApplicantDailyTest() {
         setSelectedResult(null);
     };
 
+   
+
+
+
     return (
-        <div className="dashboard__content">
-            <div className="row mr-0 ml-10">
-                <div className="col-lg-12">
-                    <section className="page-title-dashboard">
-                        <div className="themes-container">
+        <div>
+
+
+            {/* for the main page */}
+
+
+            {/* // for the main page after loading */}
+            <div className="dashboard__content">
+                <div className="row mr-0 ml-10">
+
+                    {/* for main page heading name */}
+                    <div className="col-lg-12 col-md-12">
+                        <div className="page-title-dashboard">
                             <div className="title-dashboard">
-                                <div className="title-dash flex2">Daily Test</div>
+
+                                <div className="userName-title">
+                                    Daily Test
+                                </div>
+
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    {!testStarted && (
-                        <div className="col-12 card lineChart">
-                            <Chart
-                                type='line'
-                                height="100%"
-                                series={chartSeries}
-                                options={{
-                                    chart: { id: "performance-graph", toolbar: { show: false }, zoom: { enabled: false } },
-                                    xaxis: { title: { text: "Test Day" } },
-                                    yaxis: { max: 10 },
-                                    title: { text: "Your Performance Over Time", align: "center" },
-                                    colors: ["#f97316"]
-                                }}
-                            />
+                    {/* for the contents  */}
+                    <div className="col-lg-12 col-md-12">
+                        <div className="row dash-count">
+
+
+                            {/* take test or view result card*/}
+                            {!showIcon && !testStarted && testDates.includes(today) && (
+    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+        <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
+            <div className={!isWideScreen ? 'resumecard' : ''}>
+                <div className="resumecard-content">
+                    <div className="resumecard-text">
+                        <div className="resumecard-heading">
+                            <h2 className="heading1">Improve your skills by taking daily test</h2>
+                            <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
+                                Take the test not to prove you're perfect, but to prove you're progressing.
+                            </div>
                         </div>
-                    )}
-
-                    {!testStarted ? (
-                        testDates.map((date, idx) => (
-                            <div key={idx} className="col-12 card dailytestResult">
-                                <h2 className="heading1">Test date: <span>{date}</span></h2>
-                                <Link className="button-link1" style={linkStyle}>
-                                    <span
-                                        className="button button-custom"
-                                        style={spanStyle}
-                                        onClick={() => {
-                                            setSelectedDate(date);
-                                            setLoadingTestDetails(true);
-                                            setTestStarted(true);
-                                            if (date === today && testAttempted) {
-                                                fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
-                                            } else {
-                                                fetchTestDetailsByDate(date).finally(() => setLoadingTestDetails(false));
-                                            }
-                                        }}
-                                    >
-                                        {date === today && !testAttempted ? "Start Test" : "View Results"}
+                        <div className="resumecard-button">
+                            {testAttempted ? (
+                                <Link
+                                className="button-link1"
+                                style={linkStyle}
+                                onClick={() => {
+                                    setSelectedDate(today);
+                                    setLoadingTestDetails(true);
+                                    setTestStarted(true);
+                                    fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
+                                }}
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                            >
+                                <span className="button button-custom" style={spanStyle}>
+                                    Test Attempted
+                                </span>
+                            </Link>
+                            ) : (
+                                <Link
+                                    className="button-link1"
+                                    style={linkStyle}
+                                    onClick={() => {
+                                        setSelectedDate(today);
+                                        setLoadingTestDetails(true);
+                                        setTestStarted(true);
+                                        
+                                        fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
+                                    }}
+                                    onMouseEnter={() => setIsHovered(true)}
+                                    onMouseLeave={() => setIsHovered(false)}
+                                >
+                                    <span className="button button-custom" style={spanStyle}>
+                                        Start Test
                                     </span>
                                 </Link>
-                            </div>
-                        ))
-                    ) : (
-                        !loadingTestDetails && randomQuestions.length > 0 ? (
-                            showResult ? (
-                                <div className="viewResult">
-                                    
-    <>
-        <h2>Test Results on {selectedDate}</h2>
-        <ul>
-            {randomQuestions.map((q, idx) => (
-                <li key={idx}>
-                    <h4>{`Q${idx + 1}: ${q.question}`}</h4>
-                    {q.options.map((option, optIdx) => {
-                        const isCorrect = option === q.correctAnswer;
-                        const isSelected = option === q.selectedAnswer;
+                            )}
+                        </div>
+                    </div>
 
-                        let backgroundColor = 'white';
-                        let color = 'black';
-
-                        if (isCorrect && isSelected) {
-                            backgroundColor = '#f97316';
-                            color = 'white';
-                        } else if (isCorrect) {
-                            backgroundColor = '#f97316';
-                            color = 'white';
-                        } else if (isSelected) {
-                            backgroundColor = '#e5e7eb';
-                            color = 'black';
-                        }
-
-                        return (
-                            <label
-                                key={optIdx}
-                                className="optionRadio"
-                                style={{
-                                    display: 'block',
-                                    margin: '10px 0',
-                                    padding: '10px',
-                                    borderRadius: '8px',
-                                    backgroundColor,
-                                    color,
-                                    fontWeight: isCorrect ? 'bold' : 'normal',
-                                }}
-                            >
-                                <input
-                                     type="radio"
-                                     name={`question-${count}`}
-                                     value={option}
-                                     onChange={(e) => checkAns(e, optIdx)}
-                                     checked={selectedOption === optIdx}
-                                     style={{ marginRight: '10px' }}
-                                />
-                                {option}
-                            </label>
-                        );
-                    })}
-                </li>
-            ))}
-        </ul>
-        <button>Your Score: {selectedDate === today && !selectedResult ? score : selectedResult?.score}</button>
-        <button onClick={resetTest}>Back to Tests</button>
-    </>
-
-
-                                </div>
-                            ) : (
-                                <div className="questions">
-                                    <h4>Question {count + 1}</h4>
-                                    <h3>{randomQuestions[count]?.question}</h3>
-
-                                    <form className="choices" style={{ marginTop: '20px' }}>
-                                        {randomQuestions[count]?.options.map((option, index) => (
-                                            <label
-                                                key={index}
-                                                style={{
-                                                    display: 'block',
-                                                    marginBottom: '12px',
-                                                    padding: '10px 15px',
-                                                    cursor: 'pointer',
-                                                    transition: '0.2s ease-in-out',
-                                                }}
-                                            >
-                                               
-                                                <input
-                                                className="custom-radio"
-                                                    type="radio"
-                                                    name={`question-${count}`}
-                                                    value={option}
-                                                    onChange={(e) => checkAns(e, index)}
-                                                    checked={selectedOption === index}
-                                                    style={{ marginRight: '10px' }}
-                                                    
-                                                />
-                                    
-                                                {option}
-                                            </label>
-                                        ))}
-                                    </form>
-
-                                    {warning && <p className="warning">{warning}</p>}
-
-                                    <div className="next">
-                                        <button onClick={incrementCount}>Next</button>
-                                    </div>
-                                </div>
-
-                            )
-                        ) : (
-                            <p>Loading...</p>
-                        )
-                    )}
+                    <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
+                        <img
+                            src={Taketest}
+                            alt="Taketest"
+                            style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
+                        />
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+)}
+
+{testStarted && randomQuestions.length > 0 && (
+    <div className="questions">
+        <h4>Question {count + 1}</h4>
+        <h3>{randomQuestions[count]?.question}</h3>
+
+        <form className="choices" style={{ marginTop: '20px' }}>
+            {randomQuestions[count]?.options.map((option, index) => (
+                <label
+                    key={index}
+                    style={{
+                        display: 'block',
+                        marginBottom: '12px',
+                        padding: '10px 15px',
+                        cursor: 'pointer',
+                        transition: '0.2s ease-in-out',
+                    }}
+                >
+                    <input
+                        className="custom-radio"
+                        type="radio"
+                        name={`question-${count}`}
+                        value={option}
+                        onChange={(e) => checkAns(e, index)}
+                        checked={selectedOption === index}
+                        style={{ marginRight: '10px' }}
+                    />
+                    {option}
+                </label>
+            ))}
+        </form>
+
+        {warning && <p className="warning">{warning}</p>}
+
+        <div className="next">
+            <button onClick={incrementCount}>Next</button>
+        </div>
+    </div>
+)}
+
+
+
+                            {/* progress graph  */}
+                            {!testStarted && (
+                                <>
+                                    <div className="col-lg-12 col-md-12">
+                                        <section className="page-title-dashboard">
+                                            <div className="themes-container">
+                                                <div className="row">
+                                                    <div className="col-lg-12 col-md-12 ">
+                                                        <div className="title-dashboard">
+
+                                                            <h3 style={{ marginBottom: '10px' }}>Progress Graph</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                        <div className="card" >
+
+                                            <div className="col-12 lineChart">
+                                                <Chart
+                                                    type='line'
+                                                    height="100%"
+                                                    series={chartSeries}
+                                                    options={{
+                                                        chart: { id: "performance-graph", toolbar: { show: false }, zoom: { enabled: false } },
+                                                        xaxis: { title: { text: "Test Day" } },
+                                                        yaxis: { max: 10 },
+                                                        title: { text: "Your Performance Over Time", align: "center" },
+                                                        colors: ["#f97316"]
+                                                    }}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
         </div>
     );
 }
