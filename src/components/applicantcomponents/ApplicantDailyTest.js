@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
 import Taketest from '../../images/user/avatar/Taketest.png';
 
+
 function ApplicantDailyTest() {
     const { user } = useUserContext();
     const today = new Date().toISOString().split("T")[0];
@@ -29,7 +30,10 @@ function ApplicantDailyTest() {
     const [loadingTestDetails, setLoadingTestDetails] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
-
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [hasAnswered, setHasAnswered] = useState([]);
+    
+    const [selectedAnswers, setSelectedAnswers] = useState([]); 
 
     const [isWideScreen, setIsWideScreen] = useState(false);
 
@@ -96,6 +100,7 @@ function ApplicantDailyTest() {
             }
         };
 
+
         // Check if we already have it in localStorage
         const cachedSummaries = localStorage.getItem("testSummaries");
         if (cachedSummaries) {
@@ -120,9 +125,12 @@ function ApplicantDailyTest() {
     // Chart series for score trend
     const chartSeries = [{
         name: "Test Score",
-        data: chartShow.map(result => ({ x: result.testDate, y: result.score }))
+        data: chartShow.map(result => ({
+            x: result.testDate,
+            y: result.score,
+            performance: result.performance // Add the performance to each data point
+        }))
     }];
-
     // Fetch skill badges
     useEffect(() => {
         const fetchSkillBadges = async () => {
@@ -220,10 +228,9 @@ function ApplicantDailyTest() {
 
         const updatedQuestions = [...randomQuestions];
         const selected = updatedQuestions[count];
-        console.log(selected);
+       
         const selectedAnswer = selected.options[selectedIndex];
-        console.log(selected.correctAnswer);
-
+       
         updatedQuestions[count] = {
             ...selected,
             selectedAnswer: selectedAnswer,
@@ -231,37 +238,74 @@ function ApplicantDailyTest() {
 
         setRandomQuestions(updatedQuestions);
 
-        if (selectedAnswer === selected.correctAnswer) {
+        const updatedSelectedAnswers = [...selectedAnswers];
+    updatedSelectedAnswers[count] = selectedAnswer; 
+    setSelectedAnswers(updatedSelectedAnswers);
 
-            setScore(prev => prev + 1);
-
-        }
     };
 
     // Handle next question
     const incrementCount = () => {
         if (selectedOption === null) {
-            setWarning("Please select an option");
+            setWarning("Please provide your answer to move to the next question");
             setTimeout(() => setWarning(""), 3000);
             return;
         }
 
+        const newSelectedOptions = [...selectedOptions];
+        newSelectedOptions[count] = selectedOption;
+        setSelectedOptions(newSelectedOptions); 
+    
+
         if (count < randomQuestions.length - 1) {
             optionRefs.current.forEach(ref => ref?.classList.remove("correct", "wrong"));
             setCount(prev => prev + 1);
-            setSelectedOption(null);
-        } else {
-            setShowResult(true);
-            submitResult();
-        }
+            setSelectedOption(newSelectedOptions[count+1] || null);
+        } 
     };
 
+    const decrementCount = () => {
+        if (count > 0) {
+            const newSelectedOptions = [...selectedOptions];
+            setSelectedOption(newSelectedOptions[count-1] || null); 
+            setCount(prev => prev - 1)
+        }
+    }
+
+
     const submitResult = async () => {
+
+        let tempScore = 0;
+
+        
+        randomQuestions.forEach((question, index) => {
+            if (selectedAnswers[index] === question.correctAnswer) {
+                tempScore += 1; 
+            }
+        });
+    
+        setScore(tempScore);
+        console.log(tempScore);
+        console.log(score);
+
+        let performance = "";
+        if (tempScore >= 8) {
+            performance = "Excellent";
+        } else if (tempScore >= 5) {
+            performance = "Good";
+        } else {
+            performance = "Poor";
+        }
+        console.log(performance); 
+    
         try {
+           
+           
             const payload = {
                 applicantId: 1,
                 testDate: today,
-                score: score,
+                score: tempScore,
+                performance: performance,
                 testResult: randomQuestions.map(q => ({
                     question: q.question,
                     options: q.options,
@@ -284,18 +328,26 @@ function ApplicantDailyTest() {
 
             const newResult = {
                 testDate: today,
-                score: score
+                score: tempScore,
+                performance: performance
             };
-
-            const updatedResults = [...testResults, newResult];
-            setTestResults(updatedResults);
+           
+           
+            const updatedResults = [newResult, ...testResults];
+            // setTestResults(updatedResults.sort((a, b) => new Date(b.testDate) - new Date(a.testDate)));
+            setTestResults(updatedResults)
+            console.log(testResults);
+            
             setChartShow(updatedResults.sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
+           
             localStorage.setItem("testSummaries", JSON.stringify(updatedResults));
 
             setTestAttempted(true);
 
             // Update testDates if not already present
-            setTestDates(prev => prev.includes(today) ? prev : [...prev, today]);
+            setTestDates(prev => prev.includes(today) ? prev : [today, ...prev]);
+            
+            window.location.reload(); 
 
         } catch (error) {
             console.error("Error submitting result:", error);
@@ -315,7 +367,7 @@ function ApplicantDailyTest() {
         setSelectedResult(null);
     };
 
-   
+
 
 
 
@@ -349,109 +401,204 @@ function ApplicantDailyTest() {
 
 
                             {/* take test or view result card*/}
-                            {!showIcon && !testStarted && testDates.includes(today) && (
-    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
-        <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
-            <div className={!isWideScreen ? 'resumecard' : ''}>
-                <div className="resumecard-content">
-                    <div className="resumecard-text">
-                        <div className="resumecard-heading">
-                            <h2 className="heading1">Improve your skills by taking daily test</h2>
-                            <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
-                                Take the test not to prove you're perfect, but to prove you're progressing.
-                            </div>
-                        </div>
-                        <div className="resumecard-button">
-                            {testAttempted ? (
-                                <Link
-                                className="button-link1"
-                                style={linkStyle}
-                                onClick={() => {
-                                    setSelectedDate(today);
-                                    setLoadingTestDetails(true);
-                                    setTestStarted(true);
-                                    fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
-                                }}
-                                onMouseEnter={() => setIsHovered(true)}
-                                onMouseLeave={() => setIsHovered(false)}
-                            >
-                                <span className="button button-custom" style={spanStyle}>
-                                    Test Attempted
-                                </span>
-                            </Link>
-                            ) : (
-                                <Link
-                                    className="button-link1"
-                                    style={linkStyle}
-                                    onClick={() => {
-                                        setSelectedDate(today);
-                                        setLoadingTestDetails(true);
-                                        setTestStarted(true);
-                                        
-                                        fetchTestDetailsByDate(today).finally(() => setLoadingTestDetails(false));
-                                    }}
-                                    onMouseEnter={() => setIsHovered(true)}
-                                    onMouseLeave={() => setIsHovered(false)}
-                                >
-                                    <span className="button button-custom" style={spanStyle}>
-                                        Start Test
-                                    </span>
-                                </Link>
+                            {!showIcon && !testStarted && (
+                                <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                    <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
+                                        <div className={!isWideScreen ? 'resumecard' : ''}>
+                                            <div className="resumecard-content">
+                                                <div className="resumecard-text">
+                                                    <div className="resumecard-heading">
+                                                        <h2 className="heading1">Improve your skills by taking daily test</h2>
+                                                        <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
+                                                            Take the test not to prove you're perfect, but to prove you're progressing.
+                                                        </div>
+                                                    </div>
+                                                    <div className="resumecard-button">
+                                                        {testAttempted ? (
+                                                            <Link
+                                                                className="button-link1"
+                                                                style={linkStyle}
+                                                                onClick={() => {
+                                                                }}
+                                                                onMouseEnter={() => setIsHovered(true)}
+                                                                onMouseLeave={() => setIsHovered(false)}
+                                                            >
+                                                                <span className="button button-custom" style={spanStyle}>
+                                                                    Test Attempted
+                                                                </span>
+                                                            </Link>
+                                                        ) : (
+                                                            <Link
+                                                                className="button-link1"
+                                                                style={linkStyle}
+                                                                onClick={() => {
+                                                                    setSelectedDate(today);
+
+                                                                    setTestStarted(true);
+
+
+                                                                }}
+                                                                onMouseEnter={() => setIsHovered(true)}
+                                                                onMouseLeave={() => setIsHovered(false)}
+                                                            >
+                                                                <span className="button button-custom" style={spanStyle}>
+                                                                    Start Test
+                                                                </span>
+                                                            </Link>
+                                                        )}
+                                                    </div>
+                                                </div>
+
+                                                <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
+                                                    <img
+                                                        src={Taketest}
+                                                        alt="Taketest"
+                                                        style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
                             )}
-                        </div>
-                    </div>
 
-                    <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
-                        <img
-                            src={Taketest}
-                            alt="Taketest"
-                            style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-)}
+                            
 
-{testStarted && randomQuestions.length > 0 && (
-    <div className="questions">
-        <h4>Question {count + 1}</h4>
-        <h3>{randomQuestions[count]?.question}</h3>
 
-        <form className="choices" style={{ marginTop: '20px' }}>
-            {randomQuestions[count]?.options.map((option, index) => (
-                <label
-                    key={index}
-                    style={{
-                        display: 'block',
-                        marginBottom: '12px',
-                        padding: '10px 15px',
-                        cursor: 'pointer',
-                        transition: '0.2s ease-in-out',
-                    }}
-                >
-                    <input
-                        className="custom-radio"
-                        type="radio"
-                        name={`question-${count}`}
-                        value={option}
-                        onChange={(e) => checkAns(e, index)}
-                        checked={selectedOption === index}
-                        style={{ marginRight: '10px' }}
-                    />
-                    {option}
-                </label>
-            ))}
-        </form>
 
-        {warning && <p className="warning">{warning}</p>}
+                            {testStarted && randomQuestions.length > 0 && (
+                                <>
+                                    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                        <div className="card">
 
-        <div className="next">
-            <button onClick={incrementCount}>Next</button>
-        </div>
-    </div>
-)}
+                                            <div className="header">
+                                                <h3>
+                                                    <span className="text-name1">Performance Improvement Test</span>
+                                                    <h4 className='test-sub'>
+                                                        Question {count + 1} / {randomQuestions.length}
+                                                    </h4>
+                                                </h3>
+                                               
+                                            </div>
+                                            <div className="separator"></div>
+
+                                            <div className="question no-select">
+                                                <ul>
+                                                    <li>
+                                                        <p className="question1 no-select">
+                                                            {count + 1}.&nbsp;
+                                                            <span
+                                                                dangerouslySetInnerHTML={{
+                                                                    __html: randomQuestions[count]?.question
+                                                                        .replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+                                                                        .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
+                                                                        .replace(/```/g, '') // Remove any Markdown code block delimiters
+                                                                }}
+                                                            />
+                                                        </p>
+                                                    </li>
+                                                    {randomQuestions[count]?.options.map((option, index) => (
+                                                        <li key={index}>
+                                                            <label className="question-label no-select">
+                                                                <input
+                                                                    type="radio"
+                                                                    value={option}
+                                                                    checked={selectedOption === index}
+                                                                    onChange={(e) => checkAns(e, index)}
+                                                                    className="question-radio"
+                                                                />
+                                                                <span
+                                                                    className="no-select"
+                                                                    dangerouslySetInnerHTML={{
+                                                                        __html: option.replace(/\n/g, '<br/>').replace(/```/g, ''),
+                                                                    }}
+                                                                />
+                                                            </label>
+                                                        </li>
+                                                    ))}
+                                                    {warning && <p className="warning">{warning}</p>}
+                                                </ul>
+                                            </div>
+
+                                            <div className="footer1">
+                                                <button
+                                                    disabled={count === 0}
+                                                    onClick={decrementCount}
+                                                    className="second-btn"
+                                                >
+                                                    Back
+                                                </button>
+                                                {count < randomQuestions.length - 1 ? (
+                                                    <button onClick={incrementCount} className="navigation-btn">
+                                                        Next
+                                                    </button>
+                                                ) : (
+                                                    <button onClick={submitResult} className="navigation-btn">
+                                                        Submit
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+
+
+
+                            {/* test progress table formate */}
+                            {
+                                !testStarted && (
+                                    <>
+
+                                        <div className="col-lg-12 col-md-12">
+                                            <section className="page-title-dashboard second-heading">
+                                                <div className="themes-container">
+                                                    <div className="row">
+                                                        <div className="col-lg-12 col-md-12 ">
+                                                            <div className="title-dashboard">
+
+                                                                <h3>Previous Test Performances</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+
+                                        <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                            <div className="card" >
+
+
+                                                <table className="performance-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Score</th>
+                                                            <th>Performance</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        {testResults.slice(0, 5).map((summary, index) => (
+                                                            <tr key={index}>
+                                                                <td>{summary.testDate}</td>
+                                                                <td>{summary.score}</td>
+                                                                <td>{summary.performance}</td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+
+                                    </>
+                                )}
 
 
 
@@ -459,13 +606,13 @@ function ApplicantDailyTest() {
                             {!testStarted && (
                                 <>
                                     <div className="col-lg-12 col-md-12">
-                                        <section className="page-title-dashboard">
+                                        <section className="page-title-dashboard second-heading">
                                             <div className="themes-container">
                                                 <div className="row">
                                                     <div className="col-lg-12 col-md-12 ">
                                                         <div className="title-dashboard">
+                                                            <h3 >Progress Graph</h3>
 
-                                                            <h3 style={{ marginBottom: '10px' }}>Progress Graph</h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -480,12 +627,51 @@ function ApplicantDailyTest() {
                                                     type='line'
                                                     height="100%"
                                                     series={chartSeries}
+
                                                     options={{
-                                                        chart: { id: "performance-graph", toolbar: { show: false }, zoom: { enabled: false } },
-                                                        xaxis: { title: { text: "Test Day" } },
-                                                        yaxis: { max: 10 },
-                                                        title: { text: "Your Performance Over Time", align: "center" },
-                                                        colors: ["#f97316"]
+                                                        chart: {
+                                                            id: "performance-graph",
+                                                            toolbar: { show: false },
+                                                            zoom: { enabled: false }
+                                                        },
+                                                        xaxis: {
+                                                            title: { text: "Test Day" }
+                                                        },
+                                                        yaxis: {
+                                                            min: 0,
+                                                            max: 10
+                                                        },
+                                                        title: {
+                                                            text: "Your Performance Over Time",
+                                                            align: "center"
+                                                        },
+                                                        colors: ["#f97316"],
+                                                        tooltip: {
+                                                            shared: true,
+                                                            intersect: false,
+                                                            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                                                                // Get the performance text corresponding to the hovered data point
+                                                                const performance = w.config.series[seriesIndex].data[dataPointIndex].performance;
+                                                                const score = w.config.series[seriesIndex].data[dataPointIndex].y;
+                                                                let scoreColor;
+                                                                if (score >= 8) {
+                                                                    scoreColor = 'green'; // Excellent score
+                                                                } else if (score >= 5) {
+                                                                    scoreColor = 'yellow'; // Good score
+                                                                } else {
+                                                                    scoreColor = 'red'; // Poor score
+                                                                }
+
+                                                                return `
+                    <div style="padding: 10px; font-size: 12px;">
+                        <span style="color: orange; font-weight: bold;">Score:</span> 
+                        <span style="color: ${scoreColor};">${score}</span><br/>
+                        <span style="color: orange; font-weight: bold;">Performance:</span> 
+                        <span style="color: ${scoreColor};">${performance}</span>
+                    </div>
+                `;
+                                                            }
+                                                        }
                                                     }}
                                                 />
                                             </div>
