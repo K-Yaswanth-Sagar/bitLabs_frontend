@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ApplicantDailyTest.css";
+import Webcam from 'react-webcam';
 import { useUserContext } from '../common/UserProvider';
 import { apiUrl } from '../../services/ApplicantAPIService';
 import axios from 'axios';
@@ -7,11 +8,9 @@ import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
 import Taketest from '../../images/user/avatar/Taketest.png';
 
-
 function ApplicantDailyTest() {
     const { user } = useUserContext();
     const today = new Date().toISOString().split("T")[0];
-
     const [testStarted, setTestStarted] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -32,27 +31,25 @@ function ApplicantDailyTest() {
     const [showIcon, setShowIcon] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [hasAnswered, setHasAnswered] = useState([]);
-    
-    const [selectedAnswers, setSelectedAnswers] = useState([]); 
-
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [isWideScreen, setIsWideScreen] = useState(false);
+    const [showWebcam, setShowWebcam] = useState(true);
+    const webcamRef = useRef(null);
+    const [warningMsg, setWarningMsg] = useState(warning);
+    const [imageCapture, setImageCapture] = useState(false);
+    
 
     useEffect(() => {
         const handleResize = () => {
             setIsWideScreen(window.innerWidth > 780);
         };
-
         // Initialize the state on component mount
         handleResize();
-
         // Add event listener for resize
         window.addEventListener('resize', handleResize);
-
         // Cleanup the event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-
 
     // Style objects
     const linkStyle = {
@@ -118,10 +115,6 @@ function ApplicantDailyTest() {
         }
     }, []);
 
-
-
-
-
     // Chart series for score trend
     const chartSeries = [{
         name: "Test Score",
@@ -164,7 +157,6 @@ function ApplicantDailyTest() {
                 });
 
                 const data = await res.json();
-
 
                 setRandomQuestions(data);
                 console.log("Fetched from API:", data);
@@ -228,9 +220,8 @@ function ApplicantDailyTest() {
 
         const updatedQuestions = [...randomQuestions];
         const selected = updatedQuestions[count];
-       
         const selectedAnswer = selected.options[selectedIndex];
-       
+
         updatedQuestions[count] = {
             ...selected,
             selectedAnswer: selectedAnswer,
@@ -239,9 +230,8 @@ function ApplicantDailyTest() {
         setRandomQuestions(updatedQuestions);
 
         const updatedSelectedAnswers = [...selectedAnswers];
-    updatedSelectedAnswers[count] = selectedAnswer; 
-    setSelectedAnswers(updatedSelectedAnswers);
-
+        updatedSelectedAnswers[count] = selectedAnswer;
+        setSelectedAnswers(updatedSelectedAnswers);
     };
 
     // Handle next question
@@ -254,36 +244,33 @@ function ApplicantDailyTest() {
 
         const newSelectedOptions = [...selectedOptions];
         newSelectedOptions[count] = selectedOption;
-        setSelectedOptions(newSelectedOptions); 
-    
+        setSelectedOptions(newSelectedOptions);
 
         if (count < randomQuestions.length - 1) {
             optionRefs.current.forEach(ref => ref?.classList.remove("correct", "wrong"));
             setCount(prev => prev + 1);
-            setSelectedOption(newSelectedOptions[count+1] || null);
-        } 
+            setSelectedOption(newSelectedOptions[count + 1] || null);
+        }
     };
 
     const decrementCount = () => {
         if (count > 0) {
             const newSelectedOptions = [...selectedOptions];
-            setSelectedOption(newSelectedOptions[count-1] || null); 
+            setSelectedOption(newSelectedOptions[count - 1] || null);
             setCount(prev => prev - 1)
         }
     }
-
 
     const submitResult = async () => {
 
         let tempScore = 0;
 
-        
         randomQuestions.forEach((question, index) => {
             if (selectedAnswers[index] === question.correctAnswer) {
-                tempScore += 1; 
+                tempScore += 1;
             }
         });
-    
+
         setScore(tempScore);
         console.log(tempScore);
         console.log(score);
@@ -296,11 +283,10 @@ function ApplicantDailyTest() {
         } else {
             performance = "Poor";
         }
-        console.log(performance); 
-    
+        console.log(performance);
+
         try {
-           
-           
+
             const payload = {
                 applicantId: 1,
                 testDate: today,
@@ -324,30 +310,25 @@ function ApplicantDailyTest() {
                 }
             );
 
-
-
             const newResult = {
                 testDate: today,
                 score: tempScore,
                 performance: performance
             };
-           
-           
-            const updatedResults = [newResult, ...testResults];
-            // setTestResults(updatedResults.sort((a, b) => new Date(b.testDate) - new Date(a.testDate)));
-            setTestResults(updatedResults)
-            console.log(testResults);
-            
-            setChartShow(updatedResults.sort((a, b) => new Date(a.testDate) - new Date(b.testDate)));
-           
-            localStorage.setItem("testSummaries", JSON.stringify(updatedResults));
 
+            const updatedResults = [newResult, ...testResults];
+            const sortedResults = updatedResults.sort((a, b) => new Date(b.testDate) - new Date(a.testDate));
+
+            setTestResults(sortedResults);
+            setChartShow([...sortedResults].sort((a, b) => new Date(a.testDate) - new Date(b.testDate))); // for chart (ascending)
+
+            localStorage.setItem("testSummaries", JSON.stringify(sortedResults));
             setTestAttempted(true);
 
             // Update testDates if not already present
             setTestDates(prev => prev.includes(today) ? prev : [today, ...prev]);
-            
-            window.location.reload(); 
+
+            window.location.reload();
 
         } catch (error) {
             console.error("Error submitting result:", error);
@@ -355,6 +336,76 @@ function ApplicantDailyTest() {
         }
     };
 
+
+    
+        
+        const captureImage = () => {
+            const imageSrc = webcamRef.current.getScreenshot();
+            uploadImage(imageSrc);
+        };
+    
+        const uploadImage = async (base64Image) => {
+            try {
+                // Convert base64 to blob
+                const res = await fetch(base64Image);
+                const blob = await res.blob();
+    
+                // Create filename with applicantId and timestamp
+                const timestamp = Date.now();
+                const filename = `${user.id}_${timestamp}.jpg`;
+    
+                const formData = new FormData();
+                formData.append('file', new File([blob], filename, { type: 'image/jpeg' }));
+                const jwtToken = localStorage.getItem("jwtToken");
+                const response = await fetch("http://localhost:8080/file/upload", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${jwtToken}`,
+                    },
+                    body: formData,
+                });
+    
+                if (response.ok) {
+                    console.log("Image uploaded successfully!");
+                    // Save filename somewhere (state or localStorage)
+                    localStorage.setItem('proctoringImage', filename);
+                    setShowWebcam(false); // Hide webcam modal, show test
+                    startTestMonitoring();
+                } else {
+                    console.error("Image upload failed.");
+                }
+            } catch (err) {
+                console.error("Upload error", err);
+            }
+        };
+    
+        const startTestMonitoring = () => {
+            setTestStarted(true);
+            // Monitor the applicant during the test by capturing screenshots every 30 seconds
+            const intervalId = setInterval(() => {
+                captureSnapshotDuringTest();
+            }, 30000);
+    
+            // Store intervalId so we can clear it if needed (e.g., on test completion)
+            localStorage.setItem('proctoringInterval', intervalId);
+        };
+    
+        const captureSnapshotDuringTest = async () => {
+            const imageSrc = webcamRef.current.getScreenshot();
+            uploadImage(imageSrc);
+        };
+    
+        useEffect(() => {
+            // Cleanup interval when test is over
+            return () => {
+                const intervalId = localStorage.getItem('proctoringInterval');
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    localStorage.removeItem('proctoringInterval');
+                }
+            };
+        }, [testStarted]);
+    
 
     // Reset test view
     const resetTest = () => {
@@ -367,17 +418,8 @@ function ApplicantDailyTest() {
         setSelectedResult(null);
     };
 
-
-
-
-
     return (
         <div>
-
-
-            {/* for the main page */}
-
-
             {/* // for the main page after loading */}
             <div className="dashboard__content">
                 <div className="row mr-0 ml-10">
@@ -386,11 +428,9 @@ function ApplicantDailyTest() {
                     <div className="col-lg-12 col-md-12">
                         <div className="page-title-dashboard">
                             <div className="title-dashboard">
-
                                 <div className="userName-title">
                                     Daily Test
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -398,7 +438,6 @@ function ApplicantDailyTest() {
                     {/* for the contents  */}
                     <div className="col-lg-12 col-md-12">
                         <div className="row dash-count">
-
 
                             {/* take test or view result card*/}
                             {!showIcon && !testStarted && (
@@ -433,10 +472,7 @@ function ApplicantDailyTest() {
                                                                 style={linkStyle}
                                                                 onClick={() => {
                                                                     setSelectedDate(today);
-
                                                                     setTestStarted(true);
-
-
                                                                 }}
                                                                 onMouseEnter={() => setIsHovered(true)}
                                                                 onMouseLeave={() => setIsHovered(false)}
@@ -459,21 +495,31 @@ function ApplicantDailyTest() {
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             )}
 
-                            
-
-
+{!imageCapture && testStarted && showWebcam && (
+                <div className="webcam-modal">
+                    <h3>Please capture your image before starting the test</h3>
+                    <Webcam
+                        audio={false}
+                        ref={webcamRef}
+                        screenshotFormat="image/jpeg"
+                        width={350}
+                        height={250}
+                        videoConstraints={{
+                            facingMode: "user",
+                        }}
+                    />
+                    <button onClick={() => { captureImage(); setImageCapture(true); }}>
+                        Capture & Start Test</button>
+                </div>
+            )}
 
                             {testStarted && randomQuestions.length > 0 && (
                                 <>
                                     <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
                                         <div className="card">
-
                                             <div className="header">
                                                 <h3>
                                                     <span className="text-name1">Performance Improvement Test</span>
@@ -481,10 +527,8 @@ function ApplicantDailyTest() {
                                                         Question {count + 1} / {randomQuestions.length}
                                                     </h4>
                                                 </h3>
-                                               
                                             </div>
                                             <div className="separator"></div>
-
                                             <div className="question no-select">
                                                 <ul>
                                                     <li>
@@ -522,7 +566,6 @@ function ApplicantDailyTest() {
                                                     {warning && <p className="warning">{warning}</p>}
                                                 </ul>
                                             </div>
-
                                             <div className="footer1">
                                                 <button
                                                     disabled={count === 0}
@@ -546,13 +589,10 @@ function ApplicantDailyTest() {
                                 </>
                             )}
 
-
-
                             {/* test progress table formate */}
                             {
                                 !testStarted && (
                                     <>
-
                                         <div className="col-lg-12 col-md-12">
                                             <section className="page-title-dashboard second-heading">
                                                 <div className="themes-container">
@@ -567,11 +607,8 @@ function ApplicantDailyTest() {
                                                 </div>
                                             </section>
                                         </div>
-
                                         <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
                                             <div className="card" >
-
-
                                                 <table className="performance-table">
                                                     <thead>
                                                         <tr>
@@ -580,7 +617,6 @@ function ApplicantDailyTest() {
                                                             <th>Performance</th>
                                                         </tr>
                                                     </thead>
-
                                                     <tbody>
                                                         {testResults.slice(0, 5).map((summary, index) => (
                                                             <tr key={index}>
@@ -590,17 +626,11 @@ function ApplicantDailyTest() {
                                                             </tr>
                                                         ))}
                                                     </tbody>
-
                                                 </table>
-
                                             </div>
                                         </div>
-
-
                                     </>
                                 )}
-
-
 
                             {/* progress graph  */}
                             {!testStarted && (
@@ -621,13 +651,11 @@ function ApplicantDailyTest() {
                                     </div>
                                     <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
                                         <div className="card" >
-
                                             <div className="col-12 lineChart">
                                                 <Chart
                                                     type='line'
                                                     height="100%"
                                                     series={chartSeries}
-
                                                     options={{
                                                         chart: {
                                                             id: "performance-graph",
@@ -661,7 +689,6 @@ function ApplicantDailyTest() {
                                                                 } else {
                                                                     scoreColor = 'red'; // Poor score
                                                                 }
-
                                                                 return `
                     <div style="padding: 10px; font-size: 12px;">
                         <span style="color: orange; font-weight: bold;">Score:</span> 
@@ -679,14 +706,10 @@ function ApplicantDailyTest() {
                                     </div>
                                 </>
                             )}
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     );
 }
