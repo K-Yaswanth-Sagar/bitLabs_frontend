@@ -35,6 +35,7 @@ import CSSTest from './questions/CSS.json';
 import AngularTest from './questions/Angular.json';
 import ManualTestingTest from './questions/ManualTesting.json';
 import VueTest from './questions/Vue.json';
+import Exampage from './proctoring/Exampage';
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -62,6 +63,30 @@ const ApplicantTakeTest = () => {
   const { testName } = location.state || {};
   const { user } = useUserContext();
   const userId = user.id;
+
+
+
+// Disable right-click and copy-paste
+const disableUserActions = () => {
+  document.addEventListener('contextmenu', preventDefault);
+  document.addEventListener('copy', preventDefault);
+  document.addEventListener('cut', preventDefault);
+  document.addEventListener('paste', preventDefault);
+};
+
+// Enable right-click and copy-paste again
+const enableUserActions = () => {
+  document.removeEventListener('contextmenu', preventDefault);
+  document.removeEventListener('copy', preventDefault);
+  document.removeEventListener('cut', preventDefault);
+  document.removeEventListener('paste', preventDefault);
+};
+
+// Helper function
+const preventDefault = (e) => {
+  e.preventDefault();
+};
+
 
   useEffect(() => {
     // Load questions and set timer based on the test name
@@ -302,10 +327,15 @@ const ApplicantTakeTest = () => {
       // Optionally save the current state or handle submission logic here
   };
 
+  const captureImage = () => {
+    setCurrentPage('captureImage');
+  }
+
   const startTest = () => {
     setCurrentPage('test');
     setTestStarted(true);
     enterFullScreen();
+    disableUserActions();
   };
 
   const handleNextQuestion = () => {
@@ -356,7 +386,7 @@ const ApplicantTakeTest = () => {
       return;
     }
     setValidationMessage('');
-  
+    enableUserActions();
     const calculatedScore = calculateScore();
     const testStatus = calculatedScore >= 70 ? 'P' : 'F';
     const jwtToken = localStorage.getItem('jwtToken');
@@ -436,6 +466,7 @@ const ApplicantTakeTest = () => {
 
   const handleConfirmExit = () => {
     setShowExitPopup(false);
+    enableUserActions();
     if(testStarted && testName !== 'General Aptitude Test' && testName !== 'Technical Test'){
       handleTestCompletion();
     setShowGoBackButton(false);
@@ -502,6 +533,7 @@ const ApplicantTakeTest = () => {
   };
 
   const handleTimesUp = () => {
+    enableUserActions();
     setCurrentPage('timesup');
   };
 
@@ -583,7 +615,11 @@ const ApplicantTakeTest = () => {
     } else {
       setCurrentPage('failAcknowledgment');
     }
-  };
+  };   
+
+  
+
+
 
   return (
     <div className="test-container">
@@ -681,12 +717,30 @@ const ApplicantTakeTest = () => {
             </ul>
           </div>
           <div align="right">
+            <button className="start-btn" onClick={captureImage}>
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+
+{currentPage === 'captureImage' && (
+        <div className="instructions-page">
+          
+          <br />
+          <div className="instructions" style={{ paddingLeft: '2%' }}>
+            <span className="instructions-title">Take image before starting the test</span>
+            <Exampage/>
+          </div>
+          <div align="right">
             <button className="start-btn" onClick={startTest}>
               Start
             </button>
           </div>
         </div>
       )}
+      
+      
 
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>

@@ -26,16 +26,13 @@ function ApplicantDailyTest() {
     const [testDates, setTestDates] = useState([]);
     const optionRefs = useRef([]);
     const [testAttempted, setTestAttempted] = useState(false);
-    const [loadingTestDetails, setLoadingTestDetails] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
-    const [hasAnswered, setHasAnswered] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [isWideScreen, setIsWideScreen] = useState(false);
     const [showWebcam, setShowWebcam] = useState(true);
     const webcamRef = useRef(null);
-    const [warningMsg, setWarningMsg] = useState(warning);
     const [imageCapture, setImageCapture] = useState(false);
     
 
@@ -182,35 +179,35 @@ function ApplicantDailyTest() {
     }, [selectedDate, skillBadges.skillsRequired]);
 
     // Fetch past test details
-    const fetchTestDetailsByDate = async (date) => {
-        try {
-            const jwtToken = localStorage.getItem("jwtToken");
-            const res = await axios.get(`http://localhost:8080/dailyTest/result/testResult/1?date=${date}`, {
-                headers: { Authorization: `Bearer ${jwtToken}` }
-            });
-            console.log(date);
-            console.log("Raw response data:", res.data)
+    // const fetchTestDetailsByDate = async (date) => {
+    //     try {
+    //         const jwtToken = localStorage.getItem("jwtToken");
+    //         const res = await axios.get(`http://localhost:8080/dailyTest/result/testResult/1?date=${date}`, {
+    //             headers: { Authorization: `Bearer ${jwtToken}` }
+    //         });
+    //         console.log(date);
+    //         console.log("Raw response data:", res.data)
 
-            // Optional: inspect structure in detail
-            if (Array.isArray(res.data)) {
-                res.data.forEach((q, idx) => {
-                    console.log(`Question ${idx + 1}:`);
-                    console.log("  Question:", q.question);
-                    console.log("  Options:", q.options);
-                    console.log("  CorrectAnswer:", q.correctAnswer);
-                    console.log("  SelectedAnswer:", q.selectedAnswer);
-                });
-            } else {
-                console.warn("Unexpected testResult structure:", res.data);
-            }
-            setRandomQuestions(res.data);
-            const testScoreObj = testResults.find(result => result.testDate === date);
-            setSelectedResult({ date, score: testScoreObj?.score ?? 0 });
-            setShowResult(true);
-        } catch (err) {
-            console.error("Failed to fetch test details:", err);
-        }
-    };
+    //         // Optional: inspect structure in detail
+    //         if (Array.isArray(res.data)) {
+    //             res.data.forEach((q, idx) => {
+    //                 console.log(`Question ${idx + 1}:`);
+    //                 console.log("  Question:", q.question);
+    //                 console.log("  Options:", q.options);
+    //                 console.log("  CorrectAnswer:", q.correctAnswer);
+    //                 console.log("  SelectedAnswer:", q.selectedAnswer);
+    //             });
+    //         } else {
+    //             console.warn("Unexpected testResult structure:", res.data);
+    //         }
+    //         setRandomQuestions(res.data);
+    //         const testScoreObj = testResults.find(result => result.testDate === date);
+    //         setSelectedResult({ date, score: testScoreObj?.score ?? 0 });
+    //         setShowResult(true);
+    //     } catch (err) {
+    //         console.error("Failed to fetch test details:", err);
+    //     }
+    // };
 
     // Handle answering
     const checkAns = (e, selectedIndex) => {
@@ -339,61 +336,61 @@ function ApplicantDailyTest() {
 
     
         
-        const captureImage = () => {
-            const imageSrc = webcamRef.current.getScreenshot();
-            uploadImage(imageSrc);
-        };
+        // const captureImage = () => {
+        //     const imageSrc = webcamRef.current.getScreenshot();
+        //     uploadImage(imageSrc);
+        // };
     
-        const uploadImage = async (base64Image) => {
-            try {
-                // Convert base64 to blob
-                const res = await fetch(base64Image);
-                const blob = await res.blob();
+        // const uploadImage = async (base64Image) => {
+        //     try {
+        //         // Convert base64 to blob
+        //         const res = await fetch(base64Image);
+        //         const blob = await res.blob();
     
-                // Create filename with applicantId and timestamp
-                const timestamp = Date.now();
-                const filename = `${user.id}_${timestamp}.jpg`;
+        //         // Create filename with applicantId and timestamp
+        //         const timestamp = Date.now();
+        //         const filename = `${user.id}_${timestamp}.jpg`;
     
-                const formData = new FormData();
-                formData.append('file', new File([blob], filename, { type: 'image/jpeg' }));
-                const jwtToken = localStorage.getItem("jwtToken");
-                const response = await fetch("http://localhost:8080/file/upload", {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${jwtToken}`,
-                    },
-                    body: formData,
-                });
+        //         const formData = new FormData();
+        //         formData.append('file', new File([blob], filename, { type: 'image/jpeg' }));
+        //         const jwtToken = localStorage.getItem("jwtToken");
+        //         const response = await fetch("http://localhost:8080/file/upload", {
+        //             method: "POST",
+        //             headers: {
+        //                 Authorization: `Bearer ${jwtToken}`,
+        //             },
+        //             body: formData,
+        //         });
     
-                if (response.ok) {
-                    console.log("Image uploaded successfully!");
-                    // Save filename somewhere (state or localStorage)
-                    localStorage.setItem('proctoringImage', filename);
-                    setShowWebcam(false); // Hide webcam modal, show test
-                    startTestMonitoring();
-                } else {
-                    console.error("Image upload failed.");
-                }
-            } catch (err) {
-                console.error("Upload error", err);
-            }
-        };
+        //         if (response.ok) {
+        //             console.log("Image uploaded successfully!");
+        //             // Save filename somewhere (state or localStorage)
+        //             localStorage.setItem('proctoringImage', filename);
+        //             setShowWebcam(false); // Hide webcam modal, show test
+        //             startTestMonitoring();
+        //         } else {
+        //             console.error("Image upload failed.");
+        //         }
+        //     } catch (err) {
+        //         console.error("Upload error", err);
+        //     }
+        // };
     
-        const startTestMonitoring = () => {
-            setTestStarted(true);
-            // Monitor the applicant during the test by capturing screenshots every 30 seconds
-            const intervalId = setInterval(() => {
-                captureSnapshotDuringTest();
-            }, 30000);
+        // const startTestMonitoring = () => {
+        //     setTestStarted(true);
+        //     // Monitor the applicant during the test by capturing screenshots every 30 seconds
+        //     const intervalId = setInterval(() => {
+        //         captureSnapshotDuringTest();
+        //     }, 30000);
     
-            // Store intervalId so we can clear it if needed (e.g., on test completion)
-            localStorage.setItem('proctoringInterval', intervalId);
-        };
+        //     // Store intervalId so we can clear it if needed (e.g., on test completion)
+        //     localStorage.setItem('proctoringInterval', intervalId);
+        // };
     
-        const captureSnapshotDuringTest = async () => {
-            const imageSrc = webcamRef.current.getScreenshot();
-            uploadImage(imageSrc);
-        };
+        // const captureSnapshotDuringTest = async () => {
+        //     const imageSrc = webcamRef.current.getScreenshot();
+        //     uploadImage(imageSrc);
+        // };
     
         useEffect(() => {
             // Cleanup interval when test is over
@@ -498,7 +495,7 @@ function ApplicantDailyTest() {
                                 </div>
                             )}
 
-{!imageCapture && testStarted && showWebcam && (
+{/*!imageCapture && testStarted && showWebcam && (
                 <div className="webcam-modal">
                     <h3>Please capture your image before starting the test</h3>
                     <Webcam
@@ -514,7 +511,7 @@ function ApplicantDailyTest() {
                     <button onClick={() => { captureImage(); setImageCapture(true); }}>
                         Capture & Start Test</button>
                 </div>
-            )}
+            )*/}
 
                             {testStarted && randomQuestions.length > 0 && (
                                 <>
