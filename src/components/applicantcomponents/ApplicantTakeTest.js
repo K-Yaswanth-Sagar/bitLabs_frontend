@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation,Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import aptitudeQuestions from './questions/aptitude_questions.json';
 import technicalQuestions from './questions/technical_questions.json';
 import './css/ApplicantTakeTest.css';
@@ -35,7 +35,16 @@ import CSSTest from './questions/CSS.json';
 import AngularTest from './questions/Angular.json';
 import ManualTestingTest from './questions/ManualTesting.json';
 import VueTest from './questions/Vue.json';
-import Exampage from './proctoring/Exampage';
+import {
+  startVideo,
+  stopVideo,
+  startFaceDetection,
+  captureImage,
+  uploadImage,
+  verifyImage,
+  loadModels,
+} from './proctoring/faceUtils';
+
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -66,147 +75,154 @@ const ApplicantTakeTest = () => {
 
 
 
-// Disable right-click and copy-paste
-const disableUserActions = () => {
-  document.addEventListener('contextmenu', preventDefault);
-  document.addEventListener('copy', preventDefault);
-  document.addEventListener('cut', preventDefault);
-  document.addEventListener('paste', preventDefault);
-};
+   const [webcamError, setWebcamError] = useState(false);
+  const videoRef = useRef(null);
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
 
-// Enable right-click and copy-paste again
-const enableUserActions = () => {
-  document.removeEventListener('contextmenu', preventDefault);
-  document.removeEventListener('copy', preventDefault);
-  document.removeEventListener('cut', preventDefault);
-  document.removeEventListener('paste', preventDefault);
-};
 
-// Helper function
-const preventDefault = (e) => {
-  e.preventDefault();
-};
+
+  // Disable right-click and copy-paste
+  const disableUserActions = () => {
+    document.addEventListener('contextmenu', preventDefault);
+    document.addEventListener('copy', preventDefault);
+    document.addEventListener('cut', preventDefault);
+    document.addEventListener('paste', preventDefault);
+  };
+
+  // Enable right-click and copy-paste again
+  const enableUserActions = () => {
+    document.removeEventListener('contextmenu', preventDefault);
+    document.removeEventListener('copy', preventDefault);
+    document.removeEventListener('cut', preventDefault);
+    document.removeEventListener('paste', preventDefault);
+  };
+
+  // Helper function
+  const preventDefault = (e) => {
+    e.preventDefault();
+  };
 
 
   useEffect(() => {
     // Load questions and set timer based on the test name
-    
+
     console.log(testName);
     if (testName === 'General Aptitude Test') {
       setQuestions(aptitudeQuestions);
-      setTimer(60* 60); // 60 minutes for General Aptitude Test
+      setTimer(60 * 60); // 60 minutes for General Aptitude Test
       setRemainingTime(60 * 60);
     } else if (testName === 'Technical Test') {
       setQuestions(technicalQuestions);
       setTimer(30 * 60); // 30 minutes for Technical Test
       setRemainingTime(30 * 60);
-    }else if(testName === 'Spring Boot'){
+    } else if (testName === 'Spring Boot') {
       setQuestions(SpringBootTset);
       setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'React'){
+    } else if (testName === 'React') {
       setQuestions(ReactTest);
       setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'SQL'){
-      setQuestions(SQLTest);
-      setTimer(30* 60);
-      setRemainingTime(30 * 60);
-    }else if(testName === 'MySQL'){
+    } else if (testName === 'SQL') {
       setQuestions(SQLTest);
       setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'SQL-Server'){
+    } else if (testName === 'MySQL') {
       setQuestions(SQLTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'Python'){
+    } else if (testName === 'SQL-Server') {
+      setQuestions(SQLTest);
+      setTimer(30 * 60);
+      setRemainingTime(30 * 60);
+    } else if (testName === 'Python') {
       setQuestions(PaythonTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'HTML'){
+    } else if (testName === 'HTML') {
       setQuestions(HTMLTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'JavaScript'){
+    } else if (testName === 'JavaScript') {
       setQuestions(JavaScriptTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'Java'){
+    } else if (testName === 'Java') {
       setQuestions(JavaTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'C++'){
+    } else if (testName === 'C++') {
       setQuestions(CppTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'Django'){
+    } else if (testName === 'Django') {
       setQuestions(DjangoTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'Hibernate'){
+    } else if (testName === 'Hibernate') {
       setQuestions(HibernateTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'Selenium'){
+    } else if (testName === 'Selenium') {
       setQuestions(SeleniumTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'C Sharp'){
+    } else if (testName === 'C Sharp') {
       setQuestions(CSharpTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName === 'C'){
+    } else if (testName === 'C') {
       setQuestions(CTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == '.Net'){
+    } else if (testName == '.Net') {
       setQuestions(DotNetTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Regression Testing'){
+    } else if (testName == 'Regression Testing') {
       setQuestions(RegressionTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Spring'){
+    } else if (testName == 'Spring') {
       setQuestions(SpringTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Mongo DB'){
+    } else if (testName == 'Mongo DB') {
       setQuestions(MonogoTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Flask'){
+    } else if (testName == 'Flask') {
       setQuestions(FlaskTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Servlets'){
+    } else if (testName == 'Servlets') {
       setQuestions(ServletsTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'JSP'){
+    } else if (testName == 'JSP') {
       setQuestions(JspTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'TypeScript'){
+    } else if (testName == 'TypeScript') {
       setQuestions(TSTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'CSS'){
+    } else if (testName == 'CSS') {
       setQuestions(CSSTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Angular'){
+    } else if (testName == 'Angular') {
       setQuestions(AngularTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Manual Testing'){
+    } else if (testName == 'Manual Testing') {
       setQuestions(ManualTestingTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
-    }else if(testName == 'Vue'){
+    } else if (testName == 'Vue') {
       setQuestions(VueTest);
-      setTimer(30* 60);
+      setTimer(30 * 60);
       setRemainingTime(30 * 60);
     }
   }, [testName]);
@@ -216,9 +232,9 @@ const preventDefault = (e) => {
     const shuffled = shuffleArray(questions.questions);
     setShuffledQuestions(shuffled);
   }, [questions.questions]);
-  
 
-   const formatTime = (seconds) => {
+
+  const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
@@ -321,10 +337,10 @@ const preventDefault = (e) => {
   }, [testStarted, remainingTime]);
 
   const handleTestInterruption = () => {
-      console.log("Test interrupted");
-      setTestStarted(false);
-      setCurrentPage('interrupted'); // Show a page or message indicating test interruption
-      // Optionally save the current state or handle submission logic here
+    console.log("Test interrupted");
+    setTestStarted(false);
+    setCurrentPage('interrupted'); // Show a page or message indicating test interruption
+    // Optionally save the current state or handle submission logic here
   };
 
   const captureImage = () => {
@@ -335,7 +351,7 @@ const preventDefault = (e) => {
     setCurrentPage('test');
     setTestStarted(true);
     enterFullScreen();
-    disableUserActions();
+    // disableUserActions();
   };
 
   const handleNextQuestion = () => {
@@ -365,7 +381,7 @@ const preventDefault = (e) => {
     });
   };
 
-  
+
 
   const calculateScore = () => {
     let correctAnswers = 0;
@@ -374,12 +390,12 @@ const preventDefault = (e) => {
         correctAnswers += 1;
       }
     });
-     const calculatedScore = (correctAnswers / questions.questions.length) * 100;
+    const calculatedScore = (correctAnswers / questions.questions.length) * 100;
     setScore(calculatedScore);
     return calculatedScore;
   };
 
-  
+
   const handleSubmitTest = () => {
     if (!selectedOptions[currentQuestionIndex]) {
       setValidationMessage('Please provide your answer to submit the test.');
@@ -393,72 +409,72 @@ const preventDefault = (e) => {
 
     if (isOnline) {
 
-    if(testName === 'General Aptitude Test' || testName === 'Technical Test'){
-       // Submit the test result to the API
-    fetch(`${apiUrl}/applicant1/saveTest/${userId}`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        testName,
-        testScore: calculatedScore,
-        testStatus,
-        applicant: {
-          id: userId,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Test submitted successfully:', data);
-      })
-      .catch((error) => {
-        console.error('Error submitting the test:', error);
-      });
-    }else{
+      if (testName === 'General Aptitude Test' || testName === 'Technical Test') {
+        // Submit the test result to the API
+        fetch(`${apiUrl}/applicant1/saveTest/${userId}`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            testName,
+            testScore: calculatedScore,
+            testStatus,
+            applicant: {
+              id: userId,
+            },
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Test submitted successfully:', data);
+          })
+          .catch((error) => {
+            console.error('Error submitting the test:', error);
+          });
+      } else {
 
-      const skillBadgeStatus = calculatedScore >= 70 ? 'PASSED' : 'FAILED';
-      // Submit the skill badge information to the API
-  fetch(`${apiUrl}/skill-badges/save`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      applicantId: userId, // Use the applicant's ID
-      skillBadgeName: testName, // Use the test name as the skill badge name
-      status: skillBadgeStatus, // Use PASS or FAILED based on score
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Skill badge saved successfully:', data);
-    })
-    .catch((error) => {
-      console.error('Error saving the skill badge:', error);
-    });
+        const skillBadgeStatus = calculatedScore >= 70 ? 'PASSED' : 'FAILED';
+        // Submit the skill badge information to the API
+        fetch(`${apiUrl}/skill-badges/save`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            applicantId: userId, // Use the applicant's ID
+            skillBadgeName: testName, // Use the test name as the skill badge name
+            status: skillBadgeStatus, // Use PASS or FAILED based on score
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Skill badge saved successfully:', data);
+          })
+          .catch((error) => {
+            console.error('Error saving the skill badge:', error);
+          });
+      }
     }
-  }
-  else {
-    // Notify the user about the loss of connection
-    setValidationMessage('No internet connection. Please check your connection and try again.');
-  }
+    else {
+      // Notify the user about the loss of connection
+      setValidationMessage('No internet connection. Please check your connection and try again.');
+    }
 
     handleTestCompletion();
-  setShowGoBackButton(false);
+    setShowGoBackButton(false);
     // Show the acknowledgment popup based on the test result
     if (testStatus === 'P') {
-     
+
       setCurrentPage('passAcknowledgment');
     } else {
-      
+
       setCurrentPage('failAcknowledgment');
     }
   };
-  
+
 
   const handleExit = () => {
     setShowExitPopup(true); // Show exit confirmation popup
@@ -467,34 +483,34 @@ const preventDefault = (e) => {
   const handleConfirmExit = () => {
     setShowExitPopup(false);
     enableUserActions();
-    if(testStarted && testName !== 'General Aptitude Test' && testName !== 'Technical Test'){
+    if (testStarted && testName !== 'General Aptitude Test' && testName !== 'Technical Test') {
       handleTestCompletion();
-    setShowGoBackButton(false);
+      setShowGoBackButton(false);
       const jwtToken = localStorage.getItem('jwtToken');
       // Submit the skill badge information to the API
-  fetch(`${apiUrl}/skill-badges/save`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      applicantId: userId, // Use the applicant's ID
-      skillBadgeName: testName, // Use the test name as the skill badge name
-      status: 'FAILED', // Use PASS or FAILED based on score
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Skill badge saved successfully:', data);
-    })
-    .catch((error) => {
-      console.error('Error saving the skill badge:', error);
-    });
+      fetch(`${apiUrl}/skill-badges/save`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          applicantId: userId, // Use the applicant's ID
+          skillBadgeName: testName, // Use the test name as the skill badge name
+          status: 'FAILED', // Use PASS or FAILED based on score
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Skill badge saved successfully:', data);
+        })
+        .catch((error) => {
+          console.error('Error saving the skill badge:', error);
+        });
     }
     else if (testStarted) { // Ensure test has started
       handleTestCompletion();
-    setShowGoBackButton(false);
+      setShowGoBackButton(false);
       const calculatedScore = 0; // Calculate the test score
       const testStatus = calculatedScore >= 70 ? 'P' : 'F'; // Determine pass/fail status
       const jwtToken = localStorage.getItem('jwtToken');
@@ -522,11 +538,11 @@ const preventDefault = (e) => {
           console.error('Error submitting test result:', error);
         });
     }
-    
+
     // Navigate to the next page after the API call
     navigate("/applicant-verified-badges");
   };
-  
+
 
   const handleCancelExit = () => {
     setShowExitPopup(false); // Close the exit popup without navigating
@@ -552,34 +568,34 @@ const preventDefault = (e) => {
   };
 
   const handleViewResults = () => {
-  
+
     const calculatedScore = calculateScore();
     const testStatus = calculatedScore >= 70 ? 'P' : 'F';
     const jwtToken = localStorage.getItem('jwtToken');
-    
-    if(testStarted && testName !== 'General Aptitude Test' && testName !== 'Technical Test'){
+
+    if (testStarted && testName !== 'General Aptitude Test' && testName !== 'Technical Test') {
       const jwtToken = localStorage.getItem('jwtToken');
       const testStatus = calculatedScore >= 70 ? 'PASSED' : 'FAILED';
       // Submit the skill badge information to the API
-  fetch(`${apiUrl}/skill-badges/save`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      applicantId: userId, // Use the applicant's ID
-      skillBadgeName: testName, // Use the test name as the skill badge name
-      status: testStatus, // Use PASS or FAILED based on score
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Skill badge saved successfully:', data);
-    })
-    .catch((error) => {
-      console.error('Error saving the skill badge:', error);
-    });
+      fetch(`${apiUrl}/skill-badges/save`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`, // Add jwtToken for authorization
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          applicantId: userId, // Use the applicant's ID
+          skillBadgeName: testName, // Use the test name as the skill badge name
+          status: testStatus, // Use PASS or FAILED based on score
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Skill badge saved successfully:', data);
+        })
+        .catch((error) => {
+          console.error('Error saving the skill badge:', error);
+        });
     }
     else if (testStarted) { // Ensure test has started
       const calculatedScore = calculateScore(); // Calculate the test score
@@ -615,9 +631,37 @@ const preventDefault = (e) => {
     } else {
       setCurrentPage('failAcknowledgment');
     }
-  };   
+  };
 
+  useEffect(() => {
+    if (currentPage === 'captureImage') {
+      startVideo(videoRef, setWebcamError);
+    }
+  }, [currentPage]);
+
+
+  useEffect(() => {
+     const initModels = async () => {
+       await loadModels(process.env.PUBLIC_URL + '/models');
+       setModelsLoaded(true);
+     };
+ 
+     initModels();
+   }, []);
   
+    const handleCapture = () => {
+       captureImage(
+         videoRef,
+         userId,
+         async ({ file, dataUrl }) => {
+           const response = await uploadImage(file);
+           console.log('Uploaded to server:', response);
+           setCapturedImage(dataUrl);
+         },
+         (errMsg) => alert(errMsg)
+       );
+      };
+
 
 
 
@@ -662,12 +706,12 @@ const preventDefault = (e) => {
       </header>
 
       {showExitPopup && (
-  <TestExitPopup
-    onConfirm={handleConfirmExit}
-    onCancel={handleCancelExit}
-    exitMessage={!testStarted ? undefined : "Exiting will erase your progress and prevent retaking the test for 7 days. Proceed?"}
-  />
-)}
+        <TestExitPopup
+          onConfirm={handleConfirmExit}
+          onCancel={handleCancelExit}
+          exitMessage={!testStarted ? undefined : "Exiting will erase your progress and prevent retaking the test for 7 days. Proceed?"}
+        />
+      )}
       {currentPage === 'instructions' && (
         <div className="instructions-page">
           <div className="instructions-header">
@@ -709,10 +753,10 @@ const preventDefault = (e) => {
               <li>All the questions are mandatory.</li>
               <li>Please complete the test independently. External help is prohibited.</li>
               <li>
-              Make sure your device is fully charged and has a stable internet connection before starting the test.
+                Make sure your device is fully charged and has a stable internet connection before starting the test.
               </li>
               <li>
-              To avoid interruptions, take the test on a PC, as calls may disrupt it on mobile.
+                To avoid interruptions, take the test on a PC, as calls may disrupt it on mobile.
               </li>
             </ul>
           </div>
@@ -724,13 +768,27 @@ const preventDefault = (e) => {
         </div>
       )}
 
-{currentPage === 'captureImage' && (
+      {currentPage === 'captureImage' && (
         <div className="instructions-page">
-          
+
           <br />
           <div className="instructions" style={{ paddingLeft: '2%' }}>
             <span className="instructions-title">Take image before starting the test</span>
-            <Exampage/>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                width="320"
+                height="260"
+                style={{ borderRadius: '10px', border: '2px solid #ccc' }}
+              />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+      <button className="start-btn" onClick={handleCapture}>
+        Capture Image
+      </button>
+    </div>
           </div>
           <div align="right">
             <button className="start-btn" onClick={startTest}>
@@ -739,8 +797,8 @@ const preventDefault = (e) => {
           </div>
         </div>
       )}
-      
-      
+
+
 
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
@@ -753,67 +811,67 @@ const preventDefault = (e) => {
             </h3>
             <div className="right-content">
               <div className="timer">
-              <svg className='timer-svg' style={{marginBottom:'3px'}} xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
-  <g clip-path="url(#clip0_2734_1347)">
-    <path d="M9 17.375C13.1421 17.375 16.5 14.0171 16.5 9.875C16.5 5.73286 13.1421 2.375 9 2.375C4.85786 2.375 1.5 5.73286 1.5 9.875C1.5 14.0171 4.85786 17.375 9 17.375Z" stroke="#F46F16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9 5.375V9.875L12 11.375" stroke="#F46F16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_2734_1347">
-      <rect width="18" height="18" fill="white" transform="translate(0 0.875)"/>
-    </clipPath>
-  </defs>
-</svg>&nbsp;&nbsp;
-<span>
-  {/* {new Date(timer * 1000).toISOString().substr(14, 5)} */}
-  {formatTime(remainingTime)}
-</span>
+                <svg className='timer-svg' style={{ marginBottom: '3px' }} xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                  <g clip-path="url(#clip0_2734_1347)">
+                    <path d="M9 17.375C13.1421 17.375 16.5 14.0171 16.5 9.875C16.5 5.73286 13.1421 2.375 9 2.375C4.85786 2.375 1.5 5.73286 1.5 9.875C1.5 14.0171 4.85786 17.375 9 17.375Z" stroke="#F46F16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9 5.375V9.875L12 11.375" stroke="#F46F16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2734_1347">
+                      <rect width="18" height="18" fill="white" transform="translate(0 0.875)" />
+                    </clipPath>
+                  </defs>
+                </svg>&nbsp;&nbsp;
+                <span>
+                  {/* {new Date(timer * 1000).toISOString().substr(14, 5)} */}
+                  {formatTime(remainingTime)}
+                </span>
 
               </div>
             </div>
           </div>
           <div className="separator"></div>
-         <div className="question no-select">
-  <ul>
-    <li>
-      <p className="question1 no-select">
-        {currentQuestionIndex + 1}.&nbsp;
-        <span
-  dangerouslySetInnerHTML={{
-    __html: shuffledQuestions[currentQuestionIndex]?.question
-      .replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') // Replace newlines with <br/>
-      .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') // Replace tabs with four non-breaking spaces
-      .replace(/```/g, '') // Remove any Markdown code block delimiters
-  }}
-/>
-      </p>
-    </li>
-    {shuffledQuestions[currentQuestionIndex]?.options.map((option, index) => (
-      <li key={index}>
-        
-        <label className="question-label no-select">
-          <input
-            type="radio"
-            value={option}
-            checked={selectedOptions[currentQuestionIndex] === option}
-            onChange={handleOptionChange}
-            className="question-radio"
-          />
-          <span
-          className="no-select"
-            dangerouslySetInnerHTML={{
-              __html: option.replace(/\n/g, '<br/>').replace(/```/g, ''),
-            }}
-          />
-        </label>
-        
-      </li>
-    ))}
-    {validationMessage && <p className="validation">{validationMessage}</p>}
-  </ul>
-</div>
+          <div className="question no-select">
+            <ul>
+              <li>
+                <p className="question1 no-select">
+                  {currentQuestionIndex + 1}.&nbsp;
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: shuffledQuestions[currentQuestionIndex]?.question
+                        .replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') // Replace newlines with <br/>
+                        .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') // Replace tabs with four non-breaking spaces
+                        .replace(/```/g, '') // Remove any Markdown code block delimiters
+                    }}
+                  />
+                </p>
+              </li>
+              {shuffledQuestions[currentQuestionIndex]?.options.map((option, index) => (
+                <li key={index}>
 
-    <br /><br /><br /><br /><br /><br /><br /><br />
+                  <label className="question-label no-select">
+                    <input
+                      type="radio"
+                      value={option}
+                      checked={selectedOptions[currentQuestionIndex] === option}
+                      onChange={handleOptionChange}
+                      className="question-radio"
+                    />
+                    <span
+                      className="no-select"
+                      dangerouslySetInnerHTML={{
+                        __html: option.replace(/\n/g, '<br/>').replace(/```/g, ''),
+                      }}
+                    />
+                  </label>
+
+                </li>
+              ))}
+              {validationMessage && <p className="validation">{validationMessage}</p>}
+            </ul>
+          </div>
+
+          <br /><br /><br /><br /><br /><br /><br /><br />
           <div className="footer1">
             <button
               disabled={currentQuestionIndex === 0}
@@ -835,35 +893,35 @@ const preventDefault = (e) => {
         </div>
       )}
 
-     {currentPage === 'passAcknowledgment' && (
-        <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName}  handleTakeTest={handleTakeTest} setTestStarted={setTestStarted}/>
+      {currentPage === 'passAcknowledgment' && (
+        <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName} handleTakeTest={handleTakeTest} setTestStarted={setTestStarted} />
       )}
       {currentPage === 'failAcknowledgment' && (
         <TestFailAcknowledgment onClose={handleClosePopup} setTestStarted={setTestStarted} setShowGoBackButton={setShowGoBackButton} />
       )}
 
 
-     {currentPage === 'timesup' && (
+      {currentPage === 'timesup' && (
         <TestTimeUp onViewResults={handleViewResults} onCancel={handleViewResults} />
       )}
 
-     {!isTestCompleted && showGoBackButton && (
-            <div className="go-back-button-overlay">
-             
-              <p><strong>You won’t be able to continue the test and you’ll be ineligible to take this until 7 days. To avoid,</strong></p>
-              <br></br>
-              <button className="exit-popup-btn exit-popup-confirm-btn" onClick={handleGoBackToTest}>
-                Go Back to Test
-              </button>
-            </div>
-          )}
+      {!isTestCompleted && showGoBackButton && (
+        <div className="go-back-button-overlay">
 
-{currentPage === 'interrupted' && (
-  <div className="go-back-button-overlay">
-    <p>Your test has been interrupted. Kindly try again later.</p>
-    <br />
-  </div>
-)}
+          <p><strong>You won’t be able to continue the test and you’ll be ineligible to take this until 7 days. To avoid,</strong></p>
+          <br></br>
+          <button className="exit-popup-btn exit-popup-confirm-btn" onClick={handleGoBackToTest}>
+            Go Back to Test
+          </button>
+        </div>
+      )}
+
+      {currentPage === 'interrupted' && (
+        <div className="go-back-button-overlay">
+          <p>Your test has been interrupted. Kindly try again later.</p>
+          <br />
+        </div>
+      )}
 
       {currentPage === 'exitConfirmed' && (
         <div className="exit-confirmation">

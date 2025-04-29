@@ -32,22 +32,22 @@
   }
   
   /* Styling the capture button */
-  .capture-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-  }
-  
-  .capture-button:hover {
-    background-color: #0056b3;
-  }
+.capture-button{
+  background: #F46F16 !important;
+  color: #fff !important;
+  padding: 10px 40px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  margin-top: 2%;
+}
+
+.capture-button:disabled {
+  color: #D0D0D0 !important;
+    cursor: not-allowed !important;
+    border: 1px solid #D0D0D0 !important;
+    background: #FFFFFF !important;        
+}
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
