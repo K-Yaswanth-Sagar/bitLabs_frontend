@@ -68,10 +68,30 @@ const ApplicantTakeTest = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const navigate = useNavigate();
+  const navigation = useNavigate();
   const location = useLocation();
   const { testName } = location.state || {};
   const { user } = useUserContext();
   const userId = user.id;
+  const [filename, setFilename] = useState(null);
+  const [alertCount, setAlertCount] = useState(0);
+  const [detections, setDetections] = useState([]);
+
+
+  // useEffect(() => {
+  //   const storedFilename = localStorage.getItem('filename');
+  //   if (storedFilename) {
+  //     setFilename(storedFilename);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const storedFilename = localStorage.getItem('filename');
+    if (storedFilename && storedFilename !== filename) {
+      setFilename(storedFilename);
+    }
+  }, [filename]);
+  
 
 
 
@@ -343,7 +363,7 @@ const ApplicantTakeTest = () => {
     // Optionally save the current state or handle submission logic here
   };
 
-  const captureImage = () => {
+  const captureImage1 = () => {
     setCurrentPage('captureImage');
   }
 
@@ -634,9 +654,14 @@ const ApplicantTakeTest = () => {
   };
 
   useEffect(() => {
-    if (currentPage === 'captureImage') {
-      startVideo(videoRef, setWebcamError);
-    }
+    const initialize = async () => {
+      if (currentPage === 'captureImage' || currentPage === 'test') {
+        await loadModels();
+        startVideo(videoRef, setWebcamError);
+      }
+    };
+  
+    initialize();
   }, [currentPage]);
 
 
@@ -650,21 +675,64 @@ const ApplicantTakeTest = () => {
    }, []);
   
     const handleCapture = () => {
-       captureImage(
+      console.log("entered handle capture");
+      console.log(videoRef);
+      console.log(userId);
+      captureImage(
          videoRef,
          userId,
          async ({ file, dataUrl }) => {
            const response = await uploadImage(file);
            console.log('Uploaded to server:', response);
            setCapturedImage(dataUrl);
+           const updatedFilename = localStorage.getItem('filename');
+           console.log("Updated filename:", updatedFilename);
+    
+      setFilename(updatedFilename);
          },
          (errMsg) => alert(errMsg)
        );
+       
       };
-
-
-
-
+      
+      useEffect(() => {
+        let intervalId;
+      
+        const handleVideoReady = async () => {
+          console.log('Video is ready, starting face detection...');
+          console.log("navigate", navigation);
+          console.log("testName", testName);
+          intervalId = await startFaceDetection( videoRef,
+            setDetections,
+            setAlertCount,
+            userId,
+            navigation,
+          testName);
+         
+        };
+      
+        if (currentPage === 'test' && videoRef.current) {
+          const video = videoRef.current;
+      
+          const onLoadedData = () => {
+            handleVideoReady();
+          };
+      
+          video.addEventListener('loadeddata', onLoadedData);
+      
+          return () => {
+            if (intervalId) clearInterval(intervalId);
+            video.removeEventListener('loadeddata', onLoadedData);
+          };
+        }
+      }, [currentPage, videoRef]);
+      
+      // useEffect(() => {
+      //   if (alertCount > 0) {
+      //     alert(`⚠️ Face mismatch detected ${alertCount} time(s)!`);
+      //   }
+      // }, [alertCount]);
+      
   return (
     <div className="test-container">
       <header className="test-header">
@@ -761,7 +829,7 @@ const ApplicantTakeTest = () => {
             </ul>
           </div>
           <div align="right">
-            <button className="start-btn" onClick={captureImage}>
+            <button className="start-btn" onClick={captureImage1}>
               Next
             </button>
           </div>
@@ -785,15 +853,27 @@ const ApplicantTakeTest = () => {
               />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-      <button className="start-btn" onClick={handleCapture}>
+      <button className="start-btn" disabled={webcamError} onClick={handleCapture}>
         Capture Image
       </button>
     </div>
+    {webcamError && (
+    <p style={{display: 'flex', justifyContent: 'center', color: 'red', marginTop: '8px' }}>
+      Please check camera permissions or hardware issues to continue the test.
+    </p>
+  )}
           </div>
           <div align="right">
-            <button className="start-btn" onClick={startTest}>
-              Start
-            </button>
+          {webcamError ? (
+            
+    <button className="start-btn" disabled>
+      Start
+    </button>
+  ) : (
+    <button className="start-btn" onClick={startTest}>
+      Start
+    </button>
+  )}
           </div>
         </div>
       )}
@@ -802,6 +882,23 @@ const ApplicantTakeTest = () => {
 
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
+          <div style={{
+  width: '1px',
+  height: '1px',
+  opacity: 0,
+  position: 'absolute',
+  left: '-9999px',
+  pointerEvents: 'none'
+}}>
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                width="320"
+                height="260"
+                style={{ borderRadius: '10px', border: '2px solid #ccc' }}
+              />
+            </div>
           <div className="header">
             <h3>
               <span className="text-name1">{testName}</span>
