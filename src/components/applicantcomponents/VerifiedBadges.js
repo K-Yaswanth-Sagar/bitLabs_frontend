@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react'; 
 import { Link } from 'react-router-dom';
 import './VerifiedBadges.css';
 import Taketest from '../../images/user/avatar/Taketest.png';
@@ -42,6 +42,7 @@ const SkillBadgeCard = ({ skillName, status, badgeIcon, retakeTest, testFailedAt
   const [timeLeft, setTimeLeft] = useState({});
   const [isRetakeAvailable, setIsRetakeAvailable] = useState(false);
   const navigate = useNavigate();
+  const videoRef = useRef(null);
  
     // Map skill names to images
     const skillImages = {
@@ -77,7 +78,7 @@ const SkillBadgeCard = ({ skillName, status, badgeIcon, retakeTest, testFailedAt
   
     // Get the image based on skill name, default to javaPNG if not found
     const skillImage = skillImages[skillName] || javaPNG;
-
+    
   useEffect(() => {
     if (status === 'FAILED') {
        // Convert `testFailedAt` to Date object, which is when the test failed
@@ -93,6 +94,8 @@ const SkillBadgeCard = ({ skillName, status, badgeIcon, retakeTest, testFailedAt
     testFailedAt[5] // second
     
   );
+
+ 
       
       // Calculate the total 7 days (or 168 hours) from the failure time
       const futureTime = new Date(failedDate.getTime() + 10 * 60 * 1000 + (5 * 60 * 60 * 1000) + (30 * 60 * 1000));

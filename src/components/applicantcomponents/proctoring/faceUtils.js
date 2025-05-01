@@ -17,13 +17,14 @@ export const loadModels = async (modelPath = '/models') => {
 };
 
 // Start webcam stream
-export const startVideo = async (videoRef, setWebcamError) => {
+export const startVideo = async (videoRef, setWebcamError, webcamStreamRef) => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     if (videoRef.current) {
       videoRef.current.srcObject = stream;
       await videoRef.current.play();
     }
+    webcamStreamRef.current = stream;
     setWebcamError(false);
   } catch (error) {
     console.error('Error accessing webcam:', error);
@@ -32,12 +33,19 @@ export const startVideo = async (videoRef, setWebcamError) => {
 };
 
 // Stop webcam stream
-export const stopVideo = (videoRef) => {
-  if (videoRef.current && videoRef.current.srcObject) {
-    videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
-    videoRef.current.srcObject = null;
+export const stopVideo = (videoRef, webcamStreamRef) => {
+  const stream = webcamStreamRef.current;
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    webcamStreamRef.current = null;
+    if (videoRef.current) videoRef.current.srcObject = null;
+    console.log('Webcam stopped');
+  } else {
+    console.warn('No active webcam to stop');
   }
 };
+
+
 
 // Face detection loop
 // Load the reference face descriptor from stored image
@@ -71,9 +79,10 @@ const loadReferenceFaceDescriptor = async () => {
 
 // Main function to start face detection
 export const startFaceDetection = async (
-  videoRef,
+ 
   setDetections,
   setAlertCount,
+  videoRef,
   userId,
   navigation,
   testName,
@@ -109,19 +118,20 @@ export const startFaceDetection = async (
       const distance = faceapi.euclideanDistance(detection.descriptor, referenceDescriptor);
       const confidence = 1 - distance;
 
-      if (confidence < 0.70) {
+      if (confidence < 0.45) {
         alertCounter++;
         setAlertCount(alertCounter);
         console.warn(`Face mismatch! Confidence: ${confidence.toFixed(2)} | Alert Count: ${alertCounter}`);
         alert(`Warning ${alertCounter}: Face mismatch detected!`);
 
-        if (alertCounter === 1) {
+        if (alertCounter === 3) {
           clearInterval(intervalId);
           console.log('Face detection stopped due to repeated mismatches.');
           console.log(userId);
           console.log("navigation" ,navigation);
           console.log("test Name" ,testName);
           await submitViolation(userId, navigation, testName);
+         
         }
       }
     } catch (err) {
@@ -215,9 +225,25 @@ export const verifyImage = (capturedImage) => {
       skillBadgeName: testName,
       status: 'FAILED',
     }),
-  });
+  }
+);
+console.log("api called");
 
-  const data = await response.json();
+const contentType = response.headers.get('content-type');
+let data;
+
+if (contentType && contentType.includes('application/json')) {
+  data = await response.json();
+} else {
+  data = await response.text();
+}
   console.log('Violation submitted:', data);
+  // console.log("videoRef", videoRef.current); 
+
+  // if (videoRef?.current) {
+  //   stopVideo(videoRef); 
+  // }
+  localStorage.removeItem('filename');
   navigation('/applicant-verified-badges');
+ 
 };

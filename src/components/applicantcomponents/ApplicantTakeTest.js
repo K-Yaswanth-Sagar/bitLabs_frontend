@@ -76,6 +76,9 @@ const ApplicantTakeTest = () => {
   const [filename, setFilename] = useState(null);
   const [alertCount, setAlertCount] = useState(0);
   const [detections, setDetections] = useState([]);
+const [testAttempted, setTestAttempted] = useState(false);
+const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'));
+
 
 
   // useEffect(() => {
@@ -91,19 +94,31 @@ const ApplicantTakeTest = () => {
       setFilename(storedFilename);
     }
   }, [filename]);
+
+  useEffect(() => {
+    const checkFilename = () => {
+      const exists = !!localStorage.getItem('filename');
+      setHasFilename(exists);
+    };
+  
+    const intervalId = setInterval(checkFilename, 500); // check every 500ms
+  
+    return () => clearInterval(intervalId);
+  }, []);
   
 
 
-
-   const [webcamError, setWebcamError] = useState(false);
+  const [webcamError, setWebcamError] = useState(false);
   const videoRef = useRef(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [isOver, setIsOver] = useState(false);
 
 
 
   // Disable right-click and copy-paste
   const disableUserActions = () => {
+
     document.addEventListener('contextmenu', preventDefault);
     document.addEventListener('copy', preventDefault);
     document.addEventListener('cut', preventDefault);
@@ -112,6 +127,7 @@ const ApplicantTakeTest = () => {
 
   // Enable right-click and copy-paste again
   const enableUserActions = () => {
+    setIsOver(true);
     document.removeEventListener('contextmenu', preventDefault);
     document.removeEventListener('copy', preventDefault);
     document.removeEventListener('cut', preventDefault);
@@ -135,31 +151,31 @@ const ApplicantTakeTest = () => {
     } else if (testName === 'Technical Test') {
       setQuestions(technicalQuestions);
       setTimer(30 * 60); // 30 minutes for Technical Test
-      setRemainingTime(30 * 60);
+      setRemainingTime(3 * 60);
     } else if (testName === 'Spring Boot') {
       setQuestions(SpringBootTset);
-      setTimer(30 * 60);
-      setRemainingTime(30 * 60);
+      setTimer(1 * 60);
+      setRemainingTime(1 * 60);
     } else if (testName === 'React') {
       setQuestions(ReactTest);
-      setTimer(30 * 60);
-      setRemainingTime(30 * 60);
+      setTimer(1 * 60);
+      setRemainingTime(1 * 60);
     } else if (testName === 'SQL') {
       setQuestions(SQLTest);
-      setTimer(30 * 60);
-      setRemainingTime(30 * 60);
+      setTimer(1 * 60);
+      setRemainingTime(1 * 60);
     } else if (testName === 'MySQL') {
       setQuestions(SQLTest);
-      setTimer(30 * 60);
-      setRemainingTime(30 * 60);
+      setTimer(1 * 60);
+      setRemainingTime(1 * 60);
     } else if (testName === 'SQL-Server') {
       setQuestions(SQLTest);
       setTimer(30 * 60);
       setRemainingTime(30 * 60);
     } else if (testName === 'Python') {
       setQuestions(PaythonTest);
-      setTimer(30 * 60);
-      setRemainingTime(30 * 60);
+      setTimer(1 * 60);
+      setRemainingTime(1 * 60);
     } else if (testName === 'HTML') {
       setQuestions(HTMLTest);
       setTimer(30 * 60);
@@ -368,10 +384,11 @@ const ApplicantTakeTest = () => {
   }
 
   const startTest = () => {
+    setTestAttempted(true);
     setCurrentPage('test');
     setTestStarted(true);
     enterFullScreen();
-    // disableUserActions();
+    disableUserActions();
   };
 
   const handleNextQuestion = () => {
@@ -496,6 +513,8 @@ const ApplicantTakeTest = () => {
   };
 
 
+
+
   const handleExit = () => {
     setShowExitPopup(true); // Show exit confirmation popup
   };
@@ -560,7 +579,10 @@ const ApplicantTakeTest = () => {
     }
 
     // Navigate to the next page after the API call
+    localStorage.removeItem('filename');
+
     navigate("/applicant-verified-badges");
+   
   };
 
 
@@ -584,6 +606,8 @@ const ApplicantTakeTest = () => {
   const handleTakeTest = (testName) => {
     setAcknowledgmentVisible(false); // Hide the acknowledgment component
     window.location.reload();
+    localStorage.removeItem('filename');
+
     navigate('/applicant-take-test', { state: { testName } }); // Then navigate to the test
   };
 
@@ -653,86 +677,88 @@ const ApplicantTakeTest = () => {
     }
   };
 
+  const webcamStreamRef = useRef(null);
+ 
   useEffect(() => {
     const initialize = async () => {
-      if (currentPage === 'captureImage' || currentPage === 'test') {
+      if (currentPage === 'captureImage' || currentPage === 'test' || currentPage === 'instructions') {
         await loadModels();
-        startVideo(videoRef, setWebcamError);
+        startVideo(videoRef, setWebcamError, webcamStreamRef);
       }
     };
-  
+
     initialize();
+    return () => {
+      stopVideo(videoRef, webcamStreamRef); 
+    };
   }, [currentPage]);
 
+ 
 
   useEffect(() => {
-     const initModels = async () => {
-       await loadModels(process.env.PUBLIC_URL + '/models');
-       setModelsLoaded(true);
-     };
- 
-     initModels();
-   }, []);
-  
-    const handleCapture = () => {
-      console.log("entered handle capture");
-      console.log(videoRef);
-      console.log(userId);
-      captureImage(
-         videoRef,
-         userId,
-         async ({ file, dataUrl }) => {
-           const response = await uploadImage(file);
-           console.log('Uploaded to server:', response);
-           setCapturedImage(dataUrl);
-           const updatedFilename = localStorage.getItem('filename');
-           console.log("Updated filename:", updatedFilename);
-    
-      setFilename(updatedFilename);
-         },
-         (errMsg) => alert(errMsg)
-       );
-       
+    const initModels = async () => {
+      await loadModels(process.env.PUBLIC_URL + '/models');
+      setModelsLoaded(true);
+    };
+
+    initModels();
+  }, []);
+
+  const handleCapture = () => {
+    console.log("entered handle capture");
+    console.log(videoRef);
+    console.log(userId);
+    captureImage(
+      videoRef,
+      userId,
+      async ({ file, dataUrl }) => {
+        const response = await uploadImage(file);
+        console.log('Uploaded to server:', response);
+        setCapturedImage(dataUrl);
+        const updatedFilename = localStorage.getItem('filename');
+        console.log("Updated filename:", updatedFilename);
+
+        setFilename(updatedFilename);
+      },
+      (errMsg) => alert(errMsg)
+    );
+
+  };
+
+  useEffect(() => {
+    let intervalId;
+
+    const handleVideoReady = async () => {
+      console.log('Video is ready, starting face detection...');
+      console.log("navigate", navigation);
+      console.log("testName", testName);
+      intervalId = await startFaceDetection(
+        setDetections,
+        setAlertCount,
+        videoRef,
+        userId,
+        navigation,
+        testName);
+
+    };
+
+
+    if (  currentPage === 'test' && videoRef.current) {
+      const video = videoRef.current;
+
+      const onLoadedData = () => {
+        handleVideoReady();
       };
-      
-      useEffect(() => {
-        let intervalId;
-      
-        const handleVideoReady = async () => {
-          console.log('Video is ready, starting face detection...');
-          console.log("navigate", navigation);
-          console.log("testName", testName);
-          intervalId = await startFaceDetection( videoRef,
-            setDetections,
-            setAlertCount,
-            userId,
-            navigation,
-          testName);
-         
-        };
-      
-        if (currentPage === 'test' && videoRef.current) {
-          const video = videoRef.current;
-      
-          const onLoadedData = () => {
-            handleVideoReady();
-          };
-      
-          video.addEventListener('loadeddata', onLoadedData);
-      
-          return () => {
-            if (intervalId) clearInterval(intervalId);
-            video.removeEventListener('loadeddata', onLoadedData);
-          };
-        }
-      }, [currentPage, videoRef]);
-      
-      // useEffect(() => {
-      //   if (alertCount > 0) {
-      //     alert(`⚠️ Face mismatch detected ${alertCount} time(s)!`);
-      //   }
-      // }, [alertCount]);
-      
+
+      video.addEventListener('loadeddata', onLoadedData);
+
+      clearInterval(intervalId);    
+    }
+    else
+      return
+  }, [currentPage, videoRef]);
+
+
   return (
     <div className="test-container">
       <header className="test-header">
@@ -781,7 +807,7 @@ const ApplicantTakeTest = () => {
         />
       )}
       {currentPage === 'instructions' && (
-        <div className="instructions-page">
+        <div className="instructions-page">       
           <div className="instructions-header">
             <div style={{ marginLeft: '2%' }}>
               <h2 className="text-name">{testName}</h2>
@@ -853,27 +879,28 @@ const ApplicantTakeTest = () => {
               />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-      <button className="start-btn" disabled={webcamError} onClick={handleCapture}>
-        Capture Image
-      </button>
-    </div>
-    {webcamError && (
-    <p style={{display: 'flex', justifyContent: 'center', color: 'red', marginTop: '8px' }}>
-      Please check camera permissions or hardware issues to continue the test.
-    </p>
-  )}
+              <button className="start-btn" disabled={webcamError} onClick={handleCapture}>
+                Capture Image
+              </button>
+            </div>
+            {webcamError && (
+              <p style={{ display: 'flex', justifyContent: 'center', color: 'red', marginTop: '8px' }}>
+                Please check camera permissions or hardware issues to continue the test.
+              </p>
+            )}
           </div>
           <div align="right">
-          {webcamError ? (
-            
-    <button className="start-btn" disabled>
-      Start
-    </button>
-  ) : (
-    <button className="start-btn" onClick={startTest}>
-      Start
-    </button>
-  )}
+          {webcamError || !hasFilename ? (
+  <button className="start-btn" disabled>
+    Start
+  </button>
+) : (
+  <button className="start-btn" onClick={startTest}>
+    Start
+  </button>
+)}
+
+
           </div>
         </div>
       )}
@@ -883,22 +910,21 @@ const ApplicantTakeTest = () => {
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
           <div style={{
-  width: '1px',
-  height: '1px',
-  opacity: 0,
-  position: 'absolute',
-  left: '-9999px',
-  pointerEvents: 'none'
-}}>
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                width="320"
-                height="260"
-                style={{ borderRadius: '10px', border: '2px solid #ccc' }}
-              />
-            </div>
+            width: '1px',
+            height: '1px',
+            opacity: 0,
+            position: 'absolute',
+            left: '-9999px',
+            pointerEvents: 'none'
+          }}>
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              width="320"
+              height="260"
+            />
+          </div>
           <div className="header">
             <h3>
               <span className="text-name1">{testName}</span>
@@ -991,9 +1017,11 @@ const ApplicantTakeTest = () => {
       )}
 
       {currentPage === 'passAcknowledgment' && (
-        <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName} handleTakeTest={handleTakeTest} setTestStarted={setTestStarted} />
+                <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName} handleTakeTest={handleTakeTest} setTestStarted={setTestStarted} />
+
       )}
       {currentPage === 'failAcknowledgment' && (
+        
         <TestFailAcknowledgment onClose={handleClosePopup} setTestStarted={setTestStarted} setShowGoBackButton={setShowGoBackButton} />
       )}
 
@@ -1012,6 +1040,8 @@ const ApplicantTakeTest = () => {
           </button>
         </div>
       )}
+
+      
 
       {currentPage === 'interrupted' && (
         <div className="go-back-button-overlay">
