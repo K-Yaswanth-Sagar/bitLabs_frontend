@@ -76,7 +76,6 @@ const ApplicantTakeTest = () => {
   const [filename, setFilename] = useState(null);
   const [alertCount, setAlertCount] = useState(0);
   const [detections, setDetections] = useState([]);
-const [testAttempted, setTestAttempted] = useState(false);
 const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'));
 const [webcamAllowed, setWebcamAllowed] = useState(true);
 const [loading, setLoading] = useState(false);
@@ -127,7 +126,7 @@ useEffect(() => {
   const videoRef = useRef(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
-  const [isOver, setIsOver] = useState(false);
+ 
 
 
 
@@ -142,7 +141,6 @@ useEffect(() => {
 
   // Enable right-click and copy-paste again
   const enableUserActions = () => {
-    setIsOver(true);
     document.removeEventListener('contextmenu', preventDefault);
     document.removeEventListener('copy', preventDefault);
     document.removeEventListener('cut', preventDefault);
@@ -399,7 +397,6 @@ useEffect(() => {
   }
 
   const startTest = () => {
-    setTestAttempted(true);
     setCurrentPage('test');
     setTestStarted(true);
     enterFullScreen();
@@ -917,7 +914,7 @@ const handleCapture = () => {
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
         <button
           className="start-btn"
-          disabled={webcamError || loading}
+          disabled={webcamError || loading || hasFilename}
           onClick={handleCapture}
         >
           {loading ? 'Capturing...' : 'Capture Image'}
@@ -956,14 +953,7 @@ const handleCapture = () => {
 
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
-          <div style={{
-            width: '1px',
-            height: '1px',
-            opacity: 0,
-            position: 'absolute',
-            left: '-9999px',
-            pointerEvents: 'none'
-          }}>
+          <div >
             <video
               ref={videoRef}
               autoPlay

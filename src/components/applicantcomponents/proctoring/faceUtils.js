@@ -7,7 +7,7 @@ import { apiUrl } from '../../../services/ApplicantAPIService';
 // Load all models
 export const loadModels = async (modelPath = '/models') => {
   await Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri(modelPath),
+    // faceapi.nets.tinyFaceDetector.loadFromUri(modelPath),
     faceapi.nets.ssdMobilenetv1.loadFromUri(modelPath),
     faceapi.nets.faceLandmark68Net.loadFromUri(modelPath),
     faceapi.nets.faceRecognitionNet.loadFromUri(modelPath),
@@ -77,6 +77,7 @@ const loadReferenceFaceDescriptor = async () => {
   }
 };
 
+
 // Main function to start face detection
 export const startFaceDetection = async (
  
@@ -106,25 +107,26 @@ export const startFaceDetection = async (
         return;
       }
 
-      const detection = await faceapi
-        .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+     
+      const detections = await faceapi
+        .detectAllFaces(videoRef.current, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.5 }))
         .withFaceLandmarks()
-        .withFaceDescriptor();
+        .withFaceDescriptors();
 
-      setDetections(detection ? [detection] : []);
-
-      if (!detection) return;
-
+        setDetections(detections);
+        console.log(detections.length)
+      
+        const detection = detections[0];
       const distance = faceapi.euclideanDistance(detection.descriptor, referenceDescriptor);
       const confidence = 1 - distance;
 
-      if (confidence < 0.75) {
+      if (confidence < 0.75 || detections.length !== 1) {
         alertCounter++;
         setAlertCount(alertCounter);
         console.warn(`Face mismatch! Confidence: ${confidence.toFixed(2)} | Alert Count: ${alertCounter}`);
         alert(`Warning ${alertCounter}: Face mismatch detected!`);
 
-        if (alertCounter === 3) {
+        if (alertCounter === 5) {
           clearInterval(intervalId);
           console.log('Face detection stopped due to repeated mismatches.');
           console.log(userId);
@@ -165,18 +167,32 @@ export const captureImage = async (videoRef, userId, onSuccess, onFailure) => {
   }
 
   const ctx = canvas.getContext('2d');
+  ctx.filter = 'brightness(1.4) contrast(1.3)';
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   const dataUrl = canvas.toDataURL('image/jpeg');
+  console.log(`Canvas size: ${canvas.width}x${canvas.height}`);
 
-  const detection = await faceapi
-    .detectSingleFace(canvas)
+ 
+
+  const detections = await faceapi
+  .detectAllFaces(canvas)
     .withFaceLandmarks()
-    .withFaceDescriptor();
+    .withFaceDescriptors();
+console.log('with landmarks', detections);
+console.log(detections.length);
+if (detections.length !== 1) {
+  onFailure(`Expected exactly one face. Found ${detections.length}. Please retake the image.`);
+  return;
+}
 
-  if (!detection || detection.detection.score < 0.9) {
-    onFailure('Face not clear. Please retake the image.');
-    return;
-  }
+const detection = detections[0];
+console.log('score', detection.detection.score );
+    
+    if (detection.detection.score < 0.9) {
+      onFailure('Face not clear. Please retake the image.');
+      return;
+    }
+    
 
   const blob = await (await fetch(dataUrl)).blob();
   const timestamp = Date.now();
