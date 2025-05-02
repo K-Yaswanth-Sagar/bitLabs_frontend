@@ -118,7 +118,7 @@ export const startFaceDetection = async (
       const distance = faceapi.euclideanDistance(detection.descriptor, referenceDescriptor);
       const confidence = 1 - distance;
 
-      if (confidence < 0.45) {
+      if (confidence < 0.75) {
         alertCounter++;
         setAlertCount(alertCounter);
         console.warn(`Face mismatch! Confidence: ${confidence.toFixed(2)} | Alert Count: ${alertCounter}`);
@@ -238,11 +238,7 @@ if (contentType && contentType.includes('application/json')) {
   data = await response.text();
 }
   console.log('Violation submitted:', data);
-  // console.log("videoRef", videoRef.current); 
-
-  // if (videoRef?.current) {
-  //   stopVideo(videoRef); 
-  // }
+  
   localStorage.removeItem('filename');
   navigation('/applicant-verified-badges');
  

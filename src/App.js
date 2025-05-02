@@ -22,6 +22,7 @@ import CookiePolicy from './components/common/CookiePolicy';
 import TermsOfServices from './components/common/TermsOfServices';
 import ApplicantBasicDetails from './components/applicantcomponents/ApplicantBasicDetails';
 import JobWidget from './components/jobWidget';
+import ApplicantTakeTestGuard from './components/applicantcomponents/proctoring/ApplicantTakeTestGuard'
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
           <p>Loading...</p>
         ) : (
           <Router>
-            
+            <ApplicantTakeTestGuard />
             <Routes>
               <Route path="/" element={<IndexPage />} />
               <Route path="/find-jobs" element={<IndexPage />} />

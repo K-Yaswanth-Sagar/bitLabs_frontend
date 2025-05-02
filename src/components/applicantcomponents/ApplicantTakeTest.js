@@ -78,15 +78,30 @@ const ApplicantTakeTest = () => {
   const [detections, setDetections] = useState([]);
 const [testAttempted, setTestAttempted] = useState(false);
 const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'));
+const [webcamAllowed, setWebcamAllowed] = useState(true);
+const [loading, setLoading] = useState(false);
 
 
+useEffect(() => {
+  const checkWebcamPermission = async () => {
+    try {
+      const permissionStatus = await navigator.permissions.query({ name: 'camera' });
 
-  // useEffect(() => {
-  //   const storedFilename = localStorage.getItem('filename');
-  //   if (storedFilename) {
-  //     setFilename(storedFilename);
-  //   }
-  // }, []);
+      setWebcamAllowed(permissionStatus.state === 'granted');
+
+      // Listen for changes in permission
+      permissionStatus.onchange = () => {
+        setWebcamAllowed(permissionStatus.state === 'granted');
+      };
+    } catch (err) {
+      console.warn('Permission check not supported:', err);
+      // Fallback: assume allowed to avoid blocking
+      setWebcamAllowed(true);
+    }
+  };
+
+  checkWebcamPermission();
+}, []);
 
   useEffect(() => {
     const storedFilename = localStorage.getItem('filename');
@@ -600,13 +615,14 @@ const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'
   };
 
   const handleClosePopup = () => {
+    localStorage.removeItem('filename');
     setCurrentPage('instructions'); // Or navigate to a different page if needed
   };
 
   const handleTakeTest = (testName) => {
     setAcknowledgmentVisible(false); // Hide the acknowledgment component
-    window.location.reload();
     localStorage.removeItem('filename');
+    window.location.reload();
 
     navigate('/applicant-take-test', { state: { testName } }); // Then navigate to the test
   };
@@ -680,6 +696,15 @@ const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'
   const webcamStreamRef = useRef(null);
  
   useEffect(() => {
+    const currentPath = location.pathname;
+
+    if (currentPath !== '/applicant-take-test') {
+      localStorage.removeItem('filename');
+      console.log('Removed filename from localStorage because path changed:', currentPath);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     const initialize = async () => {
       if (currentPage === 'captureImage' || currentPage === 'test' || currentPage === 'instructions') {
         await loadModels();
@@ -704,26 +729,38 @@ const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'
     initModels();
   }, []);
 
-  const handleCapture = () => {
-    console.log("entered handle capture");
-    console.log(videoRef);
-    console.log(userId);
-    captureImage(
-      videoRef,
-      userId,
-      async ({ file, dataUrl }) => {
+const handleCapture = () => {
+  console.log("entered handle capture");
+  console.log(videoRef);
+  console.log(userId);
+
+  setLoading(true); // Start loading
+
+  captureImage(
+    videoRef,
+    userId,
+    async ({ file, dataUrl }) => {
+      try {
         const response = await uploadImage(file);
         console.log('Uploaded to server:', response);
         setCapturedImage(dataUrl);
+
         const updatedFilename = localStorage.getItem('filename');
         console.log("Updated filename:", updatedFilename);
-
         setFilename(updatedFilename);
-      },
-      (errMsg) => alert(errMsg)
-    );
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // Stop loading
+      }
+    },
+    (errMsg) => {
+      alert(errMsg);
+      setLoading(false); // Stop loading on error
+    }
+  );
+};
 
-  };
 
   useEffect(() => {
     let intervalId;
@@ -754,8 +791,7 @@ const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'
 
       clearInterval(intervalId);    
     }
-    else
-      return
+    
   }, [currentPage, videoRef]);
 
 
@@ -879,26 +915,37 @@ const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'
               />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-              <button className="start-btn" disabled={webcamError} onClick={handleCapture}>
-                Capture Image
-              </button>
-            </div>
+        <button
+          className="start-btn"
+          disabled={webcamError || loading}
+          onClick={handleCapture}
+        >
+          {loading ? 'Capturing...' : 'Capture Image'}
+        </button>
+      </div>
+
+      {loading && (
+        <p style={{ textAlign: 'center', color: '#888', marginTop: '10px' }}>
+          Please wait, processing image...
+        </p>
+      )}
             {webcamError && (
               <p style={{ display: 'flex', justifyContent: 'center', color: 'red', marginTop: '8px' }}>
-                Please check camera permissions or hardware issues to continue the test.
+                Please check camera permissions or hardware issues and refresh the page to continue the test.
               </p>
             )}
           </div>
           <div align="right">
-          {webcamError || !hasFilename ? (
-  <button className="start-btn" disabled>
-    Start
-  </button>
-) : (
-  <button className="start-btn" onClick={startTest}>
-    Start
-  </button>
-)}
+
+{(webcamError || !webcamAllowed || !hasFilename) ? (
+        <button className="start-btn" disabled>
+          Start
+        </button>
+      ) : (
+        <button className="start-btn" onClick={startTest}>
+          Start
+        </button>
+      )}
 
 
           </div>
