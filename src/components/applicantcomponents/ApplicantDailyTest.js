@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ApplicantDailyTest.css";
-import Webcam from 'react-webcam';
 import { useUserContext } from '../common/UserProvider';
 import { apiUrl } from '../../services/ApplicantAPIService';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
 import Taketest from '../../images/user/avatar/Taketest.png';
+import CodeEditor from './CodeEditor'; 
+import { ChakraProvider } from '@chakra-ui/react';
 
 function ApplicantDailyTest() {
     const { user } = useUserContext();
@@ -31,9 +32,7 @@ function ApplicantDailyTest() {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [isWideScreen, setIsWideScreen] = useState(false);
-    const [showWebcam, setShowWebcam] = useState(true);
-    const webcamRef = useRef(null);
-    const [imageCapture, setImageCapture] = useState(false);
+    const [showEditor, setShowEditor] = useState(false);
     
 
     useEffect(() => {
@@ -438,6 +437,7 @@ function ApplicantDailyTest() {
 
                             {/* take test or view result card*/}
                             {!showIcon && !testStarted && (
+                                <>
                                 <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
                                     <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
                                         <div className={!isWideScreen ? 'resumecard' : ''}>
@@ -493,25 +493,43 @@ function ApplicantDailyTest() {
                                         </div>
                                     </div>
                                 </div>
-                            )}
+                                <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                    <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
+                                        <div className={!isWideScreen ? 'resumecard' : ''}>
+                                            <div className="resumecard-content">
+                                                <div className="resumecard-text">
+                                                    <div className="resumecard-heading">
+                                                        <h2 className="heading1">code it</h2>
+                                                        <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
+                                                            improve your logical strength by coding diffeent scenarios.
+                                                        </div>
+                                                    </div>
+                                                    <div className="resumecard-button">
+                <button onClick={() => setShowEditor(true)}>Open</button>
+              </div>
+           
+                                                </div>
 
-{/*!imageCapture && testStarted && showWebcam && (
-                <div className="webcam-modal">
-                    <h3>Please capture your image before starting the test</h3>
-                    <Webcam
-                        audio={false}
-                        ref={webcamRef}
-                        screenshotFormat="image/jpeg"
-                        width={350}
-                        height={250}
-                        videoConstraints={{
-                            facingMode: "user",
-                        }}
-                    />
-                    <button onClick={() => { captureImage(); setImageCapture(true); }}>
-                        Capture & Start Test</button>
-                </div>
-            )*/}
+                                                <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
+                                                    <img
+                                                        src={Taketest}
+                                                        alt="Taketest"
+                                                        style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {showEditor && (
+        <div style={{ marginTop: '20px' }}>
+            <ChakraProvider>
+          <CodeEditor />
+          </ChakraProvider>
+        </div>
+      )}
+                                </div>
+                                </>
+                            )}
 
                             {testStarted && randomQuestions.length > 0 && (
                                 <>
