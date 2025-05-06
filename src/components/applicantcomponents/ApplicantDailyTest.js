@@ -6,8 +6,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
 import Taketest from '../../images/user/avatar/Taketest.png';
-import CodeEditor from './CodeEditor'; 
-import { ChakraProvider } from '@chakra-ui/react';
+import CodeEditor from './CodeEditor';
+import { useNavigate } from "react-router-dom";
 
 function ApplicantDailyTest() {
     const { user } = useUserContext();
@@ -32,8 +32,11 @@ function ApplicantDailyTest() {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [isWideScreen, setIsWideScreen] = useState(false);
-    const [showEditor, setShowEditor] = useState(false);
-    
+    const navigate = useNavigate
+
+    const handleCodeEditor = () => {
+        navigate("/solve-questions");
+    }
 
     useEffect(() => {
         const handleResize = () => {
@@ -333,86 +336,16 @@ function ApplicantDailyTest() {
     };
 
 
-    
-        
-        // const captureImage = () => {
-        //     const imageSrc = webcamRef.current.getScreenshot();
-        //     uploadImage(imageSrc);
-        // };
-    
-        // const uploadImage = async (base64Image) => {
-        //     try {
-        //         // Convert base64 to blob
-        //         const res = await fetch(base64Image);
-        //         const blob = await res.blob();
-    
-        //         // Create filename with applicantId and timestamp
-        //         const timestamp = Date.now();
-        //         const filename = `${user.id}_${timestamp}.jpg`;
-    
-        //         const formData = new FormData();
-        //         formData.append('file', new File([blob], filename, { type: 'image/jpeg' }));
-        //         const jwtToken = localStorage.getItem("jwtToken");
-        //         const response = await fetch("http://localhost:8080/file/upload", {
-        //             method: "POST",
-        //             headers: {
-        //                 Authorization: `Bearer ${jwtToken}`,
-        //             },
-        //             body: formData,
-        //         });
-    
-        //         if (response.ok) {
-        //             console.log("Image uploaded successfully!");
-        //             // Save filename somewhere (state or localStorage)
-        //             localStorage.setItem('proctoringImage', filename);
-        //             setShowWebcam(false); // Hide webcam modal, show test
-        //             startTestMonitoring();
-        //         } else {
-        //             console.error("Image upload failed.");
-        //         }
-        //     } catch (err) {
-        //         console.error("Upload error", err);
-        //     }
-        // };
-    
-        // const startTestMonitoring = () => {
-        //     setTestStarted(true);
-        //     // Monitor the applicant during the test by capturing screenshots every 30 seconds
-        //     const intervalId = setInterval(() => {
-        //         captureSnapshotDuringTest();
-        //     }, 30000);
-    
-        //     // Store intervalId so we can clear it if needed (e.g., on test completion)
-        //     localStorage.setItem('proctoringInterval', intervalId);
-        // };
-    
-        // const captureSnapshotDuringTest = async () => {
-        //     const imageSrc = webcamRef.current.getScreenshot();
-        //     uploadImage(imageSrc);
-        // };
-    
-        useEffect(() => {
-            // Cleanup interval when test is over
-            return () => {
-                const intervalId = localStorage.getItem('proctoringInterval');
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    localStorage.removeItem('proctoringInterval');
-                }
-            };
-        }, [testStarted]);
-    
-
     // Reset test view
-    const resetTest = () => {
-        setTestStarted(false);
-        setShowResult(false);
-        setCount(0);
-        setScore(0);
-        setSelectedOption(null);
-        setSelectedDate(null);
-        setSelectedResult(null);
-    };
+    // const resetTest = () => {
+    //     setTestStarted(false);
+    //     setShowResult(false);
+    //     setCount(0);
+    //     setScore(0);
+    //     setSelectedOption(null);
+    //     setSelectedDate(null);
+    //     setSelectedResult(null);
+    // };
 
     return (
         <div>
@@ -438,96 +371,97 @@ function ApplicantDailyTest() {
                             {/* take test or view result card*/}
                             {!showIcon && !testStarted && (
                                 <>
-                                <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
-                                    <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
-                                        <div className={!isWideScreen ? 'resumecard' : ''}>
-                                            <div className="resumecard-content">
-                                                <div className="resumecard-text">
-                                                    <div className="resumecard-heading">
-                                                        <h2 className="heading1">Improve your skills by taking daily test</h2>
-                                                        <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
-                                                            Take the test not to prove you're perfect, but to prove you're progressing.
+                                    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                        <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
+                                            <div className={!isWideScreen ? 'resumecard' : ''}>
+                                                <div className="resumecard-content">
+                                                    <div className="resumecard-text">
+                                                        <div className="resumecard-heading">
+                                                            <h2 className="heading1">Improve your skills by taking daily test</h2>
+                                                            <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
+                                                                Take the test not to prove you're perfect, but to prove you're progressing.
+                                                            </div>
+                                                        </div>
+                                                        <div className="resumecard-button">
+                                                            {testAttempted ? (
+                                                                <Link
+                                                                    className="button-link1"
+                                                                    style={linkStyle}
+                                                                    onClick={() => {
+                                                                    }}
+                                                                    onMouseEnter={() => setIsHovered(true)}
+                                                                    onMouseLeave={() => setIsHovered(false)}
+                                                                >
+                                                                    <span className="button button-custom" style={spanStyle}>
+                                                                        Test Attempted
+                                                                    </span>
+                                                                </Link>
+                                                            ) : (
+                                                                <Link
+                                                                    className="button-link1"
+                                                                    style={linkStyle}
+                                                                    onClick={() => {
+                                                                        setSelectedDate(today);
+                                                                        setTestStarted(true);
+                                                                    }}
+                                                                    onMouseEnter={() => setIsHovered(true)}
+                                                                    onMouseLeave={() => setIsHovered(false)}
+                                                                >
+                                                                    <span className="button button-custom" style={spanStyle}>
+                                                                        Start Test
+                                                                    </span>
+                                                                </Link>
+                                                            )}
                                                         </div>
                                                     </div>
-                                                    <div className="resumecard-button">
-                                                        {testAttempted ? (
-                                                            <Link
-                                                                className="button-link1"
-                                                                style={linkStyle}
-                                                                onClick={() => {
-                                                                }}
-                                                                onMouseEnter={() => setIsHovered(true)}
-                                                                onMouseLeave={() => setIsHovered(false)}
-                                                            >
-                                                                <span className="button button-custom" style={spanStyle}>
-                                                                    Test Attempted
-                                                                </span>
-                                                            </Link>
-                                                        ) : (
-                                                            <Link
-                                                                className="button-link1"
-                                                                style={linkStyle}
-                                                                onClick={() => {
-                                                                    setSelectedDate(today);
-                                                                    setTestStarted(true);
-                                                                }}
-                                                                onMouseEnter={() => setIsHovered(true)}
-                                                                onMouseLeave={() => setIsHovered(false)}
-                                                            >
-                                                                <span className="button button-custom" style={spanStyle}>
-                                                                    Start Test
-                                                                </span>
-                                                            </Link>
-                                                        )}
-                                                    </div>
-                                                </div>
 
-                                                <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
-                                                    <img
-                                                        src={Taketest}
-                                                        alt="Taketest"
-                                                        style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
-                                                    />
+                                                    <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
+                                                        <img
+                                                            src={Taketest}
+                                                            alt="Taketest"
+                                                            style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
-                                    <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
-                                        <div className={!isWideScreen ? 'resumecard' : ''}>
-                                            <div className="resumecard-content">
-                                                <div className="resumecard-text">
-                                                    <div className="resumecard-heading">
-                                                        <h2 className="heading1">code it</h2>
-                                                        <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
-                                                            improve your logical strength by coding diffeent scenarios.
+                                    <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">
+                                        <div className="card" style={{ cursor: 'pointer', backgroundColor: '#FFF', fontFamily: 'Plus Jakarta Sans', fontWeight: '500' }}>
+                                            <div className={!isWideScreen ? 'resumecard' : ''}>
+                                                <div className="resumecard-content">
+                                                    <div className="resumecard-text">
+                                                        <div className="resumecard-heading">
+                                                            <h2 className="heading1">code it</h2>
+                                                            <div className="" style={{ fontSize: '16.8px', color: '#6F6F6F', fontWeight: '500', fontFamily: 'Plus Jakarta Sans', fontStyle: 'normal' }}>
+                                                                improve your logical strength by coding diffeent scenarios.
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="resumecard-button">
-                <button onClick={() => setShowEditor(true)}>Open</button>
-              </div>
-           
-                                                </div>
+                                                        <div className="resumecard-button">
+                                                       <button
+                                                                    className="button-link1"
+                                                                    style={linkStyle}
+                                                                    onClick={handleCodeEditor}
+                                                                >
+                                                                    <span className="button button-custom" style={spanStyle}>
+                                                                        Start coding
+                                                                    </span>
+                                                                </button>
+                                                        </div>
 
-                                                <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
-                                                    <img
-                                                        src={Taketest}
-                                                        alt="Taketest"
-                                                        style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
-                                                    />
+                                                    </div>
+
+                                                    <div className="resumecard-icon" style={{ marginLeft: 'auto' }}>
+                                                        <img
+                                                            src={Taketest}
+                                                            alt="Taketest"
+                                                            style={{ width: '160px', height: 'auto', objectFit: 'contain', marginTop: '10px' }}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {showEditor && (
-        <div style={{ marginTop: '20px' }}>
-            <ChakraProvider>
-          <CodeEditor />
-          </ChakraProvider>
-        </div>
-      )}
-                                </div>
                                 </>
                             )}
 

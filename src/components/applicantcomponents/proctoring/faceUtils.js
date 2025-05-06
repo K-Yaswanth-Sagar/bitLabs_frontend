@@ -132,6 +132,15 @@ export const startFaceDetection = async (
           console.log(userId);
           console.log("navigation" ,navigation);
           console.log("test Name" ,testName);
+          if (document.fullscreenElement) {
+            try {
+              await document.exitFullscreen();
+              console.log("Exited fullscreen successfully.");
+            } catch (err) {
+              console.error("Error exiting fullscreen:", err);
+            }
+          }
+          await new Promise((resolve) => setTimeout(resolve, 5000));
           await submitViolation(userId, navigation, testName);
          
         }
@@ -146,20 +155,19 @@ export const startFaceDetection = async (
 
 
 // Capture and validate face image
-export const captureImage = async (videoRef, userId, onSuccess, onFailure) => {
+export const captureImage = async (imageSrc, videoRef, userId, onSuccess, onFailure) => {
   console.log("In capture image");
   const video = videoRef.current;
   const canvas = document.createElement('canvas');
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 
-
   if (!video) {
     console.error("videoRef.current is null");
     onFailure("Camera not initialized. Please try again.");
     return;
   }
-  
+
   if (video.videoWidth === 0 || video.videoHeight === 0) {
     console.error("Video dimensions are zero");
     onFailure("Webcam not ready. Please wait a second and try again.");
@@ -172,36 +180,69 @@ export const captureImage = async (videoRef, userId, onSuccess, onFailure) => {
   const dataUrl = canvas.toDataURL('image/jpeg');
   console.log(`Canvas size: ${canvas.width}x${canvas.height}`);
 
- 
-
   const detections = await faceapi
-  .detectAllFaces(canvas)
+    .detectAllFaces(canvas)
     .withFaceLandmarks()
     .withFaceDescriptors();
-console.log('with landmarks', detections);
-console.log(detections.length);
-if (detections.length !== 1) {
-  onFailure(`Expected exactly one face. Found ${detections.length}. Please retake the image.`);
-  return;
-}
+  console.log('with landmarks', detections);
+  console.log(detections.length);
 
-const detection = detections[0];
-console.log('score', detection.detection.score );
-    
+  if (detections.length !== 1) {
+    onFailure(`Expected exactly one face. Found ${detections.length}. Please retake the image.`);
+    return;
+  }
+
+  const detection = detections[0];
+  console.log('score', detection.detection.score);
+
+  const profileImage = new Image();
+  profileImage.src = imageSrc;
+
+  profileImage.onload = async () => {
+    const profileCanvas = document.createElement('canvas');
+    profileCanvas.width = profileImage.width;
+    profileCanvas.height = profileImage.height;
+
+    const profileCtx = profileCanvas.getContext('2d');
+    profileCtx.drawImage(profileImage, 0, 0);
+
+    const profileDetection = await faceapi
+      .detectSingleFace(profileCanvas)
+      .withFaceLandmarks()
+      .withFaceDescriptor();
+
+    if (!profileDetection) {
+      onFailure("No face detected in the profile image.");
+      return;
+    }
+
+    const distance = faceapi.euclideanDistance(
+      detection.descriptor,
+      profileDetection.descriptor
+    );
+    const confidence = 1 - distance;
+
     if (detection.detection.score < 0.9) {
       onFailure('Face not clear. Please retake the image.');
       return;
     }
-    
+    console.log(confidence);
 
-  const blob = await (await fetch(dataUrl)).blob();
-  const timestamp = Date.now();
-  const filename = `${userId}-${timestamp}.jpg`;
-  localStorage.setItem('filename', filename);
-  const file = new File([blob], filename, { type: 'image/jpeg' });
+    if (confidence < 0.65) {
+      onFailure("Face is not matching with the profile image.");
+      return;
+    }
 
-  onSuccess({ file, dataUrl });
+    const blob = await (await fetch(dataUrl)).blob();
+    const timestamp = Date.now();
+    const filename = `${userId}-${timestamp}.jpg`;
+    localStorage.setItem('filename', filename);
+    const file = new File([blob], filename, { type: 'image/jpeg' });
+
+    onSuccess({ file, dataUrl, filename });
+  };
 };
+
 
 // Upload image to server (e.g., to S3)
 export const uploadImage = async (file) => {

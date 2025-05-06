@@ -23,6 +23,7 @@ import TermsOfServices from './components/common/TermsOfServices';
 import ApplicantBasicDetails from './components/applicantcomponents/ApplicantBasicDetails';
 import JobWidget from './components/jobWidget';
 import ApplicantTakeTestGuard from './components/applicantcomponents/proctoring/ApplicantTakeTestGuard'
+import CodeEditor from './components/applicantcomponents/CodeEditor';
 
 
 function App() {
@@ -114,6 +115,7 @@ function App() {
                 <Route path="/recruiter-repost-job/:id" element={<RecruiterHomePage />} />
                 <Route path="/recruiter-view-organization" element={<RecruiterHomePage />} />
                 <Route path="/recruiter-edit-organization" element={<RecruiterHomePage />} />
+                <Route path="/solve-questions" element={<CodeEditor />} />
               
                 </>
               ) : (

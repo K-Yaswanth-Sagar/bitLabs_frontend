@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Box, Select, Button, Textarea, VStack, Heading } from '@chakra-ui/react';
 import Editor from '@monaco-editor/react';
 
 const CodeEditor = () => {
@@ -14,15 +13,19 @@ const CodeEditor = () => {
   };
 
   return (
-    <VStack p={4} spacing={4} align="stretch">
-      <Heading size="lg">Online Code Editor</Heading>
+    <div style={{ padding: '20px', maxWidth: '900px', margin: 'auto' }}>
+      <h2 style={{ marginBottom: '20px' }}>Online Code Editor</h2>
 
-      <Select value={language} onChange={(e) => setLanguage(e.target.value)}>
+      <select
+        value={language}
+        onChange={(e) => setLanguage(e.target.value)}
+        style={{ padding: '10px', marginBottom: '20px', width: '100%' }}
+      >
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
         <option value="cpp">C++</option>
         <option value="java">Java</option>
-      </Select>
+      </select>
 
       <Editor
         height="300px"
@@ -32,24 +35,46 @@ const CodeEditor = () => {
         theme="vs-dark"
       />
 
-      <Textarea
+      <textarea
         placeholder="Input (optional)"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        style={{
+          width: '100%',
+          height: '80px',
+          marginTop: '20px',
+          padding: '10px',
+          fontSize: '14px',
+        }}
       />
 
-      <Button colorScheme="teal" onClick={handleRunCode}>
+      <button
+        onClick={handleRunCode}
+        style={{
+          marginTop: '15px',
+          padding: '10px 20px',
+          backgroundColor: '#319795',
+          color: 'white',
+          border: 'none',
+          cursor: 'pointer',
+        }}
+      >
         Run Code
-      </Button>
+      </button>
 
-      <Textarea
+      <textarea
         placeholder="Output"
         value={output}
-        isReadOnly
-        bg="gray.100"
-        height="100px"
+        readOnly
+        style={{
+          width: '100%',
+          height: '100px',
+          marginTop: '20px',
+          padding: '10px',
+          backgroundColor: '#f5f5f5',
+        }}
       />
-    </VStack>
+    </div>
   );
 };
 

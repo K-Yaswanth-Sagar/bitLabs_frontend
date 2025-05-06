@@ -35,6 +35,7 @@ import CSSTest from './questions/CSS.json';
 import AngularTest from './questions/Angular.json';
 import ManualTestingTest from './questions/ManualTesting.json';
 import VueTest from './questions/Vue.json';
+import Snackbar from "../common/Snackbar";
 import {
   startVideo,
   stopVideo,
@@ -76,31 +77,72 @@ const ApplicantTakeTest = () => {
   const [filename, setFilename] = useState(null);
   const [alertCount, setAlertCount] = useState(0);
   const [detections, setDetections] = useState([]);
-const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'));
-const [webcamAllowed, setWebcamAllowed] = useState(true);
-const [loading, setLoading] = useState(false);
-
-
-useEffect(() => {
-  const checkWebcamPermission = async () => {
+  const [hasFilename, setHasFilename] = useState(!!localStorage.getItem('filename'));
+  const [webcamAllowed, setWebcamAllowed] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [customAlertMessage, setCustomAlertMessage] = useState('');
+const [showCustomAlert, setShowCustomAlert] = useState(false);
+const [shouldExitFullScreen, setShouldExitFullScreen] = useState(false);
+ const [snackbars, setSnackbars] = useState([]);
+ const [imageSrc, setImageSrc] = useState(null);
+ 
+ useEffect(() => {
+  const fetchImage = async () => {
     try {
-      const permissionStatus = await navigator.permissions.query({ name: 'camera' });
+      const jwtToken = localStorage.getItem('jwtToken');
+      const response = await fetch(`${apiUrl}/applicant-image/getphoto/${userId}`, {
+        headers: { Authorization: `Bearer ${jwtToken}` },
+      });
 
-      setWebcamAllowed(permissionStatus.state === 'granted');
+      if (!response.ok) {
+        throw new Error('Image fetch failed');
+      }
 
-      // Listen for changes in permission
-      permissionStatus.onchange = () => {
-        setWebcamAllowed(permissionStatus.state === 'granted');
-      };
-    } catch (err) {
-      console.warn('Permission check not supported:', err);
-      // Fallback: assume allowed to avoid blocking
-      setWebcamAllowed(true);
+      const arrayBuffer = await response.arrayBuffer(); 
+
+      const base64Image = btoa(
+        new Uint8Array(arrayBuffer).reduce(
+          (data, byte) => data + String.fromCharCode(byte),
+          ''
+        )
+      );
+
+      const contentType = response.headers.get('content-type'); 
+      setImageSrc(`data:${contentType};base64,${base64Image}`);
+    } catch (error) {
+      console.error('Error fetching image:', error);
     }
   };
 
-  checkWebcamPermission();
-}, []);
+  fetchImage();
+}, [userId, apiUrl]);
+
+
+const addSnackbar = (snackbar) => {
+  setSnackbars((prevSnackbars) => [...prevSnackbars, snackbar]);
+};
+
+
+  useEffect(() => {
+    const checkWebcamPermission = async () => {
+      try {
+        const permissionStatus = await navigator.permissions.query({ name: 'camera' });
+
+        setWebcamAllowed(permissionStatus.state === 'granted');
+
+        // Listen for changes in permission
+        permissionStatus.onchange = () => {
+          setWebcamAllowed(permissionStatus.state === 'granted');
+        };
+      } catch (err) {
+        console.warn('Permission check not supported:', err);
+        // Fallback: assume allowed to avoid blocking
+        setWebcamAllowed(true);
+      }
+    };
+
+    checkWebcamPermission();
+  }, []);
 
   useEffect(() => {
     const storedFilename = localStorage.getItem('filename');
@@ -114,19 +156,19 @@ useEffect(() => {
       const exists = !!localStorage.getItem('filename');
       setHasFilename(exists);
     };
-  
+
     const intervalId = setInterval(checkFilename, 500); // check every 500ms
-  
+
     return () => clearInterval(intervalId);
   }, []);
-  
+
 
 
   const [webcamError, setWebcamError] = useState(false);
   const videoRef = useRef(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
- 
+
 
 
 
@@ -594,7 +636,7 @@ useEffect(() => {
     localStorage.removeItem('filename');
 
     navigate("/applicant-verified-badges");
-   
+
   };
 
 
@@ -691,7 +733,7 @@ useEffect(() => {
   };
 
   const webcamStreamRef = useRef(null);
- 
+
   useEffect(() => {
     const currentPath = location.pathname;
 
@@ -711,11 +753,11 @@ useEffect(() => {
 
     initialize();
     return () => {
-      stopVideo(videoRef, webcamStreamRef); 
+      stopVideo(videoRef, webcamStreamRef);
     };
   }, [currentPage]);
 
- 
+
 
   useEffect(() => {
     const initModels = async () => {
@@ -726,37 +768,40 @@ useEffect(() => {
     initModels();
   }, []);
 
-const handleCapture = () => {
-  console.log("entered handle capture");
-  console.log(videoRef);
-  console.log(userId);
+  const handleCapture = () => {
+    console.log("entered handle capture");
+    console.log(videoRef);
+    console.log(userId);
 
-  setLoading(true); // Start loading
+    setLoading(true); // Start loading
 
-  captureImage(
-    videoRef,
-    userId,
-    async ({ file, dataUrl }) => {
-      try {
-        const response = await uploadImage(file);
-        console.log('Uploaded to server:', response);
-        setCapturedImage(dataUrl);
+    captureImage(
+      imageSrc,
+      videoRef,
+      userId,
+      async ({ file, dataUrl, filename }) => {
+        try {
+          const response = await uploadImage(file);
+         
+          console.log('Uploaded to server:', response);
+          setCapturedImage(dataUrl);
 
-        const updatedFilename = localStorage.getItem('filename');
-        console.log("Updated filename:", updatedFilename);
-        setFilename(updatedFilename);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false); // Stop loading
+          // const updatedFilename = localStorage.getItem('filename');
+          // console.log("Updated filename:", updatedFilename);
+          setFilename(filename);
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setLoading(false); // Stop loading
+        }
+      },
+     
+      (errMsg) => {
+        alert(errMsg);
+        setLoading(false); // Stop loading on error
       }
-    },
-    (errMsg) => {
-      alert(errMsg);
-      setLoading(false); // Stop loading on error
-    }
-  );
-};
+    );
+  };
 
 
   useEffect(() => {
@@ -777,7 +822,7 @@ const handleCapture = () => {
     };
 
 
-    if (  currentPage === 'test' && videoRef.current) {
+    if (currentPage === 'test' && videoRef.current) {
       const video = videoRef.current;
 
       const onLoadedData = () => {
@@ -786,11 +831,32 @@ const handleCapture = () => {
 
       video.addEventListener('loadeddata', onLoadedData);
 
-      clearInterval(intervalId);    
+      clearInterval(intervalId);
     }
-    
+
   }, [currentPage, videoRef]);
 
+  useEffect(() => {
+    window.alert = (message) => {
+      addSnackbar({
+        message,
+        type: 'error', 
+      });
+    };
+  }, [addSnackbar]);
+  
+  useEffect(() => {
+    if (alertCount === 5) {
+      setCustomAlertMessage("Your test will be auto submitted in 5 seconds due to multiple face mismatches try again after 7 days");
+      setShowCustomAlert(true);
+      setShouldExitFullScreen(true); 
+    }
+  }, [alertCount]);
+  
+
+  const handleCloseSnackbar = (index) => {
+    setSnackbars((prevSnackbars) => prevSnackbars.filter((_, i) => i !== index));
+  };
 
   return (
     <div className="test-container">
@@ -840,7 +906,7 @@ const handleCapture = () => {
         />
       )}
       {currentPage === 'instructions' && (
-        <div className="instructions-page">       
+        <div className="instructions-page">
           <div className="instructions-header">
             <div style={{ marginLeft: '2%' }}>
               <h2 className="text-name">{testName}</h2>
@@ -900,6 +966,10 @@ const handleCapture = () => {
 
           <br />
           <div className="instructions" style={{ paddingLeft: '2%' }}>
+         
+          {imageSrc ? <img src={imageSrc} alt="Profile" /> : <p>Loading image...</p>}
+
+      
             <span className="instructions-title">Take image before starting the test</span>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
               <video
@@ -912,20 +982,20 @@ const handleCapture = () => {
               />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-        <button
-          className="start-btn"
-          disabled={webcamError || loading || hasFilename}
-          onClick={handleCapture}
-        >
-          {loading ? 'Capturing...' : 'Capture Image'}
-        </button>
-      </div>
+              <button
+                className="start-btn"
+                disabled={!imageSrc || webcamError || loading || hasFilename}
+                onClick={handleCapture}
+              >
+                {loading ? 'Capturing...' : 'Capture Image'}
+              </button>
+            </div>
 
-      {loading && (
-        <p style={{ textAlign: 'center', color: '#888', marginTop: '10px' }}>
-          Please wait, processing image...
-        </p>
-      )}
+            {loading && (
+              <p style={{ textAlign: 'center', color: '#888', marginTop: '10px' }}>
+                Please wait, processing image...
+              </p>
+            )}
             {webcamError && (
               <p style={{ display: 'flex', justifyContent: 'center', color: 'red', marginTop: '8px' }}>
                 Please check camera permissions or hardware issues and refresh the page to continue the test.
@@ -934,15 +1004,15 @@ const handleCapture = () => {
           </div>
           <div align="right">
 
-{(webcamError || !webcamAllowed || !hasFilename) ? (
-        <button className="start-btn" disabled>
-          Start
-        </button>
-      ) : (
-        <button className="start-btn" onClick={startTest}>
-          Start
-        </button>
-      )}
+            {(webcamError || !webcamAllowed || !hasFilename ) ? (
+              <button className="start-btn" disabled>
+                Start
+              </button>
+            ) : (
+              <button className="start-btn" onClick={startTest}>
+                Start
+              </button>
+            )}
 
 
           </div>
@@ -953,7 +1023,11 @@ const handleCapture = () => {
 
       {currentPage === 'test' && (
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
-          <div >
+          <div style={{
+            opacity: 0,
+            position: 'absolute',
+            left: '-9999px'
+          }}>
             <video
               ref={videoRef}
               autoPlay
@@ -1053,12 +1127,35 @@ const handleCapture = () => {
         </div>
       )}
 
+{showCustomAlert && (
+  <div className="go-back-button-overlay">
+    <p><strong>{customAlertMessage}</strong></p>
+    <br />
+    <button
+      className="exit-popup-btn exit-popup-confirm-btn"
+      onClick={() => {
+        setShowCustomAlert(false);
+        if (shouldExitFullScreen && document.fullscreenElement) {
+          document.exitFullscreen().catch((err) =>
+            console.error('Error exiting fullscreen:', err)
+          );
+          setShouldExitFullScreen(false);
+          
+        }
+      }}
+    >
+      OK
+    </button>
+  </div>
+)}
+
+
       {currentPage === 'passAcknowledgment' && (
-                <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName} handleTakeTest={handleTakeTest} setTestStarted={setTestStarted} />
+        <TestPassAcknowledgment onClose={handleClosePopup} score={score} testName={testName} handleTakeTest={handleTakeTest} setTestStarted={setTestStarted} />
 
       )}
       {currentPage === 'failAcknowledgment' && (
-        
+
         <TestFailAcknowledgment onClose={handleClosePopup} setTestStarted={setTestStarted} setShowGoBackButton={setShowGoBackButton} />
       )}
 
@@ -1067,7 +1164,7 @@ const handleCapture = () => {
         <TestTimeUp onViewResults={handleViewResults} onCancel={handleViewResults} />
       )}
 
-      {!isTestCompleted && showGoBackButton && (
+      {!isTestCompleted && showGoBackButton && alertCount < 5  && (
         <div className="go-back-button-overlay">
 
           <p><strong>You won’t be able to continue the test and you’ll be ineligible to take this until 7 days. To avoid,</strong></p>
@@ -1078,7 +1175,7 @@ const handleCapture = () => {
         </div>
       )}
 
-      
+
 
       {currentPage === 'interrupted' && (
         <div className="go-back-button-overlay">
@@ -1092,6 +1189,18 @@ const handleCapture = () => {
           <p>You can retake the test in 7 days.</p>
         </div>
       )}
+
+      {snackbars.map((snackbar, index) => (
+              <Snackbar
+                key={index}
+                index={index}
+                message={snackbar.message}
+                type={snackbar.type}
+                onClose={handleCloseSnackbar}
+                link={snackbar.link}
+                linkText={snackbar.linkText}
+              />
+            ))}
     </div>
   );
 };

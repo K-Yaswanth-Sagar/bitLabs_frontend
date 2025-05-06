@@ -133,7 +133,9 @@ const ApplicantViewProfile = () => {
         setprofileid(profileId);
         console.log('profileData:', profileData);
         count = 1;
-        const imageResponse = await axios.get(`${apiUrl}/applicant-image/getphoto/${id}`, { responseType: 'arraybuffer' });
+        const imageResponse = await axios.get(`${apiUrl}/applicant-image/getphoto/${id}`, { responseType: 'arraybuffer',
+          headers: { Authorization: `Bearer ${jwtToken}` }
+         });
         const base64Image = btoa(
           new Uint8Array(imageResponse.data).reduce(
             (data, byte) => data + String.fromCharCode(byte),
