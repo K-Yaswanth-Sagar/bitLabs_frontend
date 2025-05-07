@@ -228,14 +228,18 @@ export const captureImage = async (imageSrc, videoRef, userId, onSuccess, onFail
     }
     console.log(confidence);
 
-    if (confidence < 0.65) {
+    if (confidence < 0.70) {
       onFailure("Face is not matching with the profile image.");
       return;
     }
 
     const blob = await (await fetch(dataUrl)).blob();
     const timestamp = Date.now();
-    const filename = `${userId}-${timestamp}.jpg`;
+    const date = new Date(timestamp);
+
+const formatted = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}_${String(date.getHours()).padStart(2, '0')}-${String(date.getMinutes()).padStart(2, '0')}-${String(date.getSeconds()).padStart(2, '0')}`;
+
+    const filename = `${userId}_${formatted}.jpg`;
     localStorage.setItem('filename', filename);
     const file = new File([blob], filename, { type: 'image/jpeg' });
 
@@ -258,7 +262,7 @@ export const uploadImage = async (file) => {
   console.log("Imgage uploaded");
 
   if (!response.ok) throw new Error('Image upload failed');
-  return response.json();
+  return response.text();
 };
 
 // Handle verification

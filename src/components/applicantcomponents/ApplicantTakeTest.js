@@ -85,6 +85,8 @@ const [showCustomAlert, setShowCustomAlert] = useState(false);
 const [shouldExitFullScreen, setShouldExitFullScreen] = useState(false);
  const [snackbars, setSnackbars] = useState([]);
  const [imageSrc, setImageSrc] = useState(null);
+ const [isImageUploaded, setIsImageUploaded] = useState(false);
+
  
  useEffect(() => {
   const fetchImage = async () => {
@@ -788,9 +790,13 @@ const addSnackbar = (snackbar) => {
 
           // const updatedFilename = localStorage.getItem('filename');
           // console.log("Updated filename:", updatedFilename);
-          setFilename(filename);
+        
+            setFilename(filename);
+            setIsImageUploaded(true); 
+        
         } catch (err) {
           console.error(err);
+          setIsImageUploaded(false); 
         } finally {
           setLoading(false); // Stop loading
         }
@@ -857,6 +863,11 @@ const addSnackbar = (snackbar) => {
   const handleCloseSnackbar = (index) => {
     setSnackbars((prevSnackbars) => prevSnackbars.filter((_, i) => i !== index));
   };
+
+  useEffect(() => {
+    console.log("Upload state changed:", isImageUploaded);
+  }, [isImageUploaded]);
+  
 
   return (
     <div className="test-container">
@@ -1004,7 +1015,7 @@ const addSnackbar = (snackbar) => {
           </div>
           <div align="right">
 
-            {(webcamError || !webcamAllowed || !hasFilename ) ? (
+            {(webcamError || !webcamAllowed || !hasFilename  || !isImageUploaded ) ? (
               <button className="start-btn" disabled>
                 Start
               </button>
